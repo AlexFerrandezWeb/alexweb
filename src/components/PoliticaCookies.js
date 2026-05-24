@@ -4,7 +4,7 @@ import './LegalPage.css'
 
 export const PoliticaCookies = () => {
   useEffect(() => {
-    document.title = 'AlexWeb | Política de Cookies'
+    document.title = 'alexweb | Política de Cookies'
   }, [])
 
   return (

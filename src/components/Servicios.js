@@ -41,7 +41,7 @@ const FeatureCheckIcon = ({ gold = false }) => (
 export const Servicios = () => {
 
   useEffect(() => {
-    document.title = "AlexWeb | Servicios";
+    document.title = "alexweb | Servicios";
   }, []);
 
   return (

@@ -4,7 +4,7 @@ import './LegalPage.css'
 
 export const AvisoLegal = () => {
   useEffect(() => {
-    document.title = 'AlexWeb | Aviso Legal'
+    document.title = 'alexweb | Aviso Legal'
   }, [])
 
   return (

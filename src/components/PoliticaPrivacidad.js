@@ -4,7 +4,7 @@ import './LegalPage.css'
 
 export const PoliticaPrivacidad = () => {
   useEffect(() => {
-    document.title = 'AlexWeb | Política de Privacidad'
+    document.title = 'alexweb | Política de Privacidad'
   }, [])
 
   return (

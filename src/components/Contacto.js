@@ -61,7 +61,7 @@ export const Contacto = () => {
   }
 
   useEffect(() => {
-    document.title = "AlexWeb | Contacto";
+    document.title = "alexweb | Contacto";
   }, []);
 
   return (

@@ -38,7 +38,7 @@ export const SobreMi = () => {
   const refs = useRef([])
 
   useEffect(() => {
-    document.title = 'AlexWeb | Sobre Mí'
+    document.title = 'alexweb | Sobre Mí'
 
     const observer = new IntersectionObserver(
       (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('sm-visible') }),

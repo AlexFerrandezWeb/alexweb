@@ -186,7 +186,7 @@ export const Inicio = () => {
   ];
 
   useEffect(() => {
-    document.title = "AlexWeb | Inicio";
+    document.title = "alexweb | Inicio";
   }, []);
 
   useEffect(() => {
@@ -238,10 +238,16 @@ export const Inicio = () => {
     <div className='inicio-container'>
       {/* Hero Section */}
       <section className='hero'>
+        <div className='hero-bg-blur hero-bg-blur-1' aria-hidden='true' />
+        <div className='hero-bg-blur hero-bg-blur-2' aria-hidden='true' />
         <div className='hero-content'>
-          <h1>Tu Presencia Digital Empieza Aquí</h1>
+          <span className='hero-badge'>Desarrollo Web · SEO · IA</span>
+          <h1>Tu Presencia Digital<br />Empieza Aquí</h1>
           <p>Diseño, desarrollo y mantenimiento. Tú te centras en tu negocio, yo me encargo del resto.</p>
-          <Link to='/servicios' className='hero-btn'>Ver Planes</Link>
+          <div className='hero-actions'>
+            <Link to='/servicios' className='hero-btn hero-btn-primary'>Ver Planes</Link>
+            <Link to='/sobreMi' className='hero-btn hero-btn-secondary'>Sobre mí</Link>
+          </div>
         </div>
       </section>
 

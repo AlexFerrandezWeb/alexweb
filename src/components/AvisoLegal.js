@@ -26,7 +26,7 @@ export const AvisoLegal = () => {
           </p>
           <ul className='legal-list legal-list-plain'>
             <li><strong>Titular:</strong> Alejandro Ferrández</li>
-            <li><strong>NIE:</strong> Y-4873506-S</li>
+            <li><strong>DNI:</strong> 48735060S</li>
             <li><strong>Domicilio:</strong> Murcia, España</li>
             <li><strong>Correo electrónico:</strong> alejandroferrandezjuarez@gmail.com</li>
             <li><strong>Actividad:</strong> Desarrollo web freelance</li>

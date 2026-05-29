@@ -142,6 +142,6 @@ ID de medición: `G-DEQL33LSGS`
 
 ## Notas legales
 
-Titular: **Alejandro Ferrández** · NIE Y-4873506-S · Murcia, España
+Titular: **Alejandro Ferrández** · DNI 48735060S · Murcia, España
 
 Las páginas legales cubren los requisitos de la **LSSI-CE** (Aviso Legal), el **RGPD** (Política de Privacidad) y la **LSSI** en materia de cookies (Política de Cookies).

@@ -163,9 +163,15 @@ body.nav-hidden .page-header {
     margin: 0 0 18px;
 }
 
+.form-opcional {
+    font-weight: 400;
+    font-size: 0.85em;
+    color: #999;
+}
+
 .submit-btn {
-    background: #b9a4e0;
-    color: #2c3e50;
+    background: var(--color-accion);
+    color: var(--color-accion-texto);
     border: none;
     padding: 15px 30px;
     border-radius: 30px;

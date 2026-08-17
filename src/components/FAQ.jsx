@@ -47,7 +47,7 @@ const faqs = [
   }
 ]
 
-export const FAQ = () => {
+export const FAQ = ({ preguntas = faqs, titulo = 'Preguntas frecuentes' }) => {
   const [abierto, setAbierto] = useState(null)
 
   const toggle = (index) => {
@@ -56,10 +56,10 @@ export const FAQ = () => {
 
   return (
     <section className='faq-section'>
-      <h2 className='faq-titulo'>Preguntas frecuentes</h2>
+      <h2 className='faq-titulo'>{titulo}</h2>
 
       <div className='faq-list'>
-        {faqs.map((faq, index) => (
+        {preguntas.map((faq, index) => (
           <div
             key={index}
             className={`faq-item ${abierto === index ? 'faq-item--open' : ''}`}

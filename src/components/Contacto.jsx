@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './Contacto.css'
 import { FAQ } from './FAQ'
 import { enviarFormularioContacto } from '../utils/enviarFormularioContacto'
@@ -60,10 +60,6 @@ export const Contacto = () => {
     }
   }
 
-  useEffect(() => {
-    document.title = "alexweb | Contacto";
-  }, []);
-
   return (
     <div className='contacto-container'>
       <div className='page-header'>
@@ -84,7 +80,7 @@ export const Contacto = () => {
           </div>
         ) : (
           <form onSubmit={handleContactSubmit} noValidate>
-            <p className='form-nota'>Todos los campos son obligatorios.</p>
+            <p className='form-nota'>Solo necesito tu nombre, tu email y dos líneas. Te respondo en menos de 24 h.</p>
             <div className='form-group'>
               <label htmlFor='c-nombre'>Nombre</label>
               <input
@@ -116,7 +112,7 @@ export const Contacto = () => {
             </div>
 
             <div className='form-group'>
-              <label htmlFor='c-telefono'>Número móvil</label>
+              <label htmlFor='c-telefono'>Número móvil <span className='form-opcional'>(opcional)</span></label>
               <div className='telefono-wrapper'>
                 <select
                   name='prefijo'
@@ -149,7 +145,6 @@ export const Contacto = () => {
                   placeholder='600000000'
                   value={contactForm.telefono}
                   onChange={handleContactChange}
-                  required
                 />
               </div>
               {erroresCampos.telefono && <span className='campo-error-msg'>{erroresCampos.telefono}</span>}
@@ -166,6 +161,7 @@ export const Contacto = () => {
                 required
               >
                 <option value='' disabled>Selecciona una opción</option>
+                <option value='nolose'>Todavía no lo sé, quiero que me asesores</option>
                 <option value='landing'>Landing Page</option>
                 <option value='sitioweb'>Sitio Web</option>
                 <option value='mantenimiento'>Mantenimiento</option>

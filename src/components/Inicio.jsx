@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Inicio.css'
 import { enviarFormularioContacto } from '../utils/enviarFormularioContacto'
+import { Testimonios } from './Testimonios'
 
 const FeatureCheckIcon = ({ gold = false }) => (
   <span className={`feature-check${gold ? ' feature-check-gold' : ''}`} aria-hidden='true'>
@@ -186,10 +187,6 @@ export const Inicio = () => {
   ];
 
   useEffect(() => {
-    document.title = "alexweb | Inicio";
-  }, []);
-
-  useEffect(() => {
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
       const todasReveladas = proyectos.reduce((acc, _, i) => ({ ...acc, [i]: true }), {})
       setFilasReveladas(todasReveladas)
@@ -241,13 +238,18 @@ export const Inicio = () => {
         <div className='hero-bg-blur hero-bg-blur-1' aria-hidden='true' />
         <div className='hero-bg-blur hero-bg-blur-2' aria-hidden='true' />
         <div className='hero-content'>
-          <span className='hero-badge'>Desarrollo Web · SEO · IA</span>
-          <h1>Tu Presencia Digital<br />Empieza Aquí</h1>
-          <p>Diseño, desarrollo y mantenimiento. Tú te centras en tu negocio, yo me encargo del resto.</p>
+          <span className='hero-badge'>Diseño web para pymes y autónomos · Toda España</span>
+          <h1>Tu negocio, en Google.<br />Sin complicaciones.</h1>
+          <p>Creo la web de tu negocio a medida: rápida, que se vea perfecta en el móvil y que tus clientes te encuentren. Tú te centras en lo tuyo, yo me encargo del resto.</p>
           <div className='hero-actions'>
-            <Link to='/servicios' className='hero-btn hero-btn-primary'>Ver Planes</Link>
-            <Link to='/sobreMi' className='hero-btn hero-btn-secondary'>Sobre mí</Link>
+            <Link to='/contacto' className='hero-btn hero-btn-primary'>Pide presupuesto gratis</Link>
+            <Link to='/servicios' className='hero-btn hero-btn-secondary'>Ver planes y precios</Link>
           </div>
+          <ul className='hero-garantias'>
+            <li>Respuesta en menos de 24 h</li>
+            <li>Presupuesto cerrado, sin sorpresas</li>
+            <li>Sin permanencia</li>
+          </ul>
         </div>
       </section>
 
@@ -476,6 +478,8 @@ export const Inicio = () => {
         </div>
       </section>
 
+      <Testimonios />
+
       {/* Contact Section */}
       <section className='inicio-contact-section'>
         <h2 className='section-title'>¿Hablamos?</h2>
@@ -494,7 +498,7 @@ export const Inicio = () => {
             </div>
           ) : (
             <form onSubmit={handleContactSubmit} noValidate>
-              <p className='inicio-form-nota'>Todos los campos son obligatorios.</p>
+              <p className='inicio-form-nota'>Solo necesito tu nombre, tu email y dos líneas. Te respondo en menos de 24 h.</p>
               <div className='inicio-form-group'>
                 <label htmlFor='ic-nombre'>Nombre</label>
                 <input
@@ -526,7 +530,7 @@ export const Inicio = () => {
               </div>
 
               <div className='inicio-form-group'>
-                <label htmlFor='ic-telefono'>Número móvil</label>
+                <label htmlFor='ic-telefono'>Número móvil <span className='inicio-form-opcional'>(opcional)</span></label>
                 <div className='telefono-wrapper'>
                   <select
                     name='prefijo'
@@ -559,7 +563,6 @@ export const Inicio = () => {
                     placeholder='600000000'
                     value={contactForm.telefono}
                     onChange={handleContactChange}
-                    required
                   />
                 </div>
                 {erroresCampos.telefono && <span className='campo-error-msg'>{erroresCampos.telefono}</span>}
@@ -576,6 +579,7 @@ export const Inicio = () => {
                   required
                 >
                   <option value='' disabled>Selecciona una opción</option>
+                  <option value='nolose'>Todavía no lo sé, quiero que me asesores</option>
                   <option value='landing'>Landing Page</option>
                   <option value='sitioweb'>Sitio Web</option>
                   <option value='mantenimiento'>Mantenimiento</option>

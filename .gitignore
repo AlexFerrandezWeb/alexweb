@@ -11,6 +11,9 @@
 # production
 /build
 
+# tipos y cache que genera React Router en cada build
+/.react-router
+
 # misc
 .DS_Store
 .env
@@ -22,3 +25,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# capturas y volcados del MCP de Playwright
+/.playwright-mcp
+

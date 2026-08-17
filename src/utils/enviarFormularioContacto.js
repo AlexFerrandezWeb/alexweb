@@ -1,9 +1,10 @@
-const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-const AUTOREPLY_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_AUTOREPLY_TEMPLATE_ID;
-const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+const SERVICE_ID = import.meta.env.REACT_APP_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+const AUTOREPLY_TEMPLATE_ID = import.meta.env.REACT_APP_EMAILJS_AUTOREPLY_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 const TIPOS_PROYECTO = {
+  nolose: 'No lo sabe todavía — pide asesoramiento',
   landing: 'Landing Page',
   sitioweb: 'Sitio Web',
   mantenimiento: 'Mantenimiento',

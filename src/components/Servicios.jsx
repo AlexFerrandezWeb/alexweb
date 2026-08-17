@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import './Servicios.css'
 import { FAQ } from './FAQ'
@@ -38,11 +38,92 @@ const FeatureCheckIcon = ({ gold = false }) => (
   </span>
 )
 
-export const Servicios = () => {
+/* Iconos de las tarjetas de tema. SVG en línea para no depender de librerías. */
+const IconoTema = ({ children }) => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='24'
+    height='24'
+    viewBox='0 0 24 24'
+    fill='none'
+    stroke='currentColor'
+    strokeWidth='1.8'
+    strokeLinecap='round'
+    strokeLinejoin='round'
+    aria-hidden='true'
+  >
+    {children}
+  </svg>
+)
 
-  useEffect(() => {
-    document.title = "alexweb | Servicios";
-  }, []);
+/**
+ * Páginas de servicio con contenido propio. Son las mismas que aparecen en el
+ * pie de página: si se añade una nueva, hay que tocar los dos sitios.
+ */
+const TEMAS = [
+  {
+    ruta: '/cuanto-cuesta-una-pagina-web',
+    titulo: '¿Cuánto cuesta una página web?',
+    texto: 'Precios reales en España, qué los sube o los baja y cuándo desconfiar de un presupuesto.',
+    icono: (
+      <IconoTema>
+        <circle cx='12' cy='12' r='9' />
+        <path d='M9.5 9.5A3 3 0 0 1 15 10' />
+        <path d='M9.5 14.5A3 3 0 0 0 15 14' />
+        <path d='M8 11h5M8 13h5' />
+      </IconoTema>
+    ),
+  },
+  {
+    ruta: '/precio-tienda-online',
+    titulo: 'Precio de una tienda online',
+    texto: 'Lo que cuesta montar una tienda con carrito y pago seguro, gastos anuales incluidos.',
+    icono: (
+      <IconoTema>
+        <path d='M4 5h2l1.6 9.2a2 2 0 0 0 2 1.8h6.8a2 2 0 0 0 2-1.6L20 8H7' />
+        <circle cx='10' cy='19' r='1.3' />
+        <circle cx='17' cy='19' r='1.3' />
+      </IconoTema>
+    ),
+  },
+  {
+    ruta: '/diseno-web-economico',
+    titulo: 'Diseño web económico',
+    texto: 'Dónde se puede ahorrar sin que se note en el resultado. Desde 350€ y sin cuotas obligatorias.',
+    icono: (
+      <IconoTema>
+        <path d='M20.6 13.4 12 4.8H5v7l8.6 8.6a2 2 0 0 0 2.8 0l4.2-4.2a2 2 0 0 0 0-2.8Z' />
+        <circle cx='8.5' cy='8.5' r='1.1' />
+      </IconoTema>
+    ),
+  },
+  {
+    ruta: '/diseno-web-para-pymes',
+    titulo: 'Diseño web para pymes',
+    texto: 'Webs para pequeñas empresas y autónomos: precio cerrado, sin plantillas y trato directo.',
+    icono: (
+      <IconoTema>
+        <path d='M3 21h18' />
+        <path d='M5 21V7l7-4 7 4v14' />
+        <path d='M9 21v-5h6v5' />
+        <path d='M9 11h.01M15 11h.01' />
+      </IconoTema>
+    ),
+  },
+  {
+    ruta: '/diseno-web-para-nutricionistas',
+    titulo: 'Webs para nutricionistas',
+    texto: 'Consultas de nutrición y dietética: cita online, pago de la sesión y SEO en tu ciudad.',
+    icono: (
+      <IconoTema>
+        <path d='M4 20c0-8 5-13 16-14 0 11-5 15-11 15a5 5 0 0 1-5-1Z' />
+        <path d='M9 15c1.5-3 4-5.5 7-7' />
+      </IconoTema>
+    ),
+  },
+]
+
+export const Servicios = () => {
 
   return (
     <div className='servicios-container'>
@@ -217,6 +298,27 @@ export const Servicios = () => {
               <span className='chatbot-banner-valor'>A consultar</span>
               <Link to='/contacto' className='service-btn chatbot-banner-btn'>Pedir presupuesto</Link>
             </div>
+          </div>
+        </div>
+
+        {/* ── Fila 5: páginas de servicio con contenido propio ── */}
+        <div className='service-group'>
+          <div className='section-row-title'>Más sobre mis servicios</div>
+          <p className='temas-intro'>
+            Si prefieres entender bien el precio antes de escribirme, o buscas algo pensado
+            para tu tipo de negocio, aquí lo tienes explicado con calma.
+          </p>
+          <div className='temas-grid'>
+            {TEMAS.map((tema) => (
+              <Link key={tema.ruta} to={tema.ruta} className='tema-card'>
+                <span className='tema-card-icono'>{tema.icono}</span>
+                <h3>{tema.titulo}</h3>
+                <p>{tema.texto}</p>
+                <span className='tema-card-mas'>
+                  Ver más <span aria-hidden='true'>→</span>
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
 

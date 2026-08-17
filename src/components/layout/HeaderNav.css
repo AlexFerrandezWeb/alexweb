@@ -1,5 +1,5 @@
 /* Main Header Container */
-header {
+.site-header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@ header {
     transition: transform 0.3s ease;
 }
 
-header.header-hidden {
+.site-header.header-hidden {
     transform: translateY(-100%);
 }
 
@@ -64,13 +64,13 @@ header.header-hidden {
 }
 
 /* Navigation Section */
-header nav {
+.site-header nav {
     display: flex;
     align-items: center;
     gap: 30px;
 }
 
-header nav ul {
+.site-header nav ul {
     display: flex;
     list-style: none;
     margin: 0;
@@ -79,7 +79,7 @@ header nav ul {
     align-items: center;
 }
 
-header nav ul li a {
+.site-header nav ul li a {
     text-decoration: none;
     color: #555;
     font-weight: 600;
@@ -91,11 +91,11 @@ header nav ul li a {
 }
 
 /* Hover Effect */
-header nav ul li a:hover {
+.site-header nav ul li a:hover {
     color: #2c3e50;
 }
 
-header nav ul li a::after {
+.site-header nav ul li a::after {
     content: '';
     position: absolute;
     width: 0;
@@ -106,21 +106,21 @@ header nav ul li a::after {
     transition: width 0.3s ease;
 }
 
-header nav ul li a:hover::after {
+.site-header nav ul li a:hover::after {
     width: 100%;
 }
 
 /* Active Link Style */
-header nav ul li a.active {
+.site-header nav ul li a.active {
     color: #2c3e50;
 }
 
-header nav ul li a.active::after {
+.site-header nav ul li a.active::after {
     width: 100%;
 }
 
 /* Contacto highlight */
-header nav ul li a.nav-contacto {
+.site-header nav ul li a.nav-contacto {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -131,18 +131,18 @@ header nav ul li a.nav-contacto {
     transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
-header nav ul li a.nav-contacto::after {
+.site-header nav ul li a.nav-contacto::after {
     display: none;
 }
 
-header nav ul li a.nav-contacto:hover {
+.site-header nav ul li a.nav-contacto:hover {
     color: #2c3e50;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(44, 62, 80, 0.3);
     filter: brightness(1.07);
 }
 
-header nav ul li a.nav-contacto.active {
+.site-header nav ul li a.nav-contacto.active {
     color: #2c3e50;
     filter: brightness(1.1);
     box-shadow: 0 4px 12px rgba(44, 62, 80, 0.35);
@@ -210,7 +210,7 @@ header nav ul li a.nav-contacto.active {
 
 /* ─── Mobile (≤ 768px) ─── */
 @media (max-width: 768px) {
-    header {
+    .site-header {
         justify-content: space-between;
         padding: 0 20px;
         height: 64px;
@@ -223,7 +223,7 @@ header nav ul li a.nav-contacto.active {
         display: flex;
     }
 
-    header nav {
+    .site-header nav {
         flex-direction: column;
         align-items: stretch;
         gap: 0;
@@ -239,34 +239,34 @@ header nav ul li a.nav-contacto.active {
         z-index: 999;
     }
 
-    header nav.open {
+    .site-header nav.open {
         max-height: 400px;
         padding: 16px 0 24px;
     }
 
-    header nav ul {
+    .site-header nav ul {
         flex-direction: column;
         gap: 0;
         align-items: stretch;
         padding: 0 20px;
     }
 
-    header nav ul li {
+    .site-header nav ul li {
         border-bottom: 1px solid #f0f0f0;
     }
 
-    header nav ul li:last-child {
+    .site-header nav ul li:last-child {
         border-bottom: none;
         padding-top: 12px;
     }
 
-    header nav ul li a {
+    .site-header nav ul li a {
         display: block;
         padding: 14px 0;
         font-size: 1rem;
     }
 
-    header nav ul li a.nav-contacto {
+    .site-header nav ul li a.nav-contacto {
         display: inline-flex;
         width: fit-content;
         padding: 10px 20px;

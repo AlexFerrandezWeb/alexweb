@@ -54,7 +54,7 @@ export const SobreMi = () => {
       {/* HERO */}
       <section className='sm-hero'>
         <div className='sm-hero-inner'>
-          <p className='sm-hero-label'>Desarrollador web freelance · Murcia, España</p>
+          <p className='sm-hero-label'>Desarrollador web freelance · Toda España</p>
           <h1 className='sm-hero-title'>
             Hola,<br />soy <span className='sm-hero-gradient'>Alex.</span>
           </h1>

@@ -207,8 +207,8 @@ body.nav-hidden .page-header {
 .service-btn {
     display: block;
     text-align: center;
-    background: #b9a4e0;
-    color: #2c3e50;
+    background: var(--color-accion);
+    color: var(--color-accion-texto);
     text-decoration: none;
     padding: 12px 20px;
     border-radius: 8px;
@@ -219,7 +219,9 @@ body.nav-hidden .page-header {
 }
 
 .service-btn:hover {
-    opacity: 0.9;
+    /* opacity bajaba el contraste del texto blanco al mezclar con el fondo
+       claro de la tarjeta; aclaramos el morado en su lugar */
+    background: var(--color-accion-hover);
     transform: translateY(-1px);
 }
 

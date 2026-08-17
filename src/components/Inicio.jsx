@@ -39,6 +39,20 @@ const FeatureCheckIcon = ({ gold = false }) => (
   </span>
 )
 
+/* Filas de la comparativa Landing vs Sitio Web. Compara servicios distintos,
+   no los niveles de uno mismo: para eso esta el modal de cada servicio. */
+const COMPARATIVA = [
+  ['Para quién', 'Un servicio o producto principal', 'Varios servicios, tienda o blog'],
+  ['Páginas', 'Una página', 'Las que el proyecto necesite'],
+  ['Objetivo', 'Que te contacten', 'Presencia completa, vender y posicionar'],
+  ['SEO', 'Básico, enfocado a una búsqueda', 'Ampliado, para muchas búsquedas'],
+  ['Blog', 'No', 'Sí, autogestionable'],
+  ['Tienda online', 'No', 'Sí, a partir del nivel E-commerce'],
+  ['Entrega', '2-3 semanas', 'Según el proyecto'],
+  ['Desde', '350€', '699€'],
+  ['Elígela si…', 'Quieres algo rápido y directo', 'Quieres que tu negocio viva en internet'],
+]
+
 const getMensajeError = (el) => {
   if (el.validity.valueMissing) return 'Este campo es obligatorio'
   if (el.validity.typeMismatch) return 'Introduce un email válido'
@@ -49,6 +63,7 @@ const getMensajeError = (el) => {
 export const Inicio = () => {
   const [slideActual, setSlideActual] = useState({ 'Heladería Luxer': 1, 'Anita Pinturitas': 2 })
   const [modalPlanes, setModalPlanes] = useState(false)
+  const refModal = useRef(null)
   const [contactForm, setContactForm] = useState({ nombre: '', email: '', prefijo: '+34', telefono: '', tipoProyecto: '', mensaje: '' })
   const [contactEnviado, setContactEnviado] = useState(false)
   const [enviando, setEnviando] = useState(false)
@@ -102,6 +117,10 @@ export const Inicio = () => {
 
   useEffect(() => {
     if (!modalPlanes) return
+    // Al saltar de la comparativa a un plan cambia el contenido pero el modal
+    // sigue montado, asi que conservaria el scroll de la tabla y el nuevo
+    // contenido apareceria empezado por la mitad.
+    refModal.current?.scrollTo(0, 0)
     const cerrarConEsc = (e) => { if (e.key === 'Escape') setModalPlanes(false) }
     document.addEventListener('keydown', cerrarConEsc)
     document.body.style.overflow = 'hidden'
@@ -263,7 +282,7 @@ export const Inicio = () => {
           <div className='product-card'>
             <h3>Landing Page</h3>
             <span className='price'><span className='price-span'>Desde</span>350€</span>
-            <p className='description'>Perfecta para mostrar tu negocio y captar clientes online.</p>
+            <p className='card-para-quien'>Ideal si ofreces un servicio concreto y quieres que te contacten. Una sola página, directa y al grano — sin que el cliente se pierda.</p>
             <ul className='features'>
               <li><FeatureCheckIcon /> Landing Page</li>
               <li><FeatureCheckIcon /> Diseño Responsive</li>
@@ -292,6 +311,7 @@ export const Inicio = () => {
           <div className='product-card'>
             <h3>Mantenimiento y SEO</h3>
             <span className='price'><span className='price-span'>Desde</span>50€</span>
+            <p className='card-para-quien'>Para webs ya publicadas que necesitan mantenerse seguras y subir en Google mes a mes.</p>
             <p className='description'>No basta con tener una web, hay que cuidarla. Mi servicio de mantenimiento
             asegura que tu sitio esté siempre actualizado y seguro, mientras mejoro tu posicionamiento en Google.</p>
             <ul className='features'>
@@ -304,6 +324,10 @@ export const Inicio = () => {
           </div>
 
         </div>
+
+        <button type='button' className='comparar-enlace' onClick={() => setModalPlanes('comparar')}>
+          ¿No sabes cuál elegir? Compara Landing y Sitio Web
+        </button>
 
         <div className='chatbot-banner'>
           <div className='chatbot-banner-texto'>
@@ -596,11 +620,10 @@ export const Inicio = () => {
                   name='mensaje'
                   className={camposAgitados.includes('mensaje') ? 'campo-invalido' : erroresCampos.mensaje ? 'campo-error' : undefined}
                   rows='5'
-                  placeholder='Cuéntame sobre tu proyecto... (mínimo 100 caracteres)'
+                  placeholder='Ej: "Tengo una peluquería y quiero una web sencilla. ¿Cuánto costaría?"'
                   value={contactForm.mensaje}
                   onChange={handleContactChange}
                   required
-                  minLength={100}
                 />
                 {erroresCampos.mensaje && <span className='campo-error-msg'>{erroresCampos.mensaje}</span>}
               </div>
@@ -621,7 +644,7 @@ export const Inicio = () => {
 
       {modalPlanes && (
         <div className='modal-overlay' onClick={() => setModalPlanes(false)}>
-          <div className='modal-planes' onClick={(e) => e.stopPropagation()}>
+          <div className='modal-planes' ref={refModal} onClick={(e) => e.stopPropagation()}>
             <button className='modal-cerrar' onClick={() => setModalPlanes(false)} aria-label='Cerrar'>
               <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='currentColor'>
                 <path d='M5 5h2v2H5zm4 4H7V7h2zm2 2H9V9h2zm2 0h-2v2H9v2H7v2H5v2h2v-2h2v-2h2v-2h2v2h2v2h2v2h2v-2h-2v-2h-2v-2h-2zm2-2v2h-2V9zm2-2v2h-2V7zm0 0V5h2v2z'/>
@@ -765,6 +788,39 @@ export const Inicio = () => {
                     </ul>
                     <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
                   </div>
+                </div>
+              </>
+            ) : modalPlanes === 'comparar' ? (
+              <>
+                <h2 className='modal-titulo'>¿Landing o Sitio Web?</h2>
+                <p className='modal-subtitulo'>Las diferencias que de verdad importan para elegir</p>
+                {/* Los role van explicitos porque en movil el CSS pasa la tabla
+                    a display:block para apilarla, y eso le quita la semantica
+                    de tabla a los lectores de pantalla si no se restituye. */}
+                <table className='tabla-comparativa' role='table'>
+                  <thead role='rowgroup'>
+                    <tr role='row'>
+                      <th role='columnheader' scope='col'><span className='visualmente-oculto'>Criterio</span></th>
+                      <th role='columnheader' scope='col'>Landing Page</th>
+                      <th role='columnheader' scope='col'>Sitio Web</th>
+                    </tr>
+                  </thead>
+                  <tbody role='rowgroup'>
+                    {COMPARATIVA.map(([criterio, landing, sitioweb]) => (
+                      <tr role='row' key={criterio}>
+                        <th role='rowheader' scope='row'>{criterio}</th>
+                        <td role='cell' data-etiqueta='Landing Page'>{landing}</td>
+                        <td role='cell' data-etiqueta='Sitio Web'>{sitioweb}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                {/* El cliente llega aqui ya decidido: recogemos esa decision en
+                    vez de obligarle a cerrar y empezar de nuevo. No abre otro
+                    modal, solo cambia la rama que pinta este mismo. */}
+                <div className='modal-comparar-acciones'>
+                  <button type='button' className='card-btn' onClick={() => setModalPlanes('landing')}>Quiero una Landing</button>
+                  <button type='button' className='card-btn' onClick={() => setModalPlanes('sitioweb')}>Quiero un Sitio Web</button>
                 </div>
               </>
             ) : (

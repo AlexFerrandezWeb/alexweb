@@ -9,7 +9,10 @@
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* 270px y no 250: con 250 la rejilla se atrevia a montar 4 columnas ya a
+       partir de 1120px de contenedor, dejandolas demasiado estrechas para el
+       email. Asi solo pasa a 4 columnas cuando de verdad hay sitio. */
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 40px;
     margin-bottom: 40px;
 }
@@ -91,6 +94,37 @@
     padding-left: 5px;
 }
 
+/* Contacto: el email es mas ancho que la columna, y al partir la linea el
+   navegador dejaba el emoji solo arriba. Con flex el icono no se separa nunca
+   del texto y solo parte el texto. */
+.footer-contacto li {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    /* A 16px el email mide 263px y la columna de escritorio solo da 269px: con
+       el icono no entraba y partia en dos lineas (en movil si entra, porque
+       ahi el footer es de una sola columna ancha). A 0.9rem si cabe. */
+    font-size: 0.9rem;
+}
+
+.footer-contacto-icono {
+    flex: 0 0 auto;
+}
+
+/* break-word (y no anywhere) a proposito: anywhere corta por cualquier letra y
+   dejaba el email partido en "gmail.c / om". Asi solo parte por el <wbr> que
+   hay tras la @, y el corte forzado queda de red de seguridad. */
+.footer-contacto li a,
+.footer-contacto li span:not(.footer-contacto-icono) {
+    overflow-wrap: break-word;
+}
+
+/* El hover general desplaza el enlace 5px; en un texto que ya va partido en
+   dos lineas eso lo hace saltar, asi que aqui lo anulamos. */
+.footer-contacto li a:hover {
+    padding-left: 0;
+}
+
 /* Social Icons */
 .social-links {
     display: flex;
@@ -121,17 +155,6 @@
     background: #b9a4e0;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.social-icon-disabled {
-    opacity: 0.35;
-    cursor: default;
-}
-
-.social-icon-disabled:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: none;
-    box-shadow: none;
 }
 
 .social-icon:hover svg {

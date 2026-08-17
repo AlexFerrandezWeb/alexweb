@@ -1,3 +1,29 @@
+/* Color de accion de los CTAs principales.
+   Es el morado profundo que ya usa la marca en los degradados, no un tono
+   nuevo. Sustituye al morado claro #b9a4e0, que con texto oscuro cumplia AA
+   por los pelos (4.94:1) pero se leia apagado, como si el boton estuviera
+   deshabilitado. Con texto blanco encima:
+     --color-accion        #764ba2  ->  6.37:1  (AA)
+     --color-accion-hover  #8a5cbd  ->  4.83:1  (AA, y se nota el cambio)
+   El morado claro sigue usandose tal cual en badges, bordes y adornos. */
+:root {
+  --color-accion: #764ba2;
+  --color-accion-hover: #8a5cbd;
+  --color-accion-texto: #fff;
+}
+
+/* Lo que hereda un nivel del anterior ("Todo lo del Basico, y ademas:"), para
+   no repetir la lista entera en cada tarjeta. Va aqui y no en Inicio.css
+   porque lo usan el modal de la home y la pagina de Servicios, y esa hoja no
+   se carga en /servicios. */
+.features-herencia {
+  color: #2c3e50;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+  text-align: left;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

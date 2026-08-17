@@ -178,11 +178,10 @@ export const Contacto = () => {
                 name='mensaje'
                 className={camposAgitados.includes('mensaje') ? 'campo-invalido' : erroresCampos.mensaje ? 'campo-error' : undefined}
                 rows='5'
-                placeholder='Cuéntame sobre tu proyecto... (mínimo 100 caracteres)'
+                placeholder='Ej: "Tengo una peluquería y quiero una web sencilla. ¿Cuánto costaría?"'
                 value={contactForm.mensaje}
                 onChange={handleContactChange}
                 required
-                minLength={100}
               />
               {erroresCampos.mensaje && <span className='campo-error-msg'>{erroresCampos.mensaje}</span>}
             </div>

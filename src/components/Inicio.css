@@ -224,6 +224,160 @@
     font-weight: 700;
 }
 
+/* Texto solo para lectores de pantalla: da nombre a la celda vacia de la
+   esquina de la comparativa sin que se vea. */
+.visualmente-oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Lanzador de la comparativa. Va en texto con acento, no como boton solido,
+   para no competir con los tres "Ver planes" que tiene justo encima. */
+.comparar-enlace {
+    background: none;
+    border: none;
+    color: var(--color-accion);
+    cursor: pointer;
+    display: block;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 28px auto 0;
+    padding: 8px 12px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.comparar-enlace:hover {
+    color: var(--color-accion-hover);
+}
+
+/* Comparativa Landing vs Sitio Web (dentro del modal 'comparar') */
+.tabla-comparativa {
+    border-collapse: collapse;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.tabla-comparativa th,
+.tabla-comparativa td {
+    border-bottom: 1px solid #eee;
+    padding: 12px 14px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.tabla-comparativa thead th {
+    background: var(--color-accion);
+    color: var(--color-accion-texto);
+    font-weight: 700;
+}
+
+.tabla-comparativa thead th:first-child {
+    background: none;
+}
+
+.tabla-comparativa tbody th {
+    color: #2c3e50;
+    font-weight: 700;
+    width: 26%;
+}
+
+.tabla-comparativa tbody td {
+    color: #555;
+}
+
+/* En movil una tabla de tres columnas se estruja y no hay quien la lea, asi
+   que cada fila pasa a ser un bloque y cada dato lleva su etiqueta delante
+   (de ahi el data-etiqueta). La cabecera sobra porque ya se repite en cada
+   celda, y la semantica la sostienen los role del JSX. */
+@media (max-width: 700px) {
+    .tabla-comparativa thead {
+        display: none;
+    }
+
+    .tabla-comparativa,
+    .tabla-comparativa tbody,
+    .tabla-comparativa tr,
+    .tabla-comparativa tbody th,
+    .tabla-comparativa tbody td {
+        display: block;
+        /* border-box o el padding se suma al 100% y la tabla se sale */
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .tabla-comparativa tr {
+        border: 1px solid #e8e8ef;
+        border-radius: 10px;
+        margin-bottom: 14px;
+        overflow: hidden;
+    }
+
+    .tabla-comparativa tbody th {
+        background: rgba(118, 75, 162, 0.07);
+        border-bottom: none;
+        font-size: 1.02rem;
+    }
+
+    .tabla-comparativa tbody td {
+        border-bottom: none;
+        padding-bottom: 4px;
+    }
+
+    .tabla-comparativa tbody td:last-child {
+        padding-bottom: 14px;
+    }
+
+    .tabla-comparativa td::before {
+        color: var(--color-accion);
+        content: attr(data-etiqueta);
+        display: block;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        margin-bottom: 3px;
+        text-transform: uppercase;
+    }
+}
+
+/* Cierre de la comparativa: dos acciones solidas y del mismo peso, porque
+   ninguna de las dos es "la secundaria" — depende de lo que necesite cada uno. */
+.modal-comparar-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.modal-comparar-acciones .card-btn {
+    flex: 1 1 220px;
+    font-weight: 700;
+    padding: 14px 18px;
+}
+
+/* "Para quien es" cada servicio. Es la frase que hace decidir al cliente, asi
+   que va destacada sobre la descripcion normal: fondo morado muy suave, filo
+   de acento a la izquierda y texto oscuro en vez del gris de .description. */
+.card-para-quien {
+    background: rgba(118, 75, 162, 0.07);
+    border-left: 3px solid var(--color-accion);
+    border-radius: 0 8px 8px 0;
+    color: #2c3e50;
+    font-weight: 600;
+    line-height: 1.55;
+    margin: 0 0 18px;
+    padding: 12px 14px;
+    text-align: left;
+}
+
 .description {
     color: #666;
     margin-bottom: 25px;
@@ -268,8 +422,8 @@
 }
 
 .card-btn {
-    background: #b9a4e0;
-    color: #2c3e50;
+    background: var(--color-accion);
+    color: var(--color-accion-texto);
     text-align: center;
     padding: 12px;
     border-radius: 8px;
@@ -284,7 +438,9 @@
 .card-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 18px rgba(44, 62, 80, 0.25);
-    filter: brightness(1.05);
+    /* brightness(1.05) sobre el morado oscuro no se apreciaba; aclaramos a un
+       tono concreto que sigue cumpliendo AA con el texto blanco */
+    background: var(--color-accion-hover);
 }
 
 /* ChatBot Banner */
@@ -718,8 +874,8 @@
 
 .work-btn {
     border: none;
-    background: #b9a4e0;
-    color: #2c3e50;
+    background: var(--color-accion);
+    color: var(--color-accion-texto);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -743,7 +899,7 @@
 .work-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 18px rgba(44, 62, 80, 0.25);
-    filter: brightness(1.05);
+    background: var(--color-accion-hover);
 }
 
 /* Modal Planes */
@@ -759,7 +915,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    /* Por encima del boton de WhatsApp (1000) y del chat (1100): con 1000 se
+       montaban sobre el modal y tapaban los botones del fondo en movil. */
+    z-index: 1200;
     padding: 20px;
     animation: modalOverlayIn 0.2s ease;
 }
@@ -1033,6 +1191,7 @@
 .inicio-contact-btn:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(44, 62, 80, 0.25);
+    background: var(--color-accion-hover);
 }
 
 .inicio-contact-btn:disabled {

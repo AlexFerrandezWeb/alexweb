@@ -181,62 +181,56 @@ export const Servicios = () => {
           <div className='section-row-title'>Sitios Web</div>
           <div className='service-row-grid service-row-grid-3'>
 
+            {/* Mismos tres tipos que el modal de la home: el Basico va sin
+                "Desde" porque su precio es cerrado, los otros dos dependen del
+                catalogo o del alcance. Si cambia uno, cambiar el otro. */}
             <div className='service-card'>
-              <h2>Starter</h2>
-              <div className='service-price'><span className='service-price-desde'>Desde</span>750€</div>
-              <p className='service-description'>Presencia sólida online con tienda funcional desde el primer día.</p>
+              <h2>Sitio Web Básico</h2>
+              <div className='service-price'>699€</div>
+              <p className='service-description'>Presencia profesional para que te encuentren y te contacten. Sin tienda.</p>
               <ul className='service-details'>
-                <li><FeatureCheckIcon />3 páginas</li>
-                <li><FeatureCheckIcon />Carrito de compras</li>
-                <li><FeatureCheckIcon />Hasta 50 productos</li>
-                <li><FeatureCheckIcon />SEO básico incluido</li>
+                <li><FeatureCheckIcon />3-5 páginas</li>
                 <li><FeatureCheckIcon />Diseño Responsive</li>
-                <li><FeatureCheckIcon />Diseño Personalizado</li>
+                <li><FeatureCheckIcon />SEO básico incluido</li>
+                <li><FeatureCheckIcon />Formulario de contacto</li>
                 <li><FeatureCheckIcon />Google Analytics incluido</li>
-                <li><FeatureCheckIcon />Entrega en 4-6 semanas</li>
+                <li><FeatureCheckIcon />Entrega en 3-4 semanas</li>
+              </ul>
+              <Link to='/contacto' className='service-btn'>Contactar</Link>
+            </div>
+
+            <div className='service-card'>
+              <h2>E-commerce / Tienda Online</h2>
+              <div className='service-price'><span className='service-price-desde'>Desde</span>999€</div>
+              <p className='service-description'>Vende online desde el primer día: catálogo, carrito y pago seguro. Precio según nº de productos.</p>
+              <p className='features-herencia'>Todo lo del Básico, y además:</p>
+              <ul className='service-details'>
+                <li><FeatureCheckIcon gold />Carrito de compras</li>
+                <li><FeatureCheckIcon gold />Catálogo de productos</li>
+                <li><FeatureCheckIcon gold />Pasarela de pago segura</li>
+                <li><FeatureCheckIcon gold />Panel de gestión de productos</li>
+                <li><FeatureCheckIcon gold />Blog integrado</li>
+                <li><FeatureCheckIcon gold />SEO avanzado incluido</li>
+                <li><FeatureCheckIcon />Entrega en 6-8 semanas</li>
               </ul>
               <Link to='/contacto' className='service-btn'>Contactar</Link>
             </div>
 
             <div className='service-card service-card-featured'>
               <span className='service-featured-badge'>Más elegido</span>
-              <h2>Premium</h2>
-              <div className='service-price'>1.500€</div>
-              <p className='service-description'>Mayor catálogo, mejor rendimiento y más páginas para crecer.</p>
+              <h2>Sitio Web a Medida</h2>
+              <div className='service-price'><span className='service-price-desde'>Desde</span>1.499€</div>
+              <p className='service-description'>Proyecto 100% a medida con la última tecnología. Precio a negociar según alcance.</p>
+              <p className='features-herencia'>Todo lo anterior, y además:</p>
               <ul className='service-details'>
-                <li><FeatureCheckIcon />5 páginas</li>
-                <li><FeatureCheckIcon />Carrito con servidor optimizado</li>
-                <li><FeatureCheckIcon />Hasta 150 productos</li>
-                <li><FeatureCheckIcon />SEO avanzado incluido</li>
-                <li><FeatureCheckIcon />Diseño Responsive</li>
-                <li><FeatureCheckIcon />Google Analytics incluido</li>
-                <li><FeatureCheckIcon gold />Panel de gestión de productos</li>
-                <li><FeatureCheckIcon gold />Blog integrado</li>
-                <li><FeatureCheckIcon gold />Chat de WhatsApp integrado</li>
-                <li><FeatureCheckIcon gold />2 rondas de revisiones incluidas</li>
-                <li><FeatureCheckIcon />Entrega en 6-8 semanas</li>
-              </ul>
-              <Link to='/contacto' className='service-btn'>Contactar</Link>
-            </div>
-
-            <div className='service-card service-card-elite'>
-              <span className='service-featured-badge service-badge-elite'>Élite</span>
-              <h2>Élite</h2>
-              <div className='service-price'><span className='service-price-desde'>Desde</span>2.800€</div>
-              <p className='service-description'>Proyecto a medida con la última tecnología y asistente de IA integrado.</p>
-              <ul className='service-details'>
-                <li><FeatureCheckIcon />10 páginas</li>
-                <li><FeatureCheckIcon />+200 productos</li>
-                <li><FeatureCheckIcon />Proyecto 100% a medida</li>
-                <li><FeatureCheckIcon />SEO avanzado incluido</li>
-                <li><FeatureCheckIcon />Diseño Responsive</li>
-                <li><FeatureCheckIcon />Google Analytics incluido</li>
+                <li><FeatureCheckIcon gold />Páginas y funciones sin límite</li>
+                <li><FeatureCheckIcon gold />Proyecto 100% a medida</li>
                 <li><FeatureCheckIcon gold />ChatBot con IA integrado</li>
                 <li><FeatureCheckIcon gold />Panel de administración personalizado</li>
+                <li><FeatureCheckIcon gold />Integraciones a medida (APIs, pasarelas, etc.)</li>
                 <li><FeatureCheckIcon gold />Animaciones y efectos avanzados</li>
-                <li><FeatureCheckIcon gold />Integraciones a medida (APIs, pasarelas de pago, etc.)</li>
-                <li><FeatureCheckIcon gold />Soporte prioritario primer mes incluido</li>
-                <li><FeatureCheckIcon />Entrega en 3-4 meses</li>
+                <li><FeatureCheckIcon gold />Soporte prioritario primer mes</li>
+                <li><FeatureCheckIcon />Entrega según proyecto</li>
               </ul>
               <Link to='/contacto' className='service-btn'>Contactar</Link>
             </div>

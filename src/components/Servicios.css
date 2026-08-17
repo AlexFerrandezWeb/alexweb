@@ -103,11 +103,6 @@ body.nav-hidden .page-header {
     border-width: 2px;
 }
 
-.service-card-elite {
-    border-color: #f0a500;
-    border-width: 2px;
-}
-
 .service-featured-badge {
     position: absolute;
     top: -13px;
@@ -120,10 +115,6 @@ body.nav-hidden .page-header {
     padding: 4px 14px;
     border-radius: 20px;
     white-space: nowrap;
-}
-
-.service-badge-elite {
-    background: linear-gradient(135deg, #f0a500 0%, #e07b00 100%);
 }
 
 .service-card h2 {

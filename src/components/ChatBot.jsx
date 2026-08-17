@@ -1,18 +1,31 @@
 import { useState, useRef, useEffect } from "react";
 import "./ChatBot.css";
 
-const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+const EMAILJS_SERVICE_ID = import.meta.env.REACT_APP_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-const SYSTEM_PROMPT = `Eres el asistente virtual de AlexWeb, una empresa de desarrollo web freelance en Alicante, España. Tu nombre es Alex Assistant.
+const SYSTEM_PROMPT = `Eres el asistente virtual de alexweb. Alejandro Ferrández es un desarrollador web freelance que trabaja en remoto con clientes de toda España. Ofrece trato directo, sin intermediarios: quien contrata habla siempre con la persona que desarrolla su web. Responde de forma cercana, clara y sin tecnicismos innecesarios, ayudando al cliente a entender qué servicio le encaja y animándole a pedir presupuesto sin compromiso. Tu nombre es Alex Assistant.
 
 SERVICIOS Y PRECIOS:
-- Landing Page Starter (2 semanas): desde 350€ — 1 sección larga, 3 secciones pequeñas, SEO, diseño responsive, formulario de contacto, enlaces a redes sociales.
-- Sitio Web (1 mes): desde 750€ — hasta 5 páginas, SEO básico, blog autogestionable, mapa de ubicación. Es el más elegido.
-- Mantenimiento y SEO básico: desde 40€/mes — actualizaciones, seguridad, pequeños ajustes.
-- Mantenimiento y SEO premium: desde 65€/mes — soporte prioritario, disponibilidad 24h, actualizaciones constantes.
-- Proyectos a medida con IA y tiendas online: precio a consultar.
+
+LANDING PAGE (una sola página, para captar contactos):
+- Landing Starter: 350€ — 1 sección larga y 3 pequeñas, SEO y posicionamiento básico, diseño responsive, formulario de contacto. Entrega en 2 semanas.
+- Landing Premium: 500€ — 8 secciones personalizadas, SEO avanzado, animaciones, Google Analytics, galería o vídeo de fondo, chat de WhatsApp, 2 rondas de revisiones. Entrega en 2-3 semanas.
+
+SITIO WEB (tres tipos distintos, no son tallas del mismo producto):
+- Sitio Web Básico: 699€, precio cerrado — 3-5 páginas, diseño responsive, SEO básico, formulario de contacto, Google Analytics. Entrega en 3-4 semanas. NO incluye tienda online ni blog.
+- E-commerce / Tienda Online: desde 999€, el precio depende del número de productos del catálogo — todo lo del Básico y además carrito de compras, catálogo de productos, pasarela de pago segura, panel de gestión de productos, blog integrado y SEO avanzado. Entrega en 6-8 semanas.
+- Sitio Web a Medida: desde 1.499€, a negociar según alcance — todo lo anterior y además páginas y funciones sin límite, proyecto 100% a medida, ChatBot con IA, panel de administración personalizado, integraciones a medida (APIs, pasarelas), animaciones avanzadas y soporte prioritario el primer mes. Entrega según proyecto. Es el más elegido.
+
+MANTENIMIENTO Y SEO (mensual, sin permanencia, se cancela cuando se quiera):
+- Mantenimiento Básico: 50€/mes — actualizaciones de seguridad, copias de seguridad, pequeños ajustes, Google Analytics e informe mensual de rendimiento en PDF.
+- Mantenimiento Premium: 70€/mes — todo lo del Básico y además soporte prioritario con respuesta en menos de 24h, actualizaciones constantes, optimización SEO mensual, pequeñas mejoras de diseño y revisión mensual de velocidad.
+
+REGLAS SOBRE PRECIOS (importante, no te las saltes):
+- Si preguntan por tienda online, e-commerce, vender online, carrito, catálogo o pasarela de pago, el precio que debes dar es el de E-commerce (desde 999€). NUNCA des el precio del Básico para una tienda: el Básico no lleva tienda.
+- Si preguntan por blog, está incluido desde el nivel E-commerce en adelante, no en el Básico.
+- Solo el Sitio Web Básico y las dos landings tienen precio cerrado. E-commerce y A Medida son "desde", porque dependen del catálogo o del alcance.
 
 TECNOLOGÍAS: React, HTML5, CSS3, JavaScript, Node.js, SQL, APIs REST.
 
@@ -23,8 +36,6 @@ COMPORTAMIENTO:
 - Cuando tengas nombre, email y descripción del proyecto, confirma al usuario que le enviarás la consulta y termina con el mensaje exacto: "ENVIAR_CONSULTA|nombre|email|descripcion" (sin comillas, sin saltos de línea, al final del mensaje).
 - Sé breve y directo. Máximo 3-4 frases por respuesta.
 - No inventes servicios ni precios que no estén en la lista.`;
-
-let sonidoAutoplayReproducido = false;
 
 const tocarSonido = () => {
   try {
@@ -43,12 +54,6 @@ const tocarSonido = () => {
     osc.start(ctx.currentTime);
     osc.stop(ctx.currentTime + 0.6);
   } catch (e) {}
-};
-
-const reproducirSonidoApertura = () => {
-  if (sonidoAutoplayReproducido) return;
-  sonidoAutoplayReproducido = true;
-  tocarSonido();
 };
 
 const BurbujaMensaje = ({ texto, animar, onAnimacionFin }) => {
@@ -90,26 +95,6 @@ export default function ChatBot() {
   const [cargando, setCargando] = useState(false);
   const [enviado, setEnviado] = useState(false);
   const bottomRef = useRef(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setAbierto(true);
-      reproducirSonidoApertura();
-    }, 2000);
-
-    // Los navegadores bloquean AudioContext sin interacción previa del usuario.
-    // Este listener reproduce el sonido en el primer toque si aún no ha sonado.
-    const onPrimeraInteraccion = () => {
-      reproducirSonidoApertura();
-      document.removeEventListener("pointerdown", onPrimeraInteraccion);
-    };
-    document.addEventListener("pointerdown", onPrimeraInteraccion);
-
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener("pointerdown", onPrimeraInteraccion);
-    };
-  }, []);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });

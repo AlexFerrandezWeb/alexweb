@@ -296,13 +296,17 @@ export const Inicio = () => {
           <div className='product-card product-card-featured'>
             <span className='featured-badge'>Más elegido</span>
             <h3>Sitio Web</h3>
-            <span className='price'><span className='price-span'>Desde</span>750€</span>
-            <p className='description'>Para negocios que necesitan más que una página: múltiples secciones, blog, carrito de compras y ubicación en Google.</p>
+            <span className='price'><span className='price-span'>Desde</span>699€</span>
+            <p className='card-para-quien'>Ideal si tienes varios servicios, quieres vender online o publicar un blog. Tu negocio entero en internet, no solo una tarjeta de visita.</p>
+            {/* El precio que se ve aqui es el del nivel Basico, asi que las
+                features son las suyas: la tienda y el blog llegan con los
+                niveles E-commerce y A Medida, dentro del modal. */}
+            <p className='description'>Para negocios que necesitan más que una página: varias secciones y, si lo necesitas, tienda online y blog.</p>
             <ul className='features'>
-              <li><FeatureCheckIcon /> Hasta 5 Páginas</li>
-              <li><FeatureCheckIcon /> SEO Básico</li>
-              <li><FeatureCheckIcon /> Blog Autogestionable</li>
-              <li><FeatureCheckIcon /> Mapa de ubicación</li>
+              <li><FeatureCheckIcon /> 3-5 páginas</li>
+              <li><FeatureCheckIcon /> Diseño Responsive</li>
+              <li><FeatureCheckIcon /> SEO básico incluido</li>
+              <li><FeatureCheckIcon /> Formulario de contacto</li>
             </ul>
             <button className='card-btn' onClick={() => setModalPlanes('sitioweb')}>Ver planes</button>
           </div>
@@ -654,61 +658,56 @@ export const Inicio = () => {
             {modalPlanes === 'sitioweb' ? (
               <>
                 <h2 className='modal-titulo'>Elige tu Sitio Web</h2>
-                <p className='modal-subtitulo'>Tres niveles para cada etapa de tu negocio</p>
+                <p className='modal-subtitulo'>Tres tipos de web según lo que necesites</p>
                 <div className='modal-grid'>
+                  {/* El Basico es el unico con precio cerrado: por eso va sin
+                      "Desde". Los otros dos dependen del catalogo o del alcance
+                      y si lo llevan. */}
                   <div className='modal-card'>
-                    <h3>Starter</h3>
-                    <span className='price'><span className='price-span'>Desde</span>750€</span>
-                    <p className='description'>Presencia sólida online con tienda funcional desde el primer día.</p>
+                    <h3>Sitio Web Básico</h3>
+                    <span className='price'>699€</span>
+                    <p className='description'>Presencia profesional para que te encuentren y te contacten. Sin tienda.</p>
                     <ul className='features'>
-                      <li><FeatureCheckIcon />3 páginas</li>
-                      <li><FeatureCheckIcon />Carrito de compras</li>
-                      <li><FeatureCheckIcon />Hasta 50 productos</li>
-                      <li><FeatureCheckIcon />SEO básico incluido</li>
+                      <li><FeatureCheckIcon />3-5 páginas</li>
                       <li><FeatureCheckIcon />Diseño Responsive</li>
+                      <li><FeatureCheckIcon />SEO básico incluido</li>
+                      <li><FeatureCheckIcon />Formulario de contacto</li>
                       <li><FeatureCheckIcon />Google Analytics incluido</li>
-                      <li><FeatureCheckIcon />Entrega en 4-6 semanas</li>
+                      <li><FeatureCheckIcon />Entrega en 3-4 semanas</li>
+                    </ul>
+                    <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
+                  </div>
+                  <div className='modal-card'>
+                    <h3>E-commerce / Tienda Online</h3>
+                    <span className='price'><span className='price-span'>Desde</span>999€</span>
+                    <p className='description'>Vende online desde el primer día: catálogo, carrito y pago seguro. Precio según nº de productos.</p>
+                    <p className='features-herencia'>Todo lo del Básico, y además:</p>
+                    <ul className='features'>
+                      <li><FeatureCheckIcon gold />Carrito de compras</li>
+                      <li><FeatureCheckIcon gold />Catálogo de productos</li>
+                      <li><FeatureCheckIcon gold />Pasarela de pago segura</li>
+                      <li><FeatureCheckIcon gold />Panel de gestión de productos</li>
+                      <li><FeatureCheckIcon gold />Blog integrado</li>
+                      <li><FeatureCheckIcon gold />SEO avanzado incluido</li>
+                      <li><FeatureCheckIcon />Entrega en 6-8 semanas</li>
                     </ul>
                     <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
                   </div>
                   <div className='modal-card modal-card-featured'>
                     <span className='featured-badge'>Más elegido</span>
-                    <h3>Premium</h3>
-                    <span className='price'>1.500€</span>
-                    <p className='description'>Mayor catálogo, mejor rendimiento y más páginas para crecer.</p>
+                    <h3>Sitio Web a Medida</h3>
+                    <span className='price'><span className='price-span'>Desde</span>1.499€</span>
+                    <p className='description'>Proyecto 100% a medida con la última tecnología. Precio a negociar según alcance.</p>
+                    <p className='features-herencia'>Todo lo anterior, y además:</p>
                     <ul className='features'>
-                      <li><FeatureCheckIcon />5 páginas</li>
-                      <li><FeatureCheckIcon />Carrito con servidor optimizado</li>
-                      <li><FeatureCheckIcon />Hasta 150 productos</li>
-                      <li><FeatureCheckIcon />SEO avanzado incluido</li>
-                      <li><FeatureCheckIcon />Diseño Responsive</li>
-                      <li><FeatureCheckIcon />Google Analytics incluido</li>
-                      <li><FeatureCheckIcon gold />Panel de gestión de productos</li>
-                      <li><FeatureCheckIcon gold />Blog integrado</li>
-                      <li><FeatureCheckIcon gold />Chat de WhatsApp integrado</li>
-                      <li><FeatureCheckIcon gold />2 rondas de revisiones incluidas</li>
-                      <li><FeatureCheckIcon />Entrega en 6-8 semanas</li>
-                    </ul>
-                    <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
-                  </div>
-                  <div className='modal-card'>
-                    <span className='featured-badge modal-badge-elite'>Élite</span>
-                    <h3>Élite</h3>
-                    <span className='price'><span className='price-span'>Desde</span>2.800€</span>
-                    <p className='description'>Proyecto a medida con la última tecnología. Precio a negociar según alcance.</p>
-                    <ul className='features'>
-                      <li><FeatureCheckIcon />10 páginas</li>
-                      <li><FeatureCheckIcon />+200 productos</li>
-                      <li><FeatureCheckIcon />Proyecto 100% a medida</li>
-                      <li><FeatureCheckIcon />SEO avanzado incluido</li>
-                      <li><FeatureCheckIcon />Diseño Responsive</li>
-                      <li><FeatureCheckIcon />Google Analytics incluido</li>
+                      <li><FeatureCheckIcon gold />Páginas y funciones sin límite</li>
+                      <li><FeatureCheckIcon gold />Proyecto 100% a medida</li>
                       <li><FeatureCheckIcon gold />ChatBot con IA integrado</li>
                       <li><FeatureCheckIcon gold />Panel de administración personalizado</li>
+                      <li><FeatureCheckIcon gold />Integraciones a medida (APIs, pasarelas, etc.)</li>
                       <li><FeatureCheckIcon gold />Animaciones y efectos avanzados</li>
-                      <li><FeatureCheckIcon gold />Integraciones a medida (APIs, pasarelas de pago, etc.)</li>
-                      <li><FeatureCheckIcon gold />Soporte prioritario primer mes incluido</li>
-                      <li><FeatureCheckIcon />Entrega en 3-4 meses</li>
+                      <li><FeatureCheckIcon gold />Soporte prioritario primer mes</li>
+                      <li><FeatureCheckIcon />Entrega según proyecto</li>
                     </ul>
                     <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
                   </div>
@@ -843,13 +842,13 @@ export const Inicio = () => {
                   <div className='modal-card modal-card-featured'>
                     <span className='featured-badge'>Más elegido</span>
                     <h3>Sitio Web</h3>
-                    <span className='price'><span className='price-span'>Desde</span>750€</span>
-                    <p className='description'>Para negocios que necesitan más que una página: múltiples secciones, blog y ubicación en Google.</p>
+                    <span className='price'><span className='price-span'>Desde</span>699€</span>
+                    <p className='description'>Para negocios que necesitan más que una página: varias secciones y, si lo necesitas, tienda online y blog.</p>
                     <ul className='features'>
-                      <li><FeatureCheckIcon /> Hasta 5 Páginas</li>
-                      <li><FeatureCheckIcon /> SEO Básico</li>
-                      <li><FeatureCheckIcon /> Blog Autogestionable</li>
-                      <li><FeatureCheckIcon /> Mapa de ubicación</li>
+                      <li><FeatureCheckIcon /> 3-5 páginas</li>
+                      <li><FeatureCheckIcon /> Diseño Responsive</li>
+                      <li><FeatureCheckIcon /> SEO básico incluido</li>
+                      <li><FeatureCheckIcon /> Formulario de contacto</li>
                     </ul>
                     <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
                   </div>

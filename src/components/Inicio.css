@@ -1028,11 +1028,6 @@
     box-shadow: 0 10px 24px rgba(118, 75, 162, 0.18);
 }
 
-.modal-badge-elite {
-    background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
-    color: #5a3e00;
-}
-
 .modal-grid-2 {
     grid-template-columns: repeat(2, minmax(260px, 340px));
     justify-content: center;

@@ -455,12 +455,6 @@
     font-weight: 600;
 }
 
-.nutri-pkg-iva {
-    font-size: 13px;
-    color: var(--nutri-ink-soft);
-    font-weight: 600;
-}
-
 .nutri-pkg ul {
     list-style: none;
     margin: 0 0 26px;

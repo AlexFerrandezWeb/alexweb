@@ -114,10 +114,7 @@ export const LandingSEO = ({ contenido }) => {
               >
                 {plan.destacado && <span className='landing-plan-badge'>Más elegido</span>}
                 <h3>{plan.nombre}</h3>
-                <span className='landing-plan-precio'>
-                  {plan.precio}
-                  <span className='landing-plan-iva'>IVA incluido</span>
-                </span>
+                <span className='landing-plan-precio'>{plan.precio}</span>
                 <p className='landing-plan-para'>{plan.para}</p>
                 <ul>
                   {plan.incluye.map((linea) => (

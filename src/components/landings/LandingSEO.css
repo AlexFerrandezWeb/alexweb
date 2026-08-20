@@ -218,14 +218,6 @@
     margin-bottom: 10px;
 }
 
-/* Va dentro del propio .landing-plan-precio, a continuacion del importe. */
-.landing-plan-iva {
-    font-size: 0.8rem;
-    color: #8a8a8a;
-    font-weight: 600;
-    margin-left: 8px;
-}
-
 .landing-plan-para {
     color: #777;
     font-size: 0.95rem;

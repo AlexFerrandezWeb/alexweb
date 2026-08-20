@@ -64,7 +64,7 @@ export const contenido = {
   precios: {
     titulo: 'Cuánto cuesta',
     intro:
-      'Precios reales con el IVA incluido, los mismos que le paso a cualquiera que me escribe. El presupuesto que te doy es el que pagas: si a mitad de proyecto pides algo que no estaba hablado, te digo lo que cuesta antes de hacerlo.',
+      'Precios reales, los mismos que le paso a cualquiera que me escribe. Van sin IVA: se le suma el 21% y te lo deduces como gasto de la empresa. El presupuesto que te doy es el que pagas: si a mitad de proyecto pides algo que no estaba hablado, te digo lo que cuesta antes de hacerlo.',
     planes: [
       {
         nombre: 'Landing Page',

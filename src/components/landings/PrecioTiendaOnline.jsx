@@ -64,7 +64,7 @@ export const contenido = {
   precios: {
     titulo: 'Precios de tienda online',
     intro:
-      'Presupuesto cerrado antes de empezar y con el IVA incluido. Me dices qué productos tienes y cómo quieres cobrar, y te paso un precio fijo para tu caso — lo que acordemos es lo que pagas, sin añadidos sorpresa.',
+      'Presupuesto cerrado antes de empezar. Los precios van sin IVA: se le suma el 21% y te lo deduces como gasto de la tienda. Me dices qué productos tienes y cómo quieres cobrar, y te paso un precio fijo para tu caso — lo que acordemos es lo que pagas, sin añadidos sorpresa.',
     planes: [
       {
         nombre: 'Tienda Online',

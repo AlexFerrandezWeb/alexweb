@@ -147,18 +147,23 @@ body.nav-hidden .page-header {
 
 /* Va dentro del propio .service-price: la tarjeta es flex en columna y un
    hermano suelto caeria a la linea de abajo. */
+/* El precio va sin IVA, asi que esta coletilla no es un adorno: es lo que
+   evita que el cliente lea mal la cifra. Por eso 0.95rem y #555 (7.46:1) y no
+   letra pequena gris: el 0.8rem con #8a8a8a de antes daba 3.45:1, que ni
+   siquiera pasaba AA. */
 .service-price-iva {
-    font-size: 0.8rem;
-    color: #8a8a8a;
-    font-weight: 500;
+    font-size: 0.95rem;
+    color: #555;
+    font-weight: 600;
     margin-left: 8px;
 }
 
+/* Sin margin-right: el hueco lo da el espacio de dentro del span, que ademas
+   sobrevive al copiar-pegar y al lector de pantalla. Con los dos, doble hueco. */
 .service-price-desde {
     font-size: 0.9rem;
     font-weight: 400;
     color: #aaa;
-    margin-right: 4px;
 }
 
 .service-price-mes {

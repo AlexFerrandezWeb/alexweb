@@ -141,7 +141,7 @@ export const Servicios = () => {
 
             <div className='service-card'>
               <h2>Starter</h2>
-              <div className='service-price'>350€<span className='service-price-iva'>IVA incluido</span></div>
+              <div className='service-price'>350€<span className='service-price-iva'> más IVA</span></div>
               <p className='service-description'>Ideal para tener presencia online con lo esencial bien hecho.</p>
               <ul className='service-details'>
                 <li><FeatureCheckIcon />1 sección larga y 3 secciones pequeñas</li>
@@ -156,7 +156,7 @@ export const Servicios = () => {
             <div className='service-card service-card-featured'>
               <span className='service-featured-badge'>Más completo</span>
               <h2>Premium</h2>
-              <div className='service-price'>499€<span className='service-price-iva'>IVA incluido</span></div>
+              <div className='service-price'>499€<span className='service-price-iva'> más IVA</span></div>
               <p className='service-description'>Más secciones, más impacto y mayor personalización.</p>
               <ul className='service-details'>
                 <li><FeatureCheckIcon />8 secciones personalizadas (2 grandes)</li>
@@ -187,7 +187,7 @@ export const Servicios = () => {
                 catalogo o del alcance. Si cambia uno, cambiar el otro. */}
             <div className='service-card'>
               <h2>Sitio Web Básico</h2>
-              <div className='service-price'>699€<span className='service-price-iva'>IVA incluido</span></div>
+              <div className='service-price'>699€<span className='service-price-iva'> más IVA</span></div>
               <p className='service-description'>Ideal si quieres presencia profesional y que te encuentren.</p>
               <ul className='service-details'>
                 <li><FeatureCheckIcon />Hasta 5 páginas</li>
@@ -206,7 +206,7 @@ export const Servicios = () => {
 
             <div className='service-card'>
               <h2>E-commerce / Tienda Online</h2>
-              <div className='service-price'><span className='service-price-desde'>Desde</span>999€<span className='service-price-iva'>IVA incluido</span></div>
+              <div className='service-price'><span className='service-price-desde'>Desde </span>999€<span className='service-price-iva'> más IVA</span></div>
               <p className='service-description'>Vende online desde el primer día: catálogo, carrito y pago seguro. Precio según nº de productos.</p>
               <p className='features-herencia'>Todo lo del Básico, y además:</p>
               <ul className='service-details'>
@@ -224,7 +224,7 @@ export const Servicios = () => {
             <div className='service-card service-card-featured'>
               <span className='service-featured-badge'>Más elegido</span>
               <h2>Proyecto a Medida</h2>
-              <div className='service-price'><span className='service-price-desde'>Desde</span>1.499€<span className='service-price-iva'>IVA incluido</span></div>
+              <div className='service-price'><span className='service-price-desde'>Desde </span>1.499€<span className='service-price-iva'> más IVA</span></div>
               <p className='service-description'>Cuando tu negocio necesita funciones propias. Precio a negociar según alcance.</p>
               <p className='features-herencia'>Todo lo anterior, y además:</p>
               <ul className='service-details'>
@@ -250,7 +250,7 @@ export const Servicios = () => {
 
             <div className='service-card'>
               <h2>Básico</h2>
-              <div className='service-price'>50€<span className='service-price-mes'>/mes</span><span className='service-price-iva'>IVA incluido</span></div>
+              <div className='service-price'>50€<span className='service-price-mes'>/mes</span><span className='service-price-iva'> más IVA</span></div>
               <p className='service-description'>Lo esencial para que tu web funcione sin preocupaciones. Ideal si tu web no tiene panel de administración.</p>
               <ul className='service-details'>
                 <li><FeatureCheckIcon />Actualizaciones de seguridad</li>
@@ -266,7 +266,7 @@ export const Servicios = () => {
             <div className='service-card service-card-featured'>
               <span className='service-featured-badge'>Con panel o tienda</span>
               <h2>Premium</h2>
-              <div className='service-price'><span className='service-price-desde'>Desde</span>70€<span className='service-price-mes'>/mes</span><span className='service-price-iva'>IVA incluido</span></div>
+              <div className='service-price'><span className='service-price-desde'>Desde </span>70€<span className='service-price-mes'>/mes</span><span className='service-price-iva'> más IVA</span></div>
               <p className='service-description'>Recomendado si tu web tiene panel de administración o tienda online: yo me encargo de que todo siga funcionando.</p>
               <ul className='service-details'>
                 <li><FeatureCheckIcon />Todo lo del plan Básico</li>

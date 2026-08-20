@@ -64,7 +64,7 @@ export const contenido = {
   precios: {
     titulo: 'La opción económica, en detalle',
     intro:
-      'Sin cuota mensual obligatoria: si no quieres mantenimiento, no lo contratas y tu web sigue funcionando igual. Pagas una vez y es tuya.',
+      'Sin cuota mensual obligatoria: si no quieres mantenimiento, no lo contratas y tu web sigue funcionando igual. Pagas una vez y es tuya. Los precios son sin IVA: al ser un gasto de tu negocio, te lo deduces.',
     planes: [
       {
         nombre: 'Landing Starter',
@@ -82,7 +82,7 @@ export const contenido = {
       },
       {
         nombre: 'Landing Premium',
-        precio: '500€',
+        precio: '499€',
         para: 'Si necesitas contar más cosas o quieres que entre mejor por los ojos.',
         incluye: [
           '8 secciones personalizadas',

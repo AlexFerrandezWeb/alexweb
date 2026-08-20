@@ -455,6 +455,14 @@
     font-weight: 600;
 }
 
+/* El precio es sin IVA: la coletilla se lee, no se esconde. */
+.nutri-pkg-iva {
+    font-size: 15px;
+    color: var(--nutri-ink);
+    font-weight: 600;
+    margin-left: 8px;
+}
+
 .nutri-pkg ul {
     list-style: none;
     margin: 0 0 26px;

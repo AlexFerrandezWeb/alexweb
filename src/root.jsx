@@ -35,7 +35,8 @@ const NEGOCIO_JSON_LD = {
       telephone: '+34722292050',
       email: 'alejandroferrandezjuarez@gmail.com',
       // Coincide con el rango que se publica en /cuanto-cuesta-una-pagina-web:
-      // el dato estructurado y la copia visible tienen que decir lo mismo.
+      // el dato estructurado y la copia visible tienen que decir lo mismo. Sin
+      // IVA, igual que el resto de precios del sitio.
       priceRange: '350€ - 3000€',
       founder: { '@id': 'https://alexweb.es/#alejandro' },
       address: { '@type': 'PostalAddress', addressCountry: 'ES' },
@@ -54,13 +55,15 @@ const NEGOCIO_JSON_LD = {
             description: 'Página única para mostrar tu negocio y captar clientes.',
             price: '350',
             priceCurrency: 'EUR',
-            // Los precios publicados en la web llevan el IVA dentro, asi que el
-            // dato estructurado tiene que decir lo mismo.
+            // Los precios publicados en la web van sin IVA (clientela B2B, que
+            // se lo deduce), asi que el dato estructurado tiene que decir lo
+            // mismo: si Google ve una cifra con IVA dentro y la pagina otra,
+            // marca discrepancia.
             priceSpecification: {
               '@type': 'PriceSpecification',
               price: '350',
               priceCurrency: 'EUR',
-              valueAddedTaxIncluded: true,
+              valueAddedTaxIncluded: false,
             },
           },
           {
@@ -73,13 +76,11 @@ const NEGOCIO_JSON_LD = {
             description: 'Web de hasta 5 páginas para tener presencia profesional y que te encuentren y contacten. Sin tienda ni blog.',
             price: '699',
             priceCurrency: 'EUR',
-            // Los precios publicados en la web llevan el IVA dentro, asi que el
-            // dato estructurado tiene que decir lo mismo.
             priceSpecification: {
               '@type': 'PriceSpecification',
               price: '699',
               priceCurrency: 'EUR',
-              valueAddedTaxIncluded: true,
+              valueAddedTaxIncluded: false,
             },
           },
           {
@@ -92,7 +93,7 @@ const NEGOCIO_JSON_LD = {
               '@type': 'PriceSpecification',
               price: '290',
               priceCurrency: 'EUR',
-              valueAddedTaxIncluded: true,
+              valueAddedTaxIncluded: false,
             },
           },
           {
@@ -105,7 +106,7 @@ const NEGOCIO_JSON_LD = {
               '@type': 'PriceSpecification',
               price: '999',
               priceCurrency: 'EUR',
-              valueAddedTaxIncluded: true,
+              valueAddedTaxIncluded: false,
             },
           },
           {
@@ -118,7 +119,7 @@ const NEGOCIO_JSON_LD = {
               '@type': 'PriceSpecification',
               price: '1499',
               priceCurrency: 'EUR',
-              valueAddedTaxIncluded: true,
+              valueAddedTaxIncluded: false,
             },
           },
           {
@@ -127,13 +128,11 @@ const NEGOCIO_JSON_LD = {
             description: 'Opcional y sin permanencia: actualizaciones, copias de seguridad y posicionamiento mensual. Desde 70€/mes si la web lleva panel de gestión.',
             price: '50',
             priceCurrency: 'EUR',
-            // Los precios publicados en la web llevan el IVA dentro, asi que el
-            // dato estructurado tiene que decir lo mismo.
             priceSpecification: {
               '@type': 'PriceSpecification',
               price: '50',
               priceCurrency: 'EUR',
-              valueAddedTaxIncluded: true,
+              valueAddedTaxIncluded: false,
             },
           },
         ],

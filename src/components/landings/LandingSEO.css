@@ -218,6 +218,16 @@
     margin-bottom: 10px;
 }
 
+/* Va dentro del propio .landing-plan-precio, a continuacion del importe. El
+   precio es sin IVA, asi que la coletilla tiene que leerse igual de bien que
+   la cifra: no es letra pequena. */
+.landing-plan-iva {
+    font-size: 0.95rem;
+    color: #555;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
 .landing-plan-para {
     color: #777;
     font-size: 0.95rem;

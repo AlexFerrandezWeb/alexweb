@@ -50,7 +50,7 @@ const COMPARATIVA = [
   ['Tienda online', 'No', 'Sí, a partir del nivel E-commerce'],
   ['Panel para editarla tú', 'No', 'Sí, incluido desde E-commerce o por 290€ en el Básico'],
   ['Entrega', '2-3 semanas', 'Según el proyecto'],
-  ['Desde (IVA incluido)', '350€', '699€'],
+  ['Desde, más IVA', '350€', '699€'],
   ['Elígela si…', 'Quieres algo rápido y directo', 'Quieres que tu negocio viva en internet'],
 ]
 
@@ -311,7 +311,7 @@ export const Inicio = () => {
           {/* Card 1 */}
           <div className='product-card'>
             <h3>Landing Page</h3>
-            <span className='price'><span className='price-span'>Desde</span>350€<span className='price-iva'>IVA incluido</span></span>
+            <span className='price'><span className='price-span'>Desde </span>350€<span className='price-iva'> más IVA</span></span>
             <p className='card-para-quien'>Ideal si ofreces un servicio concreto y quieres que te contacten. Una sola página, directa y al grano — sin que el cliente se pierda.</p>
             <ul className='features'>
               <li><FeatureCheckIcon /> Landing Page</li>
@@ -326,7 +326,7 @@ export const Inicio = () => {
           <div className='product-card product-card-featured'>
             <span className='featured-badge'>Más elegido</span>
             <h3>Sitio Web</h3>
-            <span className='price'><span className='price-span'>Desde</span>699€<span className='price-iva'>IVA incluido</span></span>
+            <span className='price'><span className='price-span'>Desde </span>699€<span className='price-iva'> más IVA</span></span>
             <p className='card-para-quien'>Ideal si tienes varios servicios, quieres vender online o publicar un blog. Tu negocio entero en internet, no solo una tarjeta de visita.</p>
             {/* El precio que se ve aqui es el del nivel Basico, asi que las
                 features son las suyas: la tienda y el blog llegan con los
@@ -344,7 +344,7 @@ export const Inicio = () => {
           {/* Card 3 */}
           <div className='product-card'>
             <h3>Mantenimiento y SEO</h3>
-            <span className='price'><span className='price-span'>Desde</span>50€<span className='price-iva'>IVA incluido</span></span>
+            <span className='price'><span className='price-span'>Desde </span>50€<span className='price-iva'> más IVA</span></span>
             <p className='card-para-quien'>Para webs ya publicadas que necesitan mantenerse seguras y subir en Google mes a mes.</p>
             <p className='description'>No basta con tener una web, hay que cuidarla. Mi servicio de mantenimiento
             asegura que tu sitio esté siempre actualizado y seguro, mientras mejoro tu posicionamiento en Google.</p>
@@ -697,7 +697,7 @@ export const Inicio = () => {
                       cambia uno, cambiar el otro. */}
                   <div className='modal-card'>
                     <h3>Sitio Web Básico</h3>
-                    <span className='price'>699€<span className='price-iva'>IVA incluido</span></span>
+                    <span className='price'>699€<span className='price-iva'> más IVA</span></span>
                     <p className='description'>Ideal si quieres presencia profesional y que te encuentren.</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon />Hasta 5 páginas</li>
@@ -715,7 +715,7 @@ export const Inicio = () => {
                   </div>
                   <div className='modal-card'>
                     <h3>E-commerce / Tienda Online</h3>
-                    <span className='price'><span className='price-span'>Desde</span>999€<span className='price-iva'>IVA incluido</span></span>
+                    <span className='price'><span className='price-span'>Desde </span>999€<span className='price-iva'> más IVA</span></span>
                     <p className='description'>Vende online desde el primer día: catálogo, carrito y pago seguro. Precio según nº de productos.</p>
                     <p className='features-herencia'>Todo lo del Básico, y además:</p>
                     <ul className='features'>
@@ -732,7 +732,7 @@ export const Inicio = () => {
                   <div className='modal-card modal-card-featured'>
                     <span className='featured-badge'>Más elegido</span>
                     <h3>Proyecto a Medida</h3>
-                    <span className='price'><span className='price-span'>Desde</span>1.499€<span className='price-iva'>IVA incluido</span></span>
+                    <span className='price'><span className='price-span'>Desde </span>1.499€<span className='price-iva'> más IVA</span></span>
                     <p className='description'>Cuando tu negocio necesita funciones propias. Precio a negociar según alcance.</p>
                     <p className='features-herencia'>Todo lo anterior, y además:</p>
                     <ul className='features'>
@@ -756,7 +756,7 @@ export const Inicio = () => {
                 <div className='modal-grid modal-grid-2'>
                   <div className='modal-card'>
                     <h3>Básico</h3>
-                    <span className='price'>50€<span className='price-mes'>/mes</span><span className='price-iva'>IVA incluido</span></span>
+                    <span className='price'>50€<span className='price-mes'>/mes</span><span className='price-iva'> más IVA</span></span>
                     <p className='description'>Lo esencial para que tu web funcione sin preocupaciones. Ideal si tu web no tiene panel de administración.</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon />Actualizaciones de seguridad</li>
@@ -771,7 +771,7 @@ export const Inicio = () => {
                   <div className='modal-card modal-card-featured'>
                     <span className='featured-badge'>Con panel o tienda</span>
                     <h3>Premium</h3>
-                    <span className='price'><span className='price-span'>Desde</span>70€<span className='price-mes'>/mes</span><span className='price-iva'>IVA incluido</span></span>
+                    <span className='price'><span className='price-span'>Desde </span>70€<span className='price-mes'>/mes</span><span className='price-iva'> más IVA</span></span>
                     <p className='description'>Recomendado si tu web tiene panel de administración o tienda online: yo me encargo de que todo siga funcionando.</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon />Todo lo del plan Básico</li>
@@ -795,7 +795,7 @@ export const Inicio = () => {
                 <div className='modal-grid modal-grid-2'>
                   <div className='modal-card'>
                     <h3>Starter</h3>
-                    <span className='price'>350€<span className='price-iva'>IVA incluido</span></span>
+                    <span className='price'>350€<span className='price-iva'> más IVA</span></span>
                     <p className='description'>Ideal para tener presencia online con lo esencial bien hecho.</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon />1 sección larga y 3 secciones pequeñas</li>
@@ -809,7 +809,7 @@ export const Inicio = () => {
                   <div className='modal-card modal-card-featured'>
                     <span className='featured-badge'>Más completo</span>
                     <h3>Premium</h3>
-                    <span className='price'>499€<span className='price-iva'>IVA incluido</span></span>
+                    <span className='price'>499€<span className='price-iva'> más IVA</span></span>
                     <p className='description'>Más secciones, más impacto y mayor personalización.</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon />8 secciones personalizadas (2 grandes)</li>

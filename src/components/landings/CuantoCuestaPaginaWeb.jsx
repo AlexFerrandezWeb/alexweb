@@ -64,7 +64,7 @@ export const contenido = {
   precios: {
     titulo: 'Mis precios, sin letra pequeña',
     intro:
-      'Lo que te presupuesto es lo que pagas, con el IVA ya incluido en todos los precios que ves aquí. Si a mitad de proyecto pides algo que no estaba hablado, te digo lo que cuesta antes de tocarlo. Nunca vas a recibir una factura con sorpresas.',
+      'Lo que te presupuesto es lo que pagas. Todos los precios que ves aquí son sin IVA: al importe hay que sumarle el 21%, y como es un gasto de tu negocio te lo deduces. Si a mitad de proyecto pides algo que no estaba hablado, te digo lo que cuesta antes de tocarlo. Nunca vas a recibir una factura con sorpresas.',
     planes: [
       {
         nombre: 'Landing Page',

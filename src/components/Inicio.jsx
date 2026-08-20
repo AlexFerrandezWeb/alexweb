@@ -48,8 +48,9 @@ const COMPARATIVA = [
   ['SEO', 'Básico, enfocado a una búsqueda', 'Ampliado, para muchas búsquedas'],
   ['Blog', 'No', 'Sí, autogestionable'],
   ['Tienda online', 'No', 'Sí, a partir del nivel E-commerce'],
+  ['Panel para editarla tú', 'No', 'Sí, incluido desde E-commerce o por 290€ en el Básico'],
   ['Entrega', '2-3 semanas', 'Según el proyecto'],
-  ['Desde', '350€', '699€'],
+  ['Desde (IVA incluido)', '350€', '699€'],
   ['Elígela si…', 'Quieres algo rápido y directo', 'Quieres que tu negocio viva en internet'],
 ]
 
@@ -272,8 +273,37 @@ export const Inicio = () => {
         </div>
       </section>
 
+      {/* Va antes de la rejilla de precios a proposito: primero hay que
+          responder "para que la necesito" y despues "cuanto cuesta". Al reves,
+          el precio llega sin contexto y solo se lee como un gasto. */}
+      <section className='porque-section'>
+        <h2 className='section-title'>¿Por qué necesitas una página web?</h2>
+        <div className='porque-grid'>
+          <div className='porque-item'>
+            <h3>Te encuentran cuando te buscan</h3>
+            <p>Cada día alguien busca en Google lo que tú ofreces. Si no apareces, contrata a otro.</p>
+          </div>
+          <div className='porque-item'>
+            <h3>No dependes de las redes</h3>
+            <p>Tu cuenta de Instagram no es tuya. Tu web sí, y nadie te la puede cerrar.</p>
+          </div>
+          <div className='porque-item'>
+            <h3>Trabaja mientras duermes</h3>
+            <p>Contesta dudas, muestra tus servicios y recoge contactos a cualquier hora.</p>
+          </div>
+          <div className='porque-item'>
+            <h3>Transmite confianza</h3>
+            <p>Un negocio sin web genera dudas. Uno con web bien hecha, no.</p>
+          </div>
+        </div>
+        {/* Ancla nativa y no <Link>: es un salto dentro de la misma pagina, el
+            router no tiene que intervenir. Reusa .comparar-enlace, que ya es el
+            estilo de "enlace de apoyo" de esta pagina. */}
+        <a href='#precios' className='comparar-enlace porque-enlace'>Mira cuánto cuesta tu web</a>
+      </section>
+
       {/* Products Section */}
-      <section className='products-section'>
+      <section className='products-section' id='precios'>
         <h2 className='section-title'>Servicios</h2>
 
         <div className='products-grid'>
@@ -281,7 +311,7 @@ export const Inicio = () => {
           {/* Card 1 */}
           <div className='product-card'>
             <h3>Landing Page</h3>
-            <span className='price'><span className='price-span'>Desde</span>350€</span>
+            <span className='price'><span className='price-span'>Desde</span>350€<span className='price-iva'>IVA incluido</span></span>
             <p className='card-para-quien'>Ideal si ofreces un servicio concreto y quieres que te contacten. Una sola página, directa y al grano — sin que el cliente se pierda.</p>
             <ul className='features'>
               <li><FeatureCheckIcon /> Landing Page</li>
@@ -296,14 +326,14 @@ export const Inicio = () => {
           <div className='product-card product-card-featured'>
             <span className='featured-badge'>Más elegido</span>
             <h3>Sitio Web</h3>
-            <span className='price'><span className='price-span'>Desde</span>699€</span>
+            <span className='price'><span className='price-span'>Desde</span>699€<span className='price-iva'>IVA incluido</span></span>
             <p className='card-para-quien'>Ideal si tienes varios servicios, quieres vender online o publicar un blog. Tu negocio entero en internet, no solo una tarjeta de visita.</p>
             {/* El precio que se ve aqui es el del nivel Basico, asi que las
                 features son las suyas: la tienda y el blog llegan con los
-                niveles E-commerce y A Medida, dentro del modal. */}
+                niveles E-commerce y Proyecto a Medida, dentro del modal. */}
             <p className='description'>Para negocios que necesitan más que una página: varias secciones y, si lo necesitas, tienda online y blog.</p>
             <ul className='features'>
-              <li><FeatureCheckIcon /> 3-5 páginas</li>
+              <li><FeatureCheckIcon /> Hasta 5 páginas</li>
               <li><FeatureCheckIcon /> Diseño Responsive</li>
               <li><FeatureCheckIcon /> SEO básico incluido</li>
               <li><FeatureCheckIcon /> Formulario de contacto</li>
@@ -314,7 +344,7 @@ export const Inicio = () => {
           {/* Card 3 */}
           <div className='product-card'>
             <h3>Mantenimiento y SEO</h3>
-            <span className='price'><span className='price-span'>Desde</span>50€</span>
+            <span className='price'><span className='price-span'>Desde</span>50€<span className='price-iva'>IVA incluido</span></span>
             <p className='card-para-quien'>Para webs ya publicadas que necesitan mantenerse seguras y subir en Google mes a mes.</p>
             <p className='description'>No basta con tener una web, hay que cuidarla. Mi servicio de mantenimiento
             asegura que tu sitio esté siempre actualizado y seguro, mientras mejoro tu posicionamiento en Google.</p>
@@ -659,34 +689,40 @@ export const Inicio = () => {
               <>
                 <h2 className='modal-titulo'>Elige tu Sitio Web</h2>
                 <p className='modal-subtitulo'>Tres tipos de web según lo que necesites</p>
+                <p className='tipos-web-intro'>Todas las webs se desarrollan desde cero, sin plantillas ni constructores.</p>
                 <div className='modal-grid'>
                   {/* El Basico es el unico con precio cerrado: por eso va sin
                       "Desde". Los otros dos dependen del catalogo o del alcance
-                      y si lo llevan. */}
+                      y si lo llevan. Espejo de la Fila 2 de /servicios: si
+                      cambia uno, cambiar el otro. */}
                   <div className='modal-card'>
                     <h3>Sitio Web Básico</h3>
-                    <span className='price'>699€</span>
-                    <p className='description'>Presencia profesional para que te encuentren y te contacten. Sin tienda.</p>
+                    <span className='price'>699€<span className='price-iva'>IVA incluido</span></span>
+                    <p className='description'>Ideal si quieres presencia profesional y que te encuentren.</p>
                     <ul className='features'>
-                      <li><FeatureCheckIcon />3-5 páginas</li>
-                      <li><FeatureCheckIcon />Diseño Responsive</li>
+                      <li><FeatureCheckIcon />Hasta 5 páginas</li>
+                      <li><FeatureCheckIcon />Diseño responsive</li>
                       <li><FeatureCheckIcon />SEO básico incluido</li>
                       <li><FeatureCheckIcon />Formulario de contacto</li>
                       <li><FeatureCheckIcon />Google Analytics incluido</li>
                       <li><FeatureCheckIcon />Entrega en 3-4 semanas</li>
                     </ul>
+                    <div className='card-addon'>
+                      <span className='card-addon-etiqueta'>Complemento opcional</span>
+                      <span className='card-addon-texto'>Panel para editar textos e imágenes tú mismo — <span className='card-addon-precio'>290€</span></span>
+                    </div>
                     <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
                   </div>
                   <div className='modal-card'>
                     <h3>E-commerce / Tienda Online</h3>
-                    <span className='price'><span className='price-span'>Desde</span>999€</span>
+                    <span className='price'><span className='price-span'>Desde</span>999€<span className='price-iva'>IVA incluido</span></span>
                     <p className='description'>Vende online desde el primer día: catálogo, carrito y pago seguro. Precio según nº de productos.</p>
                     <p className='features-herencia'>Todo lo del Básico, y además:</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon gold />Carrito de compras</li>
-                      <li><FeatureCheckIcon gold />Catálogo de productos</li>
                       <li><FeatureCheckIcon gold />Pasarela de pago segura</li>
-                      <li><FeatureCheckIcon gold />Panel de gestión de productos</li>
+                      <li><FeatureCheckIcon gold />Reservas y citas online</li>
+                      <li><FeatureCheckIcon gold />Panel de gestión de productos y stock incluido</li>
                       <li><FeatureCheckIcon gold />Blog integrado</li>
                       <li><FeatureCheckIcon gold />SEO avanzado incluido</li>
                       <li><FeatureCheckIcon />Entrega en 6-8 semanas</li>
@@ -695,23 +731,23 @@ export const Inicio = () => {
                   </div>
                   <div className='modal-card modal-card-featured'>
                     <span className='featured-badge'>Más elegido</span>
-                    <h3>Sitio Web a Medida</h3>
-                    <span className='price'><span className='price-span'>Desde</span>1.499€</span>
-                    <p className='description'>Proyecto 100% a medida con la última tecnología. Precio a negociar según alcance.</p>
+                    <h3>Proyecto a Medida</h3>
+                    <span className='price'><span className='price-span'>Desde</span>1.499€<span className='price-iva'>IVA incluido</span></span>
+                    <p className='description'>Cuando tu negocio necesita funciones propias. Precio a negociar según alcance.</p>
                     <p className='features-herencia'>Todo lo anterior, y además:</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon gold />Páginas y funciones sin límite</li>
-                      <li><FeatureCheckIcon gold />Proyecto 100% a medida</li>
-                      <li><FeatureCheckIcon gold />ChatBot con IA integrado</li>
                       <li><FeatureCheckIcon gold />Panel de administración personalizado</li>
-                      <li><FeatureCheckIcon gold />Integraciones a medida (APIs, pasarelas, etc.)</li>
-                      <li><FeatureCheckIcon gold />Animaciones y efectos avanzados</li>
-                      <li><FeatureCheckIcon gold />Soporte prioritario primer mes</li>
+                      <li><FeatureCheckIcon gold />Agenda de varios profesionales con Google Calendar</li>
+                      <li><FeatureCheckIcon gold />Sincronización con proveedor o ERP</li>
+                      <li><FeatureCheckIcon gold />ChatBot con IA integrado</li>
+                      <li><FeatureCheckIcon gold />Área privada de clientes</li>
                       <li><FeatureCheckIcon />Entrega según proyecto</li>
                     </ul>
                     <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
                   </div>
                 </div>
+                <p className='tipos-web-nota'>Todos los proyectos incluyen mantenimiento opcional <strong>desde 50€/mes</strong>. Si tu web lleva panel de gestión, el plan indicado es el de <strong>70€/mes</strong>.</p>
               </>
             ) : modalPlanes === 'mantenimiento' ? (
               <>
@@ -720,8 +756,8 @@ export const Inicio = () => {
                 <div className='modal-grid modal-grid-2'>
                   <div className='modal-card'>
                     <h3>Básico</h3>
-                    <span className='price'>50€<span className='price-mes'>/mes</span></span>
-                    <p className='description'>Lo esencial para que tu web funcione sin preocupaciones.</p>
+                    <span className='price'>50€<span className='price-mes'>/mes</span><span className='price-iva'>IVA incluido</span></span>
+                    <p className='description'>Lo esencial para que tu web funcione sin preocupaciones. Ideal si tu web no tiene panel de administración.</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon />Actualizaciones de seguridad</li>
                       <li><FeatureCheckIcon />Copias de seguridad</li>
@@ -733,14 +769,16 @@ export const Inicio = () => {
                     <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
                   </div>
                   <div className='modal-card modal-card-featured'>
-                    <span className='featured-badge'>Más completo</span>
+                    <span className='featured-badge'>Con panel o tienda</span>
                     <h3>Premium</h3>
-                    <span className='price'>70€<span className='price-mes'>/mes</span></span>
-                    <p className='description'>Máxima tranquilidad con soporte prioritario y disponibilidad total.</p>
+                    <span className='price'><span className='price-span'>Desde</span>70€<span className='price-mes'>/mes</span><span className='price-iva'>IVA incluido</span></span>
+                    <p className='description'>Recomendado si tu web tiene panel de administración o tienda online: yo me encargo de que todo siga funcionando.</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon />Todo lo del plan Básico</li>
+                      <li><FeatureCheckIcon gold />Mantenimiento del panel de administración</li>
+                      <li><FeatureCheckIcon gold />Soporte con tu tienda: pedidos, productos y stock</li>
+                      <li><FeatureCheckIcon gold />Te ayudo si te atascas usando el panel</li>
                       <li><FeatureCheckIcon gold />Soporte prioritario con respuesta en menos de 24h</li>
-                      <li><FeatureCheckIcon gold />Actualizaciones constantes y mejoras continuas</li>
                       <li><FeatureCheckIcon gold />Optimización SEO mensual</li>
                       <li><FeatureCheckIcon gold />Pequeñas mejoras de diseño incluidas</li>
                       <li><FeatureCheckIcon gold />Revisión mensual de velocidad y rendimiento</li>
@@ -757,7 +795,7 @@ export const Inicio = () => {
                 <div className='modal-grid modal-grid-2'>
                   <div className='modal-card'>
                     <h3>Starter</h3>
-                    <span className='price'>350€</span>
+                    <span className='price'>350€<span className='price-iva'>IVA incluido</span></span>
                     <p className='description'>Ideal para tener presencia online con lo esencial bien hecho.</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon />1 sección larga y 3 secciones pequeñas</li>
@@ -771,7 +809,7 @@ export const Inicio = () => {
                   <div className='modal-card modal-card-featured'>
                     <span className='featured-badge'>Más completo</span>
                     <h3>Premium</h3>
-                    <span className='price'>500€</span>
+                    <span className='price'>499€<span className='price-iva'>IVA incluido</span></span>
                     <p className='description'>Más secciones, más impacto y mayor personalización.</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon />8 secciones personalizadas (2 grandes)</li>
@@ -822,51 +860,7 @@ export const Inicio = () => {
                   <button type='button' className='card-btn' onClick={() => setModalPlanes('sitioweb')}>Quiero un Sitio Web</button>
                 </div>
               </>
-            ) : (
-              <>
-                <h2 className='modal-titulo'>Elige tu plan</h2>
-                <p className='modal-subtitulo'>Selecciona el servicio que mejor se adapte a tu negocio</p>
-                <div className='modal-grid'>
-                  <div className='modal-card'>
-                    <h3>Landing Page</h3>
-                    <span className='price'><span className='price-span'>Desde</span>400€</span>
-                    <p className='description'>Perfecta para mostrar tu negocio y captar clientes online.</p>
-                    <ul className='features'>
-                      <li><FeatureCheckIcon /> 1 sección larga y 3 secciones pequeñas</li>
-                      <li><FeatureCheckIcon /> Diseño Responsive</li>
-                      <li><FeatureCheckIcon /> Formulario de Contacto</li>
-                      <li><FeatureCheckIcon /> SEO y posicionamiento</li>
-                    </ul>
-                    <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
-                  </div>
-                  <div className='modal-card modal-card-featured'>
-                    <span className='featured-badge'>Más elegido</span>
-                    <h3>Sitio Web</h3>
-                    <span className='price'><span className='price-span'>Desde</span>699€</span>
-                    <p className='description'>Para negocios que necesitan más que una página: varias secciones y, si lo necesitas, tienda online y blog.</p>
-                    <ul className='features'>
-                      <li><FeatureCheckIcon /> 3-5 páginas</li>
-                      <li><FeatureCheckIcon /> Diseño Responsive</li>
-                      <li><FeatureCheckIcon /> SEO básico incluido</li>
-                      <li><FeatureCheckIcon /> Formulario de contacto</li>
-                    </ul>
-                    <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
-                  </div>
-                  <div className='modal-card'>
-                    <h3>Mantenimiento y SEO</h3>
-                    <span className='price'><span className='price-span'>Desde</span>50€<span className='price-mes'>/mes</span></span>
-                    <p className='description'>Mantén tu web segura, actualizada y bien posicionada en Google.</p>
-                    <ul className='features'>
-                      <li><FeatureCheckIcon /> Actualizaciones de seguridad</li>
-                      <li><FeatureCheckIcon /> Optimización SEO On-Page</li>
-                      <li><FeatureCheckIcon /> Informes mensuales</li>
-                      <li><FeatureCheckIcon /> Soporte técnico 24h</li>
-                    </ul>
-                    <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
-                  </div>
-                </div>
-              </>
-            )}
+            ) : null}
           </div>
         </div>
       )}

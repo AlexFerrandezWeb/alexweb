@@ -122,6 +122,14 @@ body.nav-hidden .page-header {
     color: #2c3e50;
     margin-bottom: 6px;
     margin-top: 10px;
+    line-height: 1.25;
+}
+
+/* "Sitio Web + Panel de Administracion" ocupa dos lineas y "Sitio Web Basico"
+   una: sin esto los precios de las tres tarjetas quedan a distinta altura.
+   Solo en la fila de 3; al colapsar a una columna sobra y se quita abajo. */
+.service-row-grid-3 .service-card h2 {
+    min-height: 4rem;
 }
 
 .service-duration {
@@ -135,6 +143,15 @@ body.nav-hidden .page-header {
     color: #764ba2;
     font-weight: 700;
     margin-bottom: 10px;
+}
+
+/* Va dentro del propio .service-price: la tarjeta es flex en columna y un
+   hermano suelto caeria a la linea de abajo. */
+.service-price-iva {
+    font-size: 0.8rem;
+    color: #8a8a8a;
+    font-weight: 500;
+    margin-left: 8px;
 }
 
 .service-price-desde {
@@ -437,6 +454,10 @@ body.nav-hidden .page-header {
     .temas-grid {
         grid-template-columns: 1fr;
         max-width: 100%;
+    }
+
+    .service-row-grid-3 .service-card h2 {
+        min-height: 0;
     }
 
     .chatbot-banner {

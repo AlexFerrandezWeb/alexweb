@@ -54,24 +54,87 @@ const NEGOCIO_JSON_LD = {
             description: 'Página única para mostrar tu negocio y captar clientes.',
             price: '350',
             priceCurrency: 'EUR',
+            // Los precios publicados en la web llevan el IVA dentro, asi que el
+            // dato estructurado tiene que decir lo mismo.
+            priceSpecification: {
+              '@type': 'PriceSpecification',
+              price: '350',
+              priceCurrency: 'EUR',
+              valueAddedTaxIncluded: true,
+            },
           },
           {
             '@type': 'Offer',
-            name: 'Sitio Web',
-            // El precio del Offer tiene que ser el de entrada real (el nivel
-            // Basico) y la descripcion no puede prometer tienda ni blog, que
-            // llegan con E-commerce y A Medida. Si no, Google ve discrepancia
-            // entre el dato estructurado y lo que dice la pagina.
-            description: 'Web de varias páginas para tener presencia profesional y que te encuentren y contacten.',
+            // Los tres niveles van como Offer separadas porque son productos
+            // distintos, no tallas del mismo: cada una lleva su precio de
+            // entrada real y una descripcion que no promete lo que no incluye.
+            // Si Google ve aqui algo que la pagina no dice, marca discrepancia.
+            name: 'Sitio Web Básico',
+            description: 'Web de hasta 5 páginas para tener presencia profesional y que te encuentren y contacten. Sin tienda ni blog.',
             price: '699',
             priceCurrency: 'EUR',
+            // Los precios publicados en la web llevan el IVA dentro, asi que el
+            // dato estructurado tiene que decir lo mismo.
+            priceSpecification: {
+              '@type': 'PriceSpecification',
+              price: '699',
+              priceCurrency: 'EUR',
+              valueAddedTaxIncluded: true,
+            },
+          },
+          {
+            '@type': 'Offer',
+            name: 'Panel de edición de contenidos',
+            description: 'Complemento opcional del Sitio Web Básico para editar tú mismo textos e imágenes.',
+            price: '290',
+            priceCurrency: 'EUR',
+            priceSpecification: {
+              '@type': 'PriceSpecification',
+              price: '290',
+              priceCurrency: 'EUR',
+              valueAddedTaxIncluded: true,
+            },
+          },
+          {
+            '@type': 'Offer',
+            name: 'E-commerce / Tienda Online',
+            description: 'Tienda online con carrito, pasarela de pago, reservas y citas online y panel de gestión de productos y stock. El precio depende del catálogo.',
+            price: '999',
+            priceCurrency: 'EUR',
+            priceSpecification: {
+              '@type': 'PriceSpecification',
+              price: '999',
+              priceCurrency: 'EUR',
+              valueAddedTaxIncluded: true,
+            },
+          },
+          {
+            '@type': 'Offer',
+            name: 'Proyecto a Medida',
+            description: 'Desarrollo a medida con panel propio, agenda de varios profesionales con Google Calendar, sincronización con proveedor o ERP y área privada de clientes.',
+            price: '1499',
+            priceCurrency: 'EUR',
+            priceSpecification: {
+              '@type': 'PriceSpecification',
+              price: '1499',
+              priceCurrency: 'EUR',
+              valueAddedTaxIncluded: true,
+            },
           },
           {
             '@type': 'Offer',
             name: 'Mantenimiento y SEO',
-            description: 'Actualizaciones, copias de seguridad y posicionamiento mensual.',
+            description: 'Opcional y sin permanencia: actualizaciones, copias de seguridad y posicionamiento mensual. Desde 70€/mes si la web lleva panel de gestión.',
             price: '50',
             priceCurrency: 'EUR',
+            // Los precios publicados en la web llevan el IVA dentro, asi que el
+            // dato estructurado tiene que decir lo mismo.
+            priceSpecification: {
+              '@type': 'PriceSpecification',
+              price: '50',
+              priceCurrency: 'EUR',
+              valueAddedTaxIncluded: true,
+            },
           },
         ],
       },

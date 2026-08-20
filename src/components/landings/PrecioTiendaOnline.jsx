@@ -64,7 +64,7 @@ export const contenido = {
   precios: {
     titulo: 'Precios de tienda online',
     intro:
-      'Presupuesto cerrado antes de empezar. Me dices qué productos tienes y cómo quieres cobrar, y te paso un precio fijo para tu caso — lo que acordemos es lo que pagas, sin añadidos sorpresa.',
+      'Presupuesto cerrado antes de empezar y con el IVA incluido. Me dices qué productos tienes y cómo quieres cobrar, y te paso un precio fijo para tu caso — lo que acordemos es lo que pagas, sin añadidos sorpresa.',
     planes: [
       {
         nombre: 'Tienda Online',
@@ -74,7 +74,8 @@ export const contenido = {
           'Catálogo de productos',
           'Carrito de compras',
           'Pasarela de pago segura',
-          'Panel de gestión de productos',
+          'Reservas y citas online',
+          'Panel de gestión de productos y stock incluido',
           'Blog integrado',
           'SEO avanzado',
           'Textos legales de comercio electrónico',
@@ -82,17 +83,21 @@ export const contenido = {
         ],
       },
       {
-        nombre: 'Tienda a Medida',
+        // Es el mismo nivel que el "Proyecto a Medida" de /servicios, contado
+        // para quien busca tienda. El nombre tiene que coincidir: si aqui se
+        // llama distinto, el cliente cree que son dos productos.
+        nombre: 'Proyecto a Medida',
         precio: 'desde 1.499€',
         destacado: true,
         para: 'Catálogo grande o integraciones con tu gestión, transportistas o proveedores.',
         incluye: [
           'Todo lo anterior',
           'Catálogo sin límite de productos',
-          'Integraciones a medida por API',
+          'Sincronización con proveedor o ERP',
+          'Agenda de varios profesionales con Google Calendar',
           'ChatBot con IA integrado',
           'Panel de administración personalizado',
-          'Soporte prioritario el primer mes',
+          'Área privada de clientes',
           'Entrega según proyecto',
         ],
       },

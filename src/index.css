@@ -24,6 +24,64 @@
   text-align: left;
 }
 
+/* Linea introductoria encima de la rejilla de tipos de web. */
+.tipos-web-intro {
+  max-width: 640px;
+  margin: 0 auto 22px;
+  text-align: center;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Linea de cierre debajo de la rejilla: enlaza los tipos de web con los planes
+   de mantenimiento, que es la duda que llega justo despues de elegir nivel. */
+.tipos-web-nota {
+  max-width: 720px;
+  margin: 22px auto 0;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.tipos-web-nota strong {
+  color: #2c3e50;
+}
+
+/* Complemento de pago del nivel Basico. Va separado de la lista de features a
+   proposito: es un extra que se cobra aparte, no algo incluido en el precio. */
+.card-addon {
+  margin: 4px 0 14px;
+  padding: 10px 12px;
+  border: 1px dashed #cfc4e4;
+  border-radius: 10px;
+  background: #faf8fd;
+  text-align: left;
+}
+
+.card-addon-etiqueta {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #8a7fa8;
+  margin-bottom: 3px;
+}
+
+.card-addon-texto {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.card-addon-precio {
+  font-weight: 700;
+  color: var(--color-accion);
+  white-space: nowrap;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

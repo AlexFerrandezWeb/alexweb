@@ -141,7 +141,7 @@ export const Servicios = () => {
 
             <div className='service-card'>
               <h2>Starter</h2>
-              <div className='service-price'>350€</div>
+              <div className='service-price'>350€<span className='service-price-iva'>IVA incluido</span></div>
               <p className='service-description'>Ideal para tener presencia online con lo esencial bien hecho.</p>
               <ul className='service-details'>
                 <li><FeatureCheckIcon />1 sección larga y 3 secciones pequeñas</li>
@@ -156,7 +156,7 @@ export const Servicios = () => {
             <div className='service-card service-card-featured'>
               <span className='service-featured-badge'>Más completo</span>
               <h2>Premium</h2>
-              <div className='service-price'>500€</div>
+              <div className='service-price'>499€<span className='service-price-iva'>IVA incluido</span></div>
               <p className='service-description'>Más secciones, más impacto y mayor personalización.</p>
               <ul className='service-details'>
                 <li><FeatureCheckIcon />8 secciones personalizadas (2 grandes)</li>
@@ -179,6 +179,7 @@ export const Servicios = () => {
         {/* ── Fila 2: Sitios Web ── */}
         <div className='service-group'>
           <div className='section-row-title'>Sitios Web</div>
+          <p className='tipos-web-intro'>Todas las webs se desarrollan desde cero, sin plantillas ni constructores.</p>
           <div className='service-row-grid service-row-grid-3'>
 
             {/* Mismos tres tipos que el modal de la home: el Basico va sin
@@ -186,29 +187,33 @@ export const Servicios = () => {
                 catalogo o del alcance. Si cambia uno, cambiar el otro. */}
             <div className='service-card'>
               <h2>Sitio Web Básico</h2>
-              <div className='service-price'>699€</div>
-              <p className='service-description'>Presencia profesional para que te encuentren y te contacten. Sin tienda.</p>
+              <div className='service-price'>699€<span className='service-price-iva'>IVA incluido</span></div>
+              <p className='service-description'>Ideal si quieres presencia profesional y que te encuentren.</p>
               <ul className='service-details'>
-                <li><FeatureCheckIcon />3-5 páginas</li>
-                <li><FeatureCheckIcon />Diseño Responsive</li>
+                <li><FeatureCheckIcon />Hasta 5 páginas</li>
+                <li><FeatureCheckIcon />Diseño responsive</li>
                 <li><FeatureCheckIcon />SEO básico incluido</li>
                 <li><FeatureCheckIcon />Formulario de contacto</li>
                 <li><FeatureCheckIcon />Google Analytics incluido</li>
                 <li><FeatureCheckIcon />Entrega en 3-4 semanas</li>
               </ul>
+              <div className='card-addon'>
+                <span className='card-addon-etiqueta'>Complemento opcional</span>
+                <span className='card-addon-texto'>Panel para editar textos e imágenes tú mismo — <span className='card-addon-precio'>290€</span></span>
+              </div>
               <Link to='/contacto' className='service-btn'>Contactar</Link>
             </div>
 
             <div className='service-card'>
               <h2>E-commerce / Tienda Online</h2>
-              <div className='service-price'><span className='service-price-desde'>Desde</span>999€</div>
+              <div className='service-price'><span className='service-price-desde'>Desde</span>999€<span className='service-price-iva'>IVA incluido</span></div>
               <p className='service-description'>Vende online desde el primer día: catálogo, carrito y pago seguro. Precio según nº de productos.</p>
               <p className='features-herencia'>Todo lo del Básico, y además:</p>
               <ul className='service-details'>
                 <li><FeatureCheckIcon gold />Carrito de compras</li>
-                <li><FeatureCheckIcon gold />Catálogo de productos</li>
                 <li><FeatureCheckIcon gold />Pasarela de pago segura</li>
-                <li><FeatureCheckIcon gold />Panel de gestión de productos</li>
+                <li><FeatureCheckIcon gold />Reservas y citas online</li>
+                <li><FeatureCheckIcon gold />Panel de gestión de productos y stock incluido</li>
                 <li><FeatureCheckIcon gold />Blog integrado</li>
                 <li><FeatureCheckIcon gold />SEO avanzado incluido</li>
                 <li><FeatureCheckIcon />Entrega en 6-8 semanas</li>
@@ -218,24 +223,24 @@ export const Servicios = () => {
 
             <div className='service-card service-card-featured'>
               <span className='service-featured-badge'>Más elegido</span>
-              <h2>Sitio Web a Medida</h2>
-              <div className='service-price'><span className='service-price-desde'>Desde</span>1.499€</div>
-              <p className='service-description'>Proyecto 100% a medida con la última tecnología. Precio a negociar según alcance.</p>
+              <h2>Proyecto a Medida</h2>
+              <div className='service-price'><span className='service-price-desde'>Desde</span>1.499€<span className='service-price-iva'>IVA incluido</span></div>
+              <p className='service-description'>Cuando tu negocio necesita funciones propias. Precio a negociar según alcance.</p>
               <p className='features-herencia'>Todo lo anterior, y además:</p>
               <ul className='service-details'>
                 <li><FeatureCheckIcon gold />Páginas y funciones sin límite</li>
-                <li><FeatureCheckIcon gold />Proyecto 100% a medida</li>
-                <li><FeatureCheckIcon gold />ChatBot con IA integrado</li>
                 <li><FeatureCheckIcon gold />Panel de administración personalizado</li>
-                <li><FeatureCheckIcon gold />Integraciones a medida (APIs, pasarelas, etc.)</li>
-                <li><FeatureCheckIcon gold />Animaciones y efectos avanzados</li>
-                <li><FeatureCheckIcon gold />Soporte prioritario primer mes</li>
+                <li><FeatureCheckIcon gold />Agenda de varios profesionales con Google Calendar</li>
+                <li><FeatureCheckIcon gold />Sincronización con proveedor o ERP</li>
+                <li><FeatureCheckIcon gold />ChatBot con IA integrado</li>
+                <li><FeatureCheckIcon gold />Área privada de clientes</li>
                 <li><FeatureCheckIcon />Entrega según proyecto</li>
               </ul>
               <Link to='/contacto' className='service-btn'>Contactar</Link>
             </div>
 
           </div>
+          <p className='tipos-web-nota'>Todos los proyectos incluyen mantenimiento opcional <strong>desde 50€/mes</strong>. Si tu web lleva panel de gestión, el plan indicado es el de <strong>70€/mes</strong>.</p>
         </div>
 
         {/* ── Fila 3: Mantenimiento ── */}
@@ -245,8 +250,8 @@ export const Servicios = () => {
 
             <div className='service-card'>
               <h2>Básico</h2>
-              <div className='service-price'>50€<span className='service-price-mes'>/mes</span></div>
-              <p className='service-description'>Lo esencial para que tu web funcione sin preocupaciones.</p>
+              <div className='service-price'>50€<span className='service-price-mes'>/mes</span><span className='service-price-iva'>IVA incluido</span></div>
+              <p className='service-description'>Lo esencial para que tu web funcione sin preocupaciones. Ideal si tu web no tiene panel de administración.</p>
               <ul className='service-details'>
                 <li><FeatureCheckIcon />Actualizaciones de seguridad</li>
                 <li><FeatureCheckIcon />Copias de seguridad</li>
@@ -259,14 +264,16 @@ export const Servicios = () => {
             </div>
 
             <div className='service-card service-card-featured'>
-              <span className='service-featured-badge'>Más completo</span>
+              <span className='service-featured-badge'>Con panel o tienda</span>
               <h2>Premium</h2>
-              <div className='service-price'>70€<span className='service-price-mes'>/mes</span></div>
-              <p className='service-description'>Máxima tranquilidad con soporte prioritario y disponibilidad total.</p>
+              <div className='service-price'><span className='service-price-desde'>Desde</span>70€<span className='service-price-mes'>/mes</span><span className='service-price-iva'>IVA incluido</span></div>
+              <p className='service-description'>Recomendado si tu web tiene panel de administración o tienda online: yo me encargo de que todo siga funcionando.</p>
               <ul className='service-details'>
                 <li><FeatureCheckIcon />Todo lo del plan Básico</li>
+                <li><FeatureCheckIcon gold />Mantenimiento del panel de administración</li>
+                <li><FeatureCheckIcon gold />Soporte con tu tienda: pedidos, productos y stock</li>
+                <li><FeatureCheckIcon gold />Te ayudo si te atascas usando el panel</li>
                 <li><FeatureCheckIcon gold />Soporte prioritario con respuesta en menos de 24h</li>
-                <li><FeatureCheckIcon gold />Actualizaciones constantes y mejoras continuas</li>
                 <li><FeatureCheckIcon gold />Optimización SEO mensual</li>
                 <li><FeatureCheckIcon gold />Pequeñas mejoras de diseño incluidas</li>
                 <li><FeatureCheckIcon gold />Revisión mensual de velocidad y rendimiento</li>

@@ -147,11 +147,92 @@
 }
 
 
+/* Por que necesitas una web. Sin chrome de tarjeta a proposito: justo debajo
+   vienen las tres product-card y repetir el mismo recuadro haria que se leyeran
+   como si tambien fueran planes. */
+.porque-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 50px;
+}
+
+.porque-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.porque-item h3 {
+    /* #2c3e50 sobre blanco = 12.6:1 */
+    color: #2c3e50;
+    font-size: 1.1rem;
+    line-height: 1.35;
+    margin: 0 0 8px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Mismo punto que las garantias del hero, en el morado de marca. Decorativo:
+   va como ::before y no como caracter, para que no lo lea el lector de pantalla. */
+.porque-item h3::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    margin-top: 7px;
+    border-radius: 50%;
+    background: var(--color-accion);
+    flex: 0 0 auto;
+}
+
+/* Los cuatro titulos tienen largos distintos y alguno cae a dos lineas: sin
+   reservar el alto, las frases arrancan a distinta altura. Solo mientras hay
+   cuatro columnas; al apilarse sobra y dejaria huecos. */
+@media (min-width: 901px) {
+    .porque-item h3 {
+        min-height: 3rem;
+    }
+}
+
+.porque-item p {
+    /* #555 sobre blanco = 7.4:1 */
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    /* Alinea con el titulo, no con el punto: 8px del punto + 10px del gap. */
+    padding-left: 18px;
+}
+
+/* .comparar-enlace centra con `margin: auto`, y eso le basta a un <button>
+   porque los controles de formulario encogen al contenido. Un <a> no: ocuparia
+   todo el ancho y el texto se quedaria a la izquierda. */
+.porque-enlace {
+    margin-top: 34px;
+    width: fit-content;
+}
+
 /* Products Section */
 .products-section {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px 60px;
+    /* Destino del ancla #precios. La cabecera es sticky (70px, 64px en movil),
+       asi que sin esto el titulo de seccion queda oculto debajo al saltar. */
+    scroll-margin-top: 90px;
+}
+
+@media (max-width: 900px) {
+    .porque-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 26px;
+    }
+}
+
+@media (max-width: 560px) {
+    .porque-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
 }
 
 .section-title {
@@ -218,6 +299,15 @@
     display: block;
 }
 
+/* Va dentro del propio .price para que quede a continuacion del importe: las
+   tarjetas son flex en columna y un hermano suelto caeria a la linea de abajo. */
+.price-iva {
+    font-size: 0.8rem;
+    color: #8a8a8a;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
 .price-span {
     font-size: 1rem;
     color: #2c3e50;
@@ -240,12 +330,22 @@
 
 /* Lanzador de la comparativa. Va en texto con acento, no como boton solido,
    para no competir con los tres "Ver planes" que tiene justo encima. */
+/* Los dos elementos que llevan esta clase (bajar a precios, comparar Landing
+   y Sitio Web) son pasos de conversion y el trafico es sobre todo movil, asi
+   que el area tactil manda sobre el ahorro de altura: solo el texto daba 37px.
+   flex + min-height en vez de mas padding para centrar el texto dentro de los
+   44px sin que el subrayado se despegue. */
 .comparar-enlace {
     background: none;
     border: none;
     color: var(--color-accion);
     cursor: pointer;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border-box o el min-height se suma al padding y el area sale de 60px. */
+    box-sizing: border-box;
+    min-height: 44px;
     font-family: inherit;
     font-size: 1rem;
     font-weight: 600;
@@ -998,9 +1098,26 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.modal-card h3 {
+    line-height: 1.25;
+}
+
+/* Igual que en Servicios: en el modal de Sitio Web (el que no lleva
+   modal-grid-2) un titulo de dos lineas descuadraria los precios. */
+@media (min-width: 860px) {
+    .modal-grid:not(.modal-grid-2) .modal-card h3 {
+        min-height: 3.2rem;
+    }
+}
+
 .modal-card .price {
     font-size: 1.6rem;
     margin-bottom: 8px;
+}
+
+.modal-card .price-iva {
+    font-size: 0.75rem;
+    margin-left: 6px;
 }
 
 .modal-card .description {
@@ -1261,8 +1378,13 @@
         margin-bottom: 30px;
     }
 
+    .porque-section {
+        padding: 0 16px 35px;
+    }
+
     /* Products */
     .products-section {
+        scroll-margin-top: 84px;
         padding: 0 16px 40px;
     }
 

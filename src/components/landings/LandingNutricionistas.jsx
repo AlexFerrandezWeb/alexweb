@@ -247,6 +247,7 @@ const PLANES = [
       'Copias de seguridad',
       'Pequeños cambios incluidos',
       'Informe mensual claro',
+      'Con panel de gestión: plan de 70€',
       'Sin permanencia',
     ],
     cta: 'Me interesa',
@@ -308,7 +309,7 @@ const FAQS = [
   {
     pregunta: '¿Los precios que veo son los finales?',
     respuesta:
-      'Los precios que ves son el punto de partida y el presupuesto que te paso es cerrado: lo que firmamos es lo que pagas. Aparte solo tendrías el dominio y el alojamiento, que son unos pocos euros al mes y te los explico con transparencia. La reserva y el pago online se ajustan según lo que necesites, y te lo digo antes de empezar.',
+      'Los precios que ves llevan el IVA incluido y son el punto de partida; el presupuesto que te paso es cerrado: lo que firmamos es lo que pagas. Aparte solo tendrías el dominio y el alojamiento, que son unos pocos euros al mes y te los explico con transparencia. La reserva y el pago online se ajustan según lo que necesites, y te lo digo antes de empezar.',
   },
   {
     pregunta: '¿Trabajas con clientes de toda España?',
@@ -578,6 +579,7 @@ export const LandingNutricionistas = () => {
                 <div className='nutri-pkg-price'>
                   <span className='nutri-pkg-amt'>{plan.precio}</span>
                   {plan.periodo && <span className='nutri-pkg-per'>{plan.periodo}</span>}
+                  <span className='nutri-pkg-iva'>IVA incluido</span>
                 </div>
                 <ul>
                   {plan.incluye.map((linea) => (

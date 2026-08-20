@@ -64,11 +64,11 @@ export const contenido = {
   precios: {
     titulo: 'Mis precios, sin letra pequeña',
     intro:
-      'Lo que te presupuesto es lo que pagas. Si a mitad de proyecto pides algo que no estaba hablado, te digo lo que cuesta antes de tocarlo. Nunca vas a recibir una factura con sorpresas.',
+      'Lo que te presupuesto es lo que pagas, con el IVA ya incluido en todos los precios que ves aquí. Si a mitad de proyecto pides algo que no estaba hablado, te digo lo que cuesta antes de tocarlo. Nunca vas a recibir una factura con sorpresas.',
     planes: [
       {
         nombre: 'Landing Page',
-        precio: '350€ - 500€',
+        precio: '350€ - 499€',
         para: 'Una sola página con todo lo tuyo. Para presentarte y que te contacten.',
         incluye: [
           'De 4 a 8 secciones según el plan',
@@ -85,12 +85,13 @@ export const contenido = {
         destacado: true,
         para: 'Varias páginas para que te encuentren y te contacten. Sin tienda. La opción que elige la mayoría.',
         incluye: [
-          'De 3 a 5 páginas',
+          'Hasta 5 páginas',
           'Diseño responsive',
           'SEO básico incluido',
           'Formulario de contacto',
           'Google Analytics incluido',
           'Entrega en 3-4 semanas',
+          'Panel para editarla tú: +290€ opcional',
         ],
       },
       {
@@ -101,28 +102,30 @@ export const contenido = {
           'Todo lo del Básico',
           'Carrito y catálogo de productos',
           'Pasarela de pago segura',
-          'Panel de gestión de productos',
+          'Reservas y citas online',
+          'Panel de gestión de productos y stock incluido',
           'Blog integrado y SEO avanzado',
           'Entrega en 6-8 semanas',
         ],
       },
       {
-        nombre: 'Sitio Web a Medida',
+        nombre: 'Proyecto a Medida',
         precio: 'desde 1.499€',
-        para: 'Cuando necesitas integraciones, funciones propias o no quieres límites.',
+        para: 'Cuando necesitas funciones propias que ningún nivel cerrado cubre.',
         incluye: [
           'Todo lo anterior',
           'Páginas y funciones sin límite',
-          'Panel de administración propio',
-          'Integraciones con otras herramientas',
+          'Panel de administración personalizado',
+          'Agenda de varios profesionales con Google Calendar',
+          'Sincronización con proveedor o ERP',
           'ChatBot con IA integrado',
-          'Soporte prioritario el primer mes',
+          'Área privada de clientes',
           'Entrega según proyecto',
         ],
       },
     ],
     nota:
-      'A esto hay que sumarle los gastos que no dependen de mí: el dominio (unos 10-15€ al año) y el alojamiento (desde gratis en proyectos pequeños hasta unos 100-200€ al año si tienes tienda). El mantenimiento es opcional, desde 50€ al mes y sin permanencia. Todo con factura, deducible como gasto profesional.',
+      'A esto hay que sumarle los gastos que no dependen de mí: el dominio (unos 10-15€ al año) y el alojamiento (desde gratis en proyectos pequeños hasta unos 100-200€ al año si tienes tienda). El mantenimiento es opcional, desde 50€ al mes y sin permanencia, o 70€ si tu web lleva panel de gestión. Todo con factura, deducible como gasto profesional.',
   },
 
   faqs: [
@@ -139,7 +142,7 @@ export const contenido = {
     {
       pregunta: '¿Qué gastos tiene la web cada año?',
       respuesta:
-        'El dominio, entre 10 y 15€ al año. El alojamiento, que en webs pequeñas puede ser gratuito y en tiendas ronda los 100-200€ anuales. Y opcionalmente el mantenimiento, desde 50€ al mes. Eso es todo: no hay licencias ocultas ni cuotas por seguir usando tu propia web.',
+        'El dominio, entre 10 y 15€ al año. El alojamiento, que en webs pequeñas puede ser gratuito y en tiendas ronda los 100-200€ anuales. Y opcionalmente el mantenimiento, desde 50€ al mes, o 70€ si tu web lleva panel de gestión. Eso es todo: no hay licencias ocultas ni cuotas por seguir usando tu propia web.',
     },
     {
       pregunta: '¿El precio incluye que salga en Google?',

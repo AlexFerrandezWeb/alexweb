@@ -64,7 +64,7 @@ export const contenido = {
   precios: {
     titulo: 'Cuánto cuesta',
     intro:
-      'Precios reales, los mismos que le paso a cualquiera que me escribe. El presupuesto que te doy es el que pagas: si a mitad de proyecto pides algo que no estaba hablado, te digo lo que cuesta antes de hacerlo.',
+      'Precios reales con el IVA incluido, los mismos que le paso a cualquiera que me escribe. El presupuesto que te doy es el que pagas: si a mitad de proyecto pides algo que no estaba hablado, te digo lo que cuesta antes de hacerlo.',
     planes: [
       {
         nombre: 'Landing Page',
@@ -85,18 +85,19 @@ export const contenido = {
         destacado: true,
         para: 'Para pymes con varios servicios que quieren presencia profesional y empezar a posicionarse en Google.',
         incluye: [
-          'De 3 a 5 páginas',
+          'Hasta 5 páginas',
           'Diseño responsive',
           'SEO básico incluido',
           'Formulario de contacto',
           'Google Analytics incluido',
           'Entrega en 3-4 semanas',
+          'Panel para editarla tú: +290€ opcional',
         ],
       },
       {
         nombre: 'Mantenimiento',
         precio: 'desde 50€/mes',
-        para: 'Opcional. Para no tener que preocuparte de actualizaciones, copias ni de que algo se rompa.',
+        para: 'Opcional. Para no tener que preocuparte de actualizaciones, copias ni de que algo se rompa. Si tu web lleva panel de gestión, el plan es el de 70€.',
         incluye: [
           'Actualizaciones de seguridad',
           'Copias de seguridad',

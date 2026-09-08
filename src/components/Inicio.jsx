@@ -73,6 +73,7 @@ export const Inicio = () => {
   const [camposAgitados, setCamposAgitados] = useState([])
   const [filasReveladas, setFilasReveladas] = useState({})
   const filasRef = useRef([])
+  const capturasPrecargadas = useRef(new Set())
 
   const handleContactChange = (e) => {
     let value = e.target.value
@@ -151,9 +152,9 @@ export const Inicio = () => {
       ],
       tecnologias: 'HTML5, CSS3, JavaScript, Node.js, Stripe, Render',
       url: 'https://www.xn--nutriganespaa-tkb.com/',
-      imagenEscritorio: '/assets/nutriganWEB_escritorio.png',
-      imagenTablet: '/assets/nutriganWEB_ipad.png',
-      imagenMovil: '/assets/nutriganWEB_iphone.png'
+      imagenEscritorio: '/assets/nutriganWEB_escritorio.webp',
+      imagenTablet: '/assets/nutriganWEB_ipad.webp',
+      imagenMovil: '/assets/nutriganWEB_iphone.webp'
     },
     {
       nombre: 'Heladería Luxer',
@@ -176,9 +177,9 @@ export const Inicio = () => {
       ],
       tecnologias: 'HTML5, CSS3, JavaScript, Cloudflare Pages',
       url: 'https://heladerialuxer.es/',
-      imagenEscritorio: '/assets/heladeriaLuxerWEB_escritorio.png',
-      imagenTablet: '/assets/heladeriaLuxerWEB_ipad.png',
-      imagenMovil: '/assets/heladeriaLuxerWEB_iphone.png'
+      imagenEscritorio: '/assets/heladeriaLuxerWEB_escritorio.webp',
+      imagenTablet: '/assets/heladeriaLuxerWEB_ipad.webp',
+      imagenMovil: '/assets/heladeriaLuxerWEB_iphone.webp'
     },
     {
       nombre: 'Anita Pinturitas',
@@ -200,9 +201,9 @@ export const Inicio = () => {
       ],
       tecnologias: 'HTML5, CSS3, JavaScript, Python 3, Stripe, Render',
       url: 'https://anitapinturitas.es/',
-      imagenEscritorio: '/assets/anitapinturitasWEB_escritorio.png',
-      imagenTablet: '/assets/anitapinturitasWEB_ipad.png',
-      imagenMovil: '/assets/anitapinturitasWEB_iphone.png'
+      imagenEscritorio: '/assets/anitapinturitasWEB_escritorio.webp',
+      imagenTablet: '/assets/anitapinturitasWEB_ipad.webp',
+      imagenMovil: '/assets/anitapinturitasWEB_iphone.webp'
     }
   ];
 
@@ -233,6 +234,25 @@ export const Inicio = () => {
     return () => observer.disconnect()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Cuando una fila entra en pantalla precargamos sus tres capturas. Ahora que
+  // pesan ~70 KB en WebP sale a cuenta: al pulsar la flecha del slider la
+  // imagen ya esta en cache y el cambio es instantaneo, en lugar de quedarse
+  // el hueco en blanco mientras se descarga.
+  useEffect(() => {
+    Object.keys(filasReveladas).forEach((indice) => {
+      const proyecto = proyectos[Number(indice)]
+      if (!proyecto) return
+      const capturas = [proyecto.imagenEscritorio, proyecto.imagenTablet, proyecto.imagenMovil]
+      capturas.forEach((src) => {
+        if (capturasPrecargadas.current.has(src)) return
+        capturasPrecargadas.current.add(src)
+        const img = new Image()
+        img.src = src
+      })
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filasReveladas]);
 
   const obtenerIndiceSlide = (nombreProyecto, totalCapturas) => {
     const indice = slideActual[nombreProyecto] ?? 0
@@ -455,6 +475,9 @@ export const Inicio = () => {
                             src={capturaActual.src}
                             alt={capturaActual.alt}
                             className='work-image work-image-main'
+                            decoding='async'
+                            loading={index === 0 ? 'eager' : 'lazy'}
+                            fetchPriority={index === 0 ? 'high' : 'auto'}
                           />
                         </div>
 

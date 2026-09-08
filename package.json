@@ -24,7 +24,8 @@
     "start": "react-router dev --open",
     "build": "react-router build && node scripts/postbuild.mjs",
     "test": "vitest run",
-    "generate-favicon": "node generate-favicon.js"
+    "generate-favicon": "node generate-favicon.js",
+    "optimizar-capturas": "node scripts/optimizar-capturas.mjs"
   },
   "eslintConfig": {
     "extends": [

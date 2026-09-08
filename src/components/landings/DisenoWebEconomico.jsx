@@ -68,7 +68,7 @@ export const contenido = {
     planes: [
       {
         nombre: 'Landing Starter',
-        precio: '350€',
+        precio: 'desde 350€',
         destacado: true,
         para: 'La opción más económica. Lo esencial, bien hecho y sin recortar donde importa.',
         incluye: [
@@ -82,7 +82,7 @@ export const contenido = {
       },
       {
         nombre: 'Landing Premium',
-        precio: '499€',
+        precio: 'desde 499€',
         para: 'Si necesitas contar más cosas o quieres que entre mejor por los ojos.',
         incluye: [
           '8 secciones personalizadas',

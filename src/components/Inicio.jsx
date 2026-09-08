@@ -792,10 +792,11 @@ export const Inicio = () => {
               <>
                 <h2 className='modal-titulo'>Elige tu Landing Page</h2>
                 <p className='modal-subtitulo'>Dos variantes para adaptarse a lo que necesitas</p>
+                <p className='tipos-web-intro'>Cada landing se desarrolla desde cero y a medida para tu negocio, sin plantillas ni constructores.</p>
                 <div className='modal-grid modal-grid-2'>
                   <div className='modal-card'>
                     <h3>Starter</h3>
-                    <span className='price'>350€<span className='price-iva'> más IVA</span></span>
+                    <span className='price'><span className='price-span'>Desde </span>350€<span className='price-iva'> más IVA</span></span>
                     <p className='description'>Ideal para tener presencia online con lo esencial bien hecho.</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon />1 sección larga y 3 secciones pequeñas</li>
@@ -809,7 +810,7 @@ export const Inicio = () => {
                   <div className='modal-card modal-card-featured'>
                     <span className='featured-badge'>Más completo</span>
                     <h3>Premium</h3>
-                    <span className='price'>499€<span className='price-iva'> más IVA</span></span>
+                    <span className='price'><span className='price-span'>Desde </span>499€<span className='price-iva'> más IVA</span></span>
                     <p className='description'>Más secciones, más impacto y mayor personalización.</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon />8 secciones personalizadas (2 grandes)</li>

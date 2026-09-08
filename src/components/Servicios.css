@@ -155,7 +155,7 @@ body.nav-hidden .page-header {
     font-size: 0.95rem;
     color: #555;
     font-weight: 600;
-    margin-left: 8px;
+    margin-left: 2px;
 }
 
 /* Sin margin-right: el hueco lo da el espacio de dentro del span, que ademas

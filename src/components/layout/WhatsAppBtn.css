@@ -8,6 +8,9 @@
     align-items: center;
     justify-content: center;
     gap: 0;
+    /* border-box para que los 56px incluyan el borde blanco: el .chat-fab ya lo
+       hace y sin esto este circulo mide 60px y los dos flotantes no cuadran. */
+    box-sizing: border-box;
     height: 56px;
     width: 56px;
     padding: 0;
@@ -19,7 +22,7 @@
     box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45);
     overflow: hidden;
     white-space: nowrap;
-    transition: width 0.28s ease, gap 0.28s ease, padding 0.28s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    transition: width 0.28s ease, gap 0.28s ease, padding 0.28s ease, transform 0.28s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
 .fab-whatsapp-icon {
@@ -64,12 +67,34 @@
     outline-offset: 3px;
 }
 
+/* Mismo margen derecho y mismo tamano que .chat-fab en movil, para que los dos
+   circulos queden en el mismo eje. El bottom es el del ChatBot (28px) mas su
+   alto (52px) mas 12px de aire. */
 @media (max-width: 768px) {
     .fab-whatsapp {
         right: max(20px, env(safe-area-inset-right));
-        bottom: calc(84px + env(safe-area-inset-bottom));
+        bottom: calc(92px + env(safe-area-inset-bottom));
         height: 52px;
         width: 52px;
+    }
+}
+
+/* Mientras el usuario hace scroll los dos flotantes se apartan por la derecha
+   para no taparle el contenido, y vuelven en cuanto se para. Va despues de las
+   reglas de :hover y :active a proposito: misma especificidad, gana la ultima. */
+.fab-whatsapp.fab-oculto {
+    transform: translateX(calc(100% + 32px));
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Con el movimiento reducido no tiene sentido esconderlos: sin transicion, el
+   boton daria un salto seco en cada gesto de scroll. Se quedan quietos. */
+@media (prefers-reduced-motion: reduce) {
+    .fab-whatsapp.fab-oculto {
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
     }
 }
 

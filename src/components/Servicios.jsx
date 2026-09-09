@@ -187,8 +187,10 @@ export const Servicios = () => {
           <div className='service-row-grid service-row-grid-3'>
 
             {/* Mismos tres tipos que el modal de la home: el Basico va sin
-                "Desde" porque su precio es cerrado, los otros dos dependen del
-                catalogo o del alcance. Si cambia uno, cambiar el otro. */}
+                "Desde" porque su alcance esta cerrado (5 paginas), y por eso
+                lleva debajo la nota de que los extras se aprueban antes de
+                cobrarse. Los otros dos dependen del catalogo o del alcance y si
+                lo llevan. Si cambia uno, cambiar el otro. */}
             <div className='service-card'>
               <h2>Sitio Web Básico</h2>
               <div className='service-price'>699€<span className='service-price-iva'> + IVA</span></div>
@@ -205,6 +207,7 @@ export const Servicios = () => {
                 <span className='card-addon-etiqueta'>Complemento opcional</span>
                 <span className='card-addon-texto'>Panel para editar textos e imágenes tú mismo — <span className='card-addon-precio'>290€</span></span>
               </div>
+              <p className='card-cerrado'>Precio cerrado: si a mitad quieres añadir algo que no estaba, te digo lo que cuesta y decides tú. Nada se cobra sin que lo apruebes.</p>
               <Link to='/contacto' className='service-btn'>Contactar</Link>
             </div>
 

@@ -221,17 +221,94 @@
     scroll-margin-top: 90px;
 }
 
+/* Los puntos de los dos carruseles. Ocultos por defecto: en escritorio no hay
+   carrusel que indicar, las tarjetas ya se ven en fila. Tienen que ir antes
+   del @media que los enciende o ganarian el desempate y no se verian nunca. */
+.porque-dots,
+.modal-dots {
+    display: none;
+}
+
+/* Por debajo de 900px las tarjetas dejan de apilarse y pasan a carrusel
+   horizontal. Es scroll nativo con snap, no un slider a base de transform: el
+   avance automatico, el dedo y el teclado empujan todos el mismo scroll. */
 @media (max-width: 900px) {
     .porque-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 26px;
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        /* El desbordamiento vertical a visible dejaria un scroll horizontal
+           fantasma; con clip la tarjeta puede respirar sin recortarse. */
+        overflow-y: clip;
+        /* La barra de scroll sobra: para eso estan los puntos de debajo. */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
+
+    .porque-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .porque-item {
+        /* No llega a la mitad: el trozo de la siguiente tarjeta asomando es lo
+           que le dice al usuario que hay mas, incluso antes del primer salto.
+           En vw y no en %, porque el hueco de detras (el ::after) se mide
+           contra la pantalla y los dos numeros tienen que cuadrar. */
+        flex: 0 0 40vw;
+        scroll-snap-align: start;
+        /* Un gesto, una tarjeta. Sin esto un deslizamiento rapido se lleva por
+           delante dos o tres y el usuario aterriza en la ultima sin haber
+           leido las de en medio. */
+        scroll-snap-stop: always;
+    }
+
+    /* Hueco del ancho de la pantalla menos una tarjeta. Sin el, el scroll topa
+       antes de que la ultima tarjeta llegue al borde izquierdo y se queda a
+       medio camino, con el recorte de la anterior colgando a la izquierda.
+       Va como ::after y no como padding: el padding final de un contenedor
+       flex con scroll lo pierden algunos navegadores, y ademas un
+       pseudoelemento no cuenta como hijo, asi que la logica del carrusel en
+       JS sigue viendo cuatro tarjetas. */
+    .porque-grid::after {
+        content: '';
+        flex: 0 0 calc(60vw - 40px);
+    }
+
+    .porque-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 22px;
+    }
+
+    .porque-dot,
+    .modal-dot {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: #d6cfe6;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .porque-dot.is-active,
+    .modal-dot.is-active {
+        background: var(--color-accion);
+        transform: scale(1.3);
+    }
+
 }
 
 @media (max-width: 560px) {
-    .porque-grid {
-        grid-template-columns: 1fr;
-        gap: 22px;
+    .porque-item {
+        flex: 0 0 72vw;
+    }
+
+    .porque-grid::after {
+        flex: 0 0 calc(28vw - 40px);
     }
 }
 
@@ -964,9 +1041,6 @@
 }
 
 .work-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
     color: #6b6e8a;
     font-weight: 500;
     font-size: 0.82rem;
@@ -974,6 +1048,18 @@
     padding-top: 20px;
     border-top: 1px solid #eef0f7;
     line-height: 1.6;
+}
+
+/* La lista de tecnologias sola no le dice nada al cliente pequeno: este
+   remate la traduce a lo unico que le importa, que la web no sale de una
+   plantilla. Va en el mismo tono y tamano que las tecnologias, sin pildora,
+   para que se lea como el final de la misma frase y no como otra etiqueta. */
+.work-tech-resumen {
+    font-weight: 600;
+}
+
+.work-tech-resumen::before {
+    content: '— ';
 }
 
 .work-btn {
@@ -1351,29 +1437,45 @@
 /* ─── Mobile (≤ 768px) ─── */
 @media (max-width: 768px) {
 
-    /* Hero */
-    .hero {
-        padding: 60px 20px 50px;
+    .hero-content {
+        width: 100%;
     }
 
+    /* El titular tiene que caber en dos lineas: si "Tu negocio, en Google."
+       parte, el hero se come 40px de mas y la ultima garantia se sale de
+       pantalla. El clamp ata el tamano al ancho real del movil en vez de ir
+       poniendo un breakpoint por cada modelo. */
     .hero h1 {
-        font-size: 2rem;
-        margin-bottom: 16px;
+        font-size: clamp(1.4rem, 7.2vw, 1.75rem);
+        margin-bottom: 14px;
     }
 
     .hero p {
-        font-size: 1rem;
-        margin-bottom: 28px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 22px;
     }
 
     .hero-badge {
-        font-size: 0.72rem;
-        margin-bottom: 20px;
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+        padding: 5px 14px;
+        margin-bottom: 16px;
     }
 
     .hero-btn {
         padding: 12px 26px;
         font-size: 0.95rem;
+    }
+
+    .hero-actions {
+        gap: 12px;
+    }
+
+    .hero-garantias {
+        margin-top: 18px;
+        gap: 8px 18px;
+        font-size: 0.85rem;
     }
 
     /* Títulos de sección */
@@ -1396,8 +1498,45 @@
         grid-template-columns: 1fr;
     }
 
+    /* Cada tarjeta tiene que caber entera en la pantalla, tambien en un movil
+       pequeno: una tarjeta de precio cortada por la mitad da la sensacion de
+       que se esconde algo justo donde el cliente decide. De ahi el apretado de
+       esta seccion. Todo va colgado de .product-card para no arrastrar a las
+       tarjetas del modal, que comparten clases. */
     .product-card {
-        padding: 22px;
+        padding: 20px;
+    }
+
+    .product-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+    }
+
+    .product-card .price {
+        font-size: 1.8rem;
+        margin-bottom: 14px;
+    }
+
+    .product-card .card-para-quien {
+        font-size: 0.92rem;
+        margin-bottom: 14px;
+        padding: 10px 12px;
+    }
+
+    /* El parrafo suelto repite lo que ya dice el recuadro de "para quien es"
+       justo encima. En escritorio da cuerpo a la columna; en movil son 100-150px
+       de lo mismo dicho dos veces, y es lo que sacaba la tarjeta de pantalla. */
+    .product-card .description {
+        display: none;
+    }
+
+    .product-card .features {
+        margin-bottom: 20px;
+    }
+
+    .product-card .features li {
+        font-size: 0.92rem;
+        padding: 6px 0;
     }
 
     .price {
@@ -1462,13 +1601,19 @@
 
     /* Modal */
     .modal-planes {
-        padding: 32px 18px 24px;
+        padding: 26px 14px 18px;
         border-radius: 14px;
     }
 
+    /* Simetrico y no solo a la derecha: el hueco se reserva para no pasar por
+       debajo de la X, pero con padding en un solo lado el texto centrado se
+       desplaza media reserva a la izquierda y baila respecto al subtitulo. */
     .modal-titulo {
-        font-size: 1.5rem;
-        padding-right: 32px;
+        /* Se ata al ancho para que quepa en una linea con el hueco de la X ya
+           descontado: "Elige tu Mantenimiento" a 1.5rem se partia en dos y se
+           comia 32px de alto en un modal donde el sitio va justo. */
+        font-size: clamp(1.05rem, 5vw, 1.5rem);
+        padding: 0 34px;
     }
 
     .modal-grid-2 {
@@ -1537,5 +1682,384 @@
     .work-row.is-revealed .work-media,
     .work-row.is-revealed.work-row-reverse .work-media {
         transform: translateY(0) scale(1);
+    }
+}
+/* El hero a pantalla completa, hasta la ultima garantia, sin scroll.
+   El corte va por ancho y no por alto: ningun movil en vertical pasa de 440px
+   (iPhone 16 Pro Max) y la tablet mas pequena empieza en 744px (iPad mini), asi
+   que 600px separa los dos mundos sin tocar a nadie. Filtrar por alto era el
+   error de antes: dejaba fuera a los Pro Max, de 932 y 956px, que son
+   justamente los moviles donde mas se notaba el hueco.
+   svh y no dvh: svh es el alto con la barra del navegador desplegada, o sea el
+   peor caso, que es contra el que hay que cuadrar. */
+@media (max-width: 600px) {
+    .hero {
+        /* border-box o el padding se suma al min-height y el hero se pasa de
+           pantalla justo por esos 56px. */
+        box-sizing: border-box;
+        min-height: calc(100vh - 64px);
+        min-height: calc(100svh - 64px);
+        display: flex;
+        align-items: center;
+        /* Mas aire abajo que arriba a proposito: centrado matematico, en un
+           movil alto el bloque parece caido. Con esta asimetria queda sobre el
+           centro optico y ademas se aleja de los botones flotantes. */
+        padding: 28px 20px 72px;
+        margin-bottom: 24px;
+    }
+}
+
+/* ─── Moviles estrechos (≤ 380px) ─── */
+/* Estas pantallas suelen ser tambien las mas bajas (568-640px), asi que aqui se
+   aprieta el aire vertical del hero para que la ultima garantia siga entrando.
+   El titular ya se adapta solo con el clamp de arriba. */
+@media (max-width: 380px) {
+    .hero {
+        padding: 20px;
+    }
+
+    .hero p {
+        font-size: 0.92rem;
+        margin-bottom: 18px;
+    }
+
+    .hero-badge {
+        margin-bottom: 12px;
+    }
+
+    .hero-actions {
+        gap: 10px;
+    }
+
+    .hero-garantias {
+        font-size: 0.82rem;
+        margin-top: 14px;
+    }
+
+    /* Ultimo apreton para que las dos tarjetas mas largas quepan tambien en un
+       movil de 568px de alto, donde se pasaban por unos 15px. */
+    .product-card {
+        padding: 18px;
+    }
+
+    .product-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .product-card .price {
+        font-size: 1.7rem;
+        margin-bottom: 12px;
+    }
+
+    .product-card .card-para-quien {
+        font-size: 0.88rem;
+        margin-bottom: 12px;
+        padding: 9px 11px;
+    }
+
+    .product-card .features {
+        margin-bottom: 16px;
+    }
+
+    .product-card .features li {
+        font-size: 0.88rem;
+        padding: 5px 0;
+    }
+}
+/* ─── Carrusel de planes del modal (≤ 900px) ─── */
+/* Va al final del archivo a proposito: .modal-grid se define mas arriba con
+   display:grid y, a igual especificidad, gana la regla que aparece despues. */
+@media (max-width: 900px) {
+    /* Tres planes apilados obligan a un scroll largo para compararlos, que es
+       justo lo que el cliente esta intentando hacer aqui. De lado se ven de
+       una pasada. */
+    .modal-grid {
+        display: flex;
+        /* Estirados a la misma altura: se ven de uno en uno, pero al deslizar
+           entre planes las tarjetas de distinto alto dan un salto feo y el
+           boton de Contactar baila. El precio es que manda el plan mas largo,
+           asi que el largo de ese plan es el que hay que controlar. */
+        align-items: stretch;
+        /* .modal-grid-2 centra sus columnas para el escritorio. En una rejilla
+           que desborda, centrar empuja la primera tarjeta fuera del area por la
+           izquierda, a una posicion negativa que el scroll no alcanza: el modal
+           abria con el primer plan cortado y sin manera de llegar a el. */
+        justify-content: flex-start;
+        gap: 16px;
+        overflow-x: auto;
+        overflow-y: clip;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    /* Cabecera del modal al minimo: cada linea de aqui arriba es una linea que
+       le falta a la tarjeta para caber sin scroll. */
+    .modal-subtitulo {
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+    }
+
+    .modal-planes .tipos-web-intro {
+        font-size: 0.82rem;
+        line-height: 1.4;
+        margin: 0 0 14px;
+    }
+
+    .modal-card {
+        padding: 14px 16px;
+    }
+
+    .modal-card h3 {
+        font-size: 1.15rem;
+        margin-bottom: 6px;
+    }
+
+    .modal-card .price {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+
+    .modal-card .description {
+        font-size: 0.84rem;
+        margin-bottom: 8px;
+    }
+
+    .modal-card .features {
+        margin-bottom: 12px;
+    }
+
+    .modal-card .features li {
+        padding: 2px 0;
+        font-size: 0.8rem;
+        line-height: 1.35;
+    }
+
+    /* La nota del pie tiene que verse sin bajar: es donde se avisa de que el
+       mantenimiento va aparte, y leerla despues del precio evita la sorpresa. */
+    .modal-planes .tipos-web-nota {
+        font-size: 0.8rem;
+        line-height: 1.45;
+        margin-top: 12px;
+    }
+
+    .modal-card .featured-badge {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+        margin-bottom: 8px;
+    }
+
+    .modal-card .card-btn {
+        padding: 10px;
+    }
+
+    .modal-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .modal-card {
+        /* border-box o el padding de la tarjeta se suma al 84% y acaba
+           ocupando el 97% de la rejilla: el plan siguiente deja de asomar y
+           nada indica que haya mas. */
+        box-sizing: border-box;
+        flex: 0 0 84%;
+        scroll-snap-align: start;
+        /* Un gesto, un plan: igual que en el carrusel del "por que". */
+        scroll-snap-stop: always;
+    }
+
+    /* El hueco que le falta al ultimo plan para poder llegar al borde
+       izquierdo. En % y no en vw: el modal no ocupa toda la pantalla, y tanto
+       este hueco como el ancho de las tarjetas se miden contra la rejilla. */
+    .modal-grid::after {
+        content: '';
+        flex: 0 0 16%;
+    }
+
+    .modal-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 12px;
+    }
+}
+/* ─── Capturas de proyecto en movil y tablet (≤ 900px) ─── */
+/* La caja del slider era fija y vertical (173x360): valia para la captura de
+   movil, que es la unica con esa forma, y dejaba la de escritorio pintada a
+   173x91 px, ilegible. Aqui la caja se adapta a la forma de cada captura en
+   vez de al reves. */
+@media (max-width: 900px) {
+    /* Las flechas se llevaban 109px de ancho a los lados de la imagen. Aqui
+       bajan a la fila de Escritorio/Tablet/Movil, una a cada lado: la captura
+       recupera todo el ancho y ademas no le queda nada encima.
+       Estan anidadas dos niveles por debajo de los botones, asi que en vez de
+       cambiar el marcado se disuelven los dos contenedores intermedios con
+       display:contents y las cuatro piezas pasan a ser hijas de .work-media,
+       que las recoloca por areas. */
+    .work-slider,
+    .work-slider-track {
+        display: contents;
+    }
+
+    .work-media {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        grid-template-areas:
+            'captura captura captura'
+            'antes   puntos  despues';
+        align-items: center;
+        gap: 8px 4px;
+    }
+
+    .work-slider-viewport {
+        grid-area: captura;
+    }
+
+    .work-slider-arrow-prev {
+        grid-area: antes;
+    }
+
+    .work-slider-dots {
+        grid-area: puntos;
+        margin-top: 0;
+    }
+
+    .work-slider-arrow-next {
+        grid-area: despues;
+    }
+
+    .work-slider-arrow {
+        min-width: 36px;
+        min-height: 36px;
+        padding: 2px;
+    }
+
+    .work-slider-arrow-icon {
+        width: 1.7rem;
+        height: 1.7rem;
+    }
+
+    /* Ancho completo y alto libre: cada captura se pinta con su propia forma.
+       El tope de 40vh es solo para la de movil, que si no se comeria media
+       pantalla ella sola. */
+    /* El hueco de la captura mide siempre lo mismo y cada imagen se centra
+       dentro. Antes el alto lo ponia la imagen, asi que la tarjeta entera
+       encogia o crecia al pasar de escritorio a movil y daba un salto. */
+    .work-slider-viewport {
+        /* La cuenta la marca el proyecto de texto mas largo (Heladeria Luxer):
+           con 30vh se salia de pantalla. Y hay que dejar margen, que la barra
+           del navegador no mide igual en todos los moviles. */
+        height: 27vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .work-slider-viewport .work-image {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+    /* La captura de tablet es menos apaisada que la de escritorio, asi que a
+       ancho completo salia mas alta que ella y parecia la importante. El 72%
+       sale de igualar las dos alturas: 1.375 (forma de la tablet) entre 1.9
+       (forma del escritorio). Asi la tablet queda a la misma altura que la web
+       pero mas estrecha, que es el orden que toca. */
+    .work-slider-viewport .work-image-tablet {
+        max-width: 72%;
+    }
+
+    /* Apretado del resto de la fila para que el proyecto entero quepa en una
+       pantalla. Son margenes, no contenido: no se quita ni una caracteristica.
+       El tope de 30vh de arriba es parte de la misma cuenta: la captura de
+       movil es la mas alta y es la que decide si la fila cabe. */
+    .work-row,
+    .work-row-reverse {
+        padding: 16px;
+        gap: 14px;
+    }
+
+    .work-slider-dot {
+        font-size: 0.82rem;
+        padding: 4px 9px;
+    }
+
+    .work-content h3 {
+        margin-bottom: 8px;
+    }
+
+    .work-subtitulo {
+        margin-bottom: 10px;
+    }
+
+    .work-description {
+        margin-bottom: 10px;
+    }
+
+    .work-features {
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+
+    .work-tech {
+        font-size: 0.75rem;
+        line-height: 1.45;
+        padding-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .work-btn {
+        padding: 11px 24px;
+    }
+}
+/* ─── Formulario de "¿Hablamos?" en movil (≤ 900px) ─── */
+/* La seccion media 990px contra 780 de pantalla: el boton de Enviar mensaje
+   quedaba siempre por debajo del corte y habia que adivinar que estaba ahi.
+   Todo lo de aqui es aire, no contenido: no se quita ni un campo. Va colgado
+   de .inicio-contact-section para no tocar el formulario de /contacto. */
+@media (max-width: 900px) {
+    .inicio-contact-section {
+        padding: 22px 16px 20px;
+    }
+
+    .inicio-contact-section .section-title {
+        margin-top: 0;
+        margin-bottom: 14px;
+    }
+
+    .inicio-contact-subtitle {
+        margin: 0 auto 16px;
+    }
+
+    .inicio-contact-form-wrapper {
+        padding: 18px 16px;
+    }
+
+    .inicio-form-nota {
+        margin-bottom: 12px;
+    }
+
+    .inicio-form-group {
+        margin-bottom: 12px;
+    }
+
+    .inicio-form-group label {
+        margin-bottom: 5px;
+    }
+
+    /* 11px arriba y abajo siguen dando 44px de alto de campo, que es el minimo
+       comodo para tocar con el dedo. */
+    .inicio-form-group input,
+    .inicio-form-group textarea,
+    .inicio-form-group select {
+        padding: 11px 12px;
+    }
+
+    /* De 5 filas a 3: el aviso de arriba ya dice que con dos lineas basta. */
+    .inicio-form-group textarea {
+        height: 86px;
     }
 }

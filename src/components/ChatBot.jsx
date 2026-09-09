@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import "./ChatBot.css";
+import { useScrollActivo } from "../utils/useScrollActivo";
+import { EVENTO_MENU_ABIERTO, avisarChatAbierto } from "../utils/eventosUi";
 
 const EMAILJS_SERVICE_ID = import.meta.env.REACT_APP_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.REACT_APP_EMAILJS_TEMPLATE_ID;
@@ -15,7 +17,7 @@ LANDING PAGE (una sola página, para captar contactos). Las landings también se
 Los dos precios de landing son de partida: si el cliente pide mas secciones, mas contenido o funciones extra, el precio sube y se cierra en el presupuesto.
 
 SITIO WEB (tres tipos distintos, no son tallas del mismo producto). Todas las webs se desarrollan desde cero, sin plantillas ni constructores tipo WordPress, Wix o Shopify:
-- Sitio Web Básico: 699€, precio cerrado — hasta 5 páginas, diseño responsive, SEO básico, formulario de contacto, Google Analytics. Entrega en 3-4 semanas. NO incluye tienda online ni blog. Se le puede añadir como complemento opcional un panel para que el cliente edite él mismo textos e imágenes, por 290€ aparte.
+- Sitio Web Básico: 699€, precio cerrado — hasta 5 páginas, diseño responsive, SEO básico, formulario de contacto, Google Analytics. Entrega en 3-4 semanas. NO incluye tienda online ni blog. Se le puede añadir como complemento opcional un panel para que el cliente edite él mismo textos e imágenes, por 290€ aparte. Si a mitad del proyecto el cliente quiere añadir algo que no estaba en el presupuesto, se le dice antes lo que cuesta y decide él: nunca se cobra un extra sin que lo haya aprobado.
 - E-commerce / Tienda Online: desde 999€, el precio depende del número de productos del catálogo — todo lo del Básico y además carrito de compras, pasarela de pago segura, reservas y citas online, panel de gestión de productos y stock incluido, blog integrado y SEO avanzado. Entrega en 6-8 semanas. Cobrar una sesión o una reserva por internet es una pasarela de pago, y por eso las citas online entran en este nivel.
 - Proyecto a Medida (antes llamado "Sitio Web a Medida"): desde 1.499€, a negociar según alcance — todo lo anterior y además páginas y funciones sin límite, panel de administración personalizado, agenda de varios profesionales con Google Calendar, sincronización con proveedor o ERP, ChatBot con IA integrado y área privada de clientes. Entrega según proyecto. Es el más elegido.
 
@@ -92,6 +94,15 @@ const BurbujaMensaje = ({ texto, animar, onAnimacionFin }) => {
 
 export default function ChatBot() {
   const [abierto, setAbierto] = useState(false);
+  const scrollActivo = useScrollActivo();
+
+  // Que no convivan en pantalla el chat y el menu movil: manda el ultimo
+  // que se abre, y el menu es el que avisa.
+  useEffect(() => {
+    const cerrar = () => setAbierto(false);
+    window.addEventListener(EVENTO_MENU_ABIERTO, cerrar);
+    return () => window.removeEventListener(EVENTO_MENU_ABIERTO, cerrar);
+  }, []);
   const [mensajes, setMensajes] = useState([
     {
       rol: "assistant",
@@ -187,7 +198,7 @@ export default function ChatBot() {
 
   return (
     <>
-      <button className="chat-fab" onClick={() => { if (!abierto) tocarSonido(); setAbierto(!abierto); }} aria-label="Abrir chat">
+      <button className={`chat-fab ${scrollActivo && !abierto ? 'fab-oculto' : ''}`} onClick={() => { if (!abierto) { tocarSonido(); avisarChatAbierto(); } setAbierto(!abierto); }} aria-label="Abrir chat">
         {abierto ? (
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M5 5h2v2H5zm4 4H7V7h2zm2 2H9V9h2zm2 0h-2v2H9v2H7v2H5v2h2v-2h2v-2h2v-2h2v2h2v2h2v2h2v-2h-2v-2h-2v-2h-2zm2-2v2h-2V9zm2-2v2h-2V7zm0 0V5h2v2z" />

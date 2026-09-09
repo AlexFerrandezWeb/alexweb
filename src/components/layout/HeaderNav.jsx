@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import './HeaderNav.css'
 import { enlaceWhatsApp, registrarClicWhatsApp } from '../../utils/whatsapp'
+import { avisarMenuAbierto, EVENTO_CHAT_ABIERTO } from '../../utils/eventosUi'
 
 export const HeaderNav = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -22,6 +23,19 @@ export const HeaderNav = () => {
 
   const closeMenu = () => setMenuOpen(false)
 
+  useEffect(() => {
+    const cerrar = () => setMenuOpen(false)
+    window.addEventListener(EVENTO_CHAT_ABIERTO, cerrar)
+    return () => window.removeEventListener(EVENTO_CHAT_ABIERTO, cerrar)
+  }, [])
+
+  // Al abrir el menu avisamos para que el ChatBot se cierre: si no, se queda
+  // flotando por encima y el menu aparece detras.
+  const toggleMenu = () => setMenuOpen(prev => {
+    if (!prev) avisarMenuAbierto()
+    return !prev
+  })
+
   // Ojo con la clase site-header: no es decorativa, los estilos de esta
   // cabecera cuelgan de ella. Antes iban sobre la etiqueta `header` a secas, así
   // que cualquier otro <header> de la web (el de un artículo del blog, por
@@ -36,7 +50,7 @@ export const HeaderNav = () => {
 
       <button
         className={`hamburger${menuOpen ? ' open' : ''}`}
-        onClick={() => setMenuOpen(prev => !prev)}
+        onClick={toggleMenu}
         aria-label="Abrir menú"
         aria-expanded={menuOpen}
       >

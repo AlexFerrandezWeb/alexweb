@@ -13,13 +13,33 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 20px rgba(44, 62, 80, 0.35);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.28s ease, box-shadow 0.2s, opacity 0.2s ease;
     z-index: 1100;
 }
 
 .chat-fab:hover {
     transform: scale(1.08);
     box-shadow: 0 6px 25px rgba(44, 62, 80, 0.4);
+}
+
+/* Se aparta por la derecha mientras hay scroll, igual que .fab-whatsapp. Cuando
+   el chat esta abierto no se oculta: seria quitarle el boton de cerrar. */
+.chat-fab.fab-oculto {
+    transform: translateX(calc(100% + 32px));
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chat-fab {
+        transition: none;
+    }
+
+    .chat-fab.fab-oculto {
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
 
 .chat-window {
@@ -208,6 +228,17 @@
 .chat-send-btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;
+}
+
+/* Los dos flotantes se alinean en el mismo eje vertical: mismo tamano (52px) y
+   mismo margen derecho que .fab-whatsapp. Si se toca uno, tocar el otro. */
+@media (max-width: 768px) {
+    .chat-fab {
+        right: max(20px, env(safe-area-inset-right));
+        bottom: calc(28px + env(safe-area-inset-bottom));
+        width: 52px;
+        height: 52px;
+    }
 }
 
 @media (max-width: 480px) {

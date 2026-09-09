@@ -74,6 +74,16 @@ export const Inicio = () => {
   const [filasReveladas, setFilasReveladas] = useState({})
   const filasRef = useRef([])
   const capturasPrecargadas = useRef(new Set())
+  const porqueRef = useRef(null)
+  const [porqueIndice, setPorqueIndice] = useState(0)
+  const porquePausaRef = useRef(null)
+  const porqueGestoRef = useRef(null)
+  const porqueAsentarRef = useRef(null)
+  const modalGridRef = useRef(null)
+  const [modalIndice, setModalIndice] = useState(0)
+  const [modalTotal, setModalTotal] = useState(0)
+  const [porquePausado, setPorquePausado] = useState(false)
+  const [porqueVisible, setPorqueVisible] = useState(false)
 
   const handleContactChange = (e) => {
     let value = e.target.value
@@ -135,20 +145,13 @@ export const Inicio = () => {
   const proyectos = [
     {
       nombre: 'Nutrigan España',
-      subtitulo: 'Tienda online de suplementos nutricionales para ganado',
-      descripcion: 'Sitio web corporativo y tienda online desarrollado a medida para Nutrigan España, distribuidor oficial de productos veterinarios y suplementos nutricionales para ganado bovino, ovino y porcino.',
+      subtitulo: 'Tienda online',
+      descripcion: 'Distribuidor de productos veterinarios y suplementos para ganado. Ahora vende su catálogo por internet, con pago con tarjeta y sin depender de llamadas.',
       features: [
-        'Tienda online con carrito de compras y catálogo de productos',
-        'Página de productos con fichas detalladas y precios',
-        'Sección "Sobre nosotros" con historia y valores de la empresa',
-        'Página especial para la Feria de Tineo',
-        'Carrusel de imágenes en la página principal',
-        'Sección de certificaciones oficiales',
-        'Botón de contacto directo por WhatsApp',
-        'Política de cookies, aviso legal y términos y condiciones',
-        'SEO optimizado con metadatos completos',
-        'Diseño responsive para todos los dispositivos',
-        'Imágenes en formato WebP para mayor velocidad de carga',
+        'Catálogo con fichas de producto y precios',
+        'Carrito y pago con tarjeta',
+        'Contacto directo por WhatsApp',
+        'Se ve bien en móvil, tablet y ordenador',
       ],
       tecnologias: 'HTML5, CSS3, JavaScript, Node.js, Stripe, Render',
       url: 'https://www.xn--nutriganespaa-tkb.com/',
@@ -158,22 +161,13 @@ export const Inicio = () => {
     },
     {
       nombre: 'Heladería Luxer',
-      subtitulo: 'Web corporativa con carta digital',
-      descripcion: 'Sitio web desarrollado a medida para Heladería Luxer, heladería de temporada ubicada en San Pedro del Pinatar, Murcia. Diseño mobile-first con enfoque en experiencia de usuario y SEO local. Destacable el sistema multiidioma desarrollado desde cero sin frameworks, adaptado a la clientela internacional de la zona costera.',
+      subtitulo: 'Sitio web',
+      descripcion: 'Heladería de temporada en San Pedro del Pinatar. Sus clientes consultan la carta y los precios desde el móvil, en tres idiomas, sin tener que entrar al local y sin depender de la carta física.',
       features: [
-        'Carta digital con 6 categorías — helados, granizados, batidos, bebidas, combinados y desayunos',
-        'Más de 20 sabores con precios en 3 tamaños y etiquetas nutricionales',
-        'Multiidioma español, inglés y francés con cambio dinámico sin recargar la página',
-        'Galería responsive — grid en escritorio y carrusel deslizable en móvil',
-        'Navbar que se comprime automáticamente al hacer scroll',
-        'Menú hamburguesa para navegación móvil',
-        'SEO local con Schema.org y geolocalización exacta del negocio',
-        'Open Graph y Twitter Card para compartir en redes sociales',
-        'Sitemap y robots.txt configurados',
-        'Lazy loading de imágenes para máxima velocidad',
-        'Banner de cookies con consentimiento',
-        'Más de 100 imágenes de producto optimizadas',
-        'Diseño responsive para todos los dispositivos',
+        'Carta digital con todos los sabores y precios',
+        'Español, inglés y francés en un clic',
+        'Galería de fotos del local y los productos',
+        'Preparada para salir en Google en búsquedas de la zona',
       ],
       tecnologias: 'HTML5, CSS3, JavaScript, Cloudflare Pages',
       url: 'https://heladerialuxer.es/',
@@ -183,21 +177,13 @@ export const Inicio = () => {
     },
     {
       nombre: 'Anita Pinturitas',
-      subtitulo: 'Tienda online de alta cosmética y maquillaje profesional',
-      descripcion: 'Sitio web y tienda online desarrollado a medida para Ana María Ramos, experta en belleza y maquillaje con más de 20 años de experiencia, especializada en productos para piel madura (+40) y maquillaje de bodas en Asturias.',
+      subtitulo: 'Tienda online',
+      descripcion: 'Experta en belleza y maquillaje con más de 20 años de oficio. Vende sus productos de cosmética por internet y recibe las reservas de bodas por WhatsApp.',
       features: [
-        'Tienda online con carrito de compras y catálogo de productos',
-        'Sección de cuidado de piel y cuidado capilar',
-        'Galería de clientes reales con carrusel animado',
-        'Sección de maquillaje de bodas con reserva directa por WhatsApp',
-        'Integración con Instagram — detección de directos en tiempo real',
-        'Sección "Quién es Anita Pinturitas" con historia personal',
-        'Botón de contacto directo por WhatsApp',
-        'Pasarela de pago seguro — PayPal, Visa, Mastercard y Bizum',
-        'SEO optimizado con metadatos completos',
-        'Verificación de dominio en Facebook',
-        'Política de cookies, aviso legal y términos y condiciones',
-        'Diseño responsive para todos los dispositivos',
+        'Catálogo con carrito y pago seguro',
+        'Tarjeta, PayPal y Bizum',
+        'Reservas de maquillaje de bodas por WhatsApp',
+        'Galería con clientas reales',
       ],
       tecnologias: 'HTML5, CSS3, JavaScript, Python 3, Stripe, Render',
       url: 'https://anitapinturitas.es/',
@@ -206,6 +192,169 @@ export const Inicio = () => {
       imagenMovil: '/assets/anitapinturitasWEB_iphone.webp'
     }
   ];
+
+  // ── Carrusel de "por que necesitas una web" ──────────────────────────────
+  // Scroll nativo con scroll-snap, no un slider a base de transform: asi el
+  // avance automatico y el deslizar a dedo son el mismo mecanismo, y el teclado
+  // y el lector de pantalla siguen funcionando gratis.
+
+  // Posicion de cada tarjeta dentro del scroll, medida en vivo: depende del
+  // ancho de pantalla, que cambia con el breakpoint y al girar el movil.
+  const posicionesDe = (cont) => {
+    if (!cont) return []
+    const izquierdaCont = cont.getBoundingClientRect().left
+    return [...cont.children].map(
+      (tarjeta) => cont.scrollLeft + tarjeta.getBoundingClientRect().left - izquierdaCont
+    )
+  }
+
+  const irATarjetaDe = (cont, indice) => {
+    if (!cont) return
+    const posiciones = posicionesDe(cont)
+    if (posiciones[indice] === undefined) return cont.scrollTo({ left: 0, behavior: 'smooth' })
+    cont.scrollTo({ left: posiciones[indice], behavior: 'smooth' })
+  }
+
+  const indiceCercanoDe = (cont) => {
+    if (!cont) return 0
+    const posiciones = posicionesDe(cont)
+    let cercana = 0
+    posiciones.forEach((pos, i) => {
+      if (Math.abs(pos - cont.scrollLeft) < Math.abs(posiciones[cercana] - cont.scrollLeft)) cercana = i
+    })
+    return cercana
+  }
+
+  const posicionesPorque = () => posicionesDe(porqueRef.current)
+
+  const irATarjetaPorque = (indice) => irATarjetaDe(porqueRef.current, indice)
+
+  const indiceCercanoPorque = () => indiceCercanoDe(porqueRef.current)
+
+  // Un gesto, una tarjeta. scroll-snap-stop ya frena el impulso de un
+  // deslizamiento rapido, pero no el arrastre largo: ahi el contenido sigue al
+  // dedo y puede acabar tres tarjetas mas alla. Se apunta en que tarjeta
+  // empezaba el gesto y, cuando el scroll se para, se devuelve a la de al lado
+  // si se ha pasado. Solo se arma con un gesto del usuario, asi que los saltos
+  // que damos nosotros (los puntos, la vuelta al principio) no se tocan.
+  const empezarGestoPorque = () => {
+    if (porqueGestoRef.current === null) porqueGestoRef.current = indiceCercanoPorque()
+  }
+
+  // Al tocar el carrusel se para, y vuelve a andar 6s despues de soltarlo: si
+  // se reanudara al momento, daria un tiron encima del dedo del usuario.
+  const pausarPorque = () => {
+    clearTimeout(porquePausaRef.current)
+    setPorquePausado(true)
+  }
+
+  const reanudarPorque = () => {
+    clearTimeout(porquePausaRef.current)
+    porquePausaRef.current = setTimeout(() => setPorquePausado(false), 6000)
+  }
+
+  // Los puntos siguen al scroll real, tanto si el salto lo ha dado el
+  // temporizador como si ha sido el dedo del usuario.
+  useEffect(() => {
+    const cont = porqueRef.current
+    if (!cont) return
+
+    const alScroll = () => {
+      setPorqueIndice(indiceCercanoPorque())
+
+      if (porqueGestoRef.current === null) return
+
+      // 140ms sin un solo evento de scroll = el dedo ya solto y la inercia se
+      // acabo. Es el momento de corregir, no antes: durante el gesto el
+      // contenido tiene que seguir al dedo o se siente agarrotado.
+      clearTimeout(porqueAsentarRef.current)
+      porqueAsentarRef.current = setTimeout(() => {
+        const desde = porqueGestoRef.current
+        porqueGestoRef.current = null
+        const ahora = indiceCercanoPorque()
+        if (Math.abs(ahora - desde) > 1) irATarjetaPorque(desde + Math.sign(ahora - desde))
+      }, 140)
+    }
+
+    cont.addEventListener('scroll', alScroll, { passive: true })
+    return () => {
+      cont.removeEventListener('scroll', alScroll)
+      clearTimeout(porqueAsentarRef.current)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Solo se mueve cuando la seccion esta en pantalla: fuera de vista seria
+  // trabajo tirado, y ademas el usuario se perderia el movimiento.
+  useEffect(() => {
+    const cont = porqueRef.current
+    if (!cont || typeof IntersectionObserver === 'undefined') return
+
+    const observer = new IntersectionObserver(
+      ([entrada]) => setPorqueVisible(entrada.isIntersecting),
+      { threshold: 0.4 }
+    )
+    observer.observe(cont)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    // Arriba de 900px las cuatro tarjetas se ven de golpe en la rejilla: ahi no
+    // hay carrusel que avanzar. Y si el usuario pide menos movimiento, se queda
+    // quieto y se pasa a dedo.
+    const esCarrusel = window.matchMedia('(max-width: 900px)')
+    const menosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (!esCarrusel.matches || menosMovimiento.matches) return
+    if (!porqueVisible || porquePausado) return
+
+    const temporizador = setInterval(() => {
+      const cont = porqueRef.current
+      if (!cont) return
+      // Se cuentan tarjetas, no pixeles: detras de la ultima hay un hueco a
+      // proposito para que pueda llegar al borde, asi que medir contra el final
+      // del scroll daria una vuelta de mas o de menos.
+      const ultima = cont.children.length - 1
+      if (porqueIndice >= ultima) cont.scrollTo({ left: 0, behavior: 'smooth' })
+      else irATarjetaPorque(porqueIndice + 1)
+    }, 4000)
+
+    return () => clearInterval(temporizador)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [porqueVisible, porquePausado, porqueIndice])
+
+  useEffect(() => () => {
+    clearTimeout(porquePausaRef.current)
+    clearTimeout(porqueAsentarRef.current)
+  }, [])
+
+  // Los planes del modal tambien se pasan de lado en movil. Sin avance
+  // automatico a proposito: aqui el usuario esta comparando precios para
+  // decidir, y que la tarjeta se le mueva mientras lee es justo lo que no
+  // quiere. Se re-engancha con cada modal porque cada uno monta su propia
+  // rejilla, con dos o tres planes.
+  useEffect(() => {
+    const cont = modalGridRef.current
+    setModalIndice(0)
+
+    if (!cont) {
+      setModalTotal(0)
+      return
+    }
+
+    setModalTotal(cont.children.length)
+
+    // Igual que el scrollTo(0, 0) vertical de mas arriba: el modal no se
+    // desmonta al saltar de un plan a otro, asi que la rejilla conservaria el
+    // desplazamiento anterior y abriria por la mitad de la segunda tarjeta.
+    cont.scrollLeft = 0
+
+    const alScroll = () => setModalIndice(indiceCercanoDe(cont))
+    cont.addEventListener('scroll', alScroll, { passive: true })
+    return () => cont.removeEventListener('scroll', alScroll)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modalPlanes])
 
   useEffect(() => {
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
@@ -271,6 +420,23 @@ export const Inicio = () => {
     setSlideActual((previo) => ({ ...previo, [nombreProyecto]: indice }))
   }
 
+  // Mismo bloque de puntos para los tres modales de planes. Solo se ve donde
+  // hay carrusel: en escritorio la rejilla enseña los planes uno al lado del
+  // otro y no hay nada que indicar.
+  const puntosModal = (
+    <div className='modal-dots'>
+      {Array.from({ length: modalTotal }, (_, i) => (
+        <button
+          type='button'
+          key={i}
+          className={`modal-dot ${i === modalIndice ? 'is-active' : ''}`}
+          onClick={() => irATarjetaDe(modalGridRef.current, i)}
+          aria-label={`Ver el plan ${i + 1} de ${modalTotal}`}
+        />
+      ))}
+    </div>
+  )
+
   return (
     <div className='inicio-container'>
       {/* Hero Section */}
@@ -298,7 +464,18 @@ export const Inicio = () => {
           el precio llega sin contexto y solo se lee como un gasto. */}
       <section className='porque-section'>
         <h2 className='section-title'>¿Por qué necesitas una página web?</h2>
-        <div className='porque-grid'>
+        <div
+          className='porque-grid'
+          ref={porqueRef}
+          onPointerDown={() => { pausarPorque(); empezarGestoPorque() }}
+          onPointerUp={reanudarPorque}
+          onPointerCancel={reanudarPorque}
+          onWheel={() => { pausarPorque(); empezarGestoPorque(); reanudarPorque() }}
+          onMouseEnter={pausarPorque}
+          onMouseLeave={reanudarPorque}
+          onFocusCapture={pausarPorque}
+          onBlurCapture={reanudarPorque}
+        >
           <div className='porque-item'>
             <h3>Te encuentran cuando te buscan</h3>
             <p>Cada día alguien busca en Google lo que tú ofreces. Si no apareces, contrata a otro.</p>
@@ -315,6 +492,20 @@ export const Inicio = () => {
             <h3>Transmite confianza</h3>
             <p>Un negocio sin web genera dudas. Uno con web bien hecha, no.</p>
           </div>
+        </div>
+
+        {/* Los puntos solo se ven donde hay carrusel: en escritorio la rejilla
+            enseña las cuatro tarjetas y no hay nada que indicar. */}
+        <div className='porque-dots'>
+          {['Te encuentran cuando te buscan', 'No dependes de las redes', 'Trabaja mientras duermes', 'Transmite confianza'].map((titulo, i) => (
+            <button
+              type='button'
+              key={titulo}
+              className={`porque-dot ${i === porqueIndice ? 'is-active' : ''}`}
+              onClick={() => { pausarPorque(); irATarjetaPorque(i); reanudarPorque() }}
+              aria-label={`Ver "${titulo}"`}
+            />
+          ))}
         </div>
         {/* Ancla nativa y no <Link>: es un salto dentro de la misma pagina, el
             router no tiene que intervenir. Reusa .comparar-enlace, que ya es el
@@ -387,7 +578,7 @@ export const Inicio = () => {
           <div className='chatbot-banner-texto'>
             <span className='chatbot-banner-badge'>Nuevo</span>
             <h3>ChatBot con IA</h3>
-            <p>Integra un asistente inteligente en tu web que atiende a tus clientes 24/7, responde preguntas y capta leads de forma automática.</p>
+            <p>Un asistente en tu web que atiende a tus clientes las 24 horas, resuelve sus dudas y te deja su nombre y su teléfono para que puedas llamarles.</p>
           </div>
           <div className='chatbot-banner-precio'>
             <span className='chatbot-banner-desde'>Precio</span>
@@ -474,7 +665,7 @@ export const Inicio = () => {
                             key={capturaActual.src}
                             src={capturaActual.src}
                             alt={capturaActual.alt}
-                            className='work-image work-image-main'
+                            className={`work-image work-image-main work-image-${capturaActual.etiqueta.toLowerCase()}`}
                             decoding='async'
                             loading={index === 0 ? 'eager' : 'lazy'}
                             fetchPriority={index === 0 ? 'high' : 'auto'}
@@ -528,7 +719,10 @@ export const Inicio = () => {
                         ))}
                       </ul>
                     )}
-                    <p className='work-tech'>{proyecto.tecnologias}</p>
+                    <p className='work-tech'>
+                      <span className='work-tech-lista'>{proyecto.tecnologias}</span>
+                      <span className='work-tech-resumen'>¿No te suena de nada? Tranquilo: significa que tu web se ha hecho a mano, pieza a pieza, y no con una plantilla</span>
+                    </p>
                     <a
                       href={proyecto.url}
                       target='_blank'
@@ -713,11 +907,13 @@ export const Inicio = () => {
                 <h2 className='modal-titulo'>Elige tu Sitio Web</h2>
                 <p className='modal-subtitulo'>Tres tipos de web según lo que necesites</p>
                 <p className='tipos-web-intro'>Todas las webs se desarrollan desde cero, sin plantillas ni constructores.</p>
-                <div className='modal-grid'>
-                  {/* El Basico es el unico con precio cerrado: por eso va sin
-                      "Desde". Los otros dos dependen del catalogo o del alcance
-                      y si lo llevan. Espejo de la Fila 2 de /servicios: si
-                      cambia uno, cambiar el otro. */}
+                <div className='modal-grid' ref={modalGridRef} key={modalPlanes}>
+                  {/* El Basico va sin "Desde" porque su alcance esta cerrado
+                      (5 paginas), y por eso lleva debajo la nota de que los
+                      extras se aprueban antes de cobrarse. Los otros dos
+                      dependen del catalogo o del alcance y si lo llevan.
+                      Espejo de la Fila 2 de /servicios: si cambia uno,
+                      cambiar el otro. */}
                   <div className='modal-card'>
                     <h3>Sitio Web Básico</h3>
                     <span className='price'>699€<span className='price-iva'> más IVA</span></span>
@@ -734,6 +930,7 @@ export const Inicio = () => {
                       <span className='card-addon-etiqueta'>Complemento opcional</span>
                       <span className='card-addon-texto'>Panel para editar textos e imágenes tú mismo — <span className='card-addon-precio'>290€</span></span>
                     </div>
+                    <p className='card-cerrado'>Precio cerrado: si a mitad quieres añadir algo que no estaba, te digo lo que cuesta y decides tú. Nada se cobra sin que lo apruebes.</p>
                     <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
                   </div>
                   <div className='modal-card'>
@@ -770,13 +967,14 @@ export const Inicio = () => {
                     <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
                   </div>
                 </div>
+                {puntosModal}
                 <p className='tipos-web-nota'>Todos los proyectos incluyen mantenimiento opcional <strong>desde 50€/mes</strong>. Si tu web lleva panel de gestión, el plan indicado es el de <strong>70€/mes</strong>.</p>
               </>
             ) : modalPlanes === 'mantenimiento' ? (
               <>
                 <h2 className='modal-titulo'>Elige tu Mantenimiento</h2>
                 <p className='modal-subtitulo'>Mantén tu web siempre en forma, elige el nivel que necesitas</p>
-                <div className='modal-grid modal-grid-2'>
+                <div className='modal-grid modal-grid-2' ref={modalGridRef} key={modalPlanes}>
                   <div className='modal-card'>
                     <h3>Básico</h3>
                     <span className='price'>50€<span className='price-mes'>/mes</span><span className='price-iva'> más IVA</span></span>
@@ -810,13 +1008,14 @@ export const Inicio = () => {
                     <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
                   </div>
                 </div>
+                {puntosModal}
               </>
             ) : modalPlanes === 'landing' ? (
               <>
                 <h2 className='modal-titulo'>Elige tu Landing Page</h2>
                 <p className='modal-subtitulo'>Dos variantes para adaptarse a lo que necesitas</p>
                 <p className='tipos-web-intro'>Cada landing se desarrolla desde cero y a medida para tu negocio, sin plantillas ni constructores.</p>
-                <div className='modal-grid modal-grid-2'>
+                <div className='modal-grid modal-grid-2' ref={modalGridRef} key={modalPlanes}>
                   <div className='modal-card'>
                     <h3>Starter</h3>
                     <span className='price'><span className='price-span'>Desde </span>350€<span className='price-iva'> más IVA</span></span>
@@ -850,6 +1049,7 @@ export const Inicio = () => {
                     <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
                   </div>
                 </div>
+                {puntosModal}
               </>
             ) : modalPlanes === 'comparar' ? (
               <>

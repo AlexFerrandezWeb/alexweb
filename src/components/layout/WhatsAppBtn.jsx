@@ -1,12 +1,15 @@
 import React from 'react'
 import './WhatsAppBtn.css'
 import { enlaceWhatsApp, registrarClicWhatsApp } from '../../utils/whatsapp'
+import { useScrollActivo } from '../../utils/useScrollActivo'
 
 export const WhatsAppBtn = () => {
+  const scrollActivo = useScrollActivo()
+
   return (
     <a
       href={enlaceWhatsApp()}
-      className='fab-whatsapp'
+      className={`fab-whatsapp ${scrollActivo ? 'fab-oculto' : ''}`}
       target='_blank'
       rel='noopener noreferrer'
       onClick={() => registrarClicWhatsApp('boton_flotante')}

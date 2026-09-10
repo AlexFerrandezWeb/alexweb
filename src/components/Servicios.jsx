@@ -152,8 +152,7 @@ export const Servicios = () => {
                 <li><FeatureCheckIcon />SEO y posicionamiento local</li>
                 <li><FeatureCheckIcon />Diseño responsive, adaptado a cualquier tipo de pantalla</li>
                 <li><FeatureCheckIcon />Formulario de contacto</li>
-                <li><FeatureCheckIcon />Botones flotantes de WhatsApp y chat básico</li>
-                <li><FeatureCheckIcon />Entrega en 2 semanas</li>
+                <li><FeatureCheckIcon />Botones flotantes, WhatsApp y chat básico</li>
               </ul>
               <Link to='/contacto' className='service-btn'>Contactar</Link>
             </div>
@@ -167,10 +166,8 @@ export const Servicios = () => {
                 <li><FeatureCheckIcon />8 secciones personalizadas, 2 de ellas grandes</li>
                 <li><FeatureCheckIcon />SEO y posicionamiento local o nacional</li>
                 <li><FeatureCheckIcon />Diseño responsive, adaptado a cualquier tipo de pantalla</li>
-                <li><FeatureCheckIcon />Formulario de contacto</li>
-                <li><FeatureCheckIcon />Botones flotantes de WhatsApp y chat básico</li>
-                <li><FeatureCheckIcon gold />Google Analytics y Search Console para ver las estadísticas de tu web</li>
-                <li><FeatureCheckIcon />Entrega en 2-3 semanas</li>
+                <li><FeatureCheckIcon />Formulario de contacto, botones flotantes, WhatsApp y chat básico</li>
+                <li><FeatureCheckIcon gold />Integración de Google Analytics y Google Search Console para llevar las estadísticas de tu web</li>
               </ul>
               <Link to='/contacto' className='service-btn'>Contactar</Link>
             </div>

@@ -72,13 +72,11 @@ export const contenido = {
         destacado: true,
         para: 'La opción más económica. Lo esencial, bien hecho y sin recortar donde importa.',
         incluye: [
-          '1 sección larga y 3 pequeñas',
+          '1 sección larga y 3 secciones pequeñas',
           'SEO y posicionamiento local',
-          'Diseño a medida y responsive, para cualquier pantalla',
+          'Diseño responsive, adaptado a cualquier tipo de pantalla',
           'Formulario de contacto',
-          'Botones flotantes de WhatsApp y chat básico',
-          'Textos legales y cookies',
-          'Entrega en 2 semanas',
+          'Botones flotantes, WhatsApp y chat básico',
         ],
       },
       {
@@ -88,11 +86,9 @@ export const contenido = {
         incluye: [
           '8 secciones personalizadas, 2 de ellas grandes',
           'SEO y posicionamiento local o nacional',
-          'Diseño a medida y responsive, para cualquier pantalla',
-          'Formulario de contacto',
-          'Botones flotantes de WhatsApp y chat básico',
-          'Google Analytics y Search Console para ver tus estadísticas',
-          'Entrega en 2-3 semanas',
+          'Diseño responsive, adaptado a cualquier tipo de pantalla',
+          'Formulario de contacto, botones flotantes, WhatsApp y chat básico',
+          'Integración de Google Analytics y Google Search Console para llevar las estadísticas de tu web',
         ],
       },
       {

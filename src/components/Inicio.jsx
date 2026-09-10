@@ -86,6 +86,7 @@ export const Inicio = () => {
   const [porquePausado, setPorquePausado] = useState(false)
   const [porqueVisible, setPorqueVisible] = useState(false)
   const refFormularioContacto = useRef(null)
+  const refSeccionContacto = useRef(null)
 
   // Igual que en la pagina de contacto: los dos flotantes viven en la esquina
   // de abajo a la derecha y ahi tapan el boton de Enviar mensaje. Se apartan
@@ -97,9 +98,15 @@ export const Inicio = () => {
   // scroll se queda donde estaba: el "gracias" aparecia cortado por arriba y con
   // el footer comiendose media pantalla. Se lleva al centro, que es donde tiene
   // que estar lo unico que queda en pantalla.
+  //
+  // Se centra la seccion entera y no solo el recuadro: centrando el recuadro,
+  // en una pantalla corta el "Hablamos?" de encima se subia hasta meterse
+  // debajo de la cabecera. La seccion mide justo una pantalla y lleva su
+  // contenido centrado, asi que centrarla deja el bloque completo (titulo,
+  // linea de debajo y aviso) con el mismo aire arriba y abajo.
   useEffect(() => {
     if (!contactEnviado) return
-    refFormularioContacto.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    refSeccionContacto.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
   }, [contactEnviado])
 
   // Ya ha escrito: lo que toca ofrecerle es volver a la web, no escribir otra
@@ -786,7 +793,7 @@ export const Inicio = () => {
       <Testimonios />
 
       {/* Contact Section */}
-      <section className='inicio-contact-section'>
+      <section className='inicio-contact-section' ref={refSeccionContacto}>
         <h2 className='section-title'>¿Hablamos?</h2>
         <p className='inicio-contact-subtitle'>¿Tienes un proyecto en mente? Cuéntame y te preparo un presupuesto sin compromiso.</p>
 

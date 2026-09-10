@@ -138,11 +138,55 @@
     }
 }
 
+/* El amago: estando ya en el inicio, las letras tiran hacia dentro, la barra no
+   las deja y vuelven. Son 12px de nada y medio segundo, lo justo para que se
+   lea como un intento y no como un fallo.
+   La vuelta lleva una curva que se pasa de largo y corrige (el 1.4 del tercer
+   numero): es lo que hace que rebote en vez de volver arrastrandose, que es lo
+   que separa un amago de una animacion a medias. */
+.logo-letras-amagan {
+    animation: logo-letras-lo-intentan 0.55s;
+}
+
+.logo-hueco-amaga {
+    animation: logo-hueco-lo-intenta 0.55s;
+}
+
+@keyframes logo-letras-lo-intentan {
+    0% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.35, 0, 0.6, 0.7);
+    }
+    35% {
+        transform: translateX(-12px);
+        animation-timing-function: cubic-bezier(0.2, 1.4, 0.4, 1);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes logo-hueco-lo-intenta {
+    0% {
+        width: var(--ancho-letras);
+        animation-timing-function: cubic-bezier(0.35, 0, 0.6, 0.7);
+    }
+    35% {
+        width: calc(var(--ancho-letras) - 12px);
+        animation-timing-function: cubic-bezier(0.2, 1.4, 0.4, 1);
+    }
+    100% {
+        width: var(--ancho-letras);
+    }
+}
+
 /* Con el movimiento reducido el logo se queda quieto: esto es adorno puro y no
    dice nada que no diga ya el propio enlace. */
 @media (prefers-reduced-motion: reduce) {
     .logo-letras-animando,
-    .logo-hueco-animando {
+    .logo-hueco-animando,
+    .logo-letras-amagan,
+    .logo-hueco-amaga {
         animation: none;
     }
 }

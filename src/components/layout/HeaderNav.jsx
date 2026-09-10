@@ -9,6 +9,7 @@ export const HeaderNav = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [pulsacionesLogo, setPulsacionesLogo] = useState(0)
   const [anchoLetras, setAnchoLetras] = useState(null)
+  const [logoAmaga, setLogoAmaga] = useState(false)
   const refLogo = useRef(null)
   const refHueco = useRef(null)
   const [hidden, setHidden] = useState(false)
@@ -74,11 +75,17 @@ export const HeaderNav = () => {
   // haria nada: ahi lo que se espera es volver arriba del todo.
   const irAlInicio = () => {
     closeMenu()
+    // Estando ya en el inicio el logo no lleva a ninguna parte, asi que en vez
+    // de meterse del todo hace el amago: las letras tiran hacia dentro, la
+    // barra no las deja y vuelven. Es la manera de contestar "ya estas aqui"
+    // sin decir nada.
+    const yaEstaEnInicio = pathname === '/'
+    setLogoAmaga(yaEstaEnInicio)
     // El contador es lo que hace que la animacion se pueda repetir: cambia la
     // key de las letras, React las vuelve a montar y la animacion arranca de
     // cero. Volviendo a poner la misma clase no se reiniciaria.
     setPulsacionesLogo(n => n + 1)
-    if (pathname === '/') window.scrollTo(0, 0)
+    if (yaEstaEnInicio) window.scrollTo(0, 0)
   }
 
   useEffect(() => {
@@ -124,10 +131,10 @@ export const HeaderNav = () => {
             <span
               key={pulsacionesLogo}
               ref={refHueco}
-              className={`logo-hueco${pulsacionesLogo ? ' logo-hueco-animando' : ''}`}
+              className={`logo-hueco${pulsacionesLogo ? (logoAmaga ? ' logo-hueco-amaga' : ' logo-hueco-animando') : ''}`}
               style={anchoLetras ? { '--ancho-letras': anchoLetras } : undefined}
             >
-              <span className={pulsacionesLogo ? 'logo-letras logo-letras-animando' : 'logo-letras'}>
+              <span className={`logo-letras${pulsacionesLogo ? (logoAmaga ? ' logo-letras-amagan' : ' logo-letras-animando') : ''}`}>
                 <span className="logo-v">a</span>lex<span className="logo-v">w</span>eb<span className="logo-cursor">_</span>
               </span>
             </span>

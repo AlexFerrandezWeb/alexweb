@@ -90,6 +90,25 @@
     position: relative;
 }
 
+/* Ni se seleccionan ni se arrastran. Yendo rapido de un enlace a otro con el
+   boton pulsado, el navegador entiende que estas arrastrando: o el texto del
+   enlace (y queda esa letra suelta marcada en azul) o el enlace entero, que es
+   una funcion del navegador, la de soltarlo en la barra de marcadores o en otra
+   pestania. Y mientras cree que hay un arrastre en marcha se queda en ese modo:
+   el cursor no suelta la manita, los clicks siguientes no llegan a ninguna
+   parte y solo responde el scroll. Justo el bloqueo que salia al ir rapido.
+   Estos son botones de navegacion, no texto que nadie vaya a copiar, asi que
+   quitarles las dos cosas no cuesta nada. El draggable del marcado es para
+   Firefox, que no entiende el -webkit-user-drag. */
+.site-header nav ul li a,
+.site-header .nav-social a,
+.site-header .logo,
+.hamburger {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
 .site-header nav ul li a::after {
     content: '';
     position: absolute;

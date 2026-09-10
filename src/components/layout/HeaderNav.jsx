@@ -73,7 +73,7 @@ export const HeaderNav = () => {
 
   // Estando ya en la home, pulsar el logo no navega a ninguna parte, asi que no
   // haria nada: ahi lo que se espera es volver arriba del todo.
-  const irAlInicio = () => {
+  const irAlInicio = (e) => {
     closeMenu()
     // El amago (las letras tiran hacia dentro, la barra no las deja y vuelven)
     // es para cuando pulsar el logo no lleva a ninguna parte, que es solo si ya
@@ -89,7 +89,23 @@ export const HeaderNav = () => {
     // key de las letras, React las vuelve a montar y la animacion arranca de
     // cero. Volviendo a poner la misma clase no se reiniciaria.
     setPulsacionesLogo(n => n + 1)
-    if (yaEstaEnInicio) window.scrollTo(0, 0)
+
+    // Se sube haciendo scroll de verdad, no de un salto: asi se ve el camino y
+    // uno se queda con la idea de que la pagina sigue siendo la misma y de lo
+    // que hay por el medio. Aqui no hay peligro de que se cancele a mitad,
+    // porque pulsar el logo no cambia nada de la pagina; en el boton de
+    // "Volver al inicio" del formulario si lo hay, y por eso ese salta seco.
+    // Salvo que el usuario haya pedido menos movimiento, claro: un viaje de
+    // seis mil pixeles es justo lo que marea a quien activa esa opcion.
+    if (yaEstaEnInicio) {
+      // Sin esto no se veria subir: estando ya en el inicio, el enlace sigue
+      // contando como navegacion y el router coloca el scroll a cero de golpe
+      // en cuanto termina, cortando el desplazamiento a la primera decima. Como
+      // aqui no hay adonde navegar, se corta el enlace y mandamos nosotros.
+      e.preventDefault()
+      const quiereMenosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      window.scrollTo({ top: 0, behavior: quiereMenosMovimiento ? 'auto' : 'smooth' })
+    }
   }
 
   useEffect(() => {

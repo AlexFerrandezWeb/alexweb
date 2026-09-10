@@ -2107,8 +2107,22 @@
         padding: 16px 12px 14px;
     }
 
+    /* La X ocupa 48px de esquina (36 de boton mas 12 de separacion) y el
+       titulo solo le reservaba 34: por eso la ultima palabra se le metia
+       debajo. Reservar los 48 por los dos lados para mantenerlo centrado se
+       come 96 de los 331 de ancho y obliga a partir el titulo en dos lineas,
+       asi que el titulo se alinea a la izquierda y reserva el hueco solo del
+       lado donde esta la X. De paso queda a la misma linea que el contenido de
+       las tarjetas, que ya va a la izquierda. */
+    .modal-cerrar {
+        top: 12px;
+        right: 12px;
+    }
+
     .modal-titulo {
-        margin-bottom: 2px;
+        text-align: left;
+        padding: 0 52px 0 4px;
+        margin-bottom: 4px;
     }
 
     /* El subtitulo repite lo que dice el titulo que tiene justo encima ("Elige
@@ -2119,9 +2133,13 @@
         display: none;
     }
 
+    /* La primera linea de la entradilla queda a la altura del pie de la X, asi
+       que le reserva la misma esquina que el titulo. */
     .modal-planes .tipos-web-intro {
+        text-align: left;
+        margin: 0 0 10px;
+        padding: 0 52px 0 4px;
         font-size: 0.8rem;
-        margin-bottom: 10px;
     }
 
     /* Un pelin mas ancha (88% en vez de 84%): cada punto de ancho que gana la

@@ -104,3 +104,15 @@
         transition: none;
     }
 }
+
+/* Hay paginas que apartan los dos flotantes mientras lo que de verdad importa
+   esta en pantalla: contacto lo hace con el formulario delante, porque los
+   botones se sentaban justo encima del de Enviar mensaje y ahi el formulario ya
+   es el canal de contacto. El aviso llega por el body, como nav-hidden.
+   Fuera del bloque de movimiento reducido a proposito: aqui esconderlos no es
+   un adorno, es quitarlos de encima de un boton. */
+body.flotantes-ocultos .fab-whatsapp {
+    transform: translateX(calc(100% + 32px));
+    opacity: 0;
+    pointer-events: none;
+}

@@ -104,6 +104,15 @@ export default function ChatBot() {
     window.addEventListener(EVENTO_MENU_ABIERTO, cerrar);
     return () => window.removeEventListener(EVENTO_MENU_ABIERTO, cerrar);
   }, []);
+
+  // Hay paginas que apartan los botones flotantes (contacto lo hace mientras el
+  // formulario esta en pantalla). Si el chat esta abierto, el suyo no se puede
+  // ir: es la X de cerrarlo, y sin ella la ventana se queda sin salida. Lo
+  // avisa por el body, igual que la cabecera con nav-hidden.
+  useEffect(() => {
+    document.body.classList.toggle('chat-abierto', abierto);
+    return () => document.body.classList.remove('chat-abierto');
+  }, [abierto]);
   const [mensajes, setMensajes] = useState([
     {
       rol: "assistant",

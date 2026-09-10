@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Contacto.css'
 import { FAQ } from './FAQ'
 import { enviarFormularioContacto } from '../utils/enviarFormularioContacto'
@@ -17,6 +17,32 @@ export const Contacto = () => {
   const [errorEnvio, setErrorEnvio] = useState(false)
   const [erroresCampos, setErroresCampos] = useState({})
   const [camposAgitados, setCamposAgitados] = useState([])
+  const centinelaFaq = useRef(null)
+
+  // Los dos botones flotantes se sientan justo encima del boton de Enviar
+  // mensaje, que es lo unico que hay que pulsar en esta pagina. Y aqui sobran:
+  // el formulario ya es el canal de contacto, no hacen falta otros dos por
+  // encima. Asi que se apartan mientras el formulario esta delante y vuelven al
+  // llegar a las preguntas frecuentes, que es donde recuperan sentido: quien ha
+  // leido las dudas y no ha escrito, a lo mejor prefiere WhatsApp.
+  //
+  // El centinela va justo antes del bloque de preguntas para no tener que
+  // pasarle una ref al componente de FAQ, que se usa en mas sitios.
+  useEffect(() => {
+    const mostrarFlotantes = (mostrar) => document.body.classList.toggle('flotantes-ocultos', !mostrar)
+    mostrarFlotantes(false)
+
+    const centinela = centinelaFaq.current
+    if (!centinela) return () => document.body.classList.remove('flotantes-ocultos')
+
+    const observador = new IntersectionObserver(([entrada]) => mostrarFlotantes(entrada.isIntersecting))
+    observador.observe(centinela)
+
+    return () => {
+      observador.disconnect()
+      document.body.classList.remove('flotantes-ocultos')
+    }
+  }, [])
 
   const handleContactChange = (e) => {
     let value = e.target.value
@@ -198,6 +224,8 @@ export const Contacto = () => {
           </form>
         )}
       </div>
+
+      <div ref={centinelaFaq} aria-hidden='true' />
 
       <FAQ />
     </div>

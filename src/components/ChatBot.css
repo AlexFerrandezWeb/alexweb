@@ -251,3 +251,11 @@
         bottom: 88px;
     }
 }
+
+/* Igual que el de WhatsApp, pero con la excepcion de siempre: si el chat esta
+   abierto su boton no se puede ir, que es la X de cerrarlo. */
+body.flotantes-ocultos:not(.chat-abierto) .chat-fab {
+    transform: translateX(calc(100% + 32px));
+    opacity: 0;
+    pointer-events: none;
+}

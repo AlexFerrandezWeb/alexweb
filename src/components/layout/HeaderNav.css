@@ -76,6 +76,13 @@
     /* Lo pone el JS al medir. El auto es para el primer pintado y por si algo
        fallara: sin numero no se puede animar, pero el logo se ve igual. */
     width: var(--ancho-letras, auto);
+    /* El trazo del guion bajo cae por debajo de la caja de las letras, asi que
+       el overflow se lo comia y se veia como una raya fina. Este relleno estira
+       la zona de recorte por arriba y por abajo, y el margen negativo lo
+       devuelve para que no ocupe nada: se recorta a los lados, que es lo que
+       hace falta para la animacion, pero no por arriba ni por abajo. */
+    padding: 8px 0;
+    margin: -8px 0;
 }
 
 .logo-letras {

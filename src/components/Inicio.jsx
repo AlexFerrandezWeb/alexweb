@@ -525,10 +525,10 @@ export const Inicio = () => {
             <span className='price'><span className='price-span'>Desde </span>350€<span className='price-iva'> más IVA</span></span>
             <p className='card-para-quien'>Ideal si ofreces un servicio concreto y quieres que te contacten. Una sola página, directa y al grano — sin que el cliente se pierda.</p>
             <ul className='features'>
-              <li><FeatureCheckIcon /> Landing Page</li>
-              <li><FeatureCheckIcon /> Diseño Responsive</li>
-              <li><FeatureCheckIcon /> Formulario de Contacto</li>
-              <li><FeatureCheckIcon /> Enlaces a Redes Sociales</li>
+              <li><FeatureCheckIcon /> SEO y posicionamiento local</li>
+              <li><FeatureCheckIcon /> Diseño responsive</li>
+              <li><FeatureCheckIcon /> Formulario de contacto</li>
+              <li><FeatureCheckIcon /> Botones flotantes de WhatsApp y chat</li>
             </ul>
             <button className='card-btn' onClick={() => setModalPlanes('landing')}>Ver planes</button>
           </div>
@@ -1022,9 +1022,10 @@ export const Inicio = () => {
                     <p className='description'>Ideal para tener presencia online con lo esencial bien hecho.</p>
                     <ul className='features'>
                       <li><FeatureCheckIcon />1 sección larga y 3 secciones pequeñas</li>
-                      <li><FeatureCheckIcon />SEO y posicionamiento básico</li>
-                      <li><FeatureCheckIcon />Diseño Responsive</li>
-                      <li><FeatureCheckIcon />Formulario de Contacto</li>
+                      <li><FeatureCheckIcon />SEO y posicionamiento local</li>
+                      <li><FeatureCheckIcon />Diseño responsive, adaptado a cualquier tipo de pantalla</li>
+                      <li><FeatureCheckIcon />Formulario de contacto</li>
+                      <li><FeatureCheckIcon />Botones flotantes de WhatsApp y chat básico</li>
                       <li><FeatureCheckIcon />Entrega en 2 semanas</li>
                     </ul>
                     <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
@@ -1035,15 +1036,12 @@ export const Inicio = () => {
                     <span className='price'><span className='price-span'>Desde </span>499€<span className='price-iva'> más IVA</span></span>
                     <p className='description'>Más secciones, más impacto y mayor personalización.</p>
                     <ul className='features'>
-                      <li><FeatureCheckIcon />8 secciones personalizadas (2 grandes)</li>
-                      <li><FeatureCheckIcon />SEO y posicionamiento avanzado</li>
-                      <li><FeatureCheckIcon />Diseño Responsive</li>
-                      <li><FeatureCheckIcon />Formulario de Contacto</li>
-                      <li><FeatureCheckIcon gold />Animaciones y efectos visuales</li>
-                      <li><FeatureCheckIcon gold />Integración con Google Analytics</li>
-                      <li><FeatureCheckIcon gold />Galería de imágenes o vídeo de fondo</li>
-                      <li><FeatureCheckIcon gold />Chat de WhatsApp integrado</li>
-                      <li><FeatureCheckIcon gold />2 rondas de revisiones incluidas</li>
+                      <li><FeatureCheckIcon />8 secciones personalizadas, 2 de ellas grandes</li>
+                      <li><FeatureCheckIcon />SEO y posicionamiento local o nacional</li>
+                      <li><FeatureCheckIcon />Diseño responsive, adaptado a cualquier tipo de pantalla</li>
+                      <li><FeatureCheckIcon />Formulario de contacto</li>
+                      <li><FeatureCheckIcon />Botones flotantes de WhatsApp y chat básico</li>
+                      <li><FeatureCheckIcon gold />Google Analytics y Search Console para ver las estadísticas de tu web</li>
                       <li><FeatureCheckIcon />Entrega en 2-3 semanas</li>
                     </ul>
                     <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>

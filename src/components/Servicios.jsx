@@ -149,9 +149,10 @@ export const Servicios = () => {
               <p className='service-description'>Ideal para tener presencia online con lo esencial bien hecho.</p>
               <ul className='service-details'>
                 <li><FeatureCheckIcon />1 sección larga y 3 secciones pequeñas</li>
-                <li><FeatureCheckIcon />SEO y posicionamiento básico</li>
-                <li><FeatureCheckIcon />Diseño Responsive</li>
-                <li><FeatureCheckIcon />Formulario de Contacto</li>
+                <li><FeatureCheckIcon />SEO y posicionamiento local</li>
+                <li><FeatureCheckIcon />Diseño responsive, adaptado a cualquier tipo de pantalla</li>
+                <li><FeatureCheckIcon />Formulario de contacto</li>
+                <li><FeatureCheckIcon />Botones flotantes de WhatsApp y chat básico</li>
                 <li><FeatureCheckIcon />Entrega en 2 semanas</li>
               </ul>
               <Link to='/contacto' className='service-btn'>Contactar</Link>
@@ -163,15 +164,12 @@ export const Servicios = () => {
               <div className='service-price'><span className='service-price-desde'>Desde </span>499€<span className='service-price-iva'> + IVA</span></div>
               <p className='service-description'>Más secciones, más impacto y mayor personalización.</p>
               <ul className='service-details'>
-                <li><FeatureCheckIcon />8 secciones personalizadas (2 grandes)</li>
-                <li><FeatureCheckIcon />SEO y posicionamiento avanzado</li>
-                <li><FeatureCheckIcon />Diseño Responsive</li>
-                <li><FeatureCheckIcon />Formulario de Contacto</li>
-                <li><FeatureCheckIcon gold />Animaciones y efectos visuales</li>
-                <li><FeatureCheckIcon gold />Integración con Google Analytics</li>
-                <li><FeatureCheckIcon gold />Galería de imágenes o vídeo de fondo</li>
-                <li><FeatureCheckIcon gold />Chat de WhatsApp integrado</li>
-                <li><FeatureCheckIcon gold />2 rondas de revisiones incluidas</li>
+                <li><FeatureCheckIcon />8 secciones personalizadas, 2 de ellas grandes</li>
+                <li><FeatureCheckIcon />SEO y posicionamiento local o nacional</li>
+                <li><FeatureCheckIcon />Diseño responsive, adaptado a cualquier tipo de pantalla</li>
+                <li><FeatureCheckIcon />Formulario de contacto</li>
+                <li><FeatureCheckIcon />Botones flotantes de WhatsApp y chat básico</li>
+                <li><FeatureCheckIcon gold />Google Analytics y Search Console para ver las estadísticas de tu web</li>
                 <li><FeatureCheckIcon />Entrega en 2-3 semanas</li>
               </ul>
               <Link to='/contacto' className='service-btn'>Contactar</Link>

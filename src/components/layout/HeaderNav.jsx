@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import './HeaderNav.css'
 import { enlaceWhatsApp, registrarClicWhatsApp } from '../../utils/whatsapp'
 import { avisarMenuAbierto, EVENTO_CHAT_ABIERTO } from '../../utils/eventosUi'
@@ -9,10 +9,25 @@ export const HeaderNav = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
   const lastScrollY = useRef(0)
+  const { pathname } = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY
+      // Un salto de mas de 300px de golpe no lo hace una rueda ni un dedo: es
+      // la pagina moviendose sola (un ancla, una vuelta atras, el navegador
+      // recuperando la posicion guardada). Si se cuenta como "el usuario esta
+      // bajando", la cabecera se esconde sin que nadie la haya mandado
+      // esconder y se queda fuera de pantalla hasta el siguiente scroll hacia
+      // arriba: desde fuera parece que la cabecera se ha quedado pillada.
+      if (Math.abs(currentY - lastScrollY.current) > 300) {
+        // Ante un salto siempre se muestra: si la pagina se ha movido sola, lo
+        // seguro es que la cabecera este a la vista, no escondida.
+        setHidden(false)
+        document.body.classList.remove('nav-hidden')
+        lastScrollY.current = currentY
+        return
+      }
       const isHidden = currentY > lastScrollY.current && currentY > 80
       setHidden(isHidden)
       document.body.classList.toggle('nav-hidden', isHidden)
@@ -21,6 +36,16 @@ export const HeaderNav = () => {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Al cambiar de pagina la cabecera vuelve siempre a la vista. Si se llega a
+  // otra pagina con la cabecera escondida, no hay forma de volver a sacarla mas
+  // que haciendo scroll hacia arriba, y en una pagina que empieza arriba del
+  // todo no hay hacia donde subir: la navegacion se queda sin cabecera.
+  useEffect(() => {
+    lastScrollY.current = window.scrollY
+    setHidden(false)
+    document.body.classList.remove('nav-hidden')
+  }, [pathname])
 
   const closeMenu = () => setMenuOpen(false)
 

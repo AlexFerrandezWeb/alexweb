@@ -120,6 +120,15 @@
 }
 
 /* Contacto highlight */
+/* El boton de Contacto se comporta como una tecla. Ya tenia forma de tecla, asi
+   que se le da el resto: un canto solido debajo (una sombra sin difuminar, que
+   es el grosor de la tecla) y encima la sombra normal, la que la separa de la
+   pagina.
+   Al pulsarlo baja los mismos 4px que mide el canto y el canto desaparece: la
+   tecla se apoya en su base. Y se queda hundido mientras estas en /contacto,
+   que es la forma mas honesta de decir "ya estas aqui" en un boton: pulsado.
+   Los 0.12s son a proposito mas rapidos que el resto de la cabecera: una tecla
+   que tarda en bajar no se siente como una tecla. */
 .site-header nav ul li a.nav-contacto {
     display: inline-flex;
     align-items: center;
@@ -128,24 +137,40 @@
     color: #2c3e50;
     padding: 8px 16px;
     border-radius: 20px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    box-shadow: 0 4px 0 #9179c2, 0 5px 10px rgba(44, 62, 80, 0.18);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
 }
 
 .site-header nav ul li a.nav-contacto::after {
     display: none;
 }
 
+/* Al pasar por encima la tecla se levanta un pelo y el canto crece con ella:
+   asi se lee que hay recorrido por debajo y que se puede hundir. */
 .site-header nav ul li a.nav-contacto:hover {
     color: #2c3e50;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(44, 62, 80, 0.3);
-    filter: brightness(1.07);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 0 #9179c2, 0 8px 16px rgba(44, 62, 80, 0.24);
+    filter: brightness(1.05);
 }
 
+/* Pulsada, y tambien mientras la pagina de contacto es la que se esta viendo.
+   El orden importa: va despues de :hover para que al pasar el raton por encima
+   del boton de la pagina en la que ya estas no se levante otra vez. */
+.site-header nav ul li a.nav-contacto:active,
 .site-header nav ul li a.nav-contacto.active {
     color: #2c3e50;
-    filter: brightness(1.1);
-    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.35);
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #9179c2, 0 1px 3px rgba(44, 62, 80, 0.2);
+    filter: brightness(0.96);
+}
+
+/* Con el movimiento reducido se quita la animacion, pero no el estado: que la
+   tecla aparezca ya hundida es informacion (en que pagina estas), no adorno. */
+@media (prefers-reduced-motion: reduce) {
+    .site-header nav ul li a.nav-contacto {
+        transition: none;
+    }
 }
 
 /* ─── Social Icons ─── */

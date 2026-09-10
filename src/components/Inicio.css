@@ -2101,10 +2101,52 @@
     }
 
     /* El alto lo pone el overlay, que ya mide bien la pantalla: este 100% se
-       cuenta contra el y no contra un vh que en iOS se pasa de largo. */
+       cuenta contra el y no contra un vh que en iOS se pasa de largo.
+       El min-height es lo que hace que el modal ocupe la pantalla en vez de
+       quedarse a su aire: al bajar los planes a cinco puntos el contenido media
+       570 de los 620 disponibles y sobraban dos franjas de fondo, arriba y
+       abajo. Ahora el modal siempre llega de borde a borde y lo que sobra se
+       reparte por dentro. El que se pasa de largo (Sitio Web) no se entera:
+       para el manda el max-height. */
     .modal-planes {
+        min-height: 100%;
         max-height: 100%;
+        display: flex;
+        flex-direction: column;
         padding: 16px 12px 14px;
+    }
+
+    /* El carrusel se queda con el alto que sobra despues de la cabecera y los
+       puntos, y las tarjetas se estiran con el (el align-items: stretch ya
+       estaba puesto para que los planes midan todos igual). */
+    /* Crece pero no encoge (el 0 del medio). Con flex-shrink en 1, el modal de
+       Sitio Web, que es el unico que se pasa de alto, apretaba el carrusel para
+       caber y las tarjetas se quedaban cortadas por abajo: el overflow-y: clip
+       del carrusel se comia el final sin dejar siquiera scroll. Asi el que
+       sobra sigue haciendo scroll y los que caben se estiran. */
+    .modal-grid {
+        flex: 1 0 auto;
+    }
+
+    /* Y dentro de la tarjeta, ese aire se reparte entre los puntos de la lista
+       en vez de amontonarse en un hueco muerto justo encima del boton. Cada
+       punto crece lo mismo, asi que las lineas separadoras quedan repartidas y
+       parece decidido, no sobrante. El "auto" es importante: con basis 0 todos
+       los puntos mediran igual y los de dos lineas se cortarian. */
+    .modal-card .features {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-card .features li {
+        flex: 1 1 auto;
+        align-items: center;
+    }
+
+    /* Centrado el punto en su fila, el tirador de 2px que subia el check para
+       cuadrarlo con la primera linea del texto ya no pinta nada. */
+    .modal-card .feature-check {
+        margin-top: 0;
     }
 
     /* La X ocupa 48px de esquina (36 de boton mas 12 de separacion) y el

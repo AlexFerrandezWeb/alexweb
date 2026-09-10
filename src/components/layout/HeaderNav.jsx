@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import './HeaderNav.css'
 import { enlaceWhatsApp, registrarClicWhatsApp } from '../../utils/whatsapp'
 import { avisarMenuAbierto, EVENTO_CHAT_ABIERTO } from '../../utils/eventosUi'
+import { sonarTecla } from '../../utils/sonidoTecla'
 
 export const HeaderNav = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -66,8 +67,11 @@ export const HeaderNav = () => {
           <li><NavLink to="/sobreMi" onClick={closeMenu}>Sobre Mi</NavLink></li>
           <li><NavLink to="/blog" onClick={closeMenu}>Blog</NavLink></li>
           <li>
+            {/* El clac va en el pointerdown y no en el click: la tecla suena
+                cuando baja, igual que una de verdad, no cuando se suelta. */}
             <NavLink
               to="/contacto"
+              onPointerDown={sonarTecla}
               onClick={closeMenu}
               className={({ isActive }) => isActive ? 'nav-contacto active' : 'nav-contacto'}
             >

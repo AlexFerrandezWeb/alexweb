@@ -112,6 +112,14 @@ body.nav-hidden .page-header {
     margin: 0;
 }
 
+/* El "Volver al inicio" del aviso es un enlace, no un boton: .submit-btn se
+   escribio para un <button> y hay que quitarle el subrayado y atarle el ancho,
+   que si no el relleno se suma al 100% y se sale de la tarjeta. */
+.contact-success .submit-btn {
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
 @keyframes campo-sacudir {
     0%, 100% { transform: translateX(0); }
     15%       { transform: translateX(-7px); }

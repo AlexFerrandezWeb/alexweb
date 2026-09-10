@@ -93,6 +93,28 @@ export const Inicio = () => {
   // el, tanto subiendo como al llegar al footer.
   useFlotantesOcultos(refFormularioContacto)
 
+  // Al enviar, el formulario se sustituye por un aviso mucho mas corto, pero el
+  // scroll se queda donde estaba: el "gracias" aparecia cortado por arriba y con
+  // el footer comiendose media pantalla. Se lleva al centro, que es donde tiene
+  // que estar lo unico que queda en pantalla.
+  useEffect(() => {
+    if (!contactEnviado) return
+    refFormularioContacto.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [contactEnviado])
+
+  // Ya ha escrito: lo que toca ofrecerle es volver a la web, no escribir otra
+  // vez. Se deja el formulario limpio por si baja de nuevo.
+  //
+  // El salto es seco y no suave a proposito. Dos motivos: reponer el formulario
+  // cambia el alto de la pagina y Chrome cancela el scroll suave a medio camino
+  // (se quedaba a mitad de la home), y ademas son 6000px de recorrido, que
+  // animados son dos segundos de pantalla borrosa. Volver al inicio se parece
+  // mas a cambiar de pagina que a hacer scroll.
+  const volverAlInicio = () => {
+    window.scrollTo(0, 0)
+    setContactEnviado(false)
+  }
+
   const handleContactChange = (e) => {
     let value = e.target.value
     if (e.target.name === 'telefono') value = value.replace(/\D/g, '').slice(0, 9)
@@ -777,7 +799,7 @@ export const Inicio = () => {
               </svg>
               <h3>¡Mensaje enviado!</h3>
               <p>Gracias por contactarme. Te responderé en menos de 24 horas. Revisa tu correo electrónico y ¡que tengas un buen día!</p>
-              <button className='inicio-contact-btn' onClick={() => setContactEnviado(false)}>Enviar otro mensaje</button>
+              <button className='inicio-contact-btn' onClick={volverAlInicio}>Volver al inicio</button>
             </div>
           ) : (
             <form onSubmit={handleContactSubmit} noValidate>

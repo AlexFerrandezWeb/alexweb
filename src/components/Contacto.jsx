@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Contacto.css'
 import { FAQ } from './FAQ'
 import { enviarFormularioContacto } from '../utils/enviarFormularioContacto'
@@ -26,6 +27,15 @@ export const Contacto = () => {
   // en las preguntas frecuentes y en el footer, que es donde recuperan sentido
   // (quien ha leido las dudas y no ha escrito, a lo mejor prefiere WhatsApp).
   useFlotantesOcultos(refFormulario)
+
+  // Al enviar, el formulario se sustituye por un aviso mucho mas corto, pero el
+  // scroll se queda donde estaba: el "gracias" aparecia cortado por arriba y con
+  // el footer comiendose media pantalla. Se lleva al centro, que es donde tiene
+  // que estar lo unico que queda en pantalla.
+  useEffect(() => {
+    if (!contactEnviado) return
+    refFormulario.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [contactEnviado])
 
   const handleContactChange = (e) => {
     let value = e.target.value
@@ -85,7 +95,10 @@ export const Contacto = () => {
             </svg>
             <h3>¡Mensaje enviado!</h3>
             <p>Gracias por contactarme. Te responderé en menos de 24 horas. Revisa tu correo electrónico y ¡que tengas un buen día!</p>
-            <button className='submit-btn' onClick={() => setContactEnviado(false)}>Enviar otro mensaje</button>
+            {/* Ya ha escrito: lo que toca ofrecerle es volver a la web, no
+                escribir otra vez. Y en esta pagina volver al inicio es irse a la
+                home de verdad, asi que es un enlace y no un boton. */}
+            <Link to='/' className='submit-btn'>Volver al inicio</Link>
           </div>
         ) : (
           <form onSubmit={handleContactSubmit} noValidate>

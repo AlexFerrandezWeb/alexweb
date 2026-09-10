@@ -63,14 +63,19 @@
     50% { opacity: 0; }
 }
 
-/* Al pulsar el logo, las letras se meten en la barra y vuelven a salir.
-   El hueco es lo que las recorta: mide lo que miden las letras y no cambia de
-   tamanio nunca, asi que la caja del logo tampoco, y la cabecera no da ningun
-   salto mientras dura la animacion. Lo que se mueve es solo el grupo de dentro,
-   y se mueve con transform, que no toca el resto de la pagina. */
+/* Al pulsar el logo, las letras se meten en la barra y la caja se cierra
+   detras de ellas hasta quedarse en un cuadrado con la barra sola. A los dos
+   segundos vuelve a abrirse y las letras salen otra vez.
+   Son dos animaciones que van juntas: el grupo de letras se desplaza a la
+   izquierda (transform) y el hueco que las recorta se cierra a la vez (width).
+   El sitio del logo entero esta reservado desde el JS, asi que la caja encoge
+   pero no arrastra al menu de al lado. */
 .logo-hueco {
     display: inline-flex;
     overflow: hidden;
+    /* Lo pone el JS al medir. El auto es para el primer pintado y por si algo
+       fallara: sin numero no se puede animar, pero el logo se ve igual. */
+    width: var(--ancho-letras, auto);
 }
 
 .logo-letras {
@@ -78,8 +83,18 @@
     align-items: baseline;
 }
 
+/* Sin fill-mode a proposito. Con "both" el navegador se queda con el resultado
+   de la animacion y mantiene viva la capa acelerada; el texto se sigue pintando
+   con el suavizado de la capa, que es mas fino, y las letras y la barra quedan
+   mas delgadas que antes de pulsar. Sin el, al acabar se descarta todo y el
+   logo vuelve a pintarse exactamente igual que estaba. El estado final es el
+   mismo que el de reposo, asi que no se pierde nada. */
 .logo-letras-animando {
-    animation: logo-letras-van-y-vuelven 3s both;
+    animation: logo-letras-van-y-vuelven 3s;
+}
+
+.logo-hueco-animando {
+    animation: logo-hueco-se-cierra 3s;
 }
 
 @keyframes logo-letras-van-y-vuelven {
@@ -100,10 +115,27 @@
     }
 }
 
+/* La caja, con los mismos tiempos y las mismas curvas que las letras: tienen
+   que llegar y salir a la vez o se ve el borde adelantandose. */
+@keyframes logo-hueco-se-cierra {
+    0% {
+        width: var(--ancho-letras);
+        animation-timing-function: cubic-bezier(0.55, 0, 0.9, 0.35);
+    }
+    15%, 85% {
+        width: 0;
+        animation-timing-function: cubic-bezier(0.1, 0.75, 0.3, 1);
+    }
+    100% {
+        width: var(--ancho-letras);
+    }
+}
+
 /* Con el movimiento reducido el logo se queda quieto: esto es adorno puro y no
    dice nada que no diga ya el propio enlace. */
 @media (prefers-reduced-motion: reduce) {
-    .logo-letras-animando {
+    .logo-letras-animando,
+    .logo-hueco-animando {
         animation: none;
     }
 }

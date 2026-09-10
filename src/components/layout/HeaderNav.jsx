@@ -8,6 +8,9 @@ import { sonarTecla } from '../../utils/sonidoTecla'
 export const HeaderNav = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [pulsacionesLogo, setPulsacionesLogo] = useState(0)
+  const [anchoLetras, setAnchoLetras] = useState(null)
+  const refLogo = useRef(null)
+  const refHueco = useRef(null)
   const [hidden, setHidden] = useState(false)
   const lastScrollY = useRef(0)
   const { pathname } = useLocation()
@@ -47,6 +50,23 @@ export const HeaderNav = () => {
     setHidden(false)
     document.body.classList.remove('nav-hidden')
   }, [pathname])
+
+  // Para que la caja se pueda cerrar hay que saber cuanto miden las letras: de
+  // "auto" a 0 no se puede animar, hace falta un numero. Se mide una sola vez,
+  // con las fuentes ya cargadas, porque medir antes da el ancho de la fuente de
+  // repuesto. El logo mide igual en movil que en escritorio, asi que no hay que
+  // volver a medir al girar el telefono.
+  useEffect(() => {
+    const medir = () => {
+      if (!refHueco.current || !refLogo.current) return
+      setAnchoLetras(`${refHueco.current.getBoundingClientRect().width}px`)
+      // Y se le reserva al logo el sitio que ocupa entero: al encogerse la caja,
+      // sin esto se moveria el menu de al lado cada vez que alguien lo pulsa.
+      refLogo.current.style.minWidth = `${refLogo.current.getBoundingClientRect().width}px`
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(medir)
+    else medir()
+  }, [])
 
   const closeMenu = () => setMenuOpen(false)
 
@@ -89,6 +109,7 @@ export const HeaderNav = () => {
       <Link
         to="/"
         className="logo"
+        ref={refLogo}
         onClick={irAlInicio}
         draggable={false}
         aria-label="Ir al inicio"
@@ -100,11 +121,13 @@ export const HeaderNav = () => {
               cabecera no pega ningun salto. */}
           <span className="logo-wm">
             /
-            <span className="logo-hueco">
-              <span
-                key={pulsacionesLogo}
-                className={`logo-letras${pulsacionesLogo ? ' logo-letras-animando' : ''}`}
-              >
+            <span
+              key={pulsacionesLogo}
+              ref={refHueco}
+              className={`logo-hueco${pulsacionesLogo ? ' logo-hueco-animando' : ''}`}
+              style={anchoLetras ? { '--ancho-letras': anchoLetras } : undefined}
+            >
+              <span className={pulsacionesLogo ? 'logo-letras logo-letras-animando' : 'logo-letras'}>
                 <span className="logo-v">a</span>lex<span className="logo-v">w</span>eb<span className="logo-cursor">_</span>
               </span>
             </span>

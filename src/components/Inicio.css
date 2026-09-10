@@ -1119,10 +1119,17 @@
        con la barra de direcciones recogida, no contra lo que de verdad se ve:
        el modal se centraba en una caja mas alta que la pantalla y el pie (el
        boton de Contactar) le quedaba justo debajo de la barra de abajo.
-       svh es el alto con la barra desplegada, que es el peor caso y el que hay
-       que cuadrar; dvh no vale porque cambia al hacer scroll y el modal
-       pegaria un salto a media lectura. */
+       dvh es el alto que se ve ahora mismo, sea cual sea el estado de la barra:
+       ni se pasa (y esconde el pie del modal detras de la barra) ni se queda
+       corto (y deja asomar la pagina por debajo, con el boton del chat incluido,
+       que es lo que pasaba con svh cuando la barra estaba recogida).
+       Lo que suele desaconsejar dvh es que cambia al hacer scroll y da saltos,
+       pero con el modal abierto el scroll de la pagina esta bloqueado, asi que
+       la barra no cambia de estado y el alto no se mueve.
+       Los dos primeros son el respaldo para navegadores sin estas unidades. */
+    height: 100vh;
     height: 100svh;
+    height: 100dvh;
     /* border-box o los 20px de relleno se suman al alto de pantalla y el
        overlay se pasa 40px de largo, justo lo que estabamos arreglando. */
     box-sizing: border-box;
@@ -1145,10 +1152,11 @@
     max-width: 1000px;
     width: 100%;
     max-height: 90vh;
-    /* Misma cuenta que en el overlay: con 90vh el modal se hacia mas alto que
-       la pantalla visible de un iPhone y el scroll interior creia que no
-       sobraba nada. */
+    /* Contra el mismo alto que el overlay, que es el que de verdad se ve: con
+       90vh el modal se hacia mas alto que la pantalla de un iPhone y el scroll
+       interior creia que no sobraba nada. */
     max-height: 90svh;
+    max-height: 90dvh;
     overflow-y: auto;
     position: relative;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);

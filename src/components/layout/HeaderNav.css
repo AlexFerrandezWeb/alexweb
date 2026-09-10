@@ -145,6 +145,23 @@
     display: none;
 }
 
+/* Que la tecla baje 4px tiene un efecto que no se ve venir: si el puntero
+   estaba en la franja de arriba del boton, al hundirse el boton se le escapa
+   por debajo, el navegador deja de considerar que se solto encima y no llega a
+   entregar el click. El enlace no navegaba y parecia que la cabecera se hubiera
+   quedado muerta.
+   Este colchon invisible estira la zona sensible del enlace hacia arriba mas de
+   lo que la tecla baja, asi que el puntero sigue dentro durante todo el
+   recorrido. No pinta nada ni ocupa sitio: solo recoge el click. */
+.site-header nav ul li a.nav-contacto::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -8px;
+    bottom: -4px;
+}
+
 /* Al pasar por encima la tecla se levanta un pelo y el canto crece con ella:
    asi se lee que hay recorrido por debajo y que se puede hundir. */
 .site-header nav ul li a.nav-contacto:hover {

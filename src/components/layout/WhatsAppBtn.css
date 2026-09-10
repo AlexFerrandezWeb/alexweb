@@ -111,8 +111,15 @@
    es el canal de contacto. El aviso llega por el body, como nav-hidden.
    Fuera del bloque de movimiento reducido a proposito: aqui esconderlos no es
    un adorno, es quitarlos de encima de un boton. */
-body.flotantes-ocultos .fab-whatsapp {
-    transform: translateX(calc(100% + 32px));
-    opacity: 0;
-    pointer-events: none;
+/* Solo hasta 768px. Por encima el formulario va centrado y con 600px de ancho
+   como mucho, asi que su borde derecho no llega a la esquina de los botones:
+   768 es justo el ancho donde se tocan (la mitad de la pantalla mas 300 del
+   formulario contra los 84 que ocupa el boton desde el borde). En escritorio
+   no tapan nada, asi que se quedan. */
+@media (max-width: 768px) {
+    body.flotantes-ocultos .fab-whatsapp {
+        transform: translateX(calc(100% + 32px));
+        opacity: 0;
+        pointer-events: none;
+    }
 }

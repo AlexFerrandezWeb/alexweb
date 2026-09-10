@@ -1109,6 +1109,18 @@
        montaban sobre el modal y tapaban los botones del fondo en movil. */
     z-index: 1200;
     padding: 20px;
+    /* En iOS Safari el "top: 0; bottom: 0" se mide contra el alto de pantalla
+       con la barra de direcciones recogida, no contra lo que de verdad se ve:
+       el modal se centraba en una caja mas alta que la pantalla y el pie (el
+       boton de Contactar) le quedaba justo debajo de la barra de abajo.
+       svh es el alto con la barra desplegada, que es el peor caso y el que hay
+       que cuadrar; dvh no vale porque cambia al hacer scroll y el modal
+       pegaria un salto a media lectura. */
+    height: 100svh;
+    /* border-box o los 20px de relleno se suman al alto de pantalla y el
+       overlay se pasa 40px de largo, justo lo que estabamos arreglando. */
+    box-sizing: border-box;
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
     animation: modalOverlayIn 0.2s ease;
 }
 
@@ -1120,10 +1132,17 @@
 .modal-planes {
     background: #fff;
     border-radius: 20px;
+    /* Sin esto el relleno se suma al tope de alto y el modal acaba midiendo
+       90svh + 30px, o sea otra vez mas de lo que se ve. */
+    box-sizing: border-box;
     padding: 28px 28px 24px;
     max-width: 1000px;
     width: 100%;
     max-height: 90vh;
+    /* Misma cuenta que en el overlay: con 90vh el modal se hacia mas alto que
+       la pantalla visible de un iPhone y el scroll interior creia que no
+       sobraba nada. */
+    max-height: 90svh;
     overflow-y: auto;
     position: relative;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
@@ -1950,6 +1969,10 @@
            con 30vh se salia de pantalla. Y hay que dejar margen, que la barra
            del navegador no mide igual en todos los moviles. */
         height: 27vh;
+        /* Con la barra de Safari desplegada la pantalla util encoge un 10%, y
+           ese 27vh se comia mas de lo que le tocaba justo cuando menos sitio
+           habia. Contra el alto pequeno la captura mide siempre lo mismo. */
+        height: 27svh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -2061,5 +2084,189 @@
     /* De 5 filas a 3: el aviso de arriba ya dice que con dos lineas basta. */
     .inicio-form-group textarea {
         height: 86px;
+    }
+}
+/* ─── El plan entero en una pantalla de movil (≤ 600px) ─── */
+/* Medido en un iPhone XS con Safari y las dos barras a la vista, que deja
+   375x640 utiles. El modal media 796px: se veia el precio pero el boton de
+   Contactar quedaba fuera, y encima tapado por la barra del navegador.
+   Todo lo de aqui es aire y tamano de letra, no contenido: no se quita ni una
+   caracteristica de ningun plan.
+   Va al final del archivo, despues del bloque del carrusel, por el mismo
+   motivo que aquel: a igual especificidad gana la ultima regla. */
+@media (max-width: 600px) {
+    .modal-overlay {
+        padding: 10px;
+        padding-bottom: max(10px, env(safe-area-inset-bottom));
+    }
+
+    /* El alto lo pone el overlay, que ya mide bien la pantalla: este 100% se
+       cuenta contra el y no contra un vh que en iOS se pasa de largo. */
+    .modal-planes {
+        max-height: 100%;
+        padding: 16px 12px 14px;
+    }
+
+    .modal-titulo {
+        margin-bottom: 2px;
+    }
+
+    /* El subtitulo repite lo que dice el titulo que tiene justo encima ("Elige
+       tu Sitio Web" / "Tres tipos de web segun lo que necesites"). En una
+       pantalla grande da aire; en el movil son entre 30 y 48px que le faltan a
+       la tarjeta para entrar entera, que es lo que se ha venido a leer. */
+    .modal-subtitulo {
+        display: none;
+    }
+
+    .modal-planes .tipos-web-intro {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
+
+    /* Un pelin mas ancha (88% en vez de 84%): cada punto de ancho que gana la
+       tarjeta son lineas de la lista que dejan de partirse en dos, y eso baja
+       mas el alto que apretar los margenes. El plan siguiente sigue asomando
+       lo justo para que se vea que hay mas. */
+    .modal-card {
+        flex: 0 0 88%;
+        padding: 14px;
+    }
+
+    .modal-grid::after {
+        flex: 0 0 12%;
+    }
+
+    /* Los margenes de fabrica del navegador para h3 y p: 18 y 13px que aqui no
+       hacen falta, que el relleno de la tarjeta ya separa. */
+    .modal-card h3 {
+        margin-top: 0;
+    }
+
+    .modal-card .description {
+        margin-top: 0;
+    }
+
+    .modal-planes .card-addon {
+        margin: 2px 0 10px;
+        padding: 8px 10px;
+    }
+
+    .modal-planes .card-addon-texto {
+        font-size: 0.8rem;
+    }
+
+    .modal-planes .card-cerrado {
+        font-size: 0.75rem;
+        line-height: 1.4;
+        margin-bottom: 12px;
+    }
+
+    .modal-dots {
+        margin-top: 8px;
+    }
+
+    .modal-planes .tipos-web-nota {
+        font-size: 0.75rem;
+        line-height: 1.4;
+        margin-top: 8px;
+    }
+}
+/* ─── Cada proyecto de "Mi trabajo", en una pantalla (≤ 600px) ─── */
+/* Medido igual que el resto: los tres proyectos daban entre 693 y 742px contra
+   640 de pantalla util, asi que el boton de "Visitar WEB" quedaba siempre
+   fuera. Se recorta aire y se baja un punto el cuerpo de texto; la captura no
+   se toca, que es lo que se ha venido a ver. */
+@media (max-width: 600px) {
+    .work-row,
+    .work-row-reverse {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .work-content h3 {
+        margin-bottom: 6px;
+    }
+
+    .work-subtitulo {
+        margin-bottom: 8px;
+    }
+
+    .work-description {
+        font-size: 0.86rem;
+        line-height: 1.45;
+        margin-bottom: 8px;
+    }
+
+    .work-features li {
+        font-size: 0.85rem;
+    }
+
+    .work-features {
+        margin-bottom: 8px;
+    }
+
+    /* La linea de tecnologias es la letra pequena de la ficha: interesa a quien
+       la busca, pero no es por lo que se entra a mirar un proyecto. */
+    .work-tech {
+        font-size: 0.7rem;
+        line-height: 1.4;
+        padding-top: 8px;
+        margin-bottom: 8px;
+    }
+}
+/* ─── "¿Hablamos?" en movil (≤ 600px) ─── */
+/* La seccion medida en el iPhone XS daba 769px contra 640 de pantalla util: el
+   boton de Enviar mensaje caia fuera y ademas por debajo de la barra de Safari.
+   Aqui se recorta el aire de la cabecera y del formulario hasta ~650px, que es
+   lo que se ve en cuanto el navegador recoge la barra al hacer scroll.
+   Sigue sin quitarse ningun campo. */
+@media (max-width: 600px) {
+    .inicio-contact-section {
+        padding: 12px 14px 14px;
+    }
+
+    /* El titulo baja de 1.8 a 1.45rem: "¿Hablamos?" es una palabra y a ese
+       tamano sigue leyendose como cabecera de seccion. */
+    .inicio-contact-section .section-title {
+        font-size: 1.45rem;
+        margin-bottom: 8px;
+    }
+
+    /* Lo que pedia Alex: esta linea se comia 67px encima del formulario para
+       decir lo que la nota de dentro del recuadro ya remata ("solo necesito
+       nombre, email y dos lineas"). Se queda, pero de acompanamiento. */
+    .inicio-contact-subtitle {
+        font-size: 0.82rem;
+        line-height: 1.4;
+        margin: 0 auto 10px;
+        max-width: 300px;
+    }
+
+    .inicio-contact-form-wrapper {
+        padding: 14px;
+    }
+
+    .inicio-form-nota {
+        font-size: 0.78rem;
+        line-height: 1.4;
+        margin-bottom: 8px;
+    }
+
+    .inicio-form-group {
+        margin-bottom: 9px;
+    }
+
+    /* La etiqueta y su hueco pasan de 26 a 21px. Por cinco campos son 25px, y
+       el campo de debajo sigue midiendo los 44px que pide el dedo. */
+    .inicio-form-group label {
+        font-size: 0.9rem;
+        margin-bottom: 3px;
+    }
+
+    /* Tres lineas de texto: el aviso de arriba ya dice que con dos basta, y el
+       campo crece solo al escribir. */
+    .inicio-form-group textarea {
+        height: 66px;
     }
 }

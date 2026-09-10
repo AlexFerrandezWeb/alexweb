@@ -7,6 +7,7 @@ import { sonarTecla } from '../../utils/sonidoTecla'
 
 export const HeaderNav = () => {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [pulsacionesLogo, setPulsacionesLogo] = useState(0)
   const [hidden, setHidden] = useState(false)
   const lastScrollY = useRef(0)
   const { pathname } = useLocation()
@@ -53,6 +54,10 @@ export const HeaderNav = () => {
   // haria nada: ahi lo que se espera es volver arriba del todo.
   const irAlInicio = () => {
     closeMenu()
+    // El contador es lo que hace que la animacion se pueda repetir: cambia la
+    // key de las letras, React las vuelve a montar y la animacion arranca de
+    // cero. Volviendo a poner la misma clase no se reiniciaria.
+    setPulsacionesLogo(n => n + 1)
     if (pathname === '/') window.scrollTo(0, 0)
   }
 
@@ -89,7 +94,21 @@ export const HeaderNav = () => {
         aria-label="Ir al inicio"
       >
         <div className="logo-canvas">
-          <span className="logo-wm">/<span className="logo-v">a</span>lex<span className="logo-v">w</span>eb<span className="logo-cursor">_</span></span>
+          {/* La barra se queda quieta y las letras se meten por detras de ella.
+              Van dentro de un hueco que las recorta, y lo que se anima es el
+              grupo entero: asi la caja del logo mide siempre lo mismo y la
+              cabecera no pega ningun salto. */}
+          <span className="logo-wm">
+            /
+            <span className="logo-hueco">
+              <span
+                key={pulsacionesLogo}
+                className={`logo-letras${pulsacionesLogo ? ' logo-letras-animando' : ''}`}
+              >
+                <span className="logo-v">a</span>lex<span className="logo-v">w</span>eb<span className="logo-cursor">_</span>
+              </span>
+            </span>
+          </span>
         </div>
       </Link>
 

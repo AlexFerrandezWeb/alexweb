@@ -63,6 +63,51 @@
     50% { opacity: 0; }
 }
 
+/* Al pulsar el logo, las letras se meten en la barra y vuelven a salir.
+   El hueco es lo que las recorta: mide lo que miden las letras y no cambia de
+   tamanio nunca, asi que la caja del logo tampoco, y la cabecera no da ningun
+   salto mientras dura la animacion. Lo que se mueve es solo el grupo de dentro,
+   y se mueve con transform, que no toca el resto de la pagina. */
+.logo-hueco {
+    display: inline-flex;
+    overflow: hidden;
+}
+
+.logo-letras {
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.logo-letras-animando {
+    animation: logo-letras-van-y-vuelven 3s both;
+}
+
+@keyframes logo-letras-van-y-vuelven {
+    /* Se meten acelerando, como si tirara de ellas la barra. El 105% es para
+       que no asome el borde de la ultima letra. */
+    0% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.55, 0, 0.9, 0.35);
+    }
+    /* Dentro, y ahi se quedan los dos segundos que pedia Alex. */
+    15%, 85% {
+        transform: translateX(-105%);
+        animation-timing-function: cubic-bezier(0.1, 0.75, 0.3, 1);
+    }
+    /* Y vuelven a salir hacia la derecha, frenando al llegar a su sitio. */
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Con el movimiento reducido el logo se queda quieto: esto es adorno puro y no
+   dice nada que no diga ya el propio enlace. */
+@media (prefers-reduced-motion: reduce) {
+    .logo-letras-animando {
+        animation: none;
+    }
+}
+
 /* Navigation Section */
 .site-header nav {
     display: flex;

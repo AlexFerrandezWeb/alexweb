@@ -231,4 +231,72 @@ body.nav-hidden .page-header {
         padding: 24px 20px;
         box-sizing: border-box;
     }
+}/* ─── El formulario entero en una pantalla de movil (≤ 600px) ─── */
+/* Medido en un iPhone XS con Safari y las dos barras a la vista, que deja
+   375x640 utiles. Con la cabecera de la pagina clavada arriba, el formulario
+   se quedaba con 506px de sitio para 735 que mide, y el boton de Enviar
+   mensaje caia siempre fuera de pantalla.
+   Todo lo de aqui es aire y tamano de letra: no se quita ningun campo.
+   Va colgado de .contacto-container porque la clase .page-header la comparten
+   Servicios y las paginas legales, y esto es solo para contacto. */
+@media (max-width: 600px) {
+    /* La cabecera deja de ir fija. Clavada arriba sumaba 70px a los 64 de la
+       cabecera del sitio: 134px, un 21% de la pantalla ocupados a todas horas
+       en la unica pagina donde lo que importa es lo que hay debajo. Ahora se
+       va con el scroll y le deja el sitio al formulario. */
+    .contacto-container .page-header {
+        position: static;
+        padding: 8px 20px 10px;
+        gap: 2px;
+    }
+
+    .contacto-container .page-header h1 {
+        font-size: 1.15rem;
+    }
+
+    .contacto-container .page-header p {
+        font-size: 0.8rem;
+    }
+
+    /* Los 125px de margen eran el hueco que habia que dejarle a la cabecera
+       fija. Sin cabecera fija, sobra. */
+    .contact-form-container {
+        margin-top: 8px;
+        padding: 12px;
+    }
+
+    .contact-form-container .form-nota {
+        font-size: 0.78rem;
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+
+    .contact-form-container .form-group {
+        margin-bottom: 7px;
+    }
+
+    /* La etiqueta y su hueco pasan de 33 a 24px. Por cinco campos son 45px. */
+    .contact-form-container .form-group label {
+        font-size: 0.9rem;
+        margin-bottom: 3px;
+    }
+
+    /* 11px arriba y abajo dejan el campo en 45px de alto, por encima de los 44
+       que pide el dedo. */
+    .contact-form-container .form-group input,
+    .contact-form-container .form-group select,
+    .contact-form-container .form-group textarea {
+        padding: 11px 12px;
+    }
+
+    /* De 5 filas a 3: la nota de arriba ya dice que con dos lineas basta, y el
+       campo no se queda corto, que sigue haciendo scroll al escribir. */
+    .contact-form-container .form-group textarea {
+        height: 60px;
+    }
+
+    .contact-form-container .submit-btn {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
 }

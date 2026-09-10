@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Inicio.css'
 import { enviarFormularioContacto } from '../utils/enviarFormularioContacto'
+import { useFlotantesOcultos } from '../utils/useFlotantesOcultos'
 import { Testimonios } from './Testimonios'
 
 const FeatureCheckIcon = ({ gold = false }) => (
@@ -84,6 +85,13 @@ export const Inicio = () => {
   const [modalTotal, setModalTotal] = useState(0)
   const [porquePausado, setPorquePausado] = useState(false)
   const [porqueVisible, setPorqueVisible] = useState(false)
+  const refFormularioContacto = useRef(null)
+
+  // Igual que en la pagina de contacto: los dos flotantes viven en la esquina
+  // de abajo a la derecha y ahi tapan el boton de Enviar mensaje. Se apartan
+  // mientras el formulario de "Hablamos" esta en pantalla y vuelven al salir de
+  // el, tanto subiendo como al llegar al footer.
+  useFlotantesOcultos(refFormularioContacto)
 
   const handleContactChange = (e) => {
     let value = e.target.value
@@ -760,7 +768,7 @@ export const Inicio = () => {
         <h2 className='section-title'>¿Hablamos?</h2>
         <p className='inicio-contact-subtitle'>¿Tienes un proyecto en mente? Cuéntame y te preparo un presupuesto sin compromiso.</p>
 
-        <div className='inicio-contact-form-wrapper'>
+        <div className='inicio-contact-form-wrapper' ref={refFormularioContacto}>
           {contactEnviado ? (
             <div className='inicio-contact-success'>
               <svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='#764ba2' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' aria-hidden='true'>

@@ -75,12 +75,16 @@ export const HeaderNav = () => {
   // haria nada: ahi lo que se espera es volver arriba del todo.
   const irAlInicio = () => {
     closeMenu()
-    // Estando ya en el inicio el logo no lleva a ninguna parte, asi que en vez
-    // de meterse del todo hace el amago: las letras tiran hacia dentro, la
-    // barra no las deja y vuelven. Es la manera de contestar "ya estas aqui"
-    // sin decir nada.
+    // El amago (las letras tiran hacia dentro, la barra no las deja y vuelven)
+    // es para cuando pulsar el logo no lleva a ninguna parte, que es solo si ya
+    // estas en el inicio y ademas arriba del todo. Estando en el inicio pero
+    // con scroll hecho, el clic si hace algo (subir), asi que ahi toca la
+    // animacion entera, igual que viniendo de otra pagina.
+    // Los 8px de margen son porque el navegador no siempre devuelve un cero
+    // limpio: con el rebote elastico del movil da decimales, y estar a tres
+    // pixeles del principio es estar arriba.
     const yaEstaEnInicio = pathname === '/'
-    setLogoAmaga(yaEstaEnInicio)
+    setLogoAmaga(yaEstaEnInicio && window.scrollY < 8)
     // El contador es lo que hace que la animacion se pueda repetir: cambia la
     // key de las letras, React las vuelve a montar y la animacion arranca de
     // cero. Volviendo a poner la misma clase no se reiniciaria.

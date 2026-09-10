@@ -246,39 +246,44 @@ body.nav-hidden .page-header {
        va con el scroll y le deja el sitio al formulario. */
     .contacto-container .page-header {
         position: static;
-        padding: 8px 20px 10px;
+        padding: calc(8px + var(--holgura, 0px) * 0.03) 20px calc(10px + var(--holgura, 0px) * 0.03);
         gap: 2px;
     }
 
     .contacto-container .page-header h1 {
-        font-size: 1.15rem;
+        font-size: calc(1.15rem + var(--holgura, 0px) * 0.02);
     }
 
     .contacto-container .page-header p {
-        font-size: 0.8rem;
+        font-size: calc(0.8rem + var(--holgura, 0px) * 0.012);
     }
 
     /* Los 125px de margen eran el hueco que habia que dejarle a la cabecera
        fija. Sin cabecera fija, sobra. */
+    /* Lo mismo que en la home: estas medidas estaban cuadradas contra el
+       movil mas justo, y en un iPhone grande dejaban el formulario pequeno con
+       media pantalla en blanco debajo. Cada una se lleva su trozo de holgura.
+       En el telefono de referencia la holgura vale 0 y todo esto sale
+       exactamente igual que antes. */
     .contact-form-container {
-        margin-top: 8px;
-        padding: 12px;
+        margin-top: calc(8px + var(--holgura, 0px) * 0.06);
+        padding: calc(12px + var(--holgura, 0px) * 0.06);
     }
 
     .contact-form-container .form-nota {
         font-size: 0.78rem;
         line-height: 1.4;
-        margin-bottom: 10px;
+        margin-bottom: calc(10px + var(--holgura, 0px) * 0.02);
     }
 
     .contact-form-container .form-group {
-        margin-bottom: 7px;
+        margin-bottom: calc(7px + var(--holgura, 0px) * 0.04);
     }
 
     /* La etiqueta y su hueco pasan de 33 a 24px. Por cinco campos son 45px. */
     .contact-form-container .form-group label {
         font-size: 0.9rem;
-        margin-bottom: 3px;
+        margin-bottom: calc(3px + var(--holgura, 0px) * 0.012);
     }
 
     /* 11px arriba y abajo dejan el campo en 45px de alto, por encima de los 44
@@ -286,17 +291,17 @@ body.nav-hidden .page-header {
     .contact-form-container .form-group input,
     .contact-form-container .form-group select,
     .contact-form-container .form-group textarea {
-        padding: 11px 12px;
+        padding: calc(11px + var(--holgura, 0px) * 0.018) 12px;
     }
 
     /* De 5 filas a 3: la nota de arriba ya dice que con dos lineas basta, y el
        campo no se queda corto, que sigue haciendo scroll al escribir. */
     .contact-form-container .form-group textarea {
-        height: 60px;
+        height: calc(60px + var(--holgura, 0px) * 0.13);
     }
 
     .contact-form-container .submit-btn {
-        padding: 12px 24px;
+        padding: calc(12px + var(--holgura, 0px) * 0.025) 24px;
         font-size: 1rem;
     }
 }

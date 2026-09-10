@@ -2279,27 +2279,8 @@
         margin-bottom: 8px;
     }
 }
-/* ─── La holgura: una sola perilla para todo el movil (≤ 600px) ─── */
-/* Toda la home de movil esta medida contra el telefono mas justo que aguantamos
-   (un iPhone XS con las dos barras de Safari a la vista, 650px de alto util).
-   El problema de medir contra el mas pequeno es que en un movil grande sobran
-   200 o 300px por seccion y todo se queda hecho un sello en medio de la
-   pantalla.
-   Esto es cuanto sitio sobra respecto a ese telefono de referencia: 0 en el mas
-   justo, hasta 240px en un Pro Max. Cada medida de abajo se lleva el trozo que
-   le toca con un calc, asi que las secciones crecen con el telefono en vez de
-   quedarse congeladas en el tamano del peor caso. Para dar mas o menos aire en
-   general se toca solo el tope de aqui.
-   En svh y no en vh porque en el movil el alto que de verdad se ve es el de la
-   barra desplegada, y es contra ese contra el que hay que cuadrar. */
-/* El respaldo de 0px que lleva cada var() no es adorno: en un navegador sin
-   svh (iOS anterior al 15.4) la cuenta no vale, la variable se queda sin valor
-   y sin respaldo se caeria la medida entera, no solo el crecimiento. */
-@media (max-width: 600px) {
-    :root {
-        --holgura: clamp(0px, calc(100svh - 650px), 240px);
-    }
-}
+/* La perilla --holgura vive en index.css, que se carga en todas las paginas:
+   la usan tanto esta home como /contacto. Alli esta explicada. */
 /* ─── "¿Hablamos?" en movil (≤ 600px) ─── */
 /* La seccion medida en el iPhone XS daba 769px contra 640 de pantalla util: el
    boton de Enviar mensaje caia fuera y ademas por debajo de la barra de Safari.

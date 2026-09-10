@@ -12,6 +12,28 @@
   --color-accion-texto: #fff;
 }
 
+/* ─── La holgura: una sola perilla para el movil ─── */
+/* El movil esta medido contra el telefono mas justo que aguantamos: un iPhone
+   XS con las dos barras de Safari a la vista, 650px de alto util. Bien para que
+   quepa, mal para todo lo demas: en un movil grande sobraban 200 o 300px por
+   seccion y quedaba una tarjeta pequena en medio de la pantalla.
+   Esto es cuanto sitio sobra respecto a ese telefono: 0 en el mas justo, hasta
+   280px en un Pro Max. Cada medida se lleva su trozo con un calc, asi que las
+   secciones crecen con el telefono en vez de quedarse congeladas en el tamano
+   del peor caso. Para dar mas o menos aire en general se toca solo el tope.
+   En svh y no en vh porque en el movil el alto que de verdad se ve es el de la
+   barra desplegada, y es contra ese contra el que hay que cuadrar.
+   Va aqui y no en Inicio.css porque la usan la home y /contacto, y esa hoja no
+   se carga en /contacto.
+   El respaldo de 0px que lleva cada var() no es adorno: en un navegador sin svh
+   (iOS anterior al 15.4) la cuenta no vale, la variable se queda sin valor y
+   sin respaldo se caeria la medida entera, no solo el crecimiento. */
+@media (max-width: 600px) {
+  :root {
+    --holgura: clamp(0px, calc(100svh - 650px), 280px);
+  }
+}
+
 /* Lo que hereda un nivel del anterior ("Todo lo del Basico, y ademas:"), para
    no repetir la lista entera en cada tarjeta. Va aqui y no en Inicio.css
    porque lo usan el modal de la home y la pagina de Servicios, y esa hoja no

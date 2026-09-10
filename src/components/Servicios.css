@@ -93,9 +93,15 @@ body.nav-hidden .page-header {
     position: relative;
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+/* Solo con raton de verdad. En una pantalla tactil no hay "pasar por encima":
+   al tocar la tarjeta el navegador le da el hover igualmente y se queda
+   levantada, como si se hubiera hinchado al pulsarla, hasta que tocas en otro
+   sitio. El efecto esta pensado para el raton, asi que se queda solo ahi. */
+@media (hover: hover) {
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
 }
 
 .service-card-featured {
@@ -334,10 +340,16 @@ body.nav-hidden .page-header {
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.tema-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    border-color: #b9a4e0;
+/* Solo con raton de verdad. En una pantalla tactil no hay "pasar por encima":
+   al tocar la tarjeta el navegador le da el hover igualmente y se queda
+   levantada, como si se hubiera hinchado al pulsarla, hasta que tocas en otro
+   sitio. El efecto esta pensado para el raton, asi que se queda solo ahi. */
+@media (hover: hover) {
+    .tema-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        border-color: #b9a4e0;
+    }
 }
 
 .tema-card-icono {

@@ -110,16 +110,43 @@ export const Inicio = () => {
   }, [contactEnviado])
 
   // Ya ha escrito: lo que toca ofrecerle es volver a la web, no escribir otra
-  // vez. Se deja el formulario limpio por si baja de nuevo.
+  // vez. Sube recorriendo la pagina, igual que el logo, y se deja el formulario
+  // limpio por si vuelve a bajar.
   //
-  // El salto es seco y no suave a proposito. Dos motivos: reponer el formulario
-  // cambia el alto de la pagina y Chrome cancela el scroll suave a medio camino
-  // (se quedaba a mitad de la home), y ademas son 6000px de recorrido, que
-  // animados son dos segundos de pantalla borrosa. Volver al inicio se parece
-  // mas a cambiar de pagina que a hacer scroll.
+  // El formulario no se repone hasta que el scroll ha llegado arriba. Si se
+  // repone antes, la pagina cambia de alto a mitad de camino y el navegador
+  // cancela el desplazamiento: dejaba al usuario tirado en mitad de la home.
   const volverAlInicio = () => {
-    window.scrollTo(0, 0)
-    setContactEnviado(false)
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo(0, 0)
+      setContactEnviado(false)
+      return
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
+    // Se espera a que llegue arriba, y si no llega, a que deje de moverse. Lo
+    // segundo hace falta por dos motivos: si el usuario toca la rueda el
+    // navegador cancela el desplazamiento y el cero no llega nunca, y hay
+    // navegadores que no animan el scroll, con lo que no se mueve desde el
+    // primer momento. Esperar por tiempo fijo no sirve: cada navegador tarda lo
+    // suyo, y cortar antes de tiempo es justo el fallo que se quiere evitar.
+    const arranque = Date.now()
+    let anterior = window.scrollY
+    let fotogramasQuieto = 0
+    const esperarALlegar = () => {
+      const actual = window.scrollY
+      fotogramasQuieto = Math.abs(actual - anterior) < 1 ? fotogramasQuieto + 1 : 0
+      anterior = actual
+      // 12 fotogramas son unos 200ms parado, de sobra para no confundirlo con
+      // el arranque del desplazamiento. Y los 4 segundos, el ultimo cortafuegos.
+      if (actual <= 0 || fotogramasQuieto > 12 || Date.now() - arranque > 4000) {
+        setContactEnviado(false)
+        return
+      }
+      requestAnimationFrame(esperarALlegar)
+    }
+    requestAnimationFrame(esperarALlegar)
   }
 
   const handleContactChange = (e) => {

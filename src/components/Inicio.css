@@ -1201,7 +1201,12 @@
     border-radius: 15px;
     padding: 18px 20px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
-    border: 1px solid #eee;
+    /* Blanca sobre blanco, el borde es lo unico que dibuja la tarjeta, y un
+       #eee no se ve: quedaba el canto de arriba fundido con el fondo del modal
+       y solo se notaba la sombra de abajo, que parecia una bandeja gris debajo
+       de la tarjeta. Este lila es el mismo tono de la tarjeta destacada, un par
+       de pasos mas suave, asi que las dos se leen como la misma familia. */
+    border: 1px solid #e0d8f0;
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -2118,35 +2123,29 @@
 
     /* El carrusel se queda con el alto que sobra despues de la cabecera y los
        puntos, y las tarjetas se estiran con el (el align-items: stretch ya
-       estaba puesto para que los planes midan todos igual). */
-    /* Crece pero no encoge (el 0 del medio). Con flex-shrink en 1, el modal de
+       estaba puesto para que los planes midan todos igual).
+       Crece pero no encoge (el 0 del medio): con flex-shrink en 1, el modal de
        Sitio Web, que es el unico que se pasa de alto, apretaba el carrusel para
-       caber y las tarjetas se quedaban cortadas por abajo: el overflow-y: clip
-       del carrusel se comia el final sin dejar siquiera scroll. Asi el que
-       sobra sigue haciendo scroll y los que caben se estiran. */
+       caber y las tarjetas se quedaban cortadas por abajo, que el overflow-y:
+       clip del carrusel se comia el final sin dejar siquiera scroll. Asi el que
+       sobra sigue haciendo scroll y los que caben se estiran.
+       El carrusel mide lo que mide la tarjeta mas alta y ni un pixel mas (el
+       0 0 auto), y el aire que sobra se va a los dos margenes automaticos: uno
+       encima del carrusel y otro debajo de los puntos. Asi el bloque de
+       tarjeta y puntos queda centrado en la hoja.
+       Con cinco puntos cortos sobran unos 170px y hay que decidir donde caen.
+       Dentro de la tarjeta no valen: repartidos entre los puntos, la lista se
+       separa tanto que deja de leerse como una lista; todos debajo de ella,
+       queda un agujero blanco encima del boton; y centrando el contenido, la
+       tarjeta parece un marco vacio. Fuera de la tarjeta, en cambio, ese mismo
+       hueco se lee como margen de la hoja, que es lo que es. */
     .modal-grid {
-        flex: 1 0 auto;
+        flex: 0 0 auto;
+        margin-top: auto;
     }
 
-    /* Y dentro de la tarjeta, ese aire se reparte entre los puntos de la lista
-       en vez de amontonarse en un hueco muerto justo encima del boton. Cada
-       punto crece lo mismo, asi que las lineas separadoras quedan repartidas y
-       parece decidido, no sobrante. El "auto" es importante: con basis 0 todos
-       los puntos mediran igual y los de dos lineas se cortarian. */
-    .modal-card .features {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .modal-card .features li {
-        flex: 1 1 auto;
-        align-items: center;
-    }
-
-    /* Centrado el punto en su fila, el tirador de 2px que subia el check para
-       cuadrarlo con la primera linea del texto ya no pinta nada. */
-    .modal-card .feature-check {
-        margin-top: 0;
+    .modal-dots {
+        margin-bottom: auto;
     }
 
     /* La X ocupa 48px de esquina (36 de boton mas 12 de separacion) y el
@@ -2191,6 +2190,11 @@
     .modal-card {
         flex: 0 0 88%;
         padding: 14px;
+        /* La sombra de serie cae 6px hacia abajo, asi que de una tarjeta blanca
+           sobre fondo blanco solo se veia el gris del pie y parecia que estaba
+           metida en una bandeja. Centrada y mas clara: quien dibuja la tarjeta
+           es el borde, y la sombra solo la despega del fondo. */
+        box-shadow: 0 2px 10px rgba(44, 62, 80, 0.05);
     }
 
     .modal-grid::after {

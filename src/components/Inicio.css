@@ -2279,6 +2279,27 @@
         margin-bottom: 8px;
     }
 }
+/* ─── La holgura: una sola perilla para todo el movil (≤ 600px) ─── */
+/* Toda la home de movil esta medida contra el telefono mas justo que aguantamos
+   (un iPhone XS con las dos barras de Safari a la vista, 650px de alto util).
+   El problema de medir contra el mas pequeno es que en un movil grande sobran
+   200 o 300px por seccion y todo se queda hecho un sello en medio de la
+   pantalla.
+   Esto es cuanto sitio sobra respecto a ese telefono de referencia: 0 en el mas
+   justo, hasta 240px en un Pro Max. Cada medida de abajo se lleva el trozo que
+   le toca con un calc, asi que las secciones crecen con el telefono en vez de
+   quedarse congeladas en el tamano del peor caso. Para dar mas o menos aire en
+   general se toca solo el tope de aqui.
+   En svh y no en vh porque en el movil el alto que de verdad se ve es el de la
+   barra desplegada, y es contra ese contra el que hay que cuadrar. */
+/* El respaldo de 0px que lleva cada var() no es adorno: en un navegador sin
+   svh (iOS anterior al 15.4) la cuenta no vale, la variable se queda sin valor
+   y sin respaldo se caeria la medida entera, no solo el crecimiento. */
+@media (max-width: 600px) {
+    :root {
+        --holgura: clamp(0px, calc(100svh - 650px), 240px);
+    }
+}
 /* ─── "¿Hablamos?" en movil (≤ 600px) ─── */
 /* La seccion medida en el iPhone XS daba 769px contra 640 de pantalla util: el
    boton de Enviar mensaje caia fuera y ademas por debajo de la barra de Safari.
@@ -2287,50 +2308,183 @@
    Sigue sin quitarse ningun campo. */
 @media (max-width: 600px) {
     .inicio-contact-section {
+        /* La seccion ocupa la pantalla y centra lo que lleva. Sin esto, en un
+           movil grande el formulario se queda arriba, pequeno, con el footer
+           asomando por debajo. */
+        min-height: 100svh;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         padding: 12px 14px 14px;
     }
 
     /* El titulo baja de 1.8 a 1.45rem: "¿Hablamos?" es una palabra y a ese
-       tamano sigue leyendose como cabecera de seccion. */
+       tamano sigue leyendose como cabecera de seccion. En pantallas grandes
+       recupera parte de lo que cedio. */
     .inicio-contact-section .section-title {
-        font-size: 1.45rem;
-        margin-bottom: 8px;
+        font-size: calc(1.45rem + var(--holgura, 0px) * 0.02);
+        margin-bottom: calc(8px + var(--holgura, 0px) * 0.04);
     }
 
     /* Lo que pedia Alex: esta linea se comia 67px encima del formulario para
        decir lo que la nota de dentro del recuadro ya remata ("solo necesito
        nombre, email y dos lineas"). Se queda, pero de acompanamiento. */
     .inicio-contact-subtitle {
-        font-size: 0.82rem;
+        font-size: calc(0.82rem + var(--holgura, 0px) * 0.012);
         line-height: 1.4;
-        margin: 0 auto 10px;
+        margin: 0 auto calc(10px + var(--holgura, 0px) * 0.04);
         max-width: 300px;
     }
 
     .inicio-contact-form-wrapper {
-        padding: 14px;
+        padding: calc(14px + var(--holgura, 0px) * 0.05);
     }
 
     .inicio-form-nota {
         font-size: 0.78rem;
         line-height: 1.4;
-        margin-bottom: 8px;
+        margin-bottom: calc(8px + var(--holgura, 0px) * 0.02);
     }
 
     .inicio-form-group {
-        margin-bottom: 9px;
+        margin-bottom: calc(9px + var(--holgura, 0px) * 0.03);
     }
 
     /* La etiqueta y su hueco pasan de 26 a 21px. Por cinco campos son 25px, y
        el campo de debajo sigue midiendo los 44px que pide el dedo. */
     .inicio-form-group label {
         font-size: 0.9rem;
-        margin-bottom: 3px;
+        margin-bottom: calc(3px + var(--holgura, 0px) * 0.01);
+    }
+
+    /* Los campos tambien engordan con la pantalla: en un movil grande un campo
+       de 44px se ve enano, y son ademas lo que mas se toca. */
+    .inicio-form-group input,
+    .inicio-form-group textarea,
+    .inicio-form-group select {
+        padding: calc(11px + var(--holgura, 0px) * 0.015) 12px;
     }
 
     /* Tres lineas de texto: el aviso de arriba ya dice que con dos basta, y el
        campo crece solo al escribir. */
     .inicio-form-group textarea {
-        height: 66px;
+        height: calc(66px + var(--holgura, 0px) * 0.12);
+    }
+
+    .inicio-contact-btn {
+        padding: calc(15px + var(--holgura, 0px) * 0.02) 24px;
+    }
+}
+/* ─── Que las demas secciones tambien crezcan con el movil (≤ 600px) ─── */
+/* Mismo problema que en "Hablamos" y misma perilla: estas medidas estaban
+   cuadradas contra el telefono mas justo, y en uno grande dejaban la tarjeta
+   pequena en medio de la pantalla con doscientos y pico pixeles de sobra.
+   Aqui solo crecen aire y cuerpo de letra; ni una tarjeta cambia de contenido.
+   Va al final del archivo, despues de los bloques que ponen estos valores, para
+   ganarles el desempate. */
+@media (max-width: 600px) {
+    /* "Por que necesitas una web" se queda fuera de esto a proposito: su
+       contenido es corto de verdad (un carrusel de una linea por tarjeta), y
+       estirarla a pantalla completa dejaba un bloque pequeno flotando en medio
+       de 500px de blanco, que es justo el defecto que estamos quitando. Una
+       seccion corta que se lee de un vistazo y da paso a la siguiente esta
+       bien asi. */
+
+    /* Servicios: cada tarjeta de precio es una unidad que se lee entera de una
+       vez, asi que crece con la pantalla igual que el formulario. */
+    .product-card {
+        padding: calc(20px + var(--holgura, 0px) * 0.04);
+    }
+
+    .product-card h3 {
+        font-size: calc(1.5rem + var(--holgura, 0px) * 0.015);
+    }
+
+    .product-card .price {
+        font-size: calc(1.8rem + var(--holgura, 0px) * 0.02);
+        margin-bottom: calc(14px + var(--holgura, 0px) * 0.03);
+    }
+
+    .product-card .card-para-quien {
+        font-size: calc(0.92rem + var(--holgura, 0px) * 0.008);
+        margin-bottom: calc(14px + var(--holgura, 0px) * 0.03);
+    }
+
+    .product-card .features li {
+        font-size: calc(0.92rem + var(--holgura, 0px) * 0.008);
+        padding: calc(6px + var(--holgura, 0px) * 0.018) 0;
+    }
+
+    .product-card .features {
+        margin-bottom: calc(20px + var(--holgura, 0px) * 0.03);
+    }
+
+    /* Mi trabajo: la captura ya crece sola, que va en svh. Lo que faltaba era
+       que creciera con ella el texto de al lado. */
+    .work-row,
+    .work-row-reverse {
+        padding: calc(12px + var(--holgura, 0px) * 0.025);
+        gap: calc(10px + var(--holgura, 0px) * 0.02);
+    }
+
+    .work-description {
+        font-size: calc(0.86rem + var(--holgura, 0px) * 0.005);
+        margin-bottom: calc(8px + var(--holgura, 0px) * 0.018);
+    }
+
+    .work-features {
+        gap: calc(6px + var(--holgura, 0px) * 0.012);
+        margin-bottom: calc(8px + var(--holgura, 0px) * 0.018);
+    }
+
+    .work-features li {
+        font-size: calc(0.85rem + var(--holgura, 0px) * 0.005);
+    }
+
+    .work-content h3 {
+        margin-bottom: calc(6px + var(--holgura, 0px) * 0.018);
+    }
+
+    .work-tech {
+        margin-bottom: calc(8px + var(--holgura, 0px) * 0.018);
+    }
+
+    .work-btn {
+        padding: calc(11px + var(--holgura, 0px) * 0.015) 24px;
+    }
+}
+/* ─── Y el ultimo apreton de los moviles estrechos, con su crecimiento ─── */
+/* El bloque de arriba pisaba lo que el de ≤380px habia apretado para que las
+   dos tarjetas mas largas cupieran en una pantalla de 568px. Aqui vuelven esos
+   valores, pero ya con la holgura sumada: un 375 ancho puede ser un iPhone SE
+   de 667 o un 13 mini de 812, y el segundo tiene sitio de sobra. */
+@media (max-width: 380px) {
+    .product-card {
+        padding: calc(18px + var(--holgura, 0px) * 0.04);
+    }
+
+    .product-card h3 {
+        font-size: calc(1.4rem + var(--holgura, 0px) * 0.015);
+    }
+
+    .product-card .price {
+        font-size: calc(1.7rem + var(--holgura, 0px) * 0.02);
+        margin-bottom: calc(12px + var(--holgura, 0px) * 0.03);
+    }
+
+    .product-card .card-para-quien {
+        font-size: calc(0.88rem + var(--holgura, 0px) * 0.008);
+        margin-bottom: calc(12px + var(--holgura, 0px) * 0.03);
+        padding: 9px 11px;
+    }
+
+    .product-card .features {
+        margin-bottom: calc(16px + var(--holgura, 0px) * 0.03);
+    }
+
+    .product-card .features li {
+        font-size: calc(0.88rem + var(--holgura, 0px) * 0.008);
+        padding: calc(5px + var(--holgura, 0px) * 0.018) 0;
     }
 }

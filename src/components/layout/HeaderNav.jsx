@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import './HeaderNav.css'
 import { enlaceWhatsApp, registrarClicWhatsApp } from '../../utils/whatsapp'
 import { avisarMenuAbierto, EVENTO_CHAT_ABIERTO } from '../../utils/eventosUi'
@@ -49,6 +49,13 @@ export const HeaderNav = () => {
 
   const closeMenu = () => setMenuOpen(false)
 
+  // Estando ya en la home, pulsar el logo no navega a ninguna parte, asi que no
+  // haria nada: ahi lo que se espera es volver arriba del todo.
+  const irAlInicio = () => {
+    closeMenu()
+    if (pathname === '/') window.scrollTo(0, 0)
+  }
+
   useEffect(() => {
     const cerrar = () => setMenuOpen(false)
     window.addEventListener(EVENTO_CHAT_ABIERTO, cerrar)
@@ -68,11 +75,23 @@ export const HeaderNav = () => {
   // ejemplo) se volvía sticky, de 70px de alto y con su contenido en fila.
   return (
     <header className={`site-header${hidden ? ' header-hidden' : ''}`}>
-      <div className="logo">
+      {/* El logo lleva al inicio, que es lo que todo el mundo espera de un logo
+          en una cabecera. Sus estilos ya venian preparados para ser un enlace
+          (cursor de mano y sin subrayado), asi que solo cambia la etiqueta.
+          El aria-label es porque el texto del logo, leido en voz alta, seria
+          "barra alexweb guion bajo": a un lector de pantalla hay que decirle a
+          donde lleva. */}
+      <Link
+        to="/"
+        className="logo"
+        onClick={irAlInicio}
+        draggable={false}
+        aria-label="Ir al inicio"
+      >
         <div className="logo-canvas">
           <span className="logo-wm">/<span className="logo-v">a</span>lex<span className="logo-v">w</span>eb<span className="logo-cursor">_</span></span>
         </div>
-      </div>
+      </Link>
 
       <button
         className={`hamburger${menuOpen ? ' open' : ''}`}

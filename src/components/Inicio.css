@@ -1256,18 +1256,16 @@
 
 /* Mismo reparto que en la fila de /servicios: con cinco puntos, a la tarjeta
    del Basico le sobraba alto y se le quedaba un hueco entre la lista y el
-   boton. La lista se come el sobrante y lo reparte entre sus puntos.
+   boton. La lista se come el sobrante sin separar sus puntos: quedan juntos y
+   el hueco se reparte por encima y por debajo.
    Solo en escritorio: en el movil las tarjetas del modal estan medidas para
    caber en una pantalla. */
 @media (min-width: 601px) {
     .modal-grid-mantenimiento .modal-card .features {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         flex-grow: 1;
-    }
-
-    .modal-grid-mantenimiento .modal-card .features li {
-        flex: 1;
     }
 }
 

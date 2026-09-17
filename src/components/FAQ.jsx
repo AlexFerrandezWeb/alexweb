@@ -30,11 +30,11 @@ const faqs = [
     respuesta: 'Sí, al ser un servicio profesional con factura puedes desgravarlo en tu declaración. Consulta con tu gestor para más detalles.'
   },
   {
-    pregunta: '¿Qué incluye eso de los 3 meses de mantenimiento?',
-    respuesta: 'Todos mis proyectos salen con los 3 primeros meses dentro del precio, sin pagar nada aparte: el alojamiento (tu web encendida, sin pagar servidor por tu cuenta), las actualizaciones de seguridad, las copias, los cambios que me pidas, y que si algo se rompe lo arregle yo. La idea es que no te quedes solo justo cuando la web acaba de salir, que es cuando suelen aparecer los ajustes.'
+    pregunta: '¿Qué incluye eso de los 3 meses de mantenimiento gratis?',
+    respuesta: 'Todos mis proyectos salen con los 3 primeros meses gratis, sin pagar nada aparte: el alojamiento (tu web encendida, sin pagar servidor por tu cuenta), las actualizaciones de seguridad, las copias, los cambios que me pidas, y que si algo se rompe lo arregle yo. La idea es que no te quedes solo justo cuando la web acaba de salir, que es cuando suelen aparecer los ajustes.'
   },
   {
-    pregunta: '¿Y cuando se acaben los 3 meses?',
+    pregunta: '¿Y cuando se acaben los 3 meses gratis?',
     respuesta: 'Decides tú. Si sigues, son 50€/mes el plan Básico o desde 70€/mes el Premium, sin permanencia. Si no quieres seguir, el código y el dominio son tuyos y te los llevas para montar la web donde quieras: lo que pagas cada mes es el alojamiento y tenerme detrás, nunca una licencia por usar tu propia web.'
   },
   {

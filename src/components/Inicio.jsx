@@ -67,9 +67,9 @@ const BadgePrioridad = () => (
  */
 const MantenimientoIncluido = ({ precio = '50€/mes' }) => (
   <div className='card-incluido'>
-    <span className='card-incluido-etiqueta'>Incluido en el precio</span>
+    <span className='card-incluido-etiqueta'>Gratis, dentro del precio</span>
     <span className='card-incluido-texto'>
-      <strong>Los 3 primeros meses de mantenimiento</strong> y soporte. Después,
+      <strong>3 meses de mantenimiento</strong> y soporte. Después,
       {' '}{precio} solo si quieres seguir, sin permanencia.
     </span>
   </div>
@@ -655,7 +655,7 @@ export const Inicio = () => {
           <div className='product-card'>
             <h3>Mantenimiento y SEO</h3>
             <span className='price'><span className='price-span'>Desde </span>50€<span className='price-mes'>/mes</span><span className='price-iva'> más IVA</span></span>
-            <p className='card-para-quien'>Los 3 primeros meses van incluidos con tu web. Esto es lo que pasa a partir del cuarto.</p>
+            <p className='card-para-quien'>Los 3 primeros meses son gratis con tu web. Esto es lo que pasa a partir del cuarto.</p>
             <p className='description'>Que tu web esté encendida, segura y subiendo en Google, sin que tengas que ocuparte tú.</p>
             <ul className='features'>
               <li><FeatureCheckIcon /> Tu web siempre encendida</li>
@@ -1069,13 +1069,13 @@ export const Inicio = () => {
                   </div>
                 </div>
                 {puntosModal}
-                <p className='tipos-web-nota'>Las tres salen con los <strong>3 primeros meses de mantenimiento</strong> dentro. Después, desde 50€/mes y sin permanencia.</p>
+                <p className='tipos-web-nota'>Las tres salen con los <strong>3 primeros meses de mantenimiento gratis</strong>. Después, desde 50€/mes y sin permanencia.</p>
               </>
             ) : modalPlanes === 'mantenimiento' ? (
               <>
                 <h2 className='modal-titulo'>Después de la entrega</h2>
                 <p className='modal-subtitulo'>Qué pasa cuando se acaban los meses que van incluidos</p>
-                <p className='tipos-web-intro'>Tu web sale con los <strong>3 primeros meses incluidos</strong>. A partir del cuarto eliges plan, y lo dejas cuando quieras.</p>
+                <p className='tipos-web-intro'>Tu web sale con los <strong>3 primeros meses gratis</strong>. A partir del cuarto eliges plan, y lo dejas cuando quieras.</p>
                 <div className='modal-grid modal-grid-2 modal-grid-mantenimiento' ref={modalGridRef} key={modalPlanes}>
                   <div className='modal-card'>
                     <h3>Básico</h3>

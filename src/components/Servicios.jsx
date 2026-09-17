@@ -68,9 +68,9 @@ const BadgePrioridad = () => (
  */
 const MantenimientoIncluido = ({ precio = '50€/mes' }) => (
   <div className='card-incluido'>
-    <span className='card-incluido-etiqueta'>Incluido en el precio</span>
+    <span className='card-incluido-etiqueta'>Gratis, dentro del precio</span>
     <span className='card-incluido-texto'>
-      <strong>Los 3 primeros meses de mantenimiento</strong> y soporte. Después,
+      <strong>3 meses de mantenimiento</strong> y soporte. Después,
       {' '}{precio} solo si quieres seguir, sin permanencia.
     </span>
   </div>
@@ -167,7 +167,7 @@ export const Servicios = () => {
     <div className='servicios-container'>
       <div className='page-header'>
         <h1>Mis Servicios</h1>
-        <p>Precios cerrados y a la vista. Cada proyecto sale con los 3 primeros meses de mantenimiento dentro.</p>
+        <p>Precios cerrados y a la vista. Cada proyecto sale con 3 meses de mantenimiento gratis.</p>
       </div>
 
       <section className='services-section'>
@@ -213,7 +213,7 @@ export const Servicios = () => {
             </div>
 
           </div>
-          <p className='tipos-web-nota'>Las dos salen con los <strong>3 primeros meses de mantenimiento</strong> dentro. Después, desde 50€/mes y sin permanencia.</p>
+          <p className='tipos-web-nota'>Las dos salen con los <strong>3 primeros meses de mantenimiento gratis</strong>. Después, desde 50€/mes y sin permanencia.</p>
         </div>
 
         {/* ── Fila 2: Sitios Web ── */}
@@ -286,7 +286,7 @@ export const Servicios = () => {
             </div>
 
           </div>
-          <p className='tipos-web-nota'>Las tres salen con los <strong>3 primeros meses de mantenimiento</strong> dentro. Después, desde 50€/mes y sin permanencia.</p>
+          <p className='tipos-web-nota'>Las tres salen con los <strong>3 primeros meses de mantenimiento gratis</strong>. Después, desde 50€/mes y sin permanencia.</p>
         </div>
 
         {/* ── Fila 3: Mantenimiento ── */}
@@ -295,7 +295,7 @@ export const Servicios = () => {
             lo que hay que contarle es que pasa cuando se acaban los tres meses. */}
         <div className='service-group'>
           <div className='section-row-title'>Después de la entrega</div>
-          <p className='tipos-web-intro'>Tu web sale con los <strong>3 primeros meses incluidos</strong>. A partir del cuarto eliges plan, y lo dejas cuando quieras.</p>
+          <p className='tipos-web-intro'>Tu web sale con los <strong>3 primeros meses gratis</strong>. A partir del cuarto eliges plan, y lo dejas cuando quieras.</p>
           <div className='service-row-grid service-row-grid-2 service-row-grid-mantenimiento'>
 
             <div className='service-card'>

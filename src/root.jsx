@@ -125,7 +125,7 @@ const NEGOCIO_JSON_LD = {
           {
             '@type': 'Offer',
             name: 'Mantenimiento y SEO',
-            description: 'Sin permanencia, con los 3 primeros meses incluidos en cada proyecto: alojamiento, seguridad, copias, los cambios que pidas e informe mensual. Desde 70€/mes el plan Premium, que añade cambios el mismo día, una llamada al mes y la gestión de tu ficha de Google.',
+            description: 'Sin permanencia, con los 3 primeros meses gratis en cada proyecto: alojamiento, seguridad, copias, los cambios que pidas e informe mensual. Desde 70€/mes el plan Premium, que añade cambios el mismo día, una llamada al mes y la gestión de tu ficha de Google.',
             price: '50',
             priceCurrency: 'EUR',
             priceSpecification: {

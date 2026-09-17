@@ -241,7 +241,7 @@ const PLANES = [
     nombre: 'Cuidado mensual',
     precio: 'desde 50€',
     periodo: '/mes',
-    desc: 'Los 3 primeros meses van incluidos con tu web. Lo esencial para no tener que ocuparte de nada.',
+    desc: 'Los 3 primeros meses son gratis con tu web. Lo esencial para no tener que ocuparte de nada.',
     incluye: [
       'Tu web siempre encendida',
       'Los cambios que me pidas',
@@ -308,7 +308,7 @@ const FAQS = [
   {
     pregunta: '¿Los precios que veo son los finales?',
     respuesta:
-      'Los precios que ves son sin IVA y son el punto de partida: se les suma el 21%, que te deduces como gasto de la consulta. El presupuesto que te paso es cerrado: lo que firmamos es lo que pagas. Aparte solo tendrías el dominio, unos 20€ al año, y te aviso yo cuando toca renovarlo; el alojamiento va dentro del mantenimiento, con los 3 primeros meses incluidos. La reserva y el pago online se ajustan según lo que necesites, y te lo digo antes de empezar.',
+      'Los precios que ves son sin IVA y son el punto de partida: se les suma el 21%, que te deduces como gasto de la consulta. El presupuesto que te paso es cerrado: lo que firmamos es lo que pagas. Aparte solo tendrías el dominio, unos 20€ al año, y te aviso yo cuando toca renovarlo; el alojamiento va dentro del mantenimiento, con los 3 primeros meses gratis. La reserva y el pago online se ajustan según lo que necesites, y te lo digo antes de empezar.',
   },
   {
     pregunta: '¿Trabajas con clientes de toda España?',

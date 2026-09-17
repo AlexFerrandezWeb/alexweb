@@ -97,7 +97,7 @@ export const contenido = {
       {
         nombre: 'Mantenimiento',
         precio: 'desde 50€/mes',
-        para: 'Los 3 primeros meses van incluidos con tu web. Cubre el alojamiento, la seguridad, los cambios que me pidas y que si algo se rompe lo arregle yo.',
+        para: 'Los 3 primeros meses son gratis con tu web. Cubre el alojamiento, la seguridad, los cambios que me pidas y que si algo se rompe lo arregle yo.',
         incluye: [
           'Actualizaciones de seguridad',
           'Copias de seguridad',

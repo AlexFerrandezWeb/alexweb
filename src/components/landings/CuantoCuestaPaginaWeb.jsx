@@ -125,7 +125,7 @@ export const contenido = {
       },
     ],
     nota:
-      'Aparte solo va el dominio, unos 20€ al año: es tuyo, y cuando toca renovarlo te aviso y hago yo el trámite. El alojamiento no lo pagas tú, va dentro del mantenimiento, y los 3 primeros meses vienen incluidos con la web. A partir del cuarto, desde 50€ al mes y sin permanencia. Todo con factura, deducible como gasto profesional.',
+      'Aparte solo va el dominio, unos 20€ al año: es tuyo, y cuando toca renovarlo te aviso y hago yo el trámite. El alojamiento no lo pagas tú, va dentro del mantenimiento, y los 3 primeros meses son gratis. A partir del cuarto, desde 50€ al mes y sin permanencia. Todo con factura, deducible como gasto profesional.',
   },
 
   faqs: [
@@ -142,7 +142,7 @@ export const contenido = {
     {
       pregunta: '¿Qué gastos tiene la web cada año?',
       respuesta:
-        'El dominio, unos 20€ al año, y el mantenimiento, desde 50€ al mes, con los 3 primeros meses incluidos en el precio de la web. El alojamiento va dentro de esa cuota: no tienes que contratar servidor por tu cuenta ni pagarlo aparte. Y del dominio tampoco te tienes que acordar: te aviso yo cuando toca renovar. Eso es todo: no hay licencias ocultas ni sorpresas.',
+        'El dominio, unos 20€ al año, y el mantenimiento, desde 50€ al mes, con los 3 primeros meses gratis. El alojamiento va dentro de esa cuota: no tienes que contratar servidor por tu cuenta ni pagarlo aparte. Y del dominio tampoco te tienes que acordar: te aviso yo cuando toca renovar. Eso es todo: no hay licencias ocultas ni sorpresas.',
     },
     {
       pregunta: '¿El precio incluye que salga en Google?',

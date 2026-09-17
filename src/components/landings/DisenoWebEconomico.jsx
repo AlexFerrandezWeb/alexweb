@@ -64,7 +64,7 @@ export const contenido = {
   precios: {
     titulo: 'La opción económica, en detalle',
     intro:
-      'Los 3 primeros meses de mantenimiento van dentro del precio, con el alojamiento incluido: no pagas servidor aparte. Después son 50€ al mes sin permanencia, y si no quieres seguir te llevas el código y el dominio. Los precios son sin IVA: al ser un gasto de tu negocio, te lo deduces.',
+      'Los 3 primeros meses de mantenimiento son gratis, con el alojamiento incluido: no pagas servidor aparte. Después son 50€ al mes sin permanencia, y si no quieres seguir te llevas el código y el dominio. Los precios son sin IVA: al ser un gasto de tu negocio, te lo deduces.',
     planes: [
       {
         nombre: 'Landing Starter',
@@ -94,7 +94,7 @@ export const contenido = {
       {
         nombre: 'Mantenimiento',
         precio: '50€/mes',
-        para: 'Los 3 primeros meses van incluidos con tu web. Lo esencial para no tener que ocuparte de nada.',
+        para: 'Los 3 primeros meses son gratis con tu web. Lo esencial para no tener que ocuparte de nada.',
         incluye: [
           'Tu web siempre encendida',
           'Los cambios que me pidas',

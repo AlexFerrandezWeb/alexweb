@@ -80,6 +80,50 @@ body.nav-hidden .page-header {
     grid-template-columns: repeat(3, 1fr);
 }
 
+/* Aire y alto de las tarjetas, solo en escritorio. */
+/* Las tres filas son rejillas independientes, asi que cada una igualaba solo
+   sus tarjetas y quedaban tres alturas distintas en la misma pagina (647, 801 y
+   515). El alto comun las pone a todas a la medida de la fila mas alta, la de
+   Sitios Web, que es la que manda.
+   El sobrante no puede quedarse en .service-description, que lleva flex-grow:1
+   y lo convertiria en un agujero debajo del texto: se lo queda la lista y lo
+   reparte a partes iguales entre sus puntos.
+   No se toca el movil (<=600px): ahi las tarjetas estan medidas para caber en
+   una pantalla y cualquier pixel de mas las saca fuera. */
+@media (min-width: 601px) {
+    .services-section {
+        --alto-tarjeta: 820px;
+    }
+
+    .service-card {
+        min-height: var(--alto-tarjeta);
+        padding: 30px 28px;
+    }
+
+    .service-details li {
+        padding: 9px 0;
+    }
+
+    .service-card .service-description {
+        flex-grow: 0;
+        margin-bottom: 20px;
+    }
+
+    .service-card .service-details {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .service-card .service-details li {
+        flex: 1;
+    }
+
+    .service-card .service-btn {
+        margin-top: auto;
+    }
+}
+
 /* Service Cards */
 .service-card {
     background: white;

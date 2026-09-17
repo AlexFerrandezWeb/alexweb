@@ -22,7 +22,7 @@ export const contenido = {
   intro: [
     'Hay dos formas de que una web salga barata. Una es recortar donde se nota: plantilla genérica, textos rellenados con lo primero que salga y desaparecer al cobrar. La otra es quitar lo que no necesitas y hacer bien lo que sí. Yo trabajo de la segunda.',
     'La mayoría de negocios pequeños no necesitan diez páginas, ni panel de administración, ni una tienda con 500 referencias. Necesitan una página que explique qué hacen, que se vea perfecta en el móvil y por la que puedan contactarles. Eso son 350€, no 3.000€.',
-    'Lo importante es que ahorrar hoy no te salga caro dentro de un año. Por eso, incluso en el plan más económico, el código y el dominio son tuyos, no hay cuota obligatoria para mantener la web viva, y si mañana quieres ampliarla no hay que empezar de cero.',
+    'Lo importante es que ahorrar hoy no te salga caro dentro de un año. Por eso, incluso en el plan más económico, el código y el dominio son tuyos desde el primer día: si algún día quieres irte, te los llevas y montas la web donde quieras. Y si mañana quieres ampliarla, no hay que empezar de cero.',
   ],
 
   bloques: {
@@ -64,7 +64,7 @@ export const contenido = {
   precios: {
     titulo: 'La opción económica, en detalle',
     intro:
-      'Sin cuota mensual obligatoria: si no quieres mantenimiento, no lo contratas y tu web sigue funcionando igual. Pagas una vez y es tuya. Los precios son sin IVA: al ser un gasto de tu negocio, te lo deduces.',
+      'Los 3 primeros meses de mantenimiento van dentro del precio, con el alojamiento incluido: no pagas servidor aparte. Después son 50€ al mes sin permanencia, y si no quieres seguir te llevas el código y el dominio. Los precios son sin IVA: al ser un gasto de tu negocio, te lo deduces.',
     planes: [
       {
         nombre: 'Landing Starter',
@@ -94,18 +94,18 @@ export const contenido = {
       {
         nombre: 'Mantenimiento',
         precio: '50€/mes',
-        para: 'Totalmente opcional. Tu web funciona sin esto; es para no tener que ocuparte tú.',
+        para: 'Los 3 primeros meses van incluidos con tu web. Lo esencial para no tener que ocuparte de nada.',
         incluye: [
-          'Actualizaciones de seguridad',
-          'Copias de seguridad',
-          'Pequeños ajustes incluidos',
-          'Informe mensual en PDF',
-          'Sin permanencia',
+          'Tu web siempre encendida',
+          'Los cambios que me pidas',
+          'Si algo se rompe, lo arreglo yo',
+          'Seguridad y copias de seguridad',
+          'Informe cada mes, sin permanencia',
         ],
       },
     ],
     nota:
-      'Gastos que no dependen de mí: dominio entre 10 y 15€ al año, y alojamiento, que en una web de este tamaño puede salirte gratis. Todo con factura y deducible como gasto profesional.',
+      'Aparte solo va el dominio, unos 20€ al año: es tuyo, y te aviso yo cuando toca renovarlo. El alojamiento va dentro del mantenimiento, no lo contratas ni lo pagas tú. Todo con factura y deducible como gasto profesional.',
   },
 
   faqs: [
@@ -117,7 +117,7 @@ export const contenido = {
     {
       pregunta: '¿Hay alguna cuota mensual obligatoria?',
       respuesta:
-        'No. Pagas la web una vez y es tuya. El mantenimiento es opcional y sin permanencia, y si lo cancelas tu web sigue funcionando exactamente igual. No trabajo con el modelo de cuota eterna para mantener tu web encendida.',
+        'Obligatoria no, pero seamos claros: el desarrollo lo pagas una vez y el código es tuyo, y luego está el mantenimiento, que incluye el alojamiento. Los 3 primeros meses van dentro del precio y después son 50€ al mes, sin permanencia. Si decides no seguir, no te retengo nada: te llevas el código y el dominio y montas tu web donde quieras. Lo que no vas a encontrar aquí es una licencia por usar algo que ya has pagado.',
     },
     {
       pregunta: '¿Puedo empezar barato y ampliar después?',

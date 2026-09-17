@@ -109,7 +109,7 @@ export const contenido = {
       enlaceA: '/servicios',
     },
     nota:
-      'Aparte van las comisiones de la pasarela de pago, que cobra el banco y no yo: Stripe está en torno al 1,5% + 0,25€ por operación con tarjetas europeas, y PayPal algo más. También el dominio (10-15€ al año) y el alojamiento, que en una tienda suele ir de 100 a 200€ anuales. Consulta las tarifas vigentes de cada pasarela antes de decidir, porque cambian.',
+      'Aparte van las comisiones de la pasarela de pago, que cobra el banco y no yo: Stripe está en torno al 1,5% + 0,25€ por operación con tarjetas europeas, y PayPal algo más. Y el dominio, unos 20€ al año. El alojamiento no lo pagas tú: va dentro del mantenimiento, con los 3 primeros meses incluidos. Consulta las tarifas vigentes de cada pasarela antes de decidir, porque cambian.',
   },
 
   faqs: [

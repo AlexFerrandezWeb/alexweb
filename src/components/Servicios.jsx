@@ -38,6 +38,44 @@ const FeatureCheckIcon = ({ gold = false }) => (
   </span>
 )
 
+/**
+ * Distintivo de atencion prioritaria del plan Premium. Va debajo del precio, no
+ * arriba: la etiqueta de la corona ya dice "El mas completo" y esta responde a
+ * otra pregunta, la de si te atienden antes que al del plan Basico.
+ */
+const BadgePrioridad = () => (
+  <span className='badge-prioridad'>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 24 24'
+      fill='currentColor'
+      aria-hidden='true'
+    >
+      <path d='M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5Z' />
+    </svg>
+    Atención prioritaria
+  </span>
+)
+
+/**
+ * Los tres primeros meses de mantenimiento entran en el precio de todos los
+ * niveles. Va como bloque suelto y no como un <li> mas de la lista para que no
+ * se lea como una caracteristica tecnica: es la parte de la oferta que tiene
+ * que verse aunque el cliente solo pase la vista por encima de la tarjeta.
+ * 'precio' es la cuota con la que sigue a partir del cuarto mes, que sube si la
+ * web lleva panel de gestion. Espejo en el modal de Inicio.jsx: si cambia uno,
+ * cambiar el otro.
+ */
+const MantenimientoIncluido = ({ precio = '50€/mes' }) => (
+  <div className='card-incluido'>
+    <span className='card-incluido-etiqueta'>Incluido en el precio</span>
+    <span className='card-incluido-texto'>
+      <strong>Los 3 primeros meses de mantenimiento</strong> y soporte. Después,
+      {' '}{precio} solo si quieres seguir, sin permanencia.
+    </span>
+  </div>
+)
+
 /* Iconos de las tarjetas de tema. SVG en línea para no depender de librerías. */
 const IconoTema = ({ children }) => (
   <svg
@@ -129,7 +167,7 @@ export const Servicios = () => {
     <div className='servicios-container'>
       <div className='page-header'>
         <h1>Mis Servicios</h1>
-        <p>Soluciones web integrales para impulsar tu negocio</p>
+        <p>Precios cerrados y a la vista. Cada proyecto sale con los 3 primeros meses de mantenimiento dentro.</p>
       </div>
 
       <section className='services-section'>
@@ -154,6 +192,7 @@ export const Servicios = () => {
                 <li><FeatureCheckIcon />Formulario de contacto</li>
                 <li><FeatureCheckIcon />Botones flotantes, WhatsApp y chat básico</li>
               </ul>
+              <MantenimientoIncluido precio='desde 50€/mes' />
               <Link to='/contacto' className='service-btn'>Contactar</Link>
             </div>
 
@@ -169,10 +208,12 @@ export const Servicios = () => {
                 <li><FeatureCheckIcon />Formulario de contacto, botones flotantes, WhatsApp y chat básico</li>
                 <li><FeatureCheckIcon gold />Integración de Google Analytics y Google Search Console para llevar las estadísticas de tu web</li>
               </ul>
+              <MantenimientoIncluido precio='desde 50€/mes' />
               <Link to='/contacto' className='service-btn'>Contactar</Link>
             </div>
 
           </div>
+          <p className='tipos-web-nota'>Las dos salen con los <strong>3 primeros meses de mantenimiento</strong> dentro. Después, desde 50€/mes y sin permanencia.</p>
         </div>
 
         {/* ── Fila 2: Sitios Web ── */}
@@ -198,6 +239,7 @@ export const Servicios = () => {
                 <li><FeatureCheckIcon />Google Analytics incluido</li>
                 <li><FeatureCheckIcon />Entrega en 3-4 semanas</li>
               </ul>
+              <MantenimientoIncluido precio='desde 50€/mes' />
               <div className='card-addon'>
                 <span className='card-addon-etiqueta'>Complemento opcional</span>
                 <span className='card-addon-texto'>Panel para editar textos e imágenes tú mismo — <span className='card-addon-precio'>290€</span></span>
@@ -220,6 +262,7 @@ export const Servicios = () => {
                 <li><FeatureCheckIcon gold />SEO avanzado incluido</li>
                 <li><FeatureCheckIcon />Entrega en 6-8 semanas</li>
               </ul>
+              <MantenimientoIncluido precio='desde 50€/mes' />
               <Link to='/contacto' className='service-btn'>Contactar</Link>
             </div>
 
@@ -238,53 +281,56 @@ export const Servicios = () => {
                 <li><FeatureCheckIcon gold />Área privada de clientes</li>
                 <li><FeatureCheckIcon />Entrega según proyecto</li>
               </ul>
+              <MantenimientoIncluido precio='desde 50€/mes' />
               <Link to='/contacto' className='service-btn'>Contactar</Link>
             </div>
 
           </div>
-          <p className='tipos-web-nota'>Todos los proyectos incluyen mantenimiento opcional <strong>desde 50€/mes</strong>. Si tu web lleva panel de gestión, el plan indicado es el de <strong>70€/mes</strong>.</p>
+          <p className='tipos-web-nota'>Las tres salen con los <strong>3 primeros meses de mantenimiento</strong> dentro. Después, desde 50€/mes y sin permanencia.</p>
         </div>
 
         {/* ── Fila 3: Mantenimiento ── */}
+        {/* No se presenta como un servicio aparte que haya que decidir comprar:
+            cuando el cliente llega aqui ya lo tiene dentro del proyecto, asi que
+            lo que hay que contarle es que pasa cuando se acaban los tres meses. */}
         <div className='service-group'>
-          <div className='section-row-title'>Mantenimiento</div>
-          <div className='service-row-grid service-row-grid-2'>
+          <div className='section-row-title'>Después de la entrega</div>
+          <p className='tipos-web-intro'>Tu web sale con los <strong>3 primeros meses incluidos</strong>. A partir del cuarto eliges plan, y lo dejas cuando quieras.</p>
+          <div className='service-row-grid service-row-grid-2 service-row-grid-mantenimiento'>
 
             <div className='service-card'>
               <h2>Básico</h2>
               <div className='service-price'>50€<span className='service-price-mes'>/mes</span><span className='service-price-iva'> + IVA</span></div>
-              <p className='service-description'>Lo esencial para que tu web funcione sin preocupaciones. Ideal si tu web no tiene panel de administración.</p>
+              <p className='service-description'>Lo esencial para no tener que ocuparte de nada.</p>
               <ul className='service-details'>
-                <li><FeatureCheckIcon />Actualizaciones de seguridad</li>
-                <li><FeatureCheckIcon />Copias de seguridad</li>
-                <li><FeatureCheckIcon />Pequeños ajustes</li>
-                <li><FeatureCheckIcon />Google Analytics incluido</li>
-                <li><FeatureCheckIcon />Informe mensual de rendimiento en PDF</li>
-                <li><FeatureCheckIcon />Sin permanencia, cancela cuando quieras</li>
+                <li><FeatureCheckIcon />Tu web siempre encendida</li>
+                <li><FeatureCheckIcon />Los cambios que me pidas, en 2-3 días</li>
+                <li><FeatureCheckIcon />Si algo se rompe, lo arreglo yo</li>
+                <li><FeatureCheckIcon />Seguridad y copias de seguridad</li>
+                <li><FeatureCheckIcon />Informe cada mes: cuánta gente entra</li>
               </ul>
               <Link to='/contacto' className='service-btn'>Contactar</Link>
             </div>
 
             <div className='service-card service-card-featured'>
-              <span className='service-featured-badge'>Con panel o tienda</span>
+              <span className='service-featured-badge'>El más completo</span>
               <h2>Premium</h2>
               <div className='service-price'><span className='service-price-desde'>Desde </span>70€<span className='service-price-mes'>/mes</span><span className='service-price-iva'> + IVA</span></div>
-              <p className='service-description'>Recomendado si tu web tiene panel de administración o tienda online: yo me encargo de que todo siga funcionando.</p>
+              <BadgePrioridad />
+              <p className='service-description'>Eres el primero de la cola y cada mes hablamos de cómo va tu web.</p>
+              <p className='features-herencia'>Todo lo del Básico, y además:</p>
               <ul className='service-details'>
-                <li><FeatureCheckIcon />Todo lo del plan Básico</li>
-                <li><FeatureCheckIcon gold />Mantenimiento del panel de administración</li>
-                <li><FeatureCheckIcon gold />Soporte con tu tienda: pedidos, productos y stock</li>
-                <li><FeatureCheckIcon gold />Te ayudo si te atascas usando el panel</li>
-                <li><FeatureCheckIcon gold />Soporte prioritario con respuesta en menos de 24h</li>
-                <li><FeatureCheckIcon gold />Optimización SEO mensual</li>
-                <li><FeatureCheckIcon gold />Pequeñas mejoras de diseño incluidas</li>
-                <li><FeatureCheckIcon gold />Revisión mensual de velocidad y rendimiento</li>
-                <li><FeatureCheckIcon />Sin permanencia, cancela cuando quieras</li>
+                <li><FeatureCheckIcon gold />Cambios el mismo día: precios, fotos y textos</li>
+                <li><FeatureCheckIcon gold />Una llamada al mes: te cuento cómo va tu web</li>
+                <li><FeatureCheckIcon gold />Te llevo tu ficha de Google y las reseñas</li>
+                <li><FeatureCheckIcon gold />Si tu web se cae, la arreglo antes que nada</li>
+                <li><FeatureCheckIcon gold />Si vendes online: que los pagos nunca fallen</li>
               </ul>
               <Link to='/contacto' className='service-btn'>Contactar</Link>
             </div>
 
           </div>
+          <p className='tipos-web-nota'>Los dos planes van <strong>sin permanencia</strong> e incluyen el alojamiento, así que no pagas servidor aparte. El código y el dominio son tuyos: si un día lo dejas, te los llevas. Rediseñar secciones, añadir funciones o cargar un catálogo entero no es mantenimiento: te digo lo que cuesta antes y decides tú.</p>
         </div>
 
         {/* ── Fila 4: ChatBot con IA ── */}

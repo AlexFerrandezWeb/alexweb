@@ -1254,6 +1254,23 @@
     line-height: 1.4;
 }
 
+/* Mismo reparto que en la fila de /servicios: con cinco puntos, a la tarjeta
+   del Basico le sobraba alto y se le quedaba un hueco entre la lista y el
+   boton. La lista se come el sobrante y lo reparte entre sus puntos.
+   Solo en escritorio: en el movil las tarjetas del modal estan medidas para
+   caber en una pantalla. */
+@media (min-width: 601px) {
+    .modal-grid-mantenimiento .modal-card .features {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .modal-grid-mantenimiento .modal-card .features li {
+        flex: 1;
+    }
+}
+
 .modal-card .features {
     margin-bottom: 14px;
 }
@@ -2237,6 +2254,17 @@
     }
 
     .modal-planes .card-addon-texto {
+        font-size: 0.8rem;
+    }
+
+    /* Espejo de los apretones de .card-addon: el bloque de los tres meses
+       incluidos vive en las mismas tarjetas y tiene que encoger igual. */
+    .modal-planes .card-incluido {
+        margin: 2px 0 10px;
+        padding: 8px 10px;
+    }
+
+    .modal-planes .card-incluido-texto {
         font-size: 0.8rem;
     }
 

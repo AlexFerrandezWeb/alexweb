@@ -56,7 +56,7 @@ export const contenido = {
       {
         titulo: 'Tuya de verdad',
         texto:
-          'El dominio y el código son tuyos. Si algún día quieres irte con otra persona, te llevas todo. No trabajo con sistemas cerrados que te obligan a quedarte pagando cada mes para siempre.',
+          'El dominio y el código son tuyos desde el primer día. Si algún día quieres irte con otra persona, te llevas todo y te ayudo con el traspaso. No trabajo con sistemas cerrados que retienen tu web para obligarte a quedarte.',
       },
     ],
   },
@@ -97,11 +97,11 @@ export const contenido = {
       {
         nombre: 'Mantenimiento',
         precio: 'desde 50€/mes',
-        para: 'Opcional. Para no tener que preocuparte de actualizaciones, copias ni de que algo se rompa. Si tu web lleva panel de gestión, el plan es el de 70€.',
+        para: 'Los 3 primeros meses van incluidos con tu web. Cubre el alojamiento, la seguridad, los cambios que me pidas y que si algo se rompe lo arregle yo.',
         incluye: [
           'Actualizaciones de seguridad',
           'Copias de seguridad',
-          'Pequeños cambios incluidos',
+          'Alojamiento incluido: tu web siempre encendida',
           'Informe mensual en PDF',
           'Sin permanencia',
         ],

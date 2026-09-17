@@ -125,7 +125,7 @@ export const contenido = {
       },
     ],
     nota:
-      'A esto hay que sumarle los gastos que no dependen de mí: el dominio (unos 10-15€ al año) y el alojamiento (desde gratis en proyectos pequeños hasta unos 100-200€ al año si tienes tienda). El mantenimiento es opcional, desde 50€ al mes y sin permanencia, o 70€ si tu web lleva panel de gestión. Todo con factura, deducible como gasto profesional.',
+      'Aparte solo va el dominio, unos 20€ al año: es tuyo, y cuando toca renovarlo te aviso y hago yo el trámite. El alojamiento no lo pagas tú, va dentro del mantenimiento, y los 3 primeros meses vienen incluidos con la web. A partir del cuarto, desde 50€ al mes y sin permanencia. Todo con factura, deducible como gasto profesional.',
   },
 
   faqs: [
@@ -142,7 +142,7 @@ export const contenido = {
     {
       pregunta: '¿Qué gastos tiene la web cada año?',
       respuesta:
-        'El dominio, entre 10 y 15€ al año. El alojamiento, que en webs pequeñas puede ser gratuito y en tiendas ronda los 100-200€ anuales. Y opcionalmente el mantenimiento, desde 50€ al mes, o 70€ si tu web lleva panel de gestión. Eso es todo: no hay licencias ocultas ni cuotas por seguir usando tu propia web.',
+        'El dominio, unos 20€ al año, y el mantenimiento, desde 50€ al mes, con los 3 primeros meses incluidos en el precio de la web. El alojamiento va dentro de esa cuota: no tienes que contratar servidor por tu cuenta ni pagarlo aparte. Y del dominio tampoco te tienes que acordar: te aviso yo cuando toca renovar. Eso es todo: no hay licencias ocultas ni sorpresas.',
     },
     {
       pregunta: '¿El precio incluye que salga en Google?',

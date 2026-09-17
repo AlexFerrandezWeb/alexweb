@@ -85,19 +85,6 @@ const NEGOCIO_JSON_LD = {
           },
           {
             '@type': 'Offer',
-            name: 'Panel de edición de contenidos',
-            description: 'Complemento opcional del Sitio Web Básico para editar tú mismo textos e imágenes.',
-            price: '290',
-            priceCurrency: 'EUR',
-            priceSpecification: {
-              '@type': 'PriceSpecification',
-              price: '290',
-              priceCurrency: 'EUR',
-              valueAddedTaxIncluded: false,
-            },
-          },
-          {
-            '@type': 'Offer',
             name: 'E-commerce / Tienda Online',
             description: 'Tienda online con carrito, pasarela de pago, reservas y citas online y panel de gestión de productos y stock. El precio depende del catálogo.',
             price: '999',
@@ -124,8 +111,21 @@ const NEGOCIO_JSON_LD = {
           },
           {
             '@type': 'Offer',
+            name: 'Panel de edición de contenidos',
+            description: 'Complemento opcional del Sitio Web Básico para editar tú mismo textos e imágenes.',
+            price: '290',
+            priceCurrency: 'EUR',
+            priceSpecification: {
+              '@type': 'PriceSpecification',
+              price: '290',
+              priceCurrency: 'EUR',
+              valueAddedTaxIncluded: false,
+            },
+          },
+          {
+            '@type': 'Offer',
             name: 'Mantenimiento y SEO',
-            description: 'Opcional y sin permanencia: actualizaciones, copias de seguridad y posicionamiento mensual. Desde 70€/mes si la web lleva panel de gestión.',
+            description: 'Sin permanencia, con los 3 primeros meses incluidos en cada proyecto: alojamiento, seguridad, copias, los cambios que pidas e informe mensual. Desde 70€/mes el plan Premium, que añade cambios el mismo día, una llamada al mes y la gestión de tu ficha de Google.',
             price: '50',
             priceCurrency: 'EUR',
             priceSpecification: {

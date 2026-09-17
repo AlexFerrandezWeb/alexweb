@@ -30,8 +30,24 @@ const faqs = [
     respuesta: 'Sí, al ser un servicio profesional con factura puedes desgravarlo en tu declaración. Consulta con tu gestor para más detalles.'
   },
   {
+    pregunta: '¿Qué incluye eso de los 3 meses de mantenimiento?',
+    respuesta: 'Todos mis proyectos salen con los 3 primeros meses dentro del precio, sin pagar nada aparte: el alojamiento (tu web encendida, sin pagar servidor por tu cuenta), las actualizaciones de seguridad, las copias, los cambios que me pidas, y que si algo se rompe lo arregle yo. La idea es que no te quedes solo justo cuando la web acaba de salir, que es cuando suelen aparecer los ajustes.'
+  },
+  {
+    pregunta: '¿Y cuando se acaben los 3 meses?',
+    respuesta: 'Decides tú. Si sigues, son 50€/mes el plan Básico o desde 70€/mes el Premium, sin permanencia. Si no quieres seguir, el código y el dominio son tuyos y te los llevas para montar la web donde quieras: lo que pagas cada mes es el alojamiento y tenerme detrás, nunca una licencia por usar tu propia web.'
+  },
+  {
     pregunta: '¿El mantenimiento es obligatorio?',
-    respuesta: 'No es obligatorio, pero sí muy recomendado. Sin mantenimiento tu web puede quedarse desactualizada o volverse vulnerable. Es la mejor forma de proteger tu inversión.'
+    respuesta: 'No hay permanencia: cancelas cuando quieras. Pero sé claro sobre qué es la cuota, porque no es una licencia: dentro va el alojamiento, así que si la dejas hay que mover tu web a otro sitio. Te entrego el código y el dominio para que lo hagas con quien quieras, y te echo una mano con el traspaso.'
+  },
+  {
+    pregunta: '¿El mantenimiento incluye cambiar cosas de mi web?',
+    respuesta: 'Sí, los del día a día: un precio, una foto, un texto, los horarios, una oferta. Van en los dos planes; la diferencia es el plazo (2-3 días en el Básico, el mismo día en el Premium). Lo que no entra es el trabajo grande: cargar un catálogo entero, rediseñar secciones o añadir funciones nuevas. Eso no te lo voy a hacer a escondidas ni te lo voy a cobrar por sorpresa: te digo lo que cuesta antes y decides tú.'
+  },
+  {
+    pregunta: '¿Para qué quiero el panel si tú me haces los cambios?',
+    respuesta: 'Para no esperarme. Si me pides un cambio te lo hago yo, pero lo verás cuando yo lo vea: puede ser en un rato o al día siguiente. Con el panel lo cambias tú en el momento, a la hora que sea, un domingo o en agosto. Si tu web cambia dos veces al año, no te hace falta. Si cambias precios, fotos u ofertas a menudo, se paga solo.'
   },
   {
     pregunta: '¿Se puede pagar a plazos?',

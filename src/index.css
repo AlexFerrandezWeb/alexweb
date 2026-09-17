@@ -56,6 +56,12 @@
   line-height: 1.5;
 }
 
+/* Mismo tratamiento que en .tipos-web-nota: el negrita destaca sobre el gris
+   de la entradilla sin cambiar de tamano. */
+.tipos-web-intro strong {
+  color: #2c3e50;
+}
+
 /* Linea de cierre debajo de la rejilla: enlaza los tipos de web con los planes
    de mantenimiento, que es la duda que llega justo despues de elegir nivel. */
 .tipos-web-nota {
@@ -102,6 +108,71 @@
   font-weight: 700;
   color: var(--color-accion);
   white-space: nowrap;
+}
+
+/* Los tres primeros meses de mantenimiento van dentro del precio del proyecto.
+   Comparte medidas con .card-addon a proposito, pero en verde y con el borde
+   solido: el punteado de ahi arriba dice "esto se cobra aparte" y aqui es justo
+   al reves, ya esta pagado. Si se tocan las medidas de uno, tocar las del otro. */
+.card-incluido {
+  margin: 4px 0 14px;
+  padding: 10px 12px;
+  border: 1px solid #bfe3cb;
+  border-radius: 10px;
+  background: #f4faf6;
+  text-align: left;
+}
+
+.card-incluido-etiqueta {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #2f855a;
+  margin-bottom: 3px;
+}
+
+.card-incluido-texto {
+  font-size: 0.85rem;
+  color: #4a5c52;
+  line-height: 1.4;
+}
+
+.card-incluido-texto strong {
+  color: #24613f;
+}
+
+/* Distintivo del plan Premium, debajo del precio. Va aparte de la etiqueta que
+   corona la tarjeta ("El mas completo") a proposito: esa dice cuanto llevas y
+   esta dice como te atiendo, que es lo que de verdad separa los dos planes.
+   Dorado como los checks del nivel alto, para que se lean como la misma familia
+   y no como un aviso mas. */
+.badge-prioridad {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  /* Las tarjetas son flex en columna y estiran a los hijos a todo el ancho: sin
+     esto el distintivo sale como una banda de lado a lado en vez de una pastilla. */
+  align-self: flex-start;
+  width: fit-content;
+  margin: 2px 0 12px;
+  padding: 5px 12px 5px 10px;
+  border: 1px solid #f3d08a;
+  border-radius: 999px;
+  background: #fff8e8;
+  color: #8a5a00;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.badge-prioridad svg {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  color: #f0a500;
 }
 
 /* Solo en el nivel Basico, el unico con precio cerrado: adelanta que un extra

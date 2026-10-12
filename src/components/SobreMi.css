@@ -125,6 +125,17 @@
   transform: translateY(0);
 }
 
+.sm-statement .sm-statement-sub {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #6e6e73;
+  letter-spacing: 0;
+  max-width: 640px;
+  margin-top: 28px;
+  transition-delay: 0.12s;
+}
+
 .sm-statement em {
   font-style: normal;
   background: linear-gradient(135deg, #667eea, #764ba2);
@@ -168,6 +179,19 @@
 .sm-dark .sm-section-label { color: #666; }
 .sm-dark .sm-section-title { color: #f5f5f7; }
 
+/* Titulo con un parrafo debajo antes de las tarjetas (Mas alla de la web) */
+.sm-section-title.sm-section-title-con-intro { margin-bottom: 20px; }
+
+.sm-section-intro {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #6e6e73;
+  max-width: 620px;
+  margin: 0 0 48px;
+}
+
+.sm-dark .sm-section-intro { color: #a1a1a6; }
+
 /* ===== VALORES ===== */
 .sm-valores-grid {
   display: grid;
@@ -194,6 +218,8 @@
 .sm-valor:nth-child(2) { transition-delay: 0.1s; }
 .sm-valor:nth-child(3) { transition-delay: 0.2s; }
 .sm-valor:nth-child(4) { transition-delay: 0.3s; }
+.sm-valor:nth-child(5) { transition-delay: 0.4s; }
+.sm-valor:nth-child(6) { transition-delay: 0.5s; }
 
 .sm-valor-num {
   font-size: 0.78rem;
@@ -315,7 +341,35 @@
   margin: 0;
 }
 
+/* ===== NEGOCIOS ===== */
+/* Las mismas tarjetas de servicios, pero en tres columnas y como enlace */
+.sm-negocios-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.sm-negocio {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.sm-negocio p { flex: 1; }
+
+.sm-negocio-link {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #764ba2;
+}
+
 /* ===== STACK ===== */
+/* Franja discreta: a un autonomo le dice poco la lista de tecnologias */
+.sm-stack {
+  padding: 48px 24px;
+  background: #f5f5f7;
+}
+
 .sm-stack-wrap {
   text-align: center;
 }
@@ -323,27 +377,19 @@
 .sm-stack-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px;
   justify-content: center;
   max-width: 700px;
   margin: 0 auto;
 }
 
 .sm-pill {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #c7c7cc;
-  padding: 10px 22px;
+  border: 1px solid #d2d2d7;
+  color: #6e6e73;
+  padding: 6px 14px;
   border-radius: 50px;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   letter-spacing: 0.02em;
-  transition: background 0.2s, color 0.2s;
-}
-
-.sm-pill:hover {
-  background: rgba(102, 126, 234, 0.15);
-  border-color: rgba(102, 126, 234, 0.4);
-  color: #b9a4e0;
 }
 
 /* ===== CTA ===== */
@@ -435,6 +481,12 @@
   }
 
   .sm-servicio { padding: 32px 28px; }
+
+  .sm-negocios-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sm-stack { padding: 40px 20px; }
 
   .sm-section { padding: 80px 20px; }
   .sm-statement { padding: 80px 20px; }

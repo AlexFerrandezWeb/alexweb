@@ -40,7 +40,7 @@ const fondo = `
   <text x="600" y="452" text-anchor="middle"
         font-family="Segoe UI, Helvetica, Arial, sans-serif"
         font-size="30" font-weight="400" fill="#b9a4e0">
-    Murcia · Diseño a medida, sin plantillas
+    Tu web + acompañamiento mes a mes
   </text>
 </svg>`;
 

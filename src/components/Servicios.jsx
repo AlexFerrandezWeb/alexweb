@@ -138,7 +138,7 @@ const TEMAS = [
   {
     ruta: '/diseno-web-para-pymes',
     titulo: 'Diseño web para pymes',
-    texto: 'Webs para pequeñas empresas y autónomos: precio cerrado, sin plantillas y trato directo.',
+    texto: 'Webs para pequeñas empresas y autónomos: precio cerrado, trato directo y acompañamiento mes a mes.',
     icono: (
       <IconoTema>
         <path d='M3 21h18' />
@@ -178,7 +178,7 @@ export const Servicios = () => {
           {/* La misma promesa que la fila de Sitios Web: las landings tampoco
               son plantillas. Sin esta linea, tenerla solo abajo se leia como
               que las landings si lo eran. */}
-          <p className='tipos-web-intro'>Cada landing se desarrolla desde cero y a medida para tu negocio, sin plantillas ni constructores.</p>
+          <p className='tipos-web-intro'>Cada landing se diseña para un objetivo concreto: que quien entre te contacte.</p>
           <div className='service-row-grid service-row-grid-2'>
 
             <div className='service-card'>
@@ -219,7 +219,7 @@ export const Servicios = () => {
         {/* ── Fila 2: Sitios Web ── */}
         <div className='service-group'>
           <div className='section-row-title'>Sitios Web</div>
-          <p className='tipos-web-intro'>Todas las webs se desarrollan desde cero, sin plantillas ni constructores.</p>
+          <p className='tipos-web-intro'>Cada web se adapta al objetivo de tu negocio y crece contigo mes a mes.</p>
           <div className='service-row-grid service-row-grid-3'>
 
             {/* Mismos tres tipos que el modal de la home: el Basico va sin

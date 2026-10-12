@@ -1,6 +1,6 @@
 # /alexweb_
 
-Sitio web personal de **Alejandro Ferrández** — desarrollador web freelance especializado en pequeños autónomos y negocios locales. Desarrollado desde cero con React, sin plantillas.
+Sitio web personal de **Alejandro Ferrández** — desarrollador web freelance especializado en pequeños autónomos y negocios locales. Desarrollado con React y Vite.
 
 ---
 

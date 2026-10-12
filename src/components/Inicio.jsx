@@ -1004,7 +1004,7 @@ export const Inicio = () => {
               <>
                 <h2 className='modal-titulo'>Elige tu Sitio Web</h2>
                 <p className='modal-subtitulo'>Tres tipos de web según lo que necesites</p>
-                <p className='tipos-web-intro'>Todas las webs se desarrollan desde cero, sin plantillas ni constructores.</p>
+                <p className='tipos-web-intro'>Cada web se adapta al objetivo de tu negocio y crece contigo mes a mes.</p>
                 <div className='modal-grid' ref={modalGridRef} key={modalPlanes}>
                   {/* El Basico va sin "Desde" porque su alcance esta cerrado
                       (5 paginas), y por eso lleva debajo la nota de que los
@@ -1114,7 +1114,7 @@ export const Inicio = () => {
               <>
                 <h2 className='modal-titulo'>Elige tu Landing Page</h2>
                 <p className='modal-subtitulo'>Dos variantes para adaptarse a lo que necesitas</p>
-                <p className='tipos-web-intro'>Cada landing se desarrolla desde cero y a medida para tu negocio, sin plantillas ni constructores.</p>
+                <p className='tipos-web-intro'>Cada landing se diseña para un objetivo concreto: que quien entre te contacte.</p>
                 <div className='modal-grid modal-grid-2' ref={modalGridRef} key={modalPlanes}>
                   <div className='modal-card'>
                     <h3>Starter</h3>

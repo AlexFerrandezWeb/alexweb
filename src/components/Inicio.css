@@ -146,7 +146,6 @@
     flex: 0 0 auto;
 }
 
-
 /* Por que necesitas una web. Sin chrome de tarjeta a proposito: justo debajo
    vienen las tres product-card y repetir el mismo recuadro haria que se leyeran
    como si tambien fueran planes. */
@@ -224,8 +223,7 @@
 /* Los puntos de los dos carruseles. Ocultos por defecto: en escritorio no hay
    carrusel que indicar, las tarjetas ya se ven en fila. Tienen que ir antes
    del @media que los enciende o ganarian el desempate y no se verian nunca. */
-.porque-dots,
-.modal-dots {
+.porque-dots {
     display: none;
 }
 
@@ -282,8 +280,7 @@
         margin-top: 22px;
     }
 
-    .porque-dot,
-    .modal-dot {
+    .porque-dot {
         width: 8px;
         height: 8px;
         padding: 0;
@@ -294,8 +291,7 @@
         transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    .porque-dot.is-active,
-    .modal-dot.is-active {
+    .porque-dot.is-active {
         background: var(--color-accion);
         transform: scale(1.3);
     }
@@ -450,110 +446,6 @@
 
 .comparar-enlace:hover {
     color: var(--color-accion-hover);
-}
-
-/* Comparativa Landing vs Sitio Web (dentro del modal 'comparar') */
-.tabla-comparativa {
-    border-collapse: collapse;
-    margin-top: 10px;
-    width: 100%;
-}
-
-.tabla-comparativa th,
-.tabla-comparativa td {
-    border-bottom: 1px solid #eee;
-    padding: 12px 14px;
-    text-align: left;
-    vertical-align: top;
-}
-
-.tabla-comparativa thead th {
-    background: var(--color-accion);
-    color: var(--color-accion-texto);
-    font-weight: 700;
-}
-
-.tabla-comparativa thead th:first-child {
-    background: none;
-}
-
-.tabla-comparativa tbody th {
-    color: #2c3e50;
-    font-weight: 700;
-    width: 26%;
-}
-
-.tabla-comparativa tbody td {
-    color: #555;
-}
-
-/* En movil una tabla de tres columnas se estruja y no hay quien la lea, asi
-   que cada fila pasa a ser un bloque y cada dato lleva su etiqueta delante
-   (de ahi el data-etiqueta). La cabecera sobra porque ya se repite en cada
-   celda, y la semantica la sostienen los role del JSX. */
-@media (max-width: 700px) {
-    .tabla-comparativa thead {
-        display: none;
-    }
-
-    .tabla-comparativa,
-    .tabla-comparativa tbody,
-    .tabla-comparativa tr,
-    .tabla-comparativa tbody th,
-    .tabla-comparativa tbody td {
-        display: block;
-        /* border-box o el padding se suma al 100% y la tabla se sale */
-        box-sizing: border-box;
-        width: 100%;
-    }
-
-    .tabla-comparativa tr {
-        border: 1px solid #e8e8ef;
-        border-radius: 10px;
-        margin-bottom: 14px;
-        overflow: hidden;
-    }
-
-    .tabla-comparativa tbody th {
-        background: rgba(118, 75, 162, 0.07);
-        border-bottom: none;
-        font-size: 1.02rem;
-    }
-
-    .tabla-comparativa tbody td {
-        border-bottom: none;
-        padding-bottom: 4px;
-    }
-
-    .tabla-comparativa tbody td:last-child {
-        padding-bottom: 14px;
-    }
-
-    .tabla-comparativa td::before {
-        color: var(--color-accion);
-        content: attr(data-etiqueta);
-        display: block;
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        margin-bottom: 3px;
-        text-transform: uppercase;
-    }
-}
-
-/* Cierre de la comparativa: dos acciones solidas y del mismo peso, porque
-   ninguna de las dos es "la secundaria" — depende de lo que necesite cada uno. */
-.modal-comparar-acciones {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-top: 24px;
-}
-
-.modal-comparar-acciones .card-btn {
-    flex: 1 1 220px;
-    font-weight: 700;
-    padding: 14px 18px;
 }
 
 /* "Para quien es" cada servicio. Es la frase que hace decidir al cliente, asi
@@ -1104,213 +996,6 @@
     background: var(--color-accion-hover);
 }
 
-/* Modal Planes */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.55);
-    -webkit-backdrop-filter: blur(3px);
-    backdrop-filter: blur(3px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* Por encima del boton de WhatsApp (1000) y del chat (1100): con 1000 se
-       montaban sobre el modal y tapaban los botones del fondo en movil. */
-    z-index: 1200;
-    padding: 20px;
-    /* En iOS Safari el "top: 0; bottom: 0" se mide contra el alto de pantalla
-       con la barra de direcciones recogida, no contra lo que de verdad se ve:
-       el modal se centraba en una caja mas alta que la pantalla y el pie (el
-       boton de Contactar) le quedaba justo debajo de la barra de abajo.
-       dvh es el alto que se ve ahora mismo, sea cual sea el estado de la barra:
-       ni se pasa (y esconde el pie del modal detras de la barra) ni se queda
-       corto (y deja asomar la pagina por debajo, con el boton del chat incluido,
-       que es lo que pasaba con svh cuando la barra estaba recogida).
-       Lo que suele desaconsejar dvh es que cambia al hacer scroll y da saltos,
-       pero con el modal abierto el scroll de la pagina esta bloqueado, asi que
-       la barra no cambia de estado y el alto no se mueve.
-       Los dos primeros son el respaldo para navegadores sin estas unidades. */
-    height: 100vh;
-    height: 100svh;
-    height: 100dvh;
-    /* border-box o los 20px de relleno se suman al alto de pantalla y el
-       overlay se pasa 40px de largo, justo lo que estabamos arreglando. */
-    box-sizing: border-box;
-    padding-bottom: max(20px, env(safe-area-inset-bottom));
-    animation: modalOverlayIn 0.2s ease;
-}
-
-@keyframes modalOverlayIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-.modal-planes {
-    background: #fff;
-    border-radius: 20px;
-    /* Sin esto el relleno se suma al tope de alto y el modal acaba midiendo
-       90svh + 30px, o sea otra vez mas de lo que se ve. */
-    box-sizing: border-box;
-    padding: 28px 28px 24px;
-    max-width: 1000px;
-    width: 100%;
-    max-height: 90vh;
-    /* Contra el mismo alto que el overlay, que es el que de verdad se ve: con
-       90vh el modal se hacia mas alto que la pantalla de un iPhone y el scroll
-       interior creia que no sobraba nada. */
-    max-height: 90svh;
-    max-height: 90dvh;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
-    animation: modalIn 0.25s ease;
-}
-
-@keyframes modalIn {
-    from { opacity: 0; transform: translateY(20px) scale(0.97); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.modal-cerrar {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background: #f0f0f5;
-    border: none;
-    border-radius: 8px;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: #555;
-    transition: background 0.2s ease, color 0.2s ease;
-}
-
-.modal-cerrar:hover {
-    background: #e0dff0;
-    color: #764ba2;
-}
-
-.modal-titulo {
-    text-align: center;
-    font-size: 1.6rem;
-    color: #2c3e50;
-    margin: 0 0 4px;
-}
-
-.modal-subtitulo {
-    text-align: center;
-    color: #666;
-    font-size: 0.9rem;
-    margin: 0 0 20px;
-}
-
-.modal-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-}
-
-.modal-card {
-    background: #fff;
-    border-radius: 15px;
-    padding: 18px 20px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
-    /* Blanca sobre blanco, el borde es lo unico que dibuja la tarjeta, y un
-       #eee no se ve: quedaba el canto de arriba fundido con el fondo del modal
-       y solo se notaba la sombra de abajo, que parecia una bandeja gris debajo
-       de la tarjeta. Este lila es el mismo tono de la tarjeta destacada, un par
-       de pasos mas suave, asi que las dos se leen como la misma familia. */
-    border: 1px solid #e0d8f0;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.modal-card h3 {
-    line-height: 1.25;
-}
-
-/* Igual que en Servicios: en el modal de Sitio Web (el que no lleva
-   modal-grid-2) un titulo de dos lineas descuadraria los precios. */
-@media (min-width: 860px) {
-    .modal-grid:not(.modal-grid-2) .modal-card h3 {
-        min-height: 3.2rem;
-    }
-}
-
-.modal-card .price {
-    font-size: 1.6rem;
-    margin-bottom: 8px;
-}
-
-.modal-card .price-iva {
-    font-size: 0.85rem;
-    margin-left: 6px;
-}
-
-.modal-card .description {
-    font-size: 0.88rem;
-    margin-bottom: 10px;
-    line-height: 1.4;
-}
-
-/* Mismo reparto que en la fila de /servicios: con cinco puntos, a la tarjeta
-   del Basico le sobraba alto y se le quedaba un hueco entre la lista y el
-   boton. La lista se come el sobrante sin separar sus puntos: quedan juntos y
-   el hueco se reparte por encima y por debajo.
-   Solo en escritorio: en el movil las tarjetas del modal estan medidas para
-   caber en una pantalla. */
-@media (min-width: 601px) {
-    .modal-grid-mantenimiento .modal-card .features {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        flex-grow: 1;
-    }
-}
-
-.modal-card .features {
-    margin-bottom: 14px;
-}
-
-.modal-card .features li {
-    padding: 4px 0;
-    font-size: 0.85rem;
-}
-
-/* Solo con raton de verdad. En una pantalla tactil no hay "pasar por encima":
-   al tocar la tarjeta el navegador le da el hover igualmente y se queda
-   levantada, como si se hubiera hinchado al pulsarla, hasta que tocas en otro
-   sitio. El efecto esta pensado para el raton, asi que se queda solo ahi. */
-@media (hover: hover) {
-    .modal-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
-    }
-}
-
-.modal-card-featured {
-    border: 2px solid #b9a4e0;
-    box-shadow: 0 10px 24px rgba(118, 75, 162, 0.18);
-}
-
-.modal-grid-2 {
-    grid-template-columns: repeat(2, minmax(260px, 340px));
-    justify-content: center;
-}
-
-.modal-duracion {
-    font-size: 0.85rem;
-    color: #888;
-    margin: -4px 0 12px;
-}
-
 .price-mes {
     font-size: 1rem;
     font-weight: 600;
@@ -1566,8 +1251,7 @@
     /* Cada tarjeta tiene que caber entera en la pantalla, tambien en un movil
        pequeno: una tarjeta de precio cortada por la mitad da la sensacion de
        que se esconde algo justo donde el cliente decide. De ahi el apretado de
-       esta seccion. Todo va colgado de .product-card para no arrastrar a las
-       tarjetas del modal, que comparten clases. */
+       esta seccion. */
     .product-card {
         padding: 20px;
     }
@@ -1655,27 +1339,6 @@
         width: 100%;
         padding: 13px 24px;
         box-sizing: border-box;
-    }
-
-    /* Modal */
-    .modal-planes {
-        padding: 26px 14px 18px;
-        border-radius: 14px;
-    }
-
-    /* Simetrico y no solo a la derecha: el hueco se reserva para no pasar por
-       debajo de la X, pero con padding en un solo lado el texto centrado se
-       desplaza media reserva a la izquierda y baila respecto al subtitulo. */
-    .modal-titulo {
-        /* Se ata al ancho para que quepa en una linea con el hueco de la X ya
-           descontado: "Elige tu Mantenimiento" a 1.5rem se partia en dos y se
-           comia 32px de alto en un modal donde el sitio va justo. */
-        font-size: clamp(1.05rem, 5vw, 1.5rem);
-        padding: 0 34px;
-    }
-
-    .modal-grid-2 {
-        grid-template-columns: 1fr;
     }
 
     /* Contact */
@@ -1822,123 +1485,6 @@
     .product-card .features li {
         font-size: 0.88rem;
         padding: 5px 0;
-    }
-}
-/* ─── Carrusel de planes del modal (≤ 900px) ─── */
-/* Va al final del archivo a proposito: .modal-grid se define mas arriba con
-   display:grid y, a igual especificidad, gana la regla que aparece despues. */
-@media (max-width: 900px) {
-    /* Tres planes apilados obligan a un scroll largo para compararlos, que es
-       justo lo que el cliente esta intentando hacer aqui. De lado se ven de
-       una pasada. */
-    .modal-grid {
-        display: flex;
-        /* Estirados a la misma altura: se ven de uno en uno, pero al deslizar
-           entre planes las tarjetas de distinto alto dan un salto feo y el
-           boton de Contactar baila. El precio es que manda el plan mas largo,
-           asi que el largo de ese plan es el que hay que controlar. */
-        align-items: stretch;
-        /* .modal-grid-2 centra sus columnas para el escritorio. En una rejilla
-           que desborda, centrar empuja la primera tarjeta fuera del area por la
-           izquierda, a una posicion negativa que el scroll no alcanza: el modal
-           abria con el primer plan cortado y sin manera de llegar a el. */
-        justify-content: flex-start;
-        gap: 16px;
-        overflow-x: auto;
-        overflow-y: clip;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    /* Cabecera del modal al minimo: cada linea de aqui arriba es una linea que
-       le falta a la tarjeta para caber sin scroll. */
-    .modal-subtitulo {
-        font-size: 0.85rem;
-        margin-bottom: 12px;
-    }
-
-    .modal-planes .tipos-web-intro {
-        font-size: 0.82rem;
-        line-height: 1.4;
-        margin: 0 0 14px;
-    }
-
-    .modal-card {
-        padding: 14px 16px;
-    }
-
-    .modal-card h3 {
-        font-size: 1.15rem;
-        margin-bottom: 6px;
-    }
-
-    .modal-card .price {
-        font-size: 1.6rem;
-        margin-bottom: 10px;
-    }
-
-    .modal-card .description {
-        font-size: 0.84rem;
-        margin-bottom: 8px;
-    }
-
-    .modal-card .features {
-        margin-bottom: 12px;
-    }
-
-    .modal-card .features li {
-        padding: 2px 0;
-        font-size: 0.8rem;
-        line-height: 1.35;
-    }
-
-    /* La nota del pie tiene que verse sin bajar: es donde se avisa de que el
-       mantenimiento va aparte, y leerla despues del precio evita la sorpresa. */
-    .modal-planes .tipos-web-nota {
-        font-size: 0.8rem;
-        line-height: 1.45;
-        margin-top: 12px;
-    }
-
-    .modal-card .featured-badge {
-        font-size: 0.75rem;
-        padding: 4px 10px;
-        margin-bottom: 8px;
-    }
-
-    .modal-card .card-btn {
-        padding: 10px;
-    }
-
-    .modal-grid::-webkit-scrollbar {
-        display: none;
-    }
-
-    .modal-card {
-        /* border-box o el padding de la tarjeta se suma al 84% y acaba
-           ocupando el 97% de la rejilla: el plan siguiente deja de asomar y
-           nada indica que haya mas. */
-        box-sizing: border-box;
-        flex: 0 0 84%;
-        scroll-snap-align: start;
-        /* Un gesto, un plan: igual que en el carrusel del "por que". */
-        scroll-snap-stop: always;
-    }
-
-    /* El hueco que le falta al ultimo plan para poder llegar al borde
-       izquierdo. En % y no en vw: el modal no ocupa toda la pantalla, y tanto
-       este hueco como el ancho de las tarjetas se miden contra la rejilla. */
-    .modal-grid::after {
-        content: '';
-        flex: 0 0 16%;
-    }
-
-    .modal-dots {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 12px;
     }
 }
 /* ─── Capturas de proyecto en movil y tablet (≤ 900px) ─── */
@@ -2123,162 +1669,6 @@
     /* De 5 filas a 3: el aviso de arriba ya dice que con dos lineas basta. */
     .inicio-form-group textarea {
         height: 86px;
-    }
-}
-/* ─── El plan entero en una pantalla de movil (≤ 600px) ─── */
-/* Medido en un iPhone XS con Safari y las dos barras a la vista, que deja
-   375x640 utiles. El modal media 796px: se veia el precio pero el boton de
-   Contactar quedaba fuera, y encima tapado por la barra del navegador.
-   Todo lo de aqui es aire y tamano de letra, no contenido: no se quita ni una
-   caracteristica de ningun plan.
-   Va al final del archivo, despues del bloque del carrusel, por el mismo
-   motivo que aquel: a igual especificidad gana la ultima regla. */
-@media (max-width: 600px) {
-    .modal-overlay {
-        padding: 10px;
-        padding-bottom: max(10px, env(safe-area-inset-bottom));
-    }
-
-    /* El alto lo pone el overlay, que ya mide bien la pantalla: este 100% se
-       cuenta contra el y no contra un vh que en iOS se pasa de largo.
-       El min-height es lo que hace que el modal ocupe la pantalla en vez de
-       quedarse a su aire: al bajar los planes a cinco puntos el contenido media
-       570 de los 620 disponibles y sobraban dos franjas de fondo, arriba y
-       abajo. Ahora el modal siempre llega de borde a borde y lo que sobra se
-       reparte por dentro. El que se pasa de largo (Sitio Web) no se entera:
-       para el manda el max-height. */
-    .modal-planes {
-        min-height: 100%;
-        max-height: 100%;
-        display: flex;
-        flex-direction: column;
-        padding: 16px 12px 14px;
-    }
-
-    /* El carrusel se queda con el alto que sobra despues de la cabecera y los
-       puntos, y las tarjetas se estiran con el (el align-items: stretch ya
-       estaba puesto para que los planes midan todos igual).
-       Crece pero no encoge (el 0 del medio): con flex-shrink en 1, el modal de
-       Sitio Web, que es el unico que se pasa de alto, apretaba el carrusel para
-       caber y las tarjetas se quedaban cortadas por abajo, que el overflow-y:
-       clip del carrusel se comia el final sin dejar siquiera scroll. Asi el que
-       sobra sigue haciendo scroll y los que caben se estiran.
-       El carrusel mide lo que mide la tarjeta mas alta y ni un pixel mas (el
-       0 0 auto), y el aire que sobra se va a los dos margenes automaticos: uno
-       encima del carrusel y otro debajo de los puntos. Asi el bloque de
-       tarjeta y puntos queda centrado en la hoja.
-       Con cinco puntos cortos sobran unos 170px y hay que decidir donde caen.
-       Dentro de la tarjeta no valen: repartidos entre los puntos, la lista se
-       separa tanto que deja de leerse como una lista; todos debajo de ella,
-       queda un agujero blanco encima del boton; y centrando el contenido, la
-       tarjeta parece un marco vacio. Fuera de la tarjeta, en cambio, ese mismo
-       hueco se lee como margen de la hoja, que es lo que es. */
-    .modal-grid {
-        flex: 0 0 auto;
-        margin-top: auto;
-    }
-
-    .modal-dots {
-        margin-bottom: auto;
-    }
-
-    /* La X ocupa 48px de esquina (36 de boton mas 12 de separacion) y el
-       titulo solo le reservaba 34: por eso la ultima palabra se le metia
-       debajo. Reservar los 48 por los dos lados para mantenerlo centrado se
-       come 96 de los 331 de ancho y obliga a partir el titulo en dos lineas,
-       asi que el titulo se alinea a la izquierda y reserva el hueco solo del
-       lado donde esta la X. De paso queda a la misma linea que el contenido de
-       las tarjetas, que ya va a la izquierda. */
-    .modal-cerrar {
-        top: 12px;
-        right: 12px;
-    }
-
-    .modal-titulo {
-        text-align: left;
-        padding: 0 52px 0 4px;
-        margin-bottom: 4px;
-    }
-
-    /* El subtitulo repite lo que dice el titulo que tiene justo encima ("Elige
-       tu Sitio Web" / "Tres tipos de web segun lo que necesites"). En una
-       pantalla grande da aire; en el movil son entre 30 y 48px que le faltan a
-       la tarjeta para entrar entera, que es lo que se ha venido a leer. */
-    .modal-subtitulo {
-        display: none;
-    }
-
-    /* La primera linea de la entradilla queda a la altura del pie de la X, asi
-       que le reserva la misma esquina que el titulo. */
-    .modal-planes .tipos-web-intro {
-        text-align: left;
-        margin: 0 0 10px;
-        padding: 0 52px 0 4px;
-        font-size: 0.8rem;
-    }
-
-    /* Un pelin mas ancha (88% en vez de 84%): cada punto de ancho que gana la
-       tarjeta son lineas de la lista que dejan de partirse en dos, y eso baja
-       mas el alto que apretar los margenes. El plan siguiente sigue asomando
-       lo justo para que se vea que hay mas. */
-    .modal-card {
-        flex: 0 0 88%;
-        padding: 14px;
-        /* La sombra de serie cae 6px hacia abajo, asi que de una tarjeta blanca
-           sobre fondo blanco solo se veia el gris del pie y parecia que estaba
-           metida en una bandeja. Centrada y mas clara: quien dibuja la tarjeta
-           es el borde, y la sombra solo la despega del fondo. */
-        box-shadow: 0 2px 10px rgba(44, 62, 80, 0.05);
-    }
-
-    .modal-grid::after {
-        flex: 0 0 12%;
-    }
-
-    /* Los margenes de fabrica del navegador para h3 y p: 18 y 13px que aqui no
-       hacen falta, que el relleno de la tarjeta ya separa. */
-    .modal-card h3 {
-        margin-top: 0;
-    }
-
-    .modal-card .description {
-        margin-top: 0;
-    }
-
-    .modal-planes .card-addon {
-        margin: 2px 0 10px;
-        padding: 8px 10px;
-    }
-
-    .modal-planes .card-addon-texto {
-        font-size: 0.8rem;
-    }
-
-    /* Espejo de los apretones de .card-addon: el bloque de los tres meses
-       incluidos vive en las mismas tarjetas y tiene que encoger igual. */
-    .modal-planes .card-incluido {
-        margin: 2px 0 10px;
-        padding: 8px 10px;
-    }
-
-    .modal-planes .card-incluido-texto {
-        font-size: 0.8rem;
-    }
-
-    .modal-planes .card-cerrado {
-        font-size: 0.75rem;
-        line-height: 1.4;
-        margin-bottom: 12px;
-    }
-
-    .modal-dots {
-        margin-top: 8px;
-    }
-
-    .modal-planes .tipos-web-nota {
-        font-size: 0.75rem;
-        line-height: 1.4;
-        margin-top: 8px;
     }
 }
 /* ─── Cada proyecto de "Mi trabajo", en una pantalla (≤ 600px) ─── */

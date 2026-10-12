@@ -41,56 +41,6 @@ const FeatureCheckIcon = ({ gold = false }) => (
   </span>
 )
 
-/**
- * Distintivo de atencion prioritaria del plan Premium. Va debajo del precio, no
- * arriba: la etiqueta de la corona ya dice "El mas completo" y esta responde a
- * otra pregunta, la de si te atienden antes que al del plan Basico.
- */
-const BadgePrioridad = () => (
-  <span className='badge-prioridad'>
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 24 24'
-      fill='currentColor'
-      aria-hidden='true'
-    >
-      <path d='M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5Z' />
-    </svg>
-    Atención prioritaria
-  </span>
-)
-
-/**
- * Los tres primeros meses de mantenimiento entran en el precio de todos los
- * niveles. Copia literal del de Servicios.jsx, igual que FeatureCheckIcon: si
- * cambia el texto de uno, cambiar el del otro o el modal y la pagina de
- * servicios empiezan a prometer cosas distintas.
- */
-const MantenimientoIncluido = ({ precio = '50€/mes' }) => (
-  <div className='card-incluido'>
-    <span className='card-incluido-etiqueta'>Gratis, dentro del precio</span>
-    <span className='card-incluido-texto'>
-      <strong>3 meses de mantenimiento</strong> y soporte. Después,
-      {' '}{precio} solo si quieres seguir, sin permanencia.
-    </span>
-  </div>
-)
-
-/* Filas de la comparativa Landing vs Sitio Web. Compara servicios distintos,
-   no los niveles de uno mismo: para eso esta el modal de cada servicio. */
-const COMPARATIVA = [
-  ['Para quién', 'Un servicio o producto principal', 'Varios servicios, tienda o blog'],
-  ['Páginas', 'Una página', 'Las que el proyecto necesite'],
-  ['Objetivo', 'Que te contacten', 'Presencia completa, vender y posicionar'],
-  ['SEO', 'Básico, enfocado a una búsqueda', 'Ampliado, para muchas búsquedas'],
-  ['Blog', 'No', 'Sí, autogestionable'],
-  ['Tienda online', 'No', 'Sí, a partir del nivel E-commerce'],
-  ['Panel para editarla tú', 'No', 'Sí, incluido desde E-commerce o por 290€ en el Básico'],
-  ['Entrega', '2-3 semanas', 'Según el proyecto'],
-  ['Desde, más IVA', '350€', '699€'],
-  ['Elígela si…', 'Quieres algo rápido y directo', 'Quieres que tu negocio viva en internet'],
-]
-
 const getMensajeError = (el) => {
   if (el.validity.valueMissing) return 'Este campo es obligatorio'
   if (el.validity.typeMismatch) return 'Introduce un email válido'
@@ -100,8 +50,6 @@ const getMensajeError = (el) => {
 
 export const Inicio = () => {
   const [slideActual, setSlideActual] = useState({ 'Heladería Luxer': 1, 'Anita Pinturitas': 2 })
-  const [modalPlanes, setModalPlanes] = useState(false)
-  const refModal = useRef(null)
   const [contactForm, setContactForm] = useState({ nombre: '', email: '', prefijo: '+34', telefono: '', tipoProyecto: '', mensaje: '' })
   const [contactEnviado, setContactEnviado] = useState(false)
   const [enviando, setEnviando] = useState(false)
@@ -116,9 +64,6 @@ export const Inicio = () => {
   const porquePausaRef = useRef(null)
   const porqueGestoRef = useRef(null)
   const porqueAsentarRef = useRef(null)
-  const modalGridRef = useRef(null)
-  const [modalIndice, setModalIndice] = useState(0)
-  const [modalTotal, setModalTotal] = useState(0)
   const [porquePausado, setPorquePausado] = useState(false)
   const [porqueVisible, setPorqueVisible] = useState(false)
   const refFormularioContacto = useRef(null)
@@ -226,21 +171,6 @@ export const Inicio = () => {
       setEnviando(false)
     }
   }
-
-  useEffect(() => {
-    if (!modalPlanes) return
-    // Al saltar de la comparativa a un plan cambia el contenido pero el modal
-    // sigue montado, asi que conservaria el scroll de la tabla y el nuevo
-    // contenido apareceria empezado por la mitad.
-    refModal.current?.scrollTo(0, 0)
-    const cerrarConEsc = (e) => { if (e.key === 'Escape') setModalPlanes(false) }
-    document.addEventListener('keydown', cerrarConEsc)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', cerrarConEsc)
-      document.body.style.overflow = ''
-    }
-  }, [modalPlanes])
 
   const proyectos = [
     {
@@ -429,33 +359,6 @@ export const Inicio = () => {
     clearTimeout(porqueAsentarRef.current)
   }, [])
 
-  // Los planes del modal tambien se pasan de lado en movil. Sin avance
-  // automatico a proposito: aqui el usuario esta comparando precios para
-  // decidir, y que la tarjeta se le mueva mientras lee es justo lo que no
-  // quiere. Se re-engancha con cada modal porque cada uno monta su propia
-  // rejilla, con dos o tres planes.
-  useEffect(() => {
-    const cont = modalGridRef.current
-    setModalIndice(0)
-
-    if (!cont) {
-      setModalTotal(0)
-      return
-    }
-
-    setModalTotal(cont.children.length)
-
-    // Igual que el scrollTo(0, 0) vertical de mas arriba: el modal no se
-    // desmonta al saltar de un plan a otro, asi que la rejilla conservaria el
-    // desplazamiento anterior y abriria por la mitad de la segunda tarjeta.
-    cont.scrollLeft = 0
-
-    const alScroll = () => setModalIndice(indiceCercanoDe(cont))
-    cont.addEventListener('scroll', alScroll, { passive: true })
-    return () => cont.removeEventListener('scroll', alScroll)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [modalPlanes])
-
   useEffect(() => {
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
       const todasReveladas = proyectos.reduce((acc, _, i) => ({ ...acc, [i]: true }), {})
@@ -520,23 +423,6 @@ export const Inicio = () => {
     setSlideActual((previo) => ({ ...previo, [nombreProyecto]: indice }))
   }
 
-  // Mismo bloque de puntos para los tres modales de planes. Solo se ve donde
-  // hay carrusel: en escritorio la rejilla enseña los planes uno al lado del
-  // otro y no hay nada que indicar.
-  const puntosModal = (
-    <div className='modal-dots'>
-      {Array.from({ length: modalTotal }, (_, i) => (
-        <button
-          type='button'
-          key={i}
-          className={`modal-dot ${i === modalIndice ? 'is-active' : ''}`}
-          onClick={() => irATarjetaDe(modalGridRef.current, i)}
-          aria-label={`Ver el plan ${i + 1} de ${modalTotal}`}
-        />
-      ))}
-    </div>
-  )
-
   return (
     <div className='inicio-container'>
       {/* Hero Section */}
@@ -549,7 +435,7 @@ export const Inicio = () => {
           <p>Creo la web de tu negocio a medida: rápida, que se vea perfecta en el móvil y que tus clientes te encuentren. Tú te centras en lo tuyo, yo me encargo del resto.</p>
           <div className='hero-actions'>
             <Link to='/contacto' className='hero-btn hero-btn-primary'>Pide presupuesto gratis</Link>
-            <Link to='/servicios' className='hero-btn hero-btn-secondary'>Ver planes y precios</Link>
+            <Link to='/servicios' className='hero-btn hero-btn-secondary'>Ver precios</Link>
           </div>
           <ul className='hero-garantias'>
             <li>Respuesta en menos de 24 h</li>
@@ -642,10 +528,6 @@ export const Inicio = () => {
         </div>
 
         <ComoEmpezamos />
-
-        <button type='button' className='comparar-enlace' onClick={() => setModalPlanes('comparar')}>
-          ¿No sabes cuál elegir? Compara Landing y Sitio Web
-        </button>
 
         <div className='chatbot-banner'>
           <div className='chatbot-banner-texto'>
@@ -966,200 +848,6 @@ export const Inicio = () => {
         </div>
       </section>
 
-      {modalPlanes && (
-        <div className='modal-overlay' onClick={() => setModalPlanes(false)}>
-          <div className='modal-planes' ref={refModal} onClick={(e) => e.stopPropagation()}>
-            <button className='modal-cerrar' onClick={() => setModalPlanes(false)} aria-label='Cerrar'>
-              <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='currentColor'>
-                <path d='M5 5h2v2H5zm4 4H7V7h2zm2 2H9V9h2zm2 0h-2v2H9v2H7v2H5v2h2v-2h2v-2h2v-2h2v2h2v2h2v2h2v-2h-2v-2h-2v-2h-2zm2-2v2h-2V9zm2-2v2h-2V7zm0 0V5h2v2z'/>
-              </svg>
-            </button>
-
-            {modalPlanes === 'sitioweb' ? (
-              <>
-                <h2 className='modal-titulo'>Elige tu Sitio Web</h2>
-                <p className='modal-subtitulo'>Tres tipos de web según lo que necesites</p>
-                <p className='tipos-web-intro'>Cada web se adapta al objetivo de tu negocio y crece contigo mes a mes.</p>
-                <div className='modal-grid' ref={modalGridRef} key={modalPlanes}>
-                  {/* El Basico va sin "Desde" porque su alcance esta cerrado
-                      (5 paginas), y por eso lleva debajo la nota de que los
-                      extras se aprueban antes de cobrarse. Los otros dos
-                      dependen del catalogo o del alcance y si lo llevan.
-                      Espejo de la Fila 2 de /servicios: si cambia uno,
-                      cambiar el otro. */}
-                  <div className='modal-card'>
-                    <h3>Sitio Web Básico</h3>
-                    <span className='price'>699€<span className='price-iva'> más IVA</span></span>
-                    <p className='description'>Ideal si quieres presencia profesional y que te encuentren.</p>
-                    <ul className='features'>
-                      <li><FeatureCheckIcon />Hasta 5 páginas</li>
-                      <li><FeatureCheckIcon />Diseño responsive</li>
-                      <li><FeatureCheckIcon />SEO básico incluido</li>
-                      <li><FeatureCheckIcon />Formulario de contacto</li>
-                      <li><FeatureCheckIcon />Google Analytics incluido</li>
-                      <li><FeatureCheckIcon />Entrega en 3-4 semanas</li>
-                    </ul>
-                    <MantenimientoIncluido precio='desde 50€/mes' />
-                    <div className='card-addon'>
-                      <span className='card-addon-etiqueta'>Complemento opcional</span>
-                      <span className='card-addon-texto'>Panel para editar textos e imágenes tú mismo — <span className='card-addon-precio'>290€</span></span>
-                    </div>
-                    <p className='card-cerrado'>Precio cerrado: si a mitad quieres añadir algo que no estaba, te digo lo que cuesta y decides tú. Nada se cobra sin que lo apruebes.</p>
-                    <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
-                  </div>
-                  <div className='modal-card'>
-                    <h3>E-commerce / Tienda Online</h3>
-                    <span className='price'><span className='price-span'>Desde </span>999€<span className='price-iva'> más IVA</span></span>
-                    <p className='description'>Vende online desde el primer día: catálogo, carrito y pago seguro. Precio según nº de productos.</p>
-                    <p className='features-herencia'>Todo lo del Básico, y además:</p>
-                    <ul className='features'>
-                      <li><FeatureCheckIcon gold />Carrito de compras</li>
-                      <li><FeatureCheckIcon gold />Pasarela de pago segura</li>
-                      <li><FeatureCheckIcon gold />Reservas y citas online</li>
-                      <li><FeatureCheckIcon gold />Panel de gestión de productos y stock incluido</li>
-                      <li><FeatureCheckIcon gold />Blog integrado</li>
-                      <li><FeatureCheckIcon gold />SEO avanzado incluido</li>
-                      <li><FeatureCheckIcon />Entrega en 6-8 semanas</li>
-                    </ul>
-                    <MantenimientoIncluido precio='desde 50€/mes' />
-                    <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
-                  </div>
-                  <div className='modal-card modal-card-featured'>
-                    <span className='featured-badge'>Más elegido</span>
-                    <h3>Proyecto a Medida</h3>
-                    <span className='price'><span className='price-span'>Desde </span>1.499€<span className='price-iva'> más IVA</span></span>
-                    <p className='description'>Cuando tu negocio necesita funciones propias. Precio a negociar según alcance.</p>
-                    <p className='features-herencia'>Todo lo anterior, y además:</p>
-                    <ul className='features'>
-                      <li><FeatureCheckIcon gold />Páginas y funciones sin límite</li>
-                      <li><FeatureCheckIcon gold />Panel de administración personalizado</li>
-                      <li><FeatureCheckIcon gold />Agenda de varios profesionales con Google Calendar</li>
-                      <li><FeatureCheckIcon gold />Sincronización con proveedor o ERP</li>
-                      <li><FeatureCheckIcon gold />ChatBot con IA integrado</li>
-                      <li><FeatureCheckIcon gold />Área privada de clientes</li>
-                      <li><FeatureCheckIcon />Entrega según proyecto</li>
-                    </ul>
-                    <MantenimientoIncluido precio='desde 50€/mes' />
-                    <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
-                  </div>
-                </div>
-                {puntosModal}
-                <p className='tipos-web-nota'>Las tres salen con los <strong>3 primeros meses de mantenimiento gratis</strong>. Después, desde 50€/mes y sin permanencia.</p>
-              </>
-            ) : modalPlanes === 'mantenimiento' ? (
-              <>
-                <h2 className='modal-titulo'>Después de la entrega</h2>
-                <p className='modal-subtitulo'>Qué pasa cuando se acaban los meses que van incluidos</p>
-                <p className='tipos-web-intro'>Tu web sale con los <strong>3 primeros meses gratis</strong>. A partir del cuarto eliges plan, y lo dejas cuando quieras.</p>
-                <div className='modal-grid modal-grid-2 modal-grid-mantenimiento' ref={modalGridRef} key={modalPlanes}>
-                  <div className='modal-card'>
-                    <h3>Básico</h3>
-                    <span className='price'>50€<span className='price-mes'>/mes</span><span className='price-iva'> más IVA</span></span>
-                    <p className='description'>Lo esencial para no tener que ocuparte de nada.</p>
-                    <ul className='features'>
-                      <li><FeatureCheckIcon />Tu web siempre encendida</li>
-                      <li><FeatureCheckIcon />Los cambios que me pidas, en 2-3 días</li>
-                      <li><FeatureCheckIcon />Si algo se rompe, lo arreglo yo</li>
-                      <li><FeatureCheckIcon />Seguridad y copias de seguridad</li>
-                      <li><FeatureCheckIcon />Informe cada mes: cuánta gente entra</li>
-                    </ul>
-                    <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
-                  </div>
-                  <div className='modal-card modal-card-featured'>
-                    <span className='featured-badge'>El más completo</span>
-                    <h3>Premium</h3>
-                    <span className='price'><span className='price-span'>Desde </span>70€<span className='price-mes'>/mes</span><span className='price-iva'> más IVA</span></span>
-                    <BadgePrioridad />
-                    <p className='description'>Eres el primero de la cola y cada mes hablamos de cómo va tu web.</p>
-                    <p className='features-herencia'>Todo lo del Básico, y además:</p>
-                    <ul className='features'>
-                      <li><FeatureCheckIcon gold />Cambios el mismo día: precios, fotos y textos</li>
-                      <li><FeatureCheckIcon gold />Una llamada al mes: te cuento cómo va tu web</li>
-                      <li><FeatureCheckIcon gold />Te llevo tu ficha de Google y las reseñas</li>
-                      <li><FeatureCheckIcon gold />Si tu web se cae, la arreglo antes que nada</li>
-                      <li><FeatureCheckIcon gold />Si vendes online: que los pagos nunca fallen</li>
-                    </ul>
-                    <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
-                  </div>
-                </div>
-                {puntosModal}
-                <p className='tipos-web-nota'>Los dos planes van <strong>sin permanencia</strong> e incluyen el alojamiento. El código y el dominio son tuyos: si un día lo dejas, te los llevas. Cargar un catálogo entero o añadir funciones nuevas no es mantenimiento: te digo lo que cuesta antes.</p>
-              </>
-            ) : modalPlanes === 'landing' ? (
-              <>
-                <h2 className='modal-titulo'>Elige tu Landing Page</h2>
-                <p className='modal-subtitulo'>Dos variantes para adaptarse a lo que necesitas</p>
-                <p className='tipos-web-intro'>Cada landing se diseña para un objetivo concreto: que quien entre te contacte.</p>
-                <div className='modal-grid modal-grid-2' ref={modalGridRef} key={modalPlanes}>
-                  <div className='modal-card'>
-                    <h3>Starter</h3>
-                    <span className='price'><span className='price-span'>Desde </span>350€<span className='price-iva'> más IVA</span></span>
-                    <p className='description'>Ideal para tener presencia online con lo esencial bien hecho.</p>
-                    <ul className='features'>
-                      <li><FeatureCheckIcon />1 sección larga y 3 secciones pequeñas</li>
-                      <li><FeatureCheckIcon />SEO y posicionamiento local</li>
-                      <li><FeatureCheckIcon />Diseño responsive, adaptado a cualquier tipo de pantalla</li>
-                      <li><FeatureCheckIcon />Formulario de contacto</li>
-                      <li><FeatureCheckIcon />Botones flotantes, WhatsApp y chat básico</li>
-                    </ul>
-                    <MantenimientoIncluido precio='desde 50€/mes' />
-                    <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
-                  </div>
-                  <div className='modal-card modal-card-featured'>
-                    <span className='featured-badge'>Más completo</span>
-                    <h3>Premium</h3>
-                    <span className='price'><span className='price-span'>Desde </span>499€<span className='price-iva'> más IVA</span></span>
-                    <p className='description'>Más secciones, más impacto y mayor personalización.</p>
-                    <ul className='features'>
-                      <li><FeatureCheckIcon />8 secciones personalizadas, 2 de ellas grandes</li>
-                      <li><FeatureCheckIcon />SEO y posicionamiento local o nacional</li>
-                      <li><FeatureCheckIcon />Diseño responsive, adaptado a cualquier tipo de pantalla</li>
-                      <li><FeatureCheckIcon />Formulario de contacto, botones flotantes, WhatsApp y chat básico</li>
-                      <li><FeatureCheckIcon gold />Integración de Google Analytics y Google Search Console para llevar las estadísticas de tu web</li>
-                    </ul>
-                    <MantenimientoIncluido precio='desde 50€/mes' />
-                    <Link to='/contacto' className='card-btn' onClick={() => setModalPlanes(false)}>Contactar</Link>
-                  </div>
-                </div>
-                {puntosModal}
-              </>
-            ) : modalPlanes === 'comparar' ? (
-              <>
-                <h2 className='modal-titulo'>¿Landing o Sitio Web?</h2>
-                <p className='modal-subtitulo'>Las diferencias que de verdad importan para elegir</p>
-                {/* Los role van explicitos porque en movil el CSS pasa la tabla
-                    a display:block para apilarla, y eso le quita la semantica
-                    de tabla a los lectores de pantalla si no se restituye. */}
-                <table className='tabla-comparativa' role='table'>
-                  <thead role='rowgroup'>
-                    <tr role='row'>
-                      <th role='columnheader' scope='col'><span className='visualmente-oculto'>Criterio</span></th>
-                      <th role='columnheader' scope='col'>Landing Page</th>
-                      <th role='columnheader' scope='col'>Sitio Web</th>
-                    </tr>
-                  </thead>
-                  <tbody role='rowgroup'>
-                    {COMPARATIVA.map(([criterio, landing, sitioweb]) => (
-                      <tr role='row' key={criterio}>
-                        <th role='rowheader' scope='row'>{criterio}</th>
-                        <td role='cell' data-etiqueta='Landing Page'>{landing}</td>
-                        <td role='cell' data-etiqueta='Sitio Web'>{sitioweb}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                {/* El cliente llega aqui ya decidido: recogemos esa decision en
-                    vez de obligarle a cerrar y empezar de nuevo. No abre otro
-                    modal, solo cambia la rama que pinta este mismo. */}
-                <div className='modal-comparar-acciones'>
-                  <button type='button' className='card-btn' onClick={() => setModalPlanes('landing')}>Quiero una Landing</button>
-                  <button type='button' className='card-btn' onClick={() => setModalPlanes('sitioweb')}>Quiero un Sitio Web</button>
-                </div>
-              </>
-            ) : null}
-          </div>
-        </div>
-      )}
     </div>
   )
 }

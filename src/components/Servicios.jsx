@@ -4,79 +4,6 @@ import './Servicios.css'
 import { FAQ } from './FAQ'
 import { ComoEmpezamos } from './ComoEmpezamos'
 
-const FeatureCheckIcon = ({ gold = false }) => (
-  <span className={`feature-check${gold ? ' feature-check-gold' : ''}`} aria-hidden='true'>
-    {gold ? (
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        width='1em'
-        height='1em'
-        viewBox='0 0 24 24'
-        className='feature-check-svg'
-        fill='none'
-        stroke='currentColor'
-        strokeWidth='3'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      >
-        <polyline points='20 6 9 17 4 12' />
-      </svg>
-    ) : (
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        width='1em'
-        height='1em'
-        viewBox='0 0 24 24'
-        className='feature-check-svg'
-      >
-        <title>check</title>
-        <path
-          fill='currentColor'
-          d='M18 6h2v2h-2zm-2 4V8h2v2zm-2 2v-2h2v2zm-2 2h2v-2h-2zm-2 2h2v-2h-2zm-2 0v2h2v-2zm-2-2h2v2H6zm0 0H4v-2h2z'
-        />
-      </svg>
-    )}
-  </span>
-)
-
-/**
- * Distintivo de atencion prioritaria del plan Premium. Va debajo del precio, no
- * arriba: la etiqueta de la corona ya dice "El mas completo" y esta responde a
- * otra pregunta, la de si te atienden antes que al del plan Basico.
- */
-const BadgePrioridad = () => (
-  <span className='badge-prioridad'>
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 24 24'
-      fill='currentColor'
-      aria-hidden='true'
-    >
-      <path d='M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5Z' />
-    </svg>
-    Atención prioritaria
-  </span>
-)
-
-/**
- * Los tres primeros meses de mantenimiento entran en el precio de todos los
- * niveles. Va como bloque suelto y no como un <li> mas de la lista para que no
- * se lea como una caracteristica tecnica: es la parte de la oferta que tiene
- * que verse aunque el cliente solo pase la vista por encima de la tarjeta.
- * 'precio' es la cuota con la que sigue a partir del cuarto mes, que sube si la
- * web lleva panel de gestion. Espejo en el modal de Inicio.jsx: si cambia uno,
- * cambiar el otro.
- */
-const MantenimientoIncluido = ({ precio = '50€/mes' }) => (
-  <div className='card-incluido'>
-    <span className='card-incluido-etiqueta'>Gratis, dentro del precio</span>
-    <span className='card-incluido-texto'>
-      <strong>3 meses de mantenimiento</strong> y soporte. Después,
-      {' '}{precio} solo si quieres seguir, sin permanencia.
-    </span>
-  </div>
-)
-
 /* Iconos de las tarjetas de tema. SVG en línea para no depender de librerías. */
 const IconoTema = ({ children }) => (
   <svg
@@ -168,7 +95,7 @@ export const Servicios = () => {
     <div className='servicios-container'>
       <div className='page-header'>
         <h1>Mis Servicios</h1>
-        <p>Precios cerrados y a la vista. Cada proyecto sale con 3 meses de mantenimiento gratis.</p>
+        <p>Precio cerrado antes de empezar. Tu web incluye los 3 primeros meses de mantenimiento.</p>
       </div>
 
       <section className='services-section'>

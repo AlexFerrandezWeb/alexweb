@@ -5,7 +5,7 @@ export const meta = () =>
   construirMeta({
     titulo: 'Servicios y precios de diseño web | alexweb',
     descripcion:
-      'Landing pages desde 350€, sitios web desde 699€ y tiendas online desde 999€, con 3 meses de mantenimiento gratis. Sin permanencia y con factura.',
+      'Tu web desde 350€ más IVA, con los 3 primeros meses de mantenimiento incluidos. Después, desde 30€/mes. Sin permanencia y con factura.',
     ruta: '/servicios',
   })
 

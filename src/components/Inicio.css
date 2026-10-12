@@ -339,6 +339,12 @@
     flex-direction: column;
 }
 
+/* Sin lista de caracteristicas, el boton baja solo al pie de la tarjeta
+   para que los de las dos tarjetas queden a la misma altura. */
+.product-card .card-btn {
+    margin-top: auto;
+}
+
 .product-card-featured {
     border: 2px solid #b9a4e0;
     box-shadow: 0 14px 30px rgba(44, 62, 80, 0.15);
@@ -1580,13 +1586,6 @@
         font-size: 0.92rem;
         margin-bottom: 14px;
         padding: 10px 12px;
-    }
-
-    /* El parrafo suelto repite lo que ya dice el recuadro de "para quien es"
-       justo encima. En escritorio da cuerpo a la columna; en movil son 100-150px
-       de lo mismo dicho dos veces, y es lo que sacaba la tarjeta de pantalla. */
-    .product-card .description {
-        display: none;
     }
 
     .product-card .features {

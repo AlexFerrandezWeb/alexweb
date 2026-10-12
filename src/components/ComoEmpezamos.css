@@ -1,0 +1,53 @@
+/* Tres pasos en fila debajo de las tarjetas de precio; en columna en movil. */
+.como-empezamos {
+  max-width: 900px;
+  margin: 40px auto 0;
+  text-align: center;
+}
+
+.como-empezamos-titulo {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin: 0 0 24px;
+}
+
+.como-empezamos-pasos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.como-empezamos-paso h4 {
+  font-size: 1.05rem;
+  color: #2c3e50;
+  margin: 12px 0 6px;
+}
+
+.como-empezamos-paso p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.como-empezamos-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-accion);
+  color: var(--color-accion-texto);
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .como-empezamos-pasos {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

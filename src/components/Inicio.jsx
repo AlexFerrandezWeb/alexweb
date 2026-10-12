@@ -4,6 +4,7 @@ import './Inicio.css'
 import { enviarFormularioContacto } from '../utils/enviarFormularioContacto'
 import { useFlotantesOcultos } from '../utils/useFlotantesOcultos'
 import { Testimonios } from './Testimonios'
+import { ComoEmpezamos } from './ComoEmpezamos'
 
 const FeatureCheckIcon = ({ gold = false }) => (
   <span className={`feature-check${gold ? ' feature-check-gold' : ''}`} aria-hidden='true'>
@@ -618,55 +619,29 @@ export const Inicio = () => {
 
         <div className='products-grid'>
 
-          {/* Card 1 */}
+          {/* Solo dos tarjetas y sin lista de caracteristicas: el precio exacto
+              se cierra hablando, asi que aqui solo va el punto de partida.
+              Espejo de las de Servicios.jsx: si cambia una, cambiar la otra. */}
           <div className='product-card'>
-            <h3>Landing Page</h3>
+            <h3>Tu web</h3>
             <span className='price'><span className='price-span'>Desde </span>350€<span className='price-iva'> más IVA</span></span>
-            <p className='card-para-quien'>Ideal si ofreces un servicio concreto y quieres que te contacten. Una sola página, directa y al grano — sin que el cliente se pierda.</p>
-            <ul className='features'>
-              <li><FeatureCheckIcon /> SEO y posicionamiento local</li>
-              <li><FeatureCheckIcon /> Diseño responsive</li>
-              <li><FeatureCheckIcon /> Formulario de contacto</li>
-              <li><FeatureCheckIcon /> Botones flotantes de WhatsApp y chat</li>
-            </ul>
-            <button className='card-btn' onClick={() => setModalPlanes('landing')}>Ver planes</button>
+            <p className='description'>Landing, web completa o tienda online: cada negocio necesita algo distinto. Me cuentas qué quieres conseguir y te doy un precio cerrado, sin sorpresas después.</p>
+            <Link to='/contacto' className='card-btn'>Cuéntame tu negocio</Link>
           </div>
 
-          {/* Card 2 */}
-          <div className='product-card product-card-featured'>
-            <span className='featured-badge'>Más elegido</span>
-            <h3>Sitio Web</h3>
-            <span className='price'><span className='price-span'>Desde </span>699€<span className='price-iva'> más IVA</span></span>
-            <p className='card-para-quien'>Ideal si tienes varios servicios, quieres vender online o publicar un blog. Tu negocio entero en internet, no solo una tarjeta de visita.</p>
-            {/* El precio que se ve aqui es el del nivel Basico, asi que las
-                features son las suyas: la tienda y el blog llegan con los
-                niveles E-commerce y Proyecto a Medida, dentro del modal. */}
-            <p className='description'>Para negocios que necesitan más que una página: varias secciones y, si lo necesitas, tienda online y blog.</p>
-            <ul className='features'>
-              <li><FeatureCheckIcon /> Hasta 5 páginas</li>
-              <li><FeatureCheckIcon /> Diseño Responsive</li>
-              <li><FeatureCheckIcon /> SEO básico incluido</li>
-              <li><FeatureCheckIcon /> Formulario de contacto</li>
-            </ul>
-            <button className='card-btn' onClick={() => setModalPlanes('sitioweb')}>Ver planes</button>
-          </div>
-
-          {/* Card 3 */}
           <div className='product-card'>
-            <h3>Mantenimiento y SEO</h3>
-            <span className='price'><span className='price-span'>Desde </span>50€<span className='price-mes'>/mes</span><span className='price-iva'> más IVA</span></span>
-            <p className='card-para-quien'>Los 3 primeros meses son gratis con tu web. Esto es lo que pasa a partir del cuarto.</p>
-            <p className='description'>Que tu web esté encendida, segura y subiendo en Google, sin que tengas que ocuparte tú.</p>
-            <ul className='features'>
-              <li><FeatureCheckIcon /> Tu web siempre encendida</li>
-              <li><FeatureCheckIcon /> Los cambios que me pidas</li>
-              <li><FeatureCheckIcon /> Si algo se rompe, lo arreglo yo</li>
-              <li><FeatureCheckIcon /> Informe cada mes: cuánta gente entra</li>
-            </ul>
-            <button className='card-btn' onClick={() => setModalPlanes('mantenimiento')}>Ver planes</button>
+            <h3>Mantenimiento y acompañamiento</h3>
+            <span className='price'><span className='price-span'>Desde </span>30€<span className='price-mes'>/mes</span><span className='price-iva'> más IVA</span></span>
+            <p className='description'>Tu web encendida y segura, los cambios que necesites y yo pendiente de que tu negocio crezca en internet. Cada mes te cuento cómo va y hacia dónde podemos tirar; cada tres meses, informe completo.</p>
+            <div className='card-incluido'>
+              <span className='card-incluido-texto'><strong>Tu web incluye los 3 primeros meses de mantenimiento.</strong> A partir del cuarto, desde 30€/mes más IVA.</span>
+            </div>
+            <Link to='/contacto' className='card-btn'>Cuéntame tu negocio</Link>
           </div>
 
         </div>
+
+        <ComoEmpezamos />
 
         <button type='button' className='comparar-enlace' onClick={() => setModalPlanes('comparar')}>
           ¿No sabes cuál elegir? Compara Landing y Sitio Web

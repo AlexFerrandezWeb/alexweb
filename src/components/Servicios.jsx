@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Servicios.css'
 import { FAQ } from './FAQ'
+import { ComoEmpezamos } from './ComoEmpezamos'
 
 const FeatureCheckIcon = ({ gold = false }) => (
   <span className={`feature-check${gold ? ' feature-check-gold' : ''}`} aria-hidden='true'>
@@ -172,168 +173,33 @@ export const Servicios = () => {
 
       <section className='services-section'>
 
-        {/* ── Fila 1: Landings ── */}
+        {/* ── Fila 1: precio de partida y como empezamos ── */}
+        {/* Espejo de las tarjetas de Inicio.jsx: si cambia una, cambiar la otra. */}
         <div className='service-group'>
-          <div className='section-row-title'>Landings</div>
-          {/* La misma promesa que la fila de Sitios Web: las landings tampoco
-              son plantillas. Sin esta linea, tenerla solo abajo se leia como
-              que las landings si lo eran. */}
-          <p className='tipos-web-intro'>Cada landing se diseña para un objetivo concreto: que quien entre te contacte.</p>
           <div className='service-row-grid service-row-grid-2'>
 
             <div className='service-card'>
-              <h2>Starter</h2>
-              <div className='service-price'><span className='service-price-desde'>Desde </span>350€<span className='service-price-iva'> + IVA</span></div>
-              <p className='service-description'>Ideal para tener presencia online con lo esencial bien hecho.</p>
-              <ul className='service-details'>
-                <li><FeatureCheckIcon />1 sección larga y 3 secciones pequeñas</li>
-                <li><FeatureCheckIcon />SEO y posicionamiento local</li>
-                <li><FeatureCheckIcon />Diseño responsive, adaptado a cualquier tipo de pantalla</li>
-                <li><FeatureCheckIcon />Formulario de contacto</li>
-                <li><FeatureCheckIcon />Botones flotantes, WhatsApp y chat básico</li>
-              </ul>
-              <MantenimientoIncluido precio='desde 50€/mes' />
-              <Link to='/contacto' className='service-btn'>Contactar</Link>
+              <h2>Tu web</h2>
+              <div className='service-price'><span className='service-price-desde'>Desde </span>350€<span className='service-price-iva'> más IVA</span></div>
+              <p className='service-description'>Landing, web completa o tienda online: cada negocio necesita algo distinto. Me cuentas qué quieres conseguir y te doy un precio cerrado, sin sorpresas después.</p>
+              <Link to='/contacto' className='service-btn'>Cuéntame tu negocio</Link>
             </div>
 
-            <div className='service-card service-card-featured'>
-              <span className='service-featured-badge'>Más completo</span>
-              <h2>Premium</h2>
-              <div className='service-price'><span className='service-price-desde'>Desde </span>499€<span className='service-price-iva'> + IVA</span></div>
-              <p className='service-description'>Más secciones, más impacto y mayor personalización.</p>
-              <ul className='service-details'>
-                <li><FeatureCheckIcon />8 secciones personalizadas, 2 de ellas grandes</li>
-                <li><FeatureCheckIcon />SEO y posicionamiento local o nacional</li>
-                <li><FeatureCheckIcon />Diseño responsive, adaptado a cualquier tipo de pantalla</li>
-                <li><FeatureCheckIcon />Formulario de contacto, botones flotantes, WhatsApp y chat básico</li>
-                <li><FeatureCheckIcon gold />Integración de Google Analytics y Google Search Console para llevar las estadísticas de tu web</li>
-              </ul>
-              <MantenimientoIncluido precio='desde 50€/mes' />
-              <Link to='/contacto' className='service-btn'>Contactar</Link>
-            </div>
-
-          </div>
-          <p className='tipos-web-nota'>Las dos salen con los <strong>3 primeros meses de mantenimiento gratis</strong>. Después, desde 50€/mes y sin permanencia.</p>
-        </div>
-
-        {/* ── Fila 2: Sitios Web ── */}
-        <div className='service-group'>
-          <div className='section-row-title'>Sitios Web</div>
-          <p className='tipos-web-intro'>Cada web se adapta al objetivo de tu negocio y crece contigo mes a mes.</p>
-          <div className='service-row-grid service-row-grid-3'>
-
-            {/* Mismos tres tipos que el modal de la home: el Basico va sin
-                "Desde" porque su alcance esta cerrado (5 paginas), y por eso
-                lleva debajo la nota de que los extras se aprueban antes de
-                cobrarse. Los otros dos dependen del catalogo o del alcance y si
-                lo llevan. Si cambia uno, cambiar el otro. */}
             <div className='service-card'>
-              <h2>Sitio Web Básico</h2>
-              <div className='service-price'>699€<span className='service-price-iva'> + IVA</span></div>
-              <p className='service-description'>Ideal si quieres presencia profesional y que te encuentren.</p>
-              <ul className='service-details'>
-                <li><FeatureCheckIcon />Hasta 5 páginas</li>
-                <li><FeatureCheckIcon />Diseño responsive</li>
-                <li><FeatureCheckIcon />SEO básico incluido</li>
-                <li><FeatureCheckIcon />Formulario de contacto</li>
-                <li><FeatureCheckIcon />Google Analytics incluido</li>
-                <li><FeatureCheckIcon />Entrega en 3-4 semanas</li>
-              </ul>
-              <MantenimientoIncluido precio='desde 50€/mes' />
-              <div className='card-addon'>
-                <span className='card-addon-etiqueta'>Complemento opcional</span>
-                <span className='card-addon-texto'>Panel para editar textos e imágenes tú mismo — <span className='card-addon-precio'>290€</span></span>
+              <h2>Mantenimiento y acompañamiento</h2>
+              <div className='service-price'><span className='service-price-desde'>Desde </span>30€<span className='service-price-mes'>/mes</span><span className='service-price-iva'> más IVA</span></div>
+              <p className='service-description'>Tu web encendida y segura, los cambios que necesites y yo pendiente de que tu negocio crezca en internet. Cada mes te cuento cómo va y hacia dónde podemos tirar; cada tres meses, informe completo.</p>
+              <div className='card-incluido'>
+                <span className='card-incluido-texto'><strong>Tu web incluye los 3 primeros meses de mantenimiento.</strong> A partir del cuarto, desde 30€/mes más IVA.</span>
               </div>
-              <p className='card-cerrado'>Precio cerrado: si a mitad quieres añadir algo que no estaba, te digo lo que cuesta y decides tú. Nada se cobra sin que lo apruebes.</p>
-              <Link to='/contacto' className='service-btn'>Contactar</Link>
-            </div>
-
-            <div className='service-card'>
-              <h2>E-commerce / Tienda Online</h2>
-              <div className='service-price'><span className='service-price-desde'>Desde </span>999€<span className='service-price-iva'> + IVA</span></div>
-              <p className='service-description'>Vende online desde el primer día: catálogo, carrito y pago seguro. Precio según nº de productos.</p>
-              <p className='features-herencia'>Todo lo del Básico, y además:</p>
-              <ul className='service-details'>
-                <li><FeatureCheckIcon gold />Carrito de compras</li>
-                <li><FeatureCheckIcon gold />Pasarela de pago segura</li>
-                <li><FeatureCheckIcon gold />Reservas y citas online</li>
-                <li><FeatureCheckIcon gold />Panel de gestión de productos y stock incluido</li>
-                <li><FeatureCheckIcon gold />Blog integrado</li>
-                <li><FeatureCheckIcon gold />SEO avanzado incluido</li>
-                <li><FeatureCheckIcon />Entrega en 6-8 semanas</li>
-              </ul>
-              <MantenimientoIncluido precio='desde 50€/mes' />
-              <Link to='/contacto' className='service-btn'>Contactar</Link>
-            </div>
-
-            <div className='service-card service-card-featured'>
-              <span className='service-featured-badge'>Más elegido</span>
-              <h2>Proyecto a Medida</h2>
-              <div className='service-price'><span className='service-price-desde'>Desde </span>1.499€<span className='service-price-iva'> + IVA</span></div>
-              <p className='service-description'>Cuando tu negocio necesita funciones propias. Precio a negociar según alcance.</p>
-              <p className='features-herencia'>Todo lo anterior, y además:</p>
-              <ul className='service-details'>
-                <li><FeatureCheckIcon gold />Páginas y funciones sin límite</li>
-                <li><FeatureCheckIcon gold />Panel de administración personalizado</li>
-                <li><FeatureCheckIcon gold />Agenda de varios profesionales con Google Calendar</li>
-                <li><FeatureCheckIcon gold />Sincronización con proveedor o ERP</li>
-                <li><FeatureCheckIcon gold />ChatBot con IA integrado</li>
-                <li><FeatureCheckIcon gold />Área privada de clientes</li>
-                <li><FeatureCheckIcon />Entrega según proyecto</li>
-              </ul>
-              <MantenimientoIncluido precio='desde 50€/mes' />
-              <Link to='/contacto' className='service-btn'>Contactar</Link>
+              <Link to='/contacto' className='service-btn'>Cuéntame tu negocio</Link>
             </div>
 
           </div>
-          <p className='tipos-web-nota'>Las tres salen con los <strong>3 primeros meses de mantenimiento gratis</strong>. Después, desde 50€/mes y sin permanencia.</p>
+          <ComoEmpezamos />
         </div>
 
-        {/* ── Fila 3: Mantenimiento ── */}
-        {/* No se presenta como un servicio aparte que haya que decidir comprar:
-            cuando el cliente llega aqui ya lo tiene dentro del proyecto, asi que
-            lo que hay que contarle es que pasa cuando se acaban los tres meses. */}
-        <div className='service-group'>
-          <div className='section-row-title'>Después de la entrega</div>
-          <p className='tipos-web-intro'>Tu web sale con los <strong>3 primeros meses gratis</strong>. A partir del cuarto eliges plan, y lo dejas cuando quieras.</p>
-          <div className='service-row-grid service-row-grid-2 service-row-grid-mantenimiento'>
-
-            <div className='service-card'>
-              <h2>Básico</h2>
-              <div className='service-price'>50€<span className='service-price-mes'>/mes</span><span className='service-price-iva'> + IVA</span></div>
-              <p className='service-description'>Lo esencial para no tener que ocuparte de nada.</p>
-              <ul className='service-details'>
-                <li><FeatureCheckIcon />Tu web siempre encendida</li>
-                <li><FeatureCheckIcon />Los cambios que me pidas, en 2-3 días</li>
-                <li><FeatureCheckIcon />Si algo se rompe, lo arreglo yo</li>
-                <li><FeatureCheckIcon />Seguridad y copias de seguridad</li>
-                <li><FeatureCheckIcon />Informe cada mes: cuánta gente entra</li>
-              </ul>
-              <Link to='/contacto' className='service-btn'>Contactar</Link>
-            </div>
-
-            <div className='service-card service-card-featured'>
-              <span className='service-featured-badge'>El más completo</span>
-              <h2>Premium</h2>
-              <div className='service-price'><span className='service-price-desde'>Desde </span>70€<span className='service-price-mes'>/mes</span><span className='service-price-iva'> + IVA</span></div>
-              <BadgePrioridad />
-              <p className='service-description'>Eres el primero de la cola y cada mes hablamos de cómo va tu web.</p>
-              <p className='features-herencia'>Todo lo del Básico, y además:</p>
-              <ul className='service-details'>
-                <li><FeatureCheckIcon gold />Cambios el mismo día: precios, fotos y textos</li>
-                <li><FeatureCheckIcon gold />Una llamada al mes: te cuento cómo va tu web</li>
-                <li><FeatureCheckIcon gold />Te llevo tu ficha de Google y las reseñas</li>
-                <li><FeatureCheckIcon gold />Si tu web se cae, la arreglo antes que nada</li>
-                <li><FeatureCheckIcon gold />Si vendes online: que los pagos nunca fallen</li>
-              </ul>
-              <Link to='/contacto' className='service-btn'>Contactar</Link>
-            </div>
-
-          </div>
-          <p className='tipos-web-nota'>Los dos planes van <strong>sin permanencia</strong> e incluyen el alojamiento, así que no pagas servidor aparte. El código y el dominio son tuyos: si un día lo dejas, te los llevas. Rediseñar secciones, añadir funciones o cargar un catálogo entero no es mantenimiento: te digo lo que cuesta antes y decides tú.</p>
-        </div>
-
-        {/* ── Fila 4: ChatBot con IA ── */}
+        {/* ── Fila 2: ChatBot con IA ── */}
         <div className='service-group'>
           <div className='section-row-title'>ChatBot con IA</div>
           <div className='chatbot-banner'>
@@ -350,7 +216,7 @@ export const Servicios = () => {
           </div>
         </div>
 
-        {/* ── Fila 5: páginas de servicio con contenido propio ── */}
+        {/* ── Fila 3: páginas de servicio con contenido propio ── */}
         <div className='service-group'>
           <div className='section-row-title'>Más sobre mis servicios</div>
           <p className='temas-intro'>

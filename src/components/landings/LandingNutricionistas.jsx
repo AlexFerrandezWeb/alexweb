@@ -273,7 +273,7 @@ const FAQS = [
   {
     pregunta: '¿Cuánto tarda en estar lista mi web?',
     respuesta:
-      'Una web de consulta está lista normalmente entre 2 y 3 semanas; con cita online, entre 3 y 4. Depende bastante de lo rápido que me pases textos y fotos, pero te doy un plazo concreto antes de empezar y trabajamos por hitos para que veas avances.',
+      'Una web de consulta está lista normalmente en una semana; con cita online, en unas dos. Depende bastante de lo rápido que me pases textos y fotos, pero te doy un plazo concreto antes de empezar y trabajamos por hitos para que veas avances.',
   },
   {
     pregunta: 'No tengo textos ni sé qué poner, ¿es un problema?',

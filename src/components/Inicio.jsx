@@ -520,7 +520,7 @@ export const Inicio = () => {
             <span className='price'><span className='price-span'>Desde </span>30€<span className='price-mes'>/mes</span><span className='price-iva'> más IVA</span></span>
             <p className='description'>Tu web encendida y segura, los cambios que necesites y yo pendiente de que tu negocio crezca en internet. Cada mes te cuento cómo va y hacia dónde podemos tirar; cada tres meses, informe completo.</p>
             <div className='card-incluido'>
-              <span className='card-incluido-texto'><strong>Tu web incluye los 3 primeros meses de mantenimiento.</strong> A partir del cuarto, desde 30€/mes más IVA.</span>
+              <span className='card-incluido-texto'><strong>Tu web incluye los 3 primeros meses de mantenimiento.</strong> Si quieres continuar, desde 30€/mes más IVA.</span>
             </div>
             <Link to='/contacto' className='card-btn'>Cuéntame tu negocio</Link>
           </div>

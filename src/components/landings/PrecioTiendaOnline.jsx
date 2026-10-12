@@ -69,7 +69,7 @@ export const contenido = {
       {
         nombre: 'Tienda online',
         precio: 'desde 999€',
-        para: 'Cuando quieres cobrar online; depende del tamaño del catálogo. Normalmente entre 6 y 8 semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
+        para: 'Cuando quieres cobrar online; depende del tamaño del catálogo. Normalmente unas dos semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
         nombre: 'Funciones a medida',
@@ -106,7 +106,7 @@ export const contenido = {
     {
       pregunta: '¿Cuánto tarda en estar vendiendo?',
       respuesta:
-        'Normalmente entre 4 y 8 semanas, según el proyecto, contando desde que tengo tus productos y tus fotos. El retraso más habitual no es técnico: es esperar a que el cliente termine de mandar el material. Si lo tienes listo, vamos rápido.',
+        'Normalmente unas dos semanas, contando desde que tengo tus productos y tus fotos. El retraso más habitual no es técnico: es esperar a que el cliente termine de mandar el material. Si lo tienes listo, vamos rápido.',
     },
     {
       pregunta: '¿Se puede ampliar más adelante?',

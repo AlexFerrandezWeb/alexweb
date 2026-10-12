@@ -434,8 +434,12 @@
     min-height: 42px;
 }
 
+/* flex-wrap y el nowrap de abajo: en un movil de 360px la cifra se partia
+   en dos lineas ("desde" arriba, "350€" abajo) con el "más IVA" al lado.
+   Asi la cifra va siempre entera y es la coletilla la que baja si no cabe. */
 .nutri-pkg-price {
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
     gap: 6px;
     margin-bottom: 24px;
@@ -444,6 +448,7 @@
 }
 
 .nutri-pkg-amt {
+    white-space: nowrap;
     font-family: var(--nutri-serif);
     font-size: 36px;
     font-weight: 600;
@@ -457,6 +462,7 @@
 
 /* El precio es sin IVA: la coletilla se lee, no se esconde. */
 .nutri-pkg-iva {
+    white-space: nowrap;
     font-size: 15px;
     color: var(--nutri-ink);
     font-weight: 600;

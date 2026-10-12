@@ -56,7 +56,7 @@ export const contenido = {
       {
         titulo: 'Las prisas',
         texto:
-          'Normalmente, entre 2 y 6 semanas. Si necesitas la web en una semana, hay que reorganizar la agenda y eso tiene un coste. Si puedes esperar, no pagas de más.',
+          'Normalmente, entre una y dos semanas. Si la necesitas antes, hay que reorganizar la agenda y eso tiene un coste. Si puedes esperar, no pagas de más.',
       },
     ],
   },
@@ -69,17 +69,17 @@ export const contenido = {
       {
         nombre: 'Landing',
         precio: 'desde 350€',
-        para: 'Una sola página para presentarte y que te contacten. Normalmente entre 2 y 3 semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
+        para: 'Una sola página para presentarte y que te contacten. Normalmente en una semana. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
         nombre: 'Web de varias páginas',
         precio: 'desde 699€',
-        para: 'Para que te encuentren y te contacten, sin tienda. Normalmente entre 3 y 4 semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
+        para: 'Para que te encuentren y te contacten, sin tienda. Normalmente entre una y dos semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
         nombre: 'Tienda online',
         precio: 'desde 999€',
-        para: 'Cuando quieres cobrar online; depende del tamaño del catálogo. Normalmente entre 6 y 8 semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
+        para: 'Cuando quieres cobrar online; depende del tamaño del catálogo. Normalmente unas dos semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
         nombre: 'Funciones a medida',
@@ -88,7 +88,7 @@ export const contenido = {
       },
     ],
     nota:
-      'Aparte solo va el dominio, unos 20€ al año: es tuyo, y cuando toca renovarlo te aviso y hago yo el trámite. El alojamiento no lo pagas tú, va dentro del mantenimiento, y tu web incluye los 3 primeros meses de mantenimiento. A partir del cuarto, desde 30€/mes más IVA y sin permanencia. Todo con factura, deducible como gasto profesional.',
+      'Aparte solo va el dominio, unos 20€ al año: es tuyo, y cuando toca renovarlo te aviso y hago yo el trámite. El alojamiento no lo pagas tú, va dentro del mantenimiento. Tu web incluye los 3 primeros meses de mantenimiento. Si quieres continuar, desde 30€/mes más IVA y sin permanencia. Todo con factura, deducible como gasto profesional.',
   },
 
   faqs: [
@@ -105,7 +105,7 @@ export const contenido = {
     {
       pregunta: '¿Qué gastos tiene la web cada año?',
       respuesta:
-        'El dominio, unos 20€ al año, y el mantenimiento, desde 30€/mes más IVA; tu web incluye los 3 primeros meses de mantenimiento. El alojamiento va dentro de esa cuota: no tienes que contratar servidor por tu cuenta ni pagarlo aparte. Y del dominio tampoco te tienes que acordar: te aviso yo cuando toca renovar. Eso es todo: no hay licencias ocultas ni sorpresas.',
+        'El dominio, unos 20€ al año. Tu web incluye los 3 primeros meses de mantenimiento; si quieres continuar, desde 30€/mes más IVA. El alojamiento va dentro de esa cuota: no tienes que contratar servidor por tu cuenta ni pagarlo aparte. Y del dominio tampoco te tienes que acordar: te aviso yo cuando toca renovar. Eso es todo: no hay licencias ocultas ni sorpresas.',
     },
     {
       pregunta: '¿El precio incluye que salga en Google?',

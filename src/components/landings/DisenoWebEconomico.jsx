@@ -5,9 +5,9 @@ export const contenido = {
   ruta: '/diseno-web-economico',
 
   seo: {
-    titulo: 'Diseño web económico para negocios, con precio cerrado',
+    titulo: 'Diseño web económico desde 350€, sin cuotas mensuales obligatorias',
     descripcion:
-      'Diseño web económico para negocios desde 350€ más IVA, con precio cerrado y el código en tu propiedad. Normalmente lista en 2-3 semanas. Presupuesto gratis.',
+      'Diseño web económico a medida desde 350€ más IVA. Sin cuotas mensuales obligatorias, sin permanencia y con el código en tu propiedad. Lista en una semana.',
   },
 
   hero: {
@@ -64,12 +64,12 @@ export const contenido = {
   precios: {
     titulo: 'La opción económica, en detalle',
     intro:
-      'Tu web incluye los 3 primeros meses de mantenimiento, con el alojamiento dentro: no pagas servidor aparte. Después, desde 30€/mes más IVA y sin permanencia, y si no quieres seguir te llevas el código y el dominio. Los precios son sin IVA: al ser un gasto de tu negocio, te lo deduces.',
+      'El mantenimiento es opcional: alojamiento, seguridad, copias y los cambios que me pidas. Tu web incluye los 3 primeros meses de mantenimiento. Si quieres continuar, desde 30€/mes más IVA y sin permanencia; si no, te llevas el código y el dominio. Los precios son sin IVA: al ser un gasto de tu negocio, te lo deduces.',
     planes: [
       {
         nombre: 'Landing',
         precio: 'desde 350€',
-        para: 'Una sola página para presentarte y que te contacten. Normalmente entre 2 y 3 semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
+        para: 'Una sola página para presentarte y que te contacten. Normalmente en una semana. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
         nombre: 'Mantenimiento',
@@ -98,7 +98,7 @@ export const contenido = {
     {
       pregunta: '¿Hay alguna cuota mensual obligatoria?',
       respuesta:
-        'Sí, el mantenimiento, y te lo digo claro desde el principio: el desarrollo lo pagas una vez y el código es tuyo, y el mantenimiento es lo que mantiene tu web encendida, porque incluye el alojamiento. Tu web incluye los 3 primeros meses de mantenimiento y después son desde 30€/mes más IVA, sin permanencia. Si decides no seguir, no te retengo nada: te llevas el código y el dominio y montas tu web donde quieras. Lo que no vas a encontrar aquí es una licencia por usar algo que ya has pagado.',
+        'No. El mantenimiento es opcional y lo decidimos juntos según lo que necesite tu negocio. Si quieres que me encargue de todo, es desde 30€/mes más IVA, con los 3 primeros meses incluidos con tu web, y sin permanencia. Si no lo quieres, te llevas el código y el dominio y montas tu web donde quieras.',
     },
     {
       pregunta: '¿Puedo empezar barato y ampliar después?',

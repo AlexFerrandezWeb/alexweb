@@ -6,12 +6,12 @@ const faqs = [
     pregunta: '¿Cuánto tarda en estar lista mi web?',
     respuesta: (
       <>
-        <p className='faq-respuesta'>Depende del tipo de proyecto. Una Landing Page está lista en 2-3 semanas. Un sitio web completo puede tardar entre 3-6 semanas o más dependiendo lo grande que sea. Siempre te daré una estimación concreta antes de empezar.</p>
+        <p className='faq-respuesta'>Depende del tipo de proyecto. Una landing suele estar lista en una semana y una tienda online en unas dos. Si el proyecto es más grande, puede tardar algo más. Siempre te daré una estimación concreta antes de empezar.</p>
         <p className='faq-respuesta'>Para que el proceso sea transparente, trabajo por hitos:</p>
         <ul className='faq-hitos'>
-          <li>Semana 2 — te presento el diseño inicial</li>
-          <li>Semana 4 — web funcional para que la revises</li>
-          <li>Semana 6 — entrega final con todos los ajustes</li>
+          <li>Primero, te presento el diseño inicial</li>
+          <li>Después, la web funcionando para que la revises</li>
+          <li>Por último, la entrega con todos los ajustes</li>
         </ul>
         <p className='faq-respuesta'>Los plazos pueden variar si hay retraso en la entrega de materiales (textos, imágenes, logo) por parte del cliente.</p>
       </>
@@ -35,15 +35,15 @@ const faqs = [
   },
   {
     pregunta: '¿Y cuando se acaben esos 3 meses?',
-    respuesta: 'Decides tú. Si sigues, desde 30€/mes más IVA, sin permanencia. Cada mes te cuento cómo va; cada tres meses, informe completo. Si no quieres seguir, el código y el dominio son tuyos y te los llevas para montar la web donde quieras: lo que pagas cada mes es el alojamiento y tenerme detrás, nunca una licencia por usar tu propia web.'
+    respuesta: 'Decides tú. Si quieres continuar, desde 30€/mes más IVA, sin permanencia. Cada mes te cuento cómo va; cada tres meses, informe completo. Si no quieres seguir, el código y el dominio son tuyos y te los llevas para montar la web donde quieras: lo que pagas cada mes es el alojamiento y tenerme detrás, nunca una licencia por usar tu propia web.'
   },
   {
     pregunta: '¿El mantenimiento es obligatorio?',
-    respuesta: 'No hay permanencia: cancelas cuando quieras. Pero sé claro sobre qué es la cuota, porque no es una licencia: dentro va el alojamiento, así que si la dejas hay que mover tu web a otro sitio. Te entrego el código y el dominio para que lo hagas con quien quieras, y te echo una mano con el traspaso.'
+    respuesta: 'No. El mantenimiento es opcional y lo decidimos juntos según lo que necesite tu negocio. Si quieres que me encargue de todo, es desde 30€/mes más IVA, con los 3 primeros meses incluidos con tu web, y sin permanencia. Eso sí, dentro va el alojamiento, así que si no lo contratas o lo dejas hay que llevar tu web a otro sitio. Te entrego el código y el dominio para que lo hagas con quien quieras, y te echo una mano con el traspaso.'
   },
   {
     pregunta: '¿El mantenimiento incluye cambiar cosas de mi web?',
-    respuesta: 'Sí, los del día a día: un precio, una foto, un texto, los horarios, una oferta. Van en los dos planes; la diferencia es el plazo (2-3 días en el Básico, el mismo día en el Premium). Lo que no entra es el trabajo grande: cargar un catálogo entero, rediseñar secciones o añadir funciones nuevas. Eso no te lo voy a hacer a escondidas ni te lo voy a cobrar por sorpresa: te digo lo que cuesta antes y decides tú.'
+    respuesta: 'Sí, los del día a día: un precio, una foto, un texto, los horarios, una oferta. Entran en el mantenimiento. Lo que no entra es el trabajo grande: cargar un catálogo entero, rediseñar secciones o añadir funciones nuevas. Eso no te lo voy a hacer a escondidas ni te lo voy a cobrar por sorpresa: te digo lo que cuesta antes y decides tú.'
   },
   {
     pregunta: '¿Para qué quiero el panel si tú me haces los cambios?',

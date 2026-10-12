@@ -117,7 +117,7 @@ export const Servicios = () => {
               <div className='service-price'><span className='service-price-desde'>Desde </span>30€<span className='service-price-mes'>/mes</span><span className='service-price-iva'> más IVA</span></div>
               <p className='service-description'>Tu web encendida y segura, los cambios que necesites y yo pendiente de que tu negocio crezca en internet. Cada mes te cuento cómo va y hacia dónde podemos tirar; cada tres meses, informe completo.</p>
               <div className='card-incluido'>
-                <span className='card-incluido-texto'><strong>Tu web incluye los 3 primeros meses de mantenimiento.</strong> A partir del cuarto, desde 30€/mes más IVA.</span>
+                <span className='card-incluido-texto'><strong>Tu web incluye los 3 primeros meses de mantenimiento.</strong> Si quieres continuar, desde 30€/mes más IVA.</span>
               </div>
               <Link to='/contacto' className='service-btn'>Cuéntame tu negocio</Link>
             </div>

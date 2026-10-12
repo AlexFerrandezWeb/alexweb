@@ -67,49 +67,24 @@ export const contenido = {
       'Presupuesto cerrado antes de empezar. Los precios van sin IVA: se le suma el 21% y te lo deduces como gasto de la tienda. Me dices qué productos tienes y cómo quieres cobrar, y te paso un precio fijo para tu caso — lo que acordemos es lo que pagas, sin añadidos sorpresa.',
     planes: [
       {
-        nombre: 'Tienda Online',
+        nombre: 'Tienda online',
         precio: 'desde 999€',
-        para: 'Para empezar a vender online con una tienda bien montada.',
-        incluye: [
-          'Catálogo de productos',
-          'Carrito de compras',
-          'Pasarela de pago segura',
-          'Reservas y citas online',
-          'Panel de gestión de productos y stock incluido',
-          'Blog integrado',
-          'SEO avanzado',
-          'Textos legales de comercio electrónico',
-          'Entrega en 6-8 semanas',
-        ],
+        para: 'Cuando quieres cobrar online; depende del tamaño del catálogo. Normalmente entre 6 y 8 semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
-        // Es el mismo nivel que el "Proyecto a Medida" de /servicios, contado
-        // para quien busca tienda. El nombre tiene que coincidir: si aqui se
-        // llama distinto, el cliente cree que son dos productos.
-        nombre: 'Proyecto a Medida',
+        nombre: 'Funciones a medida',
         precio: 'desde 1.499€',
-        destacado: true,
-        para: 'Catálogo grande o integraciones con tu gestión, transportistas o proveedores.',
-        incluye: [
-          'Todo lo anterior',
-          'Catálogo sin límite de productos',
-          'Sincronización con proveedor o ERP',
-          'Agenda de varios profesionales con Google Calendar',
-          'ChatBot con IA integrado',
-          'Panel de administración personalizado',
-          'Área privada de clientes',
-          'Entrega según proyecto',
-        ],
+        para: 'Reservas, área de clientes o integraciones con tu gestión. El plazo depende del proyecto. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
     ],
     alMargen: {
       texto:
-        '¿Solo quieres presencia sin vender online? Entonces no necesitas una tienda — mira el',
-      enlaceTexto: 'Sitio Web Básico desde 699€',
+        '¿Solo quieres presencia sin vender online? Entonces no necesitas una tienda: una web de varias páginas sale',
+      enlaceTexto: 'desde 699€',
       enlaceA: '/servicios',
     },
     nota:
-      'Aparte van las comisiones de la pasarela de pago, que cobra el banco y no yo: Stripe está en torno al 1,5% + 0,25€ por operación con tarjetas europeas, y PayPal algo más. Y el dominio, unos 20€ al año. El alojamiento no lo pagas tú: va dentro del mantenimiento, con los 3 primeros meses gratis. Consulta las tarifas vigentes de cada pasarela antes de decidir, porque cambian.',
+      'Aparte van las comisiones de la pasarela de pago, que cobra el banco y no yo: Stripe está en torno al 1,5% + 0,25€ por operación con tarjetas europeas, y PayPal algo más. Y el dominio, unos 20€ al año. El alojamiento no lo pagas tú: va dentro del mantenimiento, y tu tienda incluye los 3 primeros meses de mantenimiento. Consulta las tarifas vigentes de cada pasarela antes de decidir, porque cambian.',
   },
 
   faqs: [
@@ -131,7 +106,7 @@ export const contenido = {
     {
       pregunta: '¿Cuánto tarda en estar vendiendo?',
       respuesta:
-        'Entre 4 y 8 semanas según el plan, contando desde que tengo tus productos y tus fotos. El retraso más habitual no es técnico: es esperar a que el cliente termine de mandar el material. Si lo tienes listo, vamos rápido.',
+        'Normalmente entre 4 y 8 semanas, según el proyecto, contando desde que tengo tus productos y tus fotos. El retraso más habitual no es técnico: es esperar a que el cliente termine de mandar el material. Si lo tienes listo, vamos rápido.',
     },
     {
       pregunta: '¿Se puede ampliar más adelante?',

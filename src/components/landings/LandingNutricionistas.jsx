@@ -211,43 +211,28 @@ const PLANES = [
   {
     nombre: 'Web de consulta',
     precio: 'desde 350€',
-    desc: 'Tu presencia profesional online, lista para transmitir confianza.',
-    incluye: [
-      'Diseño a medida de tu marca',
-      'Tus servicios y tu método explicados',
-      'Sección de testimonios de pacientes',
-      'Contacto y WhatsApp directo',
-      'Textos legales y cookies (RGPD)',
-    ],
+    desc: 'Tu presencia profesional online, lista para transmitir confianza. Precio cerrado después de hablar contigo y conocer tu negocio.',
     cta: 'Me interesa',
   },
   {
     nombre: 'Web con cita online',
-    // Cobrar la sesion online es funcionalmente un E-commerce (pasarela de
-    // pago), asi que va al nivel E-commerce del modelo, no al Basico.
+    // Cobrar la sesion online es funcionalmente una tienda (pasarela de pago).
     precio: 'desde 999€',
-    destacado: true,
-    desc: 'La consulta que se llena sola: te encuentran, reservan y pagan.',
-    incluye: [
-      'Todo lo de Web de consulta',
-      'Reserva de cita desde la web',
-      'Pago de la sesión con Stripe',
-      'SEO avanzado + blog autogestionable',
-      'Ficha de Google optimizada',
-    ],
+    desc: 'La consulta que se llena sola: te encuentran, reservan y pagan. Precio cerrado después de hablar contigo y conocer tu negocio.',
     cta: 'Cuéntame tu caso',
   },
   {
     nombre: 'Cuidado mensual',
-    precio: 'desde 50€',
+    precio: 'desde 30€',
     periodo: '/mes',
-    desc: 'Los 3 primeros meses son gratis con tu web. Lo esencial para no tener que ocuparte de nada.',
+    desc: 'Tu web incluye los 3 primeros meses de mantenimiento. Lo esencial para no tener que ocuparte de nada.',
     incluye: [
       'Tu web siempre encendida',
       'Los cambios que me pidas',
       'Si algo se rompe, lo arreglo yo',
       'Seguridad y copias de seguridad',
-      'Informe cada mes, sin permanencia',
+      'Cada mes te cuento cómo va; cada tres meses, informe completo',
+      'Sin permanencia',
     ],
     cta: 'Me interesa',
   },
@@ -288,7 +273,7 @@ const FAQS = [
   {
     pregunta: '¿Cuánto tarda en estar lista mi web?',
     respuesta:
-      'Una web de consulta suele estar lista en 2-3 semanas; con cita online, alrededor de 3-4. Depende bastante de lo rápido que me pases textos y fotos, pero te doy un plazo concreto antes de empezar y trabajamos por hitos para que veas avances.',
+      'Una web de consulta está lista normalmente entre 2 y 3 semanas; con cita online, entre 3 y 4. Depende bastante de lo rápido que me pases textos y fotos, pero te doy un plazo concreto antes de empezar y trabajamos por hitos para que veas avances.',
   },
   {
     pregunta: 'No tengo textos ni sé qué poner, ¿es un problema?',
@@ -308,7 +293,7 @@ const FAQS = [
   {
     pregunta: '¿Los precios que veo son los finales?',
     respuesta:
-      'Los precios que ves son sin IVA y son el punto de partida: se les suma el 21%, que te deduces como gasto de la consulta. El presupuesto que te paso es cerrado: lo que firmamos es lo que pagas. Aparte solo tendrías el dominio, unos 20€ al año, y te aviso yo cuando toca renovarlo; el alojamiento va dentro del mantenimiento, con los 3 primeros meses gratis. La reserva y el pago online se ajustan según lo que necesites, y te lo digo antes de empezar.',
+      'Los precios que ves son sin IVA y son el punto de partida: se les suma el 21%, que te deduces como gasto de la consulta. El presupuesto que te paso es cerrado: lo que firmamos es lo que pagas. Aparte solo tendrías el dominio, unos 20€ al año, y te aviso yo cuando toca renovarlo; el alojamiento va dentro del mantenimiento, y tu web incluye los 3 primeros meses de mantenimiento. La reserva y el pago online se ajustan según lo que necesites, y te lo digo antes de empezar.',
   },
   {
     pregunta: '¿Trabajas con clientes de toda España?',
@@ -470,9 +455,9 @@ export const LandingNutricionistas = () => {
             <Link to='/contacto' className='nutri-btn nutri-btn-primary'>
               Pide presupuesto gratis <Flecha />
             </Link>
-            <a href='#planes' className='nutri-btn nutri-btn-ghost'>
-              Ver planes y precios
-            </a>
+            <Link to='/contacto' className='nutri-btn nutri-btn-ghost'>
+              Cuéntame tu negocio
+            </Link>
           </div>
           <div className='nutri-trust'>
             <div className='nutri-avatars'>
@@ -556,10 +541,10 @@ export const LandingNutricionistas = () => {
       </section>
 
       {/* ===== PLANES ===== */}
-      <section className='nutri-section nutri-packages' id='planes'>
+      <section className='nutri-section nutri-packages'>
         <div className='nutri-wrap'>
           <div className='nutri-section-head nutri-reveal'>
-            <span className='nutri-section-eyebrow'>Planes</span>
+            <span className='nutri-section-eyebrow'>Precios</span>
             <h2>Elige por dónde empezar</h2>
             <p>
               Los mismos precios que le paso a cualquiera que me escribe. El presupuesto que te doy
@@ -580,14 +565,16 @@ export const LandingNutricionistas = () => {
                   {plan.periodo && <span className='nutri-pkg-per'>{plan.periodo}</span>}
                   <span className='nutri-pkg-iva'> más IVA</span>
                 </div>
-                <ul>
-                  {plan.incluye.map((linea) => (
-                    <li key={linea}>
-                      <Check />
-                      {linea}
-                    </li>
-                  ))}
-                </ul>
+                {plan.incluye && (
+                  <ul>
+                    {plan.incluye.map((linea) => (
+                      <li key={linea}>
+                        <Check />
+                        {linea}
+                      </li>
+                    ))}
+                  </ul>
+                )}
                 <Link
                   to='/contacto'
                   className={`nutri-btn ${

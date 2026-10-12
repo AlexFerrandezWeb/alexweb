@@ -237,6 +237,14 @@
     border-bottom: 1px solid #f0f0f5;
 }
 
+/* Las tarjetas de web ya no llevan lista debajo: sin ella, la raya y el hueco
+   que la separaban se quedan colgando al final de la tarjeta. */
+.landing-plan-para:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
 .landing-plan ul {
     list-style: none;
     margin: 0;

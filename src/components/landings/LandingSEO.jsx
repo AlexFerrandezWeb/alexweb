@@ -119,14 +119,16 @@ export const LandingSEO = ({ contenido }) => {
                   <span className='landing-plan-iva'> más IVA</span>
                 </span>
                 <p className='landing-plan-para'>{plan.para}</p>
-                <ul>
-                  {plan.incluye.map((linea) => (
-                    <li key={linea}>
-                      <CheckIcon />
-                      {linea}
-                    </li>
-                  ))}
-                </ul>
+                {plan.incluye && (
+                  <ul>
+                    {plan.incluye.map((linea) => (
+                      <li key={linea}>
+                        <CheckIcon />
+                        {linea}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             ))}
           </div>

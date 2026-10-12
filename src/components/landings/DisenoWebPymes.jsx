@@ -7,7 +7,7 @@ export const contenido = {
   seo: {
     titulo: 'Diseño web para pymes: precios claros y sin plantillas',
     descripcion:
-      'Diseño web para pymes y autónomos a medida, sin plantillas. Precios cerrados desde 350€, entrega en 2-6 semanas y trato directo con el desarrollador. Presupuesto gratis.',
+      'Diseño web para pymes y autónomos a medida, sin plantillas. Precio cerrado desde 350€, entrega normalmente en 2-6 semanas y trato directo con el desarrollador.',
   },
 
   hero: {
@@ -67,42 +67,25 @@ export const contenido = {
       'Precios reales, los mismos que le paso a cualquiera que me escribe. Van sin IVA: se le suma el 21% y te lo deduces como gasto de la empresa. El presupuesto que te doy es el que pagas: si a mitad de proyecto pides algo que no estaba hablado, te digo lo que cuesta antes de hacerlo.',
     planes: [
       {
-        nombre: 'Landing Page',
+        nombre: 'Landing',
         precio: 'desde 350€',
-        para: 'Para un negocio que solo necesita presencia: quién eres, qué haces y cómo contactarte.',
-        incluye: [
-          'Una página con todas tus secciones',
-          'Diseño responsive y a medida',
-          'Formulario de contacto',
-          'SEO básico configurado',
-          'Textos legales y cookies',
-          'Entrega en 2-3 semanas',
-        ],
+        para: 'Una sola página para presentarte y que te contacten. Normalmente entre 2 y 3 semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
-        nombre: 'Sitio Web Básico',
-        precio: '699€',
-        destacado: true,
-        para: 'Para pymes con varios servicios que quieren presencia profesional y empezar a posicionarse en Google.',
-        incluye: [
-          'Hasta 5 páginas',
-          'Diseño responsive',
-          'SEO básico incluido',
-          'Formulario de contacto',
-          'Google Analytics incluido',
-          'Entrega en 3-4 semanas',
-          'Panel para editarla tú: +290€ opcional',
-        ],
+        nombre: 'Web de varias páginas',
+        precio: 'desde 699€',
+        para: 'Para que te encuentren y te contacten, sin tienda. Normalmente entre 3 y 4 semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
         nombre: 'Mantenimiento',
-        precio: 'desde 50€/mes',
-        para: 'Los 3 primeros meses son gratis con tu web. Cubre el alojamiento, la seguridad, los cambios que me pidas y que si algo se rompe lo arregle yo.',
+        precio: 'desde 30€/mes',
+        para: 'Tu web incluye los 3 primeros meses de mantenimiento. Lo esencial para no tener que ocuparte de nada.',
         incluye: [
-          'Actualizaciones de seguridad',
-          'Copias de seguridad',
-          'Alojamiento incluido: tu web siempre encendida',
-          'Informe mensual en PDF',
+          'Tu web siempre encendida, con el alojamiento incluido',
+          'Los cambios que me pidas',
+          'Si algo se rompe, lo arreglo yo',
+          'Seguridad y copias de seguridad',
+          'Cada mes te cuento cómo va; cada tres meses, informe completo',
           'Sin permanencia',
         ],
       },
@@ -135,7 +118,7 @@ export const contenido = {
     {
       pregunta: '¿Qué pasa si no me gusta el diseño?',
       respuesta:
-        'Antes de programar nada te enseño el diseño. Si no te convence, lo cambiamos. En los planes Premium van incluidas dos rondas de revisiones. Nunca vas a recibir una web terminada que veas por primera vez el día de la entrega.',
+        'Antes de programar nada te enseño el diseño. Si no te convence, lo cambiamos. Nunca vas a recibir una web terminada que veas por primera vez el día de la entrega.',
     },
     {
       pregunta: '¿Hay que pagar todo por adelantado?',

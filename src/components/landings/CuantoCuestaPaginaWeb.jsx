@@ -7,7 +7,7 @@ export const contenido = {
   seo: {
     titulo: '¿Cuánto cuesta una página web en 2026? Precios reales',
     descripcion:
-      'Cuánto cuesta una página web de verdad: desde 350€ una landing, 699€ un sitio completo y desde 999€ una tienda online. Qué encarece el precio y qué gastos anuales tiene.',
+      'Cuánto cuesta una página web: desde 350€ una landing, 699€ una web completa y 999€ una tienda online, más IVA. Qué encarece el precio y qué gastos tiene.',
   },
 
   hero: {
@@ -36,7 +36,7 @@ export const contenido = {
       {
         titulo: 'Si vendes online o no',
         texto:
-          'Una tienda necesita catálogo, carrito, pasarela de pago, gestión de pedidos, cálculo de envíos y avisos por correo. Eso multiplica el trabajo respecto a una web informativa. Es la diferencia entre los 699€ de un sitio web que informa y los 999€ hacia arriba de uno que cobra.',
+          'Una tienda necesita catálogo, carrito, pasarela de pago, gestión de pedidos, cálculo de envíos y avisos por correo. Eso multiplica el trabajo respecto a una web informativa. Es la diferencia entre un sitio web que informa, desde 699€, y uno que cobra, desde 999€.',
       },
       {
         titulo: 'Quién escribe los textos',
@@ -56,7 +56,7 @@ export const contenido = {
       {
         titulo: 'Las prisas',
         texto:
-          'Un plazo normal es de 2 a 6 semanas. Si necesitas la web en una semana, hay que reorganizar la agenda y eso tiene un coste. Si puedes esperar, no pagas de más.',
+          'Normalmente, entre 2 y 6 semanas. Si necesitas la web en una semana, hay que reorganizar la agenda y eso tiene un coste. Si puedes esperar, no pagas de más.',
       },
     ],
   },
@@ -67,65 +67,28 @@ export const contenido = {
       'Lo que te presupuesto es lo que pagas. Todos los precios que ves aquí son sin IVA: al importe hay que sumarle el 21%, y como es un gasto de tu negocio te lo deduces. Si a mitad de proyecto pides algo que no estaba hablado, te digo lo que cuesta antes de tocarlo. Nunca vas a recibir una factura con sorpresas.',
     planes: [
       {
-        nombre: 'Landing Page',
-        precio: '350€ - 499€',
-        para: 'Una sola página con todo lo tuyo. Para presentarte y que te contacten.',
-        incluye: [
-          'De 4 a 8 secciones según el plan',
-          'Diseño a medida y responsive',
-          'Formulario de contacto',
-          'SEO básico o avanzado',
-          'Textos legales y cookies',
-          'Entrega en 2-3 semanas',
-        ],
+        nombre: 'Landing',
+        precio: 'desde 350€',
+        para: 'Una sola página para presentarte y que te contacten. Normalmente entre 2 y 3 semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
-        nombre: 'Sitio Web Básico',
-        precio: '699€',
-        destacado: true,
-        para: 'Varias páginas para que te encuentren y te contacten. Sin tienda. La opción que elige la mayoría.',
-        incluye: [
-          'Hasta 5 páginas',
-          'Diseño responsive',
-          'SEO básico incluido',
-          'Formulario de contacto',
-          'Google Analytics incluido',
-          'Entrega en 3-4 semanas',
-          'Panel para editarla tú: +290€ opcional',
-        ],
+        nombre: 'Web de varias páginas',
+        precio: 'desde 699€',
+        para: 'Para que te encuentren y te contacten, sin tienda. Normalmente entre 3 y 4 semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
-        nombre: 'E-commerce / Tienda Online',
+        nombre: 'Tienda online',
         precio: 'desde 999€',
-        para: 'Cuando quieres cobrar online. El precio depende del tamaño del catálogo.',
-        incluye: [
-          'Todo lo del Básico',
-          'Carrito y catálogo de productos',
-          'Pasarela de pago segura',
-          'Reservas y citas online',
-          'Panel de gestión de productos y stock incluido',
-          'Blog integrado y SEO avanzado',
-          'Entrega en 6-8 semanas',
-        ],
+        para: 'Cuando quieres cobrar online; depende del tamaño del catálogo. Normalmente entre 6 y 8 semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
-        nombre: 'Proyecto a Medida',
+        nombre: 'Funciones a medida',
         precio: 'desde 1.499€',
-        para: 'Cuando necesitas funciones propias que ningún nivel cerrado cubre.',
-        incluye: [
-          'Todo lo anterior',
-          'Páginas y funciones sin límite',
-          'Panel de administración personalizado',
-          'Agenda de varios profesionales con Google Calendar',
-          'Sincronización con proveedor o ERP',
-          'ChatBot con IA integrado',
-          'Área privada de clientes',
-          'Entrega según proyecto',
-        ],
+        para: 'Reservas, área de clientes o integraciones con tu gestión. El plazo depende del proyecto. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
     ],
     nota:
-      'Aparte solo va el dominio, unos 20€ al año: es tuyo, y cuando toca renovarlo te aviso y hago yo el trámite. El alojamiento no lo pagas tú, va dentro del mantenimiento, y los 3 primeros meses son gratis. A partir del cuarto, desde 50€ al mes y sin permanencia. Todo con factura, deducible como gasto profesional.',
+      'Aparte solo va el dominio, unos 20€ al año: es tuyo, y cuando toca renovarlo te aviso y hago yo el trámite. El alojamiento no lo pagas tú, va dentro del mantenimiento, y tu web incluye los 3 primeros meses de mantenimiento. A partir del cuarto, desde 30€/mes más IVA y sin permanencia. Todo con factura, deducible como gasto profesional.',
   },
 
   faqs: [
@@ -142,7 +105,7 @@ export const contenido = {
     {
       pregunta: '¿Qué gastos tiene la web cada año?',
       respuesta:
-        'El dominio, unos 20€ al año, y el mantenimiento, desde 50€ al mes, con los 3 primeros meses gratis. El alojamiento va dentro de esa cuota: no tienes que contratar servidor por tu cuenta ni pagarlo aparte. Y del dominio tampoco te tienes que acordar: te aviso yo cuando toca renovar. Eso es todo: no hay licencias ocultas ni sorpresas.',
+        'El dominio, unos 20€ al año, y el mantenimiento, desde 30€/mes más IVA; tu web incluye los 3 primeros meses de mantenimiento. El alojamiento va dentro de esa cuota: no tienes que contratar servidor por tu cuenta ni pagarlo aparte. Y del dominio tampoco te tienes que acordar: te aviso yo cuando toca renovar. Eso es todo: no hay licencias ocultas ni sorpresas.',
     },
     {
       pregunta: '¿El precio incluye que salga en Google?',

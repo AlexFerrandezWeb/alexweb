@@ -5,9 +5,9 @@ export const contenido = {
   ruta: '/diseno-web-economico',
 
   seo: {
-    titulo: 'Diseño web económico desde 350€, sin cuotas ni sorpresas',
+    titulo: 'Diseño web económico para negocios, con precio cerrado',
     descripcion:
-      'Diseño web económico a medida desde 350€. Sin cuotas mensuales obligatorias, sin permanencia y con el código en tu propiedad. Entrega en 2-3 semanas. Presupuesto gratis.',
+      'Diseño web económico para negocios desde 350€ más IVA, con precio cerrado y el código en tu propiedad. Normalmente lista en 2-3 semanas. Presupuesto gratis.',
   },
 
   hero: {
@@ -22,7 +22,7 @@ export const contenido = {
   intro: [
     'Hay dos formas de que una web salga barata. Una es recortar donde se nota: plantilla genérica, textos rellenados con lo primero que salga y desaparecer al cobrar. La otra es quitar lo que no necesitas y hacer bien lo que sí. Yo trabajo de la segunda.',
     'La mayoría de negocios pequeños no necesitan diez páginas, ni panel de administración, ni una tienda con 500 referencias. Necesitan una página que explique qué hacen, que se vea perfecta en el móvil y por la que puedan contactarles. Eso son 350€, no 3.000€.',
-    'Lo importante es que ahorrar hoy no te salga caro dentro de un año. Por eso, incluso en el plan más económico, el código y el dominio son tuyos desde el primer día: si algún día quieres irte, te los llevas y montas la web donde quieras. Y si mañana quieres ampliarla, no hay que empezar de cero.',
+    'Lo importante es que ahorrar hoy no te salga caro dentro de un año. Por eso, incluso en la opción más económica, el código y el dominio son tuyos desde el primer día: si algún día quieres irte, te los llevas y montas la web donde quieras. Y si mañana quieres ampliarla, no hay que empezar de cero.',
   ],
 
   bloques: {
@@ -64,43 +64,24 @@ export const contenido = {
   precios: {
     titulo: 'La opción económica, en detalle',
     intro:
-      'Los 3 primeros meses de mantenimiento son gratis, con el alojamiento incluido: no pagas servidor aparte. Después son 50€ al mes sin permanencia, y si no quieres seguir te llevas el código y el dominio. Los precios son sin IVA: al ser un gasto de tu negocio, te lo deduces.',
+      'Tu web incluye los 3 primeros meses de mantenimiento, con el alojamiento dentro: no pagas servidor aparte. Después, desde 30€/mes más IVA y sin permanencia, y si no quieres seguir te llevas el código y el dominio. Los precios son sin IVA: al ser un gasto de tu negocio, te lo deduces.',
     planes: [
       {
-        nombre: 'Landing Starter',
+        nombre: 'Landing',
         precio: 'desde 350€',
-        destacado: true,
-        para: 'La opción más económica. Lo esencial, bien hecho y sin recortar donde importa.',
-        incluye: [
-          '1 sección larga y 3 secciones pequeñas',
-          'SEO y posicionamiento local',
-          'Diseño responsive, adaptado a cualquier tipo de pantalla',
-          'Formulario de contacto',
-          'Botones flotantes, WhatsApp y chat básico',
-        ],
-      },
-      {
-        nombre: 'Landing Premium',
-        precio: 'desde 499€',
-        para: 'Si necesitas contar más cosas o quieres que entre mejor por los ojos.',
-        incluye: [
-          '8 secciones personalizadas, 2 de ellas grandes',
-          'SEO y posicionamiento local o nacional',
-          'Diseño responsive, adaptado a cualquier tipo de pantalla',
-          'Formulario de contacto, botones flotantes, WhatsApp y chat básico',
-          'Integración de Google Analytics y Google Search Console para llevar las estadísticas de tu web',
-        ],
+        para: 'Una sola página para presentarte y que te contacten. Normalmente entre 2 y 3 semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
         nombre: 'Mantenimiento',
-        precio: '50€/mes',
-        para: 'Los 3 primeros meses son gratis con tu web. Lo esencial para no tener que ocuparte de nada.',
+        precio: 'desde 30€/mes',
+        para: 'Tu web incluye los 3 primeros meses de mantenimiento. Lo esencial para no tener que ocuparte de nada.',
         incluye: [
-          'Tu web siempre encendida',
+          'Tu web siempre encendida, con el alojamiento incluido',
           'Los cambios que me pidas',
           'Si algo se rompe, lo arreglo yo',
           'Seguridad y copias de seguridad',
-          'Informe cada mes, sin permanencia',
+          'Cada mes te cuento cómo va; cada tres meses, informe completo',
+          'Sin permanencia',
         ],
       },
     ],
@@ -117,7 +98,7 @@ export const contenido = {
     {
       pregunta: '¿Hay alguna cuota mensual obligatoria?',
       respuesta:
-        'Obligatoria no, pero seamos claros: el desarrollo lo pagas una vez y el código es tuyo, y luego está el mantenimiento, que incluye el alojamiento. Los 3 primeros meses van dentro del precio y después son 50€ al mes, sin permanencia. Si decides no seguir, no te retengo nada: te llevas el código y el dominio y montas tu web donde quieras. Lo que no vas a encontrar aquí es una licencia por usar algo que ya has pagado.',
+        'Sí, el mantenimiento, y te lo digo claro desde el principio: el desarrollo lo pagas una vez y el código es tuyo, y el mantenimiento es lo que mantiene tu web encendida, porque incluye el alojamiento. Tu web incluye los 3 primeros meses de mantenimiento y después son desde 30€/mes más IVA, sin permanencia. Si decides no seguir, no te retengo nada: te llevas el código y el dominio y montas tu web donde quieras. Lo que no vas a encontrar aquí es una licencia por usar algo que ya has pagado.',
     },
     {
       pregunta: '¿Puedo empezar barato y ampliar después?',

@@ -6,7 +6,7 @@ const faqs = [
     pregunta: '¿Cuánto tarda en estar lista mi web?',
     respuesta: (
       <>
-        <p className='faq-respuesta'>Depende del tipo de proyecto. Una landing suele estar lista en una semana y una tienda online en unas dos. Si el proyecto es más grande, puede tardar algo más. Siempre te daré una estimación concreta antes de empezar.</p>
+        <p className='faq-respuesta'>Depende del tipo de proyecto. Desde que tengo tus textos y fotos, una landing suele estar lista en una semana, y una web completa o una tienda online, en menos de un mes. Si el proyecto es más grande, puede tardar algo más. Siempre te daré una estimación concreta antes de empezar.</p>
         <p className='faq-respuesta'>Para que el proceso sea transparente, trabajo por hitos:</p>
         <ul className='faq-hitos'>
           <li>Primero, te presento el diseño inicial</li>

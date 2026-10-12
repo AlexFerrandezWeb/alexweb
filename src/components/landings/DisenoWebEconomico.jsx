@@ -7,7 +7,7 @@ export const contenido = {
   seo: {
     titulo: 'Diseño web económico desde 350€, sin cuotas mensuales obligatorias',
     descripcion:
-      'Diseño web económico a medida desde 350€ más IVA. Sin cuotas mensuales obligatorias, sin permanencia y con el código en tu propiedad. Lista en una semana.',
+      'Diseño web económico a medida desde 350€ más IVA. Sin cuotas mensuales obligatorias y sin permanencia. Lista en una semana desde que tengo tus textos y fotos.',
   },
 
   hero: {
@@ -69,7 +69,7 @@ export const contenido = {
       {
         nombre: 'Landing',
         precio: 'desde 350€',
-        para: 'Una sola página para presentarte y que te contacten. Normalmente en una semana. Precio cerrado después de hablar contigo y conocer tu negocio.',
+        para: 'Una sola página para presentarte y que te contacten. Normalmente en una semana desde que tengo tus textos y fotos. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
         nombre: 'Mantenimiento',

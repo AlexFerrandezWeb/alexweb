@@ -56,7 +56,7 @@ export const contenido = {
       {
         titulo: 'Las prisas',
         texto:
-          'Normalmente, entre una y dos semanas. Si la necesitas antes, hay que reorganizar la agenda y eso tiene un coste. Si puedes esperar, no pagas de más.',
+          'Desde que tengo tus textos y fotos, una landing está normalmente en una semana y una web completa, en menos de un mes. Si la necesitas antes, hay que reorganizar la agenda y eso tiene un coste. Si puedes esperar, no pagas de más.',
       },
     ],
   },
@@ -69,17 +69,17 @@ export const contenido = {
       {
         nombre: 'Landing',
         precio: 'desde 350€',
-        para: 'Una sola página para presentarte y que te contacten. Normalmente en una semana. Precio cerrado después de hablar contigo y conocer tu negocio.',
+        para: 'Una sola página para presentarte y que te contacten. Normalmente en una semana desde que tengo tus textos y fotos. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
         nombre: 'Web de varias páginas',
         precio: 'desde 699€',
-        para: 'Para que te encuentren y te contacten, sin tienda. Normalmente entre una y dos semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
+        para: 'Para que te encuentren y te contacten, sin tienda. Normalmente en menos de un mes desde que tengo tus textos y fotos. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
         nombre: 'Tienda online',
         precio: 'desde 999€',
-        para: 'Cuando quieres cobrar online; depende del tamaño del catálogo. Normalmente unas dos semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
+        para: 'Cuando quieres cobrar online; depende del tamaño del catálogo. Normalmente en menos de un mes desde que tengo tus productos y fotos. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
         nombre: 'Funciones a medida',

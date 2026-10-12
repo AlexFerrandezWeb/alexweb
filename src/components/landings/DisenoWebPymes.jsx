@@ -7,7 +7,7 @@ export const contenido = {
   seo: {
     titulo: 'Diseño web para pymes: precios claros y sin plantillas',
     descripcion:
-      'Diseño web para pymes y autónomos a medida, sin plantillas. Precio cerrado desde 350€, entrega normalmente en 1-2 semanas y trato directo con el desarrollador.',
+      'Diseño web para pymes y autónomos a medida, sin plantillas. Precio cerrado desde 350€ y tu web en menos de un mes desde que tengo tus textos y fotos.',
   },
 
   hero: {
@@ -69,12 +69,12 @@ export const contenido = {
       {
         nombre: 'Landing',
         precio: 'desde 350€',
-        para: 'Una sola página para presentarte y que te contacten. Normalmente en una semana. Precio cerrado después de hablar contigo y conocer tu negocio.',
+        para: 'Una sola página para presentarte y que te contacten. Normalmente en una semana desde que tengo tus textos y fotos. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
         nombre: 'Web de varias páginas',
         precio: 'desde 699€',
-        para: 'Para que te encuentren y te contacten, sin tienda. Normalmente entre una y dos semanas. Precio cerrado después de hablar contigo y conocer tu negocio.',
+        para: 'Para que te encuentren y te contacten, sin tienda. Normalmente en menos de un mes desde que tengo tus textos y fotos. Precio cerrado después de hablar contigo y conocer tu negocio.',
       },
       {
         nombre: 'Mantenimiento',

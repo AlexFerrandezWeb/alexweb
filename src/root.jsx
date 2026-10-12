@@ -49,89 +49,32 @@ const NEGOCIO_JSON_LD = {
         '@type': 'OfferCatalog',
         name: 'Servicios de diseño y desarrollo web',
         itemListElement: [
+          // Dos ofertas, igual que las dos tarjetas de precio de la web. Los
+          // precios publicados van sin IVA (clientela B2B, que se lo deduce),
+          // asi que el dato estructurado tiene que decir lo mismo: si Google ve
+          // aqui algo que la pagina no dice, marca discrepancia.
           {
             '@type': 'Offer',
-            name: 'Landing Page',
-            description: 'Página única para mostrar tu negocio y captar clientes.',
-            price: '350',
+            name: 'Diseño web',
+            description: 'Landing, web completa o tienda online pensada para el objetivo de cada negocio, con precio cerrado. Incluye los 3 primeros meses de mantenimiento.',
             priceCurrency: 'EUR',
-            // Los precios publicados en la web van sin IVA (clientela B2B, que
-            // se lo deduce), asi que el dato estructurado tiene que decir lo
-            // mismo: si Google ve una cifra con IVA dentro y la pagina otra,
-            // marca discrepancia.
             priceSpecification: {
               '@type': 'PriceSpecification',
-              price: '350',
+              minPrice: 350,
               priceCurrency: 'EUR',
               valueAddedTaxIncluded: false,
             },
           },
           {
             '@type': 'Offer',
-            // Los tres niveles van como Offer separadas porque son productos
-            // distintos, no tallas del mismo: cada una lleva su precio de
-            // entrada real y una descripcion que no promete lo que no incluye.
-            // Si Google ve aqui algo que la pagina no dice, marca discrepancia.
-            name: 'Sitio Web Básico',
-            description: 'Web de hasta 5 páginas para tener presencia profesional y que te encuentren y contacten. Sin tienda ni blog.',
-            price: '699',
+            name: 'Mantenimiento web',
+            description: 'Alojamiento, seguridad, los cambios que necesites y acompañamiento mes a mes, con informe completo cada tres meses. Sin permanencia.',
             priceCurrency: 'EUR',
             priceSpecification: {
-              '@type': 'PriceSpecification',
-              price: '699',
+              '@type': 'UnitPriceSpecification',
+              minPrice: 30,
               priceCurrency: 'EUR',
-              valueAddedTaxIncluded: false,
-            },
-          },
-          {
-            '@type': 'Offer',
-            name: 'E-commerce / Tienda Online',
-            description: 'Tienda online con carrito, pasarela de pago, reservas y citas online y panel de gestión de productos y stock. El precio depende del catálogo.',
-            price: '999',
-            priceCurrency: 'EUR',
-            priceSpecification: {
-              '@type': 'PriceSpecification',
-              price: '999',
-              priceCurrency: 'EUR',
-              valueAddedTaxIncluded: false,
-            },
-          },
-          {
-            '@type': 'Offer',
-            name: 'Proyecto a Medida',
-            description: 'Desarrollo a medida con panel propio, agenda de varios profesionales con Google Calendar, sincronización con proveedor o ERP y área privada de clientes.',
-            price: '1499',
-            priceCurrency: 'EUR',
-            priceSpecification: {
-              '@type': 'PriceSpecification',
-              price: '1499',
-              priceCurrency: 'EUR',
-              valueAddedTaxIncluded: false,
-            },
-          },
-          {
-            '@type': 'Offer',
-            name: 'Panel de edición de contenidos',
-            description: 'Complemento opcional del Sitio Web Básico para editar tú mismo textos e imágenes.',
-            price: '290',
-            priceCurrency: 'EUR',
-            priceSpecification: {
-              '@type': 'PriceSpecification',
-              price: '290',
-              priceCurrency: 'EUR',
-              valueAddedTaxIncluded: false,
-            },
-          },
-          {
-            '@type': 'Offer',
-            name: 'Mantenimiento y SEO',
-            description: 'Sin permanencia, con los 3 primeros meses gratis en cada proyecto: alojamiento, seguridad, copias, los cambios que pidas e informe mensual. Desde 70€/mes el plan Premium, que añade cambios el mismo día, una llamada al mes y la gestión de tu ficha de Google.',
-            price: '50',
-            priceCurrency: 'EUR',
-            priceSpecification: {
-              '@type': 'PriceSpecification',
-              price: '50',
-              priceCurrency: 'EUR',
+              unitText: 'MONTH',
               valueAddedTaxIncluded: false,
             },
           },
